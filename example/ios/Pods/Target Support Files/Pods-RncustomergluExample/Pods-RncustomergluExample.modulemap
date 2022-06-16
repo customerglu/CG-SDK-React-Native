@@ -1,0 +1,6 @@
+module Pods_RncustomergluExample {
+  umbrella header "Pods-RncustomergluExample-umbrella.h"
+
+  export *
+  module * { export * }
+}

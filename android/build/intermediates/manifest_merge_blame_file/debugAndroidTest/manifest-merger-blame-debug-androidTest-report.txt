@@ -1,0 +1,199 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.reactnativerncustomerglu.test" >
+4
+5    <uses-sdk
+5-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:5:5-74
+6        android:minSdkVersion="21"
+6-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:5:15-41
+7        android:targetSdkVersion="29" />
+7-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:5:42-71
+8
+9    <instrumentation
+9-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:11:5-15:83
+10        android:name="android.test.InstrumentationTestRunner"
+10-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:11:22-75
+11        android:functionalTest="false"
+11-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:14:22-52
+12        android:handleProfiling="false"
+12-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:13:22-53
+13        android:label="Tests for com.reactnativerncustomerglu.test"
+13-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:15:22-81
+14        android:targetPackage="com.reactnativerncustomerglu.test" />
+14-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:12:22-79
+15
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:9:5-79
+16-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:9:22-76
+17    <uses-permission android:name="android.permission.REORDER_TASKS" />
+17-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:24:5-72
+17-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:24:22-69
+18
+19    <application
+19-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:7:5-9:19
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.5.0] /Users/kishan/.gradle/caches/transforms-3/9c6b6c941cf24f5d9f248cd6e881973b/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true" >
+21-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:7:18-43
+22        <uses-library android:name="android.test.runner" />
+22-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:8:9-60
+22-->/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger1731797637648829059.xml:8:23-57
+23
+24        <activity
+24-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:12:9-15:56
+25            android:name="com.customerglu.sdk.Web.OpenCustomerGluWeb"
+25-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:13:13-70
+26            android:screenOrientation="portrait"
+26-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:14:13-49
+27            android:theme="@style/Theme.Transparent" />
+27-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:15:13-53
+28        <activity
+28-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:16:9-27:20
+29            android:name="com.customerglu.sdk.notification.NotificationWeb"
+29-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:17:13-76
+30            android:exported="false"
+30-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:18:13-37
+31            android:protectionLevel="signature"
+31-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:19:13-48
+32            android:screenOrientation="portrait"
+32-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:20:13-49
+33            android:theme="@style/Theme.Transparent" >
+33-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:21:13-53
+34            <intent-filter>
+34-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:22:13-26:29
+35                <action android:name="OPEN_WEB" />
+35-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:23:17-51
+35-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:23:25-48
+36
+37                <category android:name="android.intent.category.DEFAULT" />
+37-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:25:17-76
+37-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:25:27-73
+38            </intent-filter>
+39        </activity>
+40        <activity
+40-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:28:9-32:20
+41            android:name="com.customerglu.sdk.notification.BottomSheet"
+41-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:29:13-72
+42            android:screenOrientation="portrait"
+42-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:30:13-49
+43            android:theme="@style/Theme.Transparent" >
+43-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:31:13-53
+44        </activity>
+45        <activity
+45-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:33:9-37:20
+46            android:name="com.customerglu.sdk.notification.BottomDialog"
+46-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:34:13-73
+47            android:screenOrientation="portrait"
+47-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:35:13-49
+48            android:theme="@style/Theme.Transparent" >
+48-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:36:13-53
+49        </activity>
+50        <activity
+50-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:38:9-42:20
+51            android:name="com.customerglu.sdk.notification.MiddleDialog"
+51-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:39:13-73
+52            android:screenOrientation="portrait"
+52-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:40:13-49
+53            android:theme="@style/Theme.Transparent" >
+53-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:41:13-53
+54        </activity>
+55        <activity
+55-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:43:9-47:20
+56            android:name="com.customerglu.sdk.Screens.RewardScreen"
+56-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:44:13-68
+57            android:screenOrientation="portrait"
+57-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:45:13-49
+58            android:theme="@style/Theme.Transparent" >
+58-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:46:13-53
+59        </activity>
+60        <activity
+60-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:48:9-51:56
+61            android:name="com.customerglu.sdk.Web.RewardWeb"
+61-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:49:13-61
+62            android:screenOrientation="portrait"
+62-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:50:13-49
+63            android:theme="@style/Theme.Transparent" />
+63-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:51:13-53
+64        <activity
+64-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:52:9-55:56
+65            android:name="com.customerglu.sdk.Web.OpenWallet"
+65-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:53:13-62
+66            android:screenOrientation="portrait"
+66-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:54:13-49
+67            android:theme="@style/Theme.Transparent" />
+67-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:55:13-53
+68        <activity
+68-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:56:9-59:56
+69            android:name="com.customerglu.sdk.Web.FilterReward"
+69-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:57:13-64
+70            android:screenOrientation="portrait"
+70-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:58:13-49
+71            android:theme="@style/Theme.Transparent" />
+71-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:59:13-53
+72
+73        <provider
+73-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:61:9-69:20
+74            android:name="androidx.core.content.FileProvider"
+74-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:62:13-62
+75            android:authorities="com.reactnativerncustomerglu.test.provider"
+75-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:63:13-60
+76            android:exported="false"
+76-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:64:13-37
+77            android:grantUriPermissions="true" >
+77-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:65:13-47
+78            <meta-data
+78-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:66:13-68:57
+79                android:name="android.support.FILE_PROVIDER_PATHS"
+79-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:67:17-67
+80                android:resource="@xml/provider_path" />
+80-->[com.github.customerglu:CG-SDK-Android:v2.0.2] /Users/kishan/.gradle/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml:68:17-54
+81        </provider>
+82
+83        <activity
+83-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:27:9-34:20
+84            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+84-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:28:13-99
+85            android:exported="true"
+85-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:29:13-36
+86            android:theme="@android:style/Theme" >
+86-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:30:13-49
+87            <intent-filter>
+87-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:31:13-33:29
+88                <action android:name="android.intent.action.MAIN" />
+88-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:32:17-69
+88-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:32:25-66
+89            </intent-filter>
+90        </activity>
+91        <activity
+91-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:35:9-42:20
+92            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+92-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:36:13-95
+93            android:exported="true"
+93-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:37:13-36
+94            android:theme="@android:style/Theme" >
+94-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:38:13-49
+95            <intent-filter>
+95-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:31:13-33:29
+96                <action android:name="android.intent.action.MAIN" />
+96-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:32:17-69
+96-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:32:25-66
+97            </intent-filter>
+98        </activity>
+99        <activity
+99-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:43:9-50:20
+100            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+100-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:44:13-103
+101            android:exported="true"
+101-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:45:13-36
+102            android:theme="@android:style/Theme.Dialog" >
+102-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:46:13-56
+103            <intent-filter>
+103-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:31:13-33:29
+104                <action android:name="android.intent.action.MAIN" />
+104-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:32:17-69
+104-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/caches/transforms-3/e0711140b7fd750ae1da2e1ad568d637/transformed/core-1.4.0/AndroidManifest.xml:32:25-66
+105            </intent-filter>
+106        </activity>
+107    </application>
+108
+109</manifest>

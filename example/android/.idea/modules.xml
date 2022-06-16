@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RncustomergluExample.iml" filepath="$PROJECT_DIR$/.idea/modules/RncustomergluExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RncustomergluExample.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RncustomergluExample.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1377501978/RncustomergluExample.reactnativerncustomerglu.iml" filepath="$PROJECT_DIR$/.idea/modules/1377501978/RncustomergluExample.reactnativerncustomerglu.iml" />
+    </modules>
+  </component>
+</project>

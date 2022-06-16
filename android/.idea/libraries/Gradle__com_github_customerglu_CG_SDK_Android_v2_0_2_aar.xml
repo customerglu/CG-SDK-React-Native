@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.customerglu:CG-SDK-Android:v2.0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/res" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-3/2930d53470f21d40eac20a66fd6cdc98/transformed/CG-SDK-Android-v2.0.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

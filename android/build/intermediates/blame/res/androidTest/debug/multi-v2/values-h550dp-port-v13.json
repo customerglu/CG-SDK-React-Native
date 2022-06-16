@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/kishan/ReactProject/rncustomerglu/android/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/kishan/.gradle/caches/transforms-3/80e8c044e3d483fc83a3de226a9e7f27/transformed/material-1.4.0/res/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "76",
+                        "endOffsets": "127"
+                    }
+                }
+            ]
+        }
+    ]
+}

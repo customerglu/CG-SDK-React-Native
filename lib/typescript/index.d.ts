@@ -1,0 +1,13 @@
+export declare function registerEx(): Promise<number>;
+export declare function dataClearEx(): Promise<number>;
+export declare function sendDataEX(): Promise<number>;
+export declare function webEventEx(a: Boolean): Promise<number>;
+export declare function enableAnalyticEx(b: Boolean): Promise<number>;
+export declare function loadCampaignIdByEx(id: String): Promise<number>;
+export declare function openWalletEx(): Promise<number>;
+export declare function disableGluSdkEx(a: Boolean): Promise<number>;
+export declare function configureLoaderColourEx(color: String): Promise<number>;
+export declare function enablePrecachingEx(): Promise<number>;
+export declare function gluSDKDebuggingModeEx(b: Boolean): Promise<number>;
+export declare function enableEntryPointsEx(b: Boolean): Promise<number>;
+export declare function closeWebViewEx(b: Boolean): Promise<number>;

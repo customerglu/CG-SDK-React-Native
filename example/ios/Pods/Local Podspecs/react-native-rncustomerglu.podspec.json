@@ -1,0 +1,28 @@
+{
+  "name": "react-native-rncustomerglu",
+  "version": "0.1.0",
+  "summary": "yes t is",
+  "description": "Customerglu React-Native SDK",
+  "homepage": "https://github.com/nehagupta1995/Awesome#readme",
+  "license": "MIT",
+  "authors": "Neha Gupta <neha.gupta@emorphis.in> (https://github.com/nehagupta1995/Awesome)",
+  "source": {
+    "git": "https://github.com/nehagupta1995/Awesome.git",
+    "tag": "0.1.0"
+  },
+  "source_files": "ios/**/*",
+  "dependencies": {
+    "React-Core": [
+
+    ],
+    "CustomerGlu": [
+      "2.0.3"
+    ]
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "swift_versions": "5.0",
+  "static_framework": true,
+  "swift_version": "5.0"
+}

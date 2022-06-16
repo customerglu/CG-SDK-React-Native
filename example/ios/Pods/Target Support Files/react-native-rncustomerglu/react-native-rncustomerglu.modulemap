@@ -1,0 +1,6 @@
+module react_native_rncustomerglu {
+  umbrella header "react-native-rncustomerglu-umbrella.h"
+
+  export *
+  module * { export * }
+}

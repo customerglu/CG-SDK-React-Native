@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.reactnativerncustomerglu"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="29" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
+    <application
+        android:name="com.example.reactnativerncustomerglu.MainApplication"
+        android:allowBackup="false"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <meta-data
+            android:name="CUSTOMERGLU_WRITE_KEY"
+            android:value="G4VCVVAcLub8hx5SaeqH3pRqLBmDFrwy" />
+
+        <activity
+            android:name="com.example.reactnativerncustomerglu.MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <activity
+            android:name="com.customerglu.sdk.Web.OpenCustomerGluWeb"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="com.customerglu.sdk.notification.NotificationWeb"
+            android:exported="false"
+            android:protectionLevel="signature"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" >
+            <intent-filter>
+                <action android:name="OPEN_WEB" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.customerglu.sdk.notification.BottomSheet"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" >
+        </activity>
+        <activity
+            android:name="com.customerglu.sdk.notification.BottomDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" >
+        </activity>
+        <activity
+            android:name="com.customerglu.sdk.notification.MiddleDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" >
+        </activity>
+        <activity
+            android:name="com.customerglu.sdk.Screens.RewardScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" >
+        </activity>
+        <activity
+            android:name="com.customerglu.sdk.Web.RewardWeb"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="com.customerglu.sdk.Web.OpenWallet"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="com.customerglu.sdk.Web.FilterReward"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.reactnativerncustomerglu.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_path" />
+        </provider>
+
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
