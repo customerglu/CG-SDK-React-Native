@@ -16,6 +16,21 @@ class Rncustomerglu: NSObject {
                                 }
                             }
     }
+
+    @objc(dataClear)
+    func dataClear() -> Void {
+        customerGlu.clearGluData();
+    }
+
+    @objc
+    func sendData(_ property:NSDictionary) -> Void {
+        customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
+    }
+
+    @objc(openWallet)
+    func openWallet() -> Void {
+        customerGlu.openWallet()
+    }
     
     
     @objc

@@ -60,5 +60,5 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
 
     }
     
-//  public static native int nativeMultiply(int a, int b);
+
 }

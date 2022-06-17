@@ -27,3 +27,13 @@ export function registerEx(): Promise<number> {
   return Rncustomerglu.registerDevice();
 }
 
+export function dataClearEx(): Promise<number> {
+  return Rncustomerglu.dataClear();
+}
+export function sendDataEX(obj: Object): Promise<number> {
+  return Rncustomerglu.sendData(obj);
+}
+export function openWalletEx(): Promise<number> {
+  return Rncustomerglu.openWallet();
+}
+
