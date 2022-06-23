@@ -6,6 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Rncustomerglu-Bridging-Header.h>
 #import <React/RCTDefines.h>
+ 
 
 
 @interface RCT_EXTERN_MODULE(Rncustomerglu, NSObject)
@@ -18,11 +19,13 @@ RCT_EXTERN_METHOD(loadCampaignIdBy:(NSString *)id )
 RCT_EXTERN_METHOD(enableAnalytic:(BOOL *)bool)
 RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)
+
 RCT_EXTERN_METHOD(gluSDKDebuggingMode(BOOL *)bool)
 RCT_EXTERN_METHOD(enableEntryPoints:(BOOL *)bool)
-RCT_EXTERN_METHOD(closeWebView:(BOOL *)bool)
+RCT_EXTERN_METHOD(closeWebView:(BOOL *)bool (RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(isFcmApn:(NSString *)fcm)
 RCT_EXTERN_METHOD(configureSafeArea:(NSDictionary *)safe)
+
 RCT_EXTERN_METHOD(SetDefaultBannerImage:(NSString *)url)
 RCT_EXTERN_METHOD(UpdateProfile)
 RCT_EXTERN_METHOD(DisplayCustomerGluNotification)
@@ -35,4 +38,10 @@ RCT_EXTERN_METHOD(SetCurrentClassName:(NSString *)clName)
 RCT_EXTERN_METHOD(OpenWalletWithUrl:(NSString *)url)
 RCT_EXTERN_METHOD(configureWhiteListedDomains)
 RCT_EXTERN_METHOD(configureDomainCodeMsg)
+RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTResponseSenderBlock)callback)
+
+@end
+
+@interface RCT_EXTERN_MODULE(JsEventEmitter, RCTEventEmitter)
+RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTResponseSenderBlock)callback)
 @end

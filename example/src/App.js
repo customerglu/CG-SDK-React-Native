@@ -47,10 +47,6 @@ const fun_name = ['registerUser', 'dataClear', 'sendData', 'openWallet', 'loadCa
 
 export default function App() {
 
-  // React.useEffect(() => {
-  //   multiply(3, 7).then(setResult);
-  // }, []);
-
   var myObject = new MyClass();
 
   // for list
@@ -116,7 +112,6 @@ export default function App() {
         topHeight: 44, bottomHeight: 34,
         topSafeAreaColor: "#00FF00", bottomSafeAreaColor: "#FF0000"
       }
-      // configureSafeAreaEx(10, 10, "#00FF00", "#FF0000")
       configureSafeAreaEx(obj)
     }
     this.SetDefaultBannerImage = async () => {

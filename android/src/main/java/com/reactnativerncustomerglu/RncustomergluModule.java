@@ -74,12 +74,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
       eventProperties.put("eventName",obj.get("eventName"));
       eventProperties.put("eventProperties",obj.get("eventProperties"));
       String evnt = (String) obj.get("eventName");
-//      Array prop = (Array) obj.get("eventProperties");
-//      Log.d("event",String.valueOf(eventProperties));
-//      Log.d("event",String.valueOf(obj.get("eventProperties")));
-//      Log.d("event",String.valueOf(obj.get("eventName")));
-//      Log.d("event",String.valueOf(prop));
-//      Log.d("event",String.valueOf(evnt));
       customerGlu.sendEvent(getReactApplicationContext(),evnt,eventProperties);
       LocalBroadcastManager.getInstance(getReactApplicationContext()).registerReceiver(new BroadcastReceiver() {
         @Override
@@ -101,11 +95,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
     } catch (JSONException e) {
       e.printStackTrace();
     }
-
-//    HashMap<String,Object> eventProperties = new HashMap<>();
-//    eventProperties.put("orderValue",1000);
-//    customerGlu.sendEvent(getReactApplicationContext(),"Order_Placed",eventProperties);
-//    Log.d("sendEvent", String.valueOf("sendEvent"));
   }
 
 
@@ -186,5 +175,113 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
   public void DisplayBackGroundNotification() {
     Log.d("displaybgNotification", String.valueOf("DisplayBackGroundNotification"));
   }
+   @ReactMethod
+  public void GetRefferalId(String url) throws MalformedURLException {
+    Uri myURL = Uri.parse(url);
+    String referID = customerGlu.getReferralId(myURL);
+    Log.d("getReferralId", String.valueOf(referID));
+  }
+  @ReactMethod
+  public void LoadAllCampagins() {
+    customerGlu.loadAllCampaigns(getReactApplicationContext());
+    Log.d("loadAllCampaigns", String.valueOf("loadAllCampaigns"));
+  }
+  @ReactMethod
+  public void LoadCampaginsByFilter(ReadableMap readableMap) {
+    try {
+      JSONObject obj= convertMapToJson(readableMap);
+      HashMap<String,Object> campaignData = new HashMap<>();
+      campaignData.put("campaignId",obj.get("campaignId"));
+      campaignData.put("status",obj.get("status"));
+      campaignData.put("type",obj.get("type"));
+      customerGlu.loadCampaignsByFilter(getReactApplicationContext(),campaignData);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+  }
 
+  @ReactMethod
+  public void SetCurrentClassName() {
+    Log.d("SetCurrentClassName", String.valueOf("function not in android"));
+  }
+  @ReactMethod
+  public void OpenWalletWithUrl() {
+    Log.d("OpenWalletWithUrl", String.valueOf("method not found in android"));
+  }
+  @ReactMethod
+  public void configureWhiteListedDomains() {
+    Log.d("connfigureWhiteListed", String.valueOf("method not found in android"));
+  }
+  @ReactMethod
+  public void configureDomainCodeMsg() {
+    Log.d("configureDomainCodeMsg", String.valueOf("method not found in android"));
+  }
+
+  private JSONObject convertMapToJson(ReadableMap readableMap) {
+    JSONObject jsonObject = new JSONObject();
+    if (readableMap == null) {
+      return null;
+    }
+    ReadableMapKeySetIterator iterator = readableMap.keySetIterator();
+    if (!iterator.hasNextKey()) {
+      return null;
+    }
+    while (iterator.hasNextKey()) {
+      String key = iterator.nextKey();
+      ReadableType readableType = readableMap.getType(key);
+      try {
+        switch (readableType) {
+          case Null:
+            jsonObject.put(key, null);
+            break;
+          case Boolean:
+            jsonObject.put(key, readableMap.getBoolean(key));
+            break;
+          case Number:
+            // Can be int or double.
+            jsonObject.put(key, readableMap.getInt(key));
+            break;
+          case String:
+            jsonObject.put(key, readableMap.getString(key));
+
+            break;
+          case Array:
+            jsonObject.put(key, convertArrayToJson(readableMap.getArray(key)));
+          default:
+            // Do nothing and fail silently
+        }
+      } catch (JSONException ex) {
+      }
+    }
+    return jsonObject;
+  }
+
+  private static JSONArray convertArrayToJson(ReadableArray readableArray) throws JSONException {
+    JSONArray array = new JSONArray();
+    for (int i = 0; i < readableArray.size(); i++) {
+      switch (readableArray.getType(i)) {
+        case Null:
+          break;
+        case Boolean:
+          array.put(readableArray.getBoolean(i));
+          break;
+        case Number:
+          array.put(readableArray.getDouble(i));
+          break;
+        case String:
+          array.put(readableArray.getString(i));
+          break;
+//        case Map:
+//          array.put(readableMapToJson(readableArray.getMap(i)));
+//          break;
+        case Array:
+          array.put(convertArrayToJson(readableArray.getArray(i)));
+          break;
+      }
+    }
+    return array;
+  }
 }
+
+
+

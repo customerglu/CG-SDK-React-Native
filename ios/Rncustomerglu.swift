@@ -1,9 +1,11 @@
 import Foundation
 import CustomerGlu
 import UIKit
+import React
+
 let customerGlu = CustomerGlu.getInstance
 @objc(Rncustomerglu)
-class Rncustomerglu: NSObject {
+class Rncustomerglu: NSObject{
 
     @objc func registerDevice() -> Void {
         var userData = [String: AnyHashable]()
@@ -31,8 +33,13 @@ class Rncustomerglu: NSObject {
 
     @objc
     func sendData(_ property:NSDictionary) -> Void {
+ 
         customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
-
+           print("hello All")
+        print(property["eventName"] as Any)
+        print(property["eventProperties"] as Any)
+        
+        
     }
 
     @objc(openWallet)
@@ -46,12 +53,23 @@ class Rncustomerglu: NSObject {
     @objc
     func closeWebView(_ bool:Bool) -> Void {
         customerGlu.closeWebviewOnDeeplinkEvent(close: bool);
+        let userInfo = ["name": "khushbu"]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: userInfo)
+  
+        NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT"), object: nil)
     }
+        
+
     @objc
     func enableAnalytic(_ bool:Bool) -> Void {
         customerGlu.enableAnalyticsEvent(event: bool)
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT").rawValue), object: nil, userInfo: nil)
+       
     }
+    @objc func catchDeeplinkNotification(notification: NSNotification) {
+                print("hello Deeplink")
+    }
+    
     @objc
     func gluSDKDebuggingMode(_ bool:Bool) -> Void {
         customerGlu.gluSDKDebuggingMode(enabled: bool)
@@ -112,15 +130,11 @@ class Rncustomerglu: NSObject {
 
     @objc
     func CGApplication() -> Void {
-        print("CGApplicationEx")
-        
-        
     }
 
     @objc
     func DisplayBackGroundNotification() -> Void {
         print("DisplayBackGroundNotification");
-//        customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable] )
     }
     
     @objc
@@ -226,3 +240,16 @@ class Rncustomerglu: NSObject {
 
 }
 
+
+
+@objc(JsEventEmitter)
+class JsEventEmitter: RCTEventEmitter {
+    @objc func sendEvent(notification: NSNotification) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.catchDeeplinkNotification(notification:)), name: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT"), object: nil)
+        
+    }
+    @objc func catchAnalyticsNotification(notification: NSNotification) {
+        print(notification.userInfo as Any)
+}
+    
+}
