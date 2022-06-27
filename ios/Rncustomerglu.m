@@ -19,7 +19,7 @@ RCT_EXTERN_METHOD(loadCampaignIdBy:(NSString *)id )
 RCT_EXTERN_METHOD(enableAnalytic:(BOOL *)bool)
 RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)
-
+RCT_EXTERN_METHOD(enablePrecaching)
 RCT_EXTERN_METHOD(gluSDKDebuggingMode(BOOL *)bool)
 RCT_EXTERN_METHOD(enableEntryPoints:(BOOL *)bool)
 RCT_EXTERN_METHOD(closeWebView:(BOOL *)bool (RCTResponseSenderBlock)callback)
@@ -42,6 +42,3 @@ RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTRe
 
 @end
 
-@interface RCT_EXTERN_MODULE(JsEventEmitter, RCTEventEmitter)
-RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTResponseSenderBlock)callback)
-@end

@@ -5,3 +5,5 @@ com/reactnativerncustomerglu/RncustomergluPackage.java
 com/reactnativerncustomerglu/RncustomergluModule.java
  com.reactnativerncustomerglu.RncustomergluModule
  com.reactnativerncustomerglu.RncustomergluModule$1
+ com.reactnativerncustomerglu.RncustomergluModule$2
+ com.reactnativerncustomerglu.RncustomergluModule$3

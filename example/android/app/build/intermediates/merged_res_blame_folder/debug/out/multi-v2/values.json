@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kishan/ReactProject/rncustomerglu/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/kishan/Documents/git/CG-SDK-React-Native/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/kishan/ReactProject/rncustomerglu/example/android/app/src/main/res/values/strings.xml",
+                    "source": "/Users/kishan/Documents/git/CG-SDK-React-Native/example/android/app/src/main/res/values/strings.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
@@ -76,6 +76,25 @@
                     }
                 },
                 {
+                    "source": "/Users/kishan/Documents/git/CG-SDK-React-Native/example/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "231"
+                    },
+                    "to": {
+                        "startLines": "1284",
+                        "startColumns": "4",
+                        "startOffsets": "85165",
+                        "endLines": "1287",
+                        "endColumns": "12",
+                        "endOffsets": "85342"
+                    }
+                },
+                {
                     "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-3/136fd22d4f0f5074fa11ffc0a0d821cd/transformed/cardview-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,35,36,37,38,45,47,50,7",
@@ -111,25 +130,6 @@
                         "endLines": "998,1029,1066,6858,6862",
                         "endColumns": "56,64,63,24,24",
                         "endOffsets": "58557,60126,62037,448112,448261"
-                    }
-                },
-                {
-                    "source": "/Users/kishan/ReactProject/rncustomerglu/example/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "231"
-                    },
-                    "to": {
-                        "startLines": "1284",
-                        "startColumns": "4",
-                        "startOffsets": "85165",
-                        "endLines": "1287",
-                        "endColumns": "12",
-                        "endOffsets": "85342"
                     }
                 },
                 {
@@ -332,7 +332,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kishan/ReactProject/rncustomerglu/example/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
+                    "source": "/Users/kishan/Documents/git/CG-SDK-React-Native/example/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
                     "from": {
                         "startLines": "6,8",
                         "startColumns": "4,4",

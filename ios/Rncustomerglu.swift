@@ -3,6 +3,7 @@ import CustomerGlu
 import UIKit
 import React
 
+
 let customerGlu = CustomerGlu.getInstance
 @objc(Rncustomerglu)
 class Rncustomerglu: NSObject{
@@ -21,21 +22,16 @@ class Rncustomerglu: NSObject{
                             }
     }
     
-    @objc
-    func enableEntryPoints(_ bool:Bool) -> Void {
-        customerGlu.enableEntryPoints(enabled:bool)
-    }
     
     @objc(dataClear)
     func dataClear() -> Void {
         customerGlu.clearGluData();
+        print("Data cleared");
     }
 
     @objc
     func sendData(_ property:NSDictionary) -> Void {
- 
         customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
-           print("hello All")
         print(property["eventName"] as Any)
         print(property["eventProperties"] as Any)
         
@@ -50,48 +46,75 @@ class Rncustomerglu: NSObject{
     func loadCampaignIdBy(_ id:String) -> Void {
         customerGlu.loadCampaignById(campaign_id: id)
     }
-    @objc
-    func closeWebView(_ bool:Bool) -> Void {
-        customerGlu.closeWebviewOnDeeplinkEvent(close: bool);
-        let userInfo = ["name": "khushbu"]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: userInfo)
-  
-        NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT"), object: nil)
-    }
-        
-
+    
     @objc
     func enableAnalytic(_ bool:Bool) -> Void {
         customerGlu.enableAnalyticsEvent(event: bool)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT").rawValue), object: nil, userInfo: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT"), object: nil)
        
     }
-    @objc func catchDeeplinkNotification(notification: NSNotification) {
-                print("hello Deeplink")
+    @objc func catchAnalyticsNotification(notification: NSNotification) {
+                print("Hello Analytics")
     }
     
-    @objc
-    func gluSDKDebuggingMode(_ bool:Bool) -> Void {
-        customerGlu.gluSDKDebuggingMode(enabled: bool)
-    }
-    @objc
-    func isFcmApn(_ fcm:String) -> Void {
-        customerGlu.isFcmApn(fcmApn:fcm)
+    @objc func disableGluSdk(_ bool:Bool) -> Void {
+        customerGlu.disableGluSdk(disable: bool)
+        print(bool);
     }
 
     @objc
     func configureLoaderColour(_ colr: String) -> Void {
-        
         print(colr);
         let color = colorWithHexString(hexString: colr )
         print(color);
         customerGlu.configureLoaderColour(color: [color])
     }
     
-    @objc func disableGluSdk(_ bool:Bool) -> Void {
-        customerGlu.disableGluSdk(disable: bool)
+    @objc
+    func enablePrecaching() -> Void {
+        print("enablePrecaching");
+    }
+    
+   
+    @objc
+    func gluSDKDebuggingMode(_ bool:Bool) -> Void {
+        customerGlu.gluSDKDebuggingMode(enabled: bool)
+        print(bool);
+    }
+    
+    @objc
+    func enableEntryPoints(_ bool:Bool) -> Void {
+        customerGlu.enableEntryPoints(enabled:bool)
+        print(bool);
     }
 
+    
+    @objc
+    func closeWebView(_ bool:Bool) -> Void {
+        customerGlu.closeWebviewOnDeeplinkEvent(close: bool);
+        let userInfo = ["name": "khushbu"]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: userInfo)
+  
+        NotificationCenter.default.addObserver(self, selector: #selector(self.catchDeeplinkNotification(notification:)), name: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT"), object: nil)
+    }
+        
+    
+    @objc
+    func catchDeeplinkNotification(notification: NSNotification) {
+            //do stuff using the userInfo property of the notification object
+            if let userInfo = notification.userInfo as? [String: Any] // or use if you know the type  [AnyHashable : Any]
+            {
+                 print(userInfo)
+            }
+        }
+
+    @objc
+    func isFcmApn(_ fcm:String) -> Void {
+        customerGlu.isFcmApn(fcmApn:fcm)
+    }
+  
     @objc
     func configureSafeArea(_ safe:NSDictionary) -> Void {
         print(safe["bottomHeight"] as Any);
@@ -130,6 +153,7 @@ class Rncustomerglu: NSObject{
 
     @objc
     func CGApplication() -> Void {
+
     }
 
     @objc
@@ -240,16 +264,3 @@ class Rncustomerglu: NSObject{
 
 }
 
-
-
-@objc(JsEventEmitter)
-class JsEventEmitter: RCTEventEmitter {
-    @objc func sendEvent(notification: NSNotification) {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.catchDeeplinkNotification(notification:)), name: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT"), object: nil)
-        
-    }
-    @objc func catchAnalyticsNotification(notification: NSNotification) {
-        print(notification.userInfo as Any)
-}
-    
-}

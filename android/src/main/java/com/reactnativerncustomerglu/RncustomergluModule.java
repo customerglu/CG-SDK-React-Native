@@ -1,10 +1,29 @@
 package com.reactnativerncustomerglu;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.facebook.react.bridge.ActivityEventListener;
+import com.facebook.react.bridge.LifecycleEventListener;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableNativeArray;
+import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
 import com.customerglu.sdk.CustomerGlu;
 import com.customerglu.sdk.Interface.DataListner;
 import com.customerglu.sdk.Modal.RegisterModal;
@@ -12,28 +31,129 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
+import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.module.annotations.ReactModule;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
 @ReactModule(name = RncustomergluModule.NAME)
-public class RncustomergluModule extends ReactContextBaseJavaModule {
-    public static final String NAME = "Rncustomerglu";
-  public CustomerGlu customerGlu;
+public class RncustomergluModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
+
+
+  public static final String NAME = "Rncustomerglu";
+    public CustomerGlu customerGlu;
+    private static ReactApplicationContext mContext;
+
 
     public RncustomergluModule(ReactApplicationContext reactContext) {
         super(reactContext);
+      mContext = reactContext;
+      reactContext.addLifecycleEventListener(this);
       customerGlu = CustomerGlu.getInstance();
     }
 
+
+  private final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
     @Override
+    public void onReceive(Context context, Intent intent) {
+      try {
+        if(intent.getAction().equalsIgnoreCase("CUSTOMERGLU_ANALYTICS_EVENT"))
+        {
+
+          Log.d("data",String.valueOf("llllll"));
+          Log.d("data",String.valueOf("hhhhhhh"));
+          WritableNativeMap params = new WritableNativeMap();
+          params.putString("app", "phone");
+          params.putString("text", "incomingNumber");
+          sendEventToJs("CUSTOMERGLU_ANALYTICS_EVENT",params);
+
+          // Write your Logic to perform action
+
+          Toast.makeText(context, "BroadcastReceiver Registered successfully", Toast.LENGTH_SHORT).show();
+        }
+        /* If you want to listen analytics event */
+        if(intent.getAction().equalsIgnoreCase("CUSTOMERGLU_DEEPLINK_EVENT"))
+        {
+          String data =  intent.getStringExtra("data");
+          JSONObject jsonObject = new JSONObject(data);
+          Toast.makeText(context, jsonObject.toString(), Toast.LENGTH_LONG).show();
+          //This Event can be forwarded to your Servers/CDP tool
+        }
+      }
+      catch (Exception e)
+      {
+        System.out.println(e);
+      }
+    }
+
+  };
+
+  private void callButton(){
+    Intent intent = new Intent();
+    intent.setAction("CUSTOMERGLU_ANALYTICS_EVENT");
+    intent.putExtra("data", "Nothing to see here, move along.");
+    mContext.sendBroadcast(intent);
+  }
+
+  private void registerBroadcastReceiver() {
+    IntentFilter filter = new IntentFilter();
+    filter.addAction("CUSTOMERGLU_ANALYTICS_EVENT");
+    mContext.registerReceiver(mMessageReceiver,new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
+    mContext.registerReceiver(mMessageReceiver,filter);
+
+  }
+  private void sendEventToJs(String eventName, WritableNativeMap eventId) {
+    try{
+      ReactContext reactContext = RncustomergluModule.mContext;
+
+      reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+        .emit(eventName, eventId);
+    }
+    catch(Exception e){
+      Log.d("ReactNativeJS","Exception in sendEvent in EventReminderBroadcastReceiver is:"+e.toString());
+    }
+
+  }
+
+
+
+
+  @Override
     @NonNull
     public String getName() {
         return NAME;
     }
-    // Example method
+
+  @Override
+  public void onHostResume() {
+    IntentFilter filter = new IntentFilter();
+    filter.addAction("CUSTOMERGLU_ANALYTICS_EVENT");
+    mContext.registerReceiver(mMessageReceiver,new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
+    mContext.registerReceiver(mMessageReceiver,filter);
+  }
+
+  @Override
+  public void onHostPause() {
+  }
+
+  @Override
+  public void onHostDestroy() {
+  }
+
+  // Example method
     // See https://reactnative.dev/docs/native-modules-android
     @ReactMethod
     public void registerDevice(Promise promise) {
@@ -59,13 +179,15 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
       });
 
     }
-    
 
   @ReactMethod
   public void dataClear() {
     customerGlu.clearGluData(getReactApplicationContext());
   }
+
   @ReactMethod
+
+
   public void sendData(ReadableMap readableMap) {
     try {
       JSONObject obj= convertMapToJson(readableMap);
@@ -74,27 +196,17 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
       eventProperties.put("eventName",obj.get("eventName"));
       eventProperties.put("eventProperties",obj.get("eventProperties"));
       String evnt = (String) obj.get("eventName");
+      Log.d("event",String.valueOf(eventProperties));
+      Log.d("event",String.valueOf(obj.get("eventProperties")));
+      Log.d("event",String.valueOf(obj.get("eventName")));
+      Log.d("event",String.valueOf(evnt));
       customerGlu.sendEvent(getReactApplicationContext(),evnt,eventProperties);
-      LocalBroadcastManager.getInstance(getReactApplicationContext()).registerReceiver(new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-          try {
-            //Filter for the intent you sent in the r.n side
-            if ("someEventName".equals(intent.getStringExtra(EVENT_NAME))) {
-              //Get the event properties
-              JSONObject event_properties = new JSONObject(intent.getStringExtra(EVENT_PROPERTIES));
-              //Add more logic here
-            }
-          } catch (JSONException e) {
-            e.printStackTrace();
-          }
 
-        }
-      }, new IntentFilter(SEND_BROADCAST_ACTION));
 
     } catch (JSONException e) {
       e.printStackTrace();
     }
+
   }
 
 
@@ -115,8 +227,10 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
   public void enableAnalytic(Boolean bool) {
     customerGlu.enableAnalyticsEvent(bool);
     Log.d("enableAnalytic", String.valueOf(bool));
+    registerBroadcastReceiver();
   }
 
+  private DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter = null;
   @ReactMethod
   public void disableGluSdk(Boolean bool) {
     customerGlu.disableGluSdk(bool);
@@ -148,6 +262,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
   public void closeWebView(Boolean bol) {
     customerGlu.closeWebviewOnDeeplinkEvent(bol);
     Log.d("closeWEbView", String.valueOf(bol));
+
   }
 
   @ReactMethod
@@ -165,6 +280,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
   }
   @ReactMethod
   public void DisplayCustomerGluNotification() {
+    callButton();
     Log.d("displayCgNotification", String.valueOf("cg Notification"));
   }
   @ReactMethod
@@ -175,7 +291,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
   public void DisplayBackGroundNotification() {
     Log.d("displaybgNotification", String.valueOf("DisplayBackGroundNotification"));
   }
-   @ReactMethod
+  @ReactMethod
   public void GetRefferalId(String url) throws MalformedURLException {
     Uri myURL = Uri.parse(url);
     String referID = customerGlu.getReferralId(myURL);
@@ -212,6 +328,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
   public void configureWhiteListedDomains() {
     Log.d("connfigureWhiteListed", String.valueOf("method not found in android"));
   }
+
+
   @ReactMethod
   public void configureDomainCodeMsg() {
     Log.d("configureDomainCodeMsg", String.valueOf("method not found in android"));
@@ -281,7 +399,79 @@ public class RncustomergluModule extends ReactContextBaseJavaModule {
     }
     return array;
   }
+
+
+  public static WritableMap jsonToWritableMap(JSONObject jsonObject) {
+    WritableMap writableMap = new WritableNativeMap();
+    if (jsonObject == null) {
+      return null;
+    }
+    Iterator<String> iterator = jsonObject.keys();
+    if (!iterator.hasNext()) {
+      return null;
+    }
+    while (iterator.hasNext()) {
+      String key = iterator.next();
+      try {
+        Object value = jsonObject.get(key);
+        if (value == null) {
+          writableMap.putNull(key);
+        } else if (value instanceof Boolean) {
+          writableMap.putBoolean(key, (Boolean) value);
+        } else if (value instanceof Integer) {
+          writableMap.putInt(key, (Integer) value);
+        } else if (value instanceof Double) {
+          writableMap.putDouble(key, (Double) value);
+        } else if (value instanceof String) {
+          writableMap.putString(key, (String) value);
+        } else if (value instanceof JSONObject) {
+          writableMap.putMap(key, jsonToWritableMap((JSONObject) value));
+        } else if (value instanceof JSONArray) {
+          writableMap.putArray(key, jsonArrayToWritableArray((JSONArray) value));
+        }
+      } catch (JSONException ex) {
+        // Do nothing and fail silently
+      }
+    }
+
+    return writableMap;
+  }
+
+  public static WritableArray jsonArrayToWritableArray(JSONArray jsonArray) {
+    WritableArray writableArray = new WritableNativeArray();
+
+    if (jsonArray == null) {
+      return null;
+    }
+
+    if (jsonArray.length() <= 0) {
+      return null;
+    }
+
+    for (int i = 0; i < jsonArray.length(); i++) {
+      try {
+        Object value = jsonArray.get(i);
+        if (value == null) {
+          writableArray.pushNull();
+        } else if (value instanceof Boolean) {
+          writableArray.pushBoolean((Boolean) value);
+        } else if (value instanceof Integer) {
+          writableArray.pushInt((Integer) value);
+        } else if (value instanceof Double) {
+          writableArray.pushDouble((Double) value);
+        } else if (value instanceof String) {
+          writableArray.pushString((String) value);
+        } else if (value instanceof JSONObject) {
+          writableArray.pushMap(jsonToWritableMap((JSONObject) value));
+        } else if (value instanceof JSONArray) {
+          writableArray.pushArray(jsonArrayToWritableArray((JSONArray) value));
+        }
+      } catch (JSONException e) {
+        // Do nothing and fail silently
+      }
+    }
+
+    return writableArray;
+  }
+//  public static native int nativeMultiply(int a, int b);
 }
-
-
-

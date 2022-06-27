@@ -1,15 +1,120 @@
+// import * as React from 'react';
+// import { FlatList } from 'react-native';
+// import { ScrollView } from 'react-native';
+
+// import { StyleSheet, View, Text, TouchableOpacity, StatusBar } from 'react-native';
+// import { registerEx, dataClearEx, webEventEx, enableAnalyticEx, loadCampaignIdByEx, openWalletEx } from 'react-native-rncustomerglu';
+
+// export default function App() {
+
+//   const registerUser = () => {
+//     registerEx().then(setResult)
+//   }
+//   const opendataClearEx = () => {
+//     dataClearEx()
+//   }
+//   const opendatawebEventEx = () => {
+//     webEventEx(true)
+//   }
+//   const openenableAnalyticEx = () => {
+//     enableAnalyticEx(true)
+//   }
+//   const openloadCampaignIdByEx = () => {
+//     loadCampaignIdByEx("042a1048-569e-47c8-853c-33af1e325c93")
+//   }
+//   const openOpenWalletEx = () => {
+//     openWalletEx()
+//   }
+
+//   return (
+//     <View style={styles.container}>
+
+//       <TouchableOpacity onPress={() => registerUser()}
+//         style={styles.container1}>
+//         <Text style={styles.txtSt}>Register User</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity onPress={() => opendataClearEx()}
+//         style={styles.container1}>
+//         <Text style={styles.txtSt}>Clear Data</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity onPress={() => opendatawebEventEx()}
+//         style={styles.container1}>
+//         <Text style={styles.txtSt}>Web Event</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity onPress={() => openenableAnalyticEx()}
+//         style={styles.container1}>
+//         <Text style={styles.txtSt}>Enable Anakytics</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity onPress={() => openloadCampaignIdByEx()}
+//         style={styles.container1}>
+//         <Text style={styles.txtSt}>Load Campaign By Id</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity onPress={() => openOpenWalletEx()}
+//         style={styles.container1}>
+//         <Text style={styles.txtSt}>Open Wallet</Text>
+//       </TouchableOpacity>
+
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+//   box: {
+//     backgroundColor: '#000',
+//     width: "100%",
+//     height: "30%",
+//   },
+//   txt1: {
+//     color: '#fff',
+//     fontSize: 24,
+//     fontWeight: 'bold'
+//   },
+//   viewBox: {
+//     height: '70%',
+//     justifyContent: 'center',
+//   },
+//   mainView: {
+//     height: '30%',
+//     margin: 10,
+//     flexDirection: 'row',
+//     justifyContent: 'space-around',
+//   },
+//   container1: {
+
+//     elevation: 3,
+//     height: "5%",
+//     width: 300,
+//   },
+//   banner: {
+//     height: "20%",
+//     width: '95%',
+//     backgroundColor: 'red',
+//     borderRadius: 15,
+//     marginHorizontal: 10
+
+//   },
+//   txtSt: {
+//     fontSize: 20,
+//     textAlign: 'center'
+//   }
+
+// });
 
 import React, { useEffect, useState } from 'react';
+import { DeviceEventEmitter, NativeEventEmitter } from 'react-native';
 import {
   StatusBar,
   Text,
   View,
   StyleSheet,
+  NativeModules,
   TouchableOpacity,
   FlatList
 } from 'react-native';
 import { registerEx, dataClearEx, sendDataEX, loadCampaignIdByEx, enableAnalyticEx, openWalletEx, disableGluSdkEx, configureLoaderColourEx, enablePrecachingEx, gluSDKDebuggingModeEx, enableEntryPointsEx, closeWebViewEx, isFcmApnEx, configureSafeAreaEx, SetDefaultBannerImageEx, UpdateProfileEx, DisplayCustomerGluNotificationEx, CGApplicationEx, DisplayBackGroundNotificationEx, GetRefferalIdEx, LoadAllCampaginsEx, LoadCampaginsByFilterEx, SetCurrentClassNameEx, OpenWalletWithUrlEx, configureWhiteListedDomainsEx, configureDomainCodeMsgEx } from 'react-native-rncustomerglu';
-
 const Data = [
   { id: 0, name: 'Registration' },
   { id: 1, name: 'Clear Data' },
@@ -38,14 +143,15 @@ const Data = [
   { id: 24, name: 'configureWhiteListedDomains' },
   { id: 25, name: 'configureDomainCodeMsg' },
 
-
-
-
 ]
-
 const fun_name = ['registerUser', 'dataClear', 'sendData', 'openWallet', 'loadCampaginById', 'enableAnalyics', 'disableGluSdk', 'configureLoaderColour', 'enablePrecaching', 'gluSDKDebuggingMode', 'enableEntryPoints', 'closeWebView', 'fcmApn', 'SafeReaConfig', "SetDefaultBannerImage", "UpdateProfile", 'DisplayCustomerGluNotification', 'CGApplication', 'DisplayBackGroundNotification', 'GetRefferalId', 'LoadAllCampagins', 'LoadCampaginsByFilter', 'SetCurrentClassName', 'OpenWalletWithUrl', 'configureWhiteListedDomains', 'configureDomainCodeMsg'];
 
+
 export default function App() {
+
+  useEffect(() => {
+
+  }, []);
 
   var myObject = new MyClass();
 
@@ -62,7 +168,7 @@ export default function App() {
     this.sendData = async () => {
       console.log("sendDataEX");
       let obj = { eventName: "Order_Placed", eventProperties: ["orderValue", 1000] }
-      sendDataEX(obj)
+      sendDataEX(obj);
     }
     this.openWallet = async () => {
       console.log("openWallet");
@@ -77,6 +183,7 @@ export default function App() {
     this.enableAnalyics = async () => {
       console.log("enableAnalyics");
       enableAnalyticEx(true)
+
     }
     this.disableGluSdk = async () => {
       console.log("disableGluSdk");
@@ -91,7 +198,7 @@ export default function App() {
       enablePrecachingEx()
     }
     this.gluSDKDebuggingMode = async () => {
-      console.log("gluSDKDebuggingMode");
+      console.log("gluSDKDebuggingMode123");
       gluSDKDebuggingModeEx(true)
     }
     this.enableEntryPoints = async () => {
@@ -124,6 +231,10 @@ export default function App() {
     }
     this.DisplayCustomerGluNotification = async () => {
       console.log("DisplayCustomerGluNotification");
+      const eventEmitter = new NativeEventEmitter(NativeModules.DisplayCustomerGluNotification);
+      this.eventListener = eventEmitter.addListener('CUSTOMERGLU_ANALYTICS_EVENT', (event) => {
+        console.log(event)
+      });
       DisplayCustomerGluNotificationEx()
     }
     this.CGApplication = async () => {

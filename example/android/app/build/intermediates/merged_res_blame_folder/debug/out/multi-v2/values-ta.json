@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kishan/ReactProject/rncustomerglu/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ta/values-ta.xml",
+            "outputFile": "/Users/kishan/Documents/git/CG-SDK-React-Native/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ta/values-ta.xml",
             "map": [
                 {
                     "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-3/221ce42ae6003c66d554f2cf12fbdbc9/transformed/core-1.5.0/res/values-ta/values-ta.xml",
