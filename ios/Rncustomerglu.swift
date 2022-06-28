@@ -3,11 +3,40 @@ import CustomerGlu
 import UIKit
 import React
 
-
 let customerGlu = CustomerGlu.getInstance
 @objc(Rncustomerglu)
-class Rncustomerglu: NSObject{
+class Rncustomerglu: RCTEventEmitter{
+    
+    static var shared:Rncustomerglu?
+      
+      private var supportedEventNames: Set<String> = ["CUSTOMERGLU_ANALYTICS_EVENT","CUSTOMERGLU_DEEPLINK_EVENT"]
+      private var hasAttachedListener = true
+      
 
+    override init() {
+           super.init()
+        Rncustomerglu.shared = self
+       }
+    override func startObserving() {
+            hasAttachedListener = true
+        }
+        override func stopObserving() {
+            hasAttachedListener = false
+        }
+        // Must return an array of the supported events. Any unsupported events will throw errors
+        // if they are passed in to `sendEvent`
+        override func supportedEvents() -> [String] {
+            return Array(supportedEventNames)
+        }
+    
+    func emitEvent(withName name: String, body: Any!) {
+         if hasAttachedListener && supportedEventNames.contains(name) {
+             print("3rd notification call");
+             sendEvent(withName: name, body: body)
+         }
+     }
+    
+    
     @objc func registerDevice() -> Void {
         var userData = [String: AnyHashable]()
                         userData["userId"] = "test-08mar-17"
@@ -22,7 +51,6 @@ class Rncustomerglu: NSObject{
                             }
     }
     
-    
     @objc(dataClear)
     func dataClear() -> Void {
         customerGlu.clearGluData();
@@ -31,6 +59,7 @@ class Rncustomerglu: NSObject{
 
     @objc
     func sendData(_ property:NSDictionary) -> Void {
+        
         customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
         print(property["eventName"] as Any)
         print(property["eventProperties"] as Any)
@@ -50,13 +79,16 @@ class Rncustomerglu: NSObject{
     @objc
     func enableAnalytic(_ bool:Bool) -> Void {
         customerGlu.enableAnalyticsEvent(event: bool)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT").rawValue), object: nil, userInfo: nil)
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT"), object: nil)
+        print("1st notification call");
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT").rawValue), object: nil, userInfo: nil)
        
     }
     @objc func catchAnalyticsNotification(notification: NSNotification) {
-                print("Hello Analytics")
+        print("2nd  notification call");
+        Rncustomerglu.shared?.emitEvent(withName: "CUSTOMERGLU_ANALYTICS_EVENT", body: ["progress": 11])
     }
     
     @objc func disableGluSdk(_ bool:Bool) -> Void {
@@ -94,27 +126,24 @@ class Rncustomerglu: NSObject{
     @objc
     func closeWebView(_ bool:Bool) -> Void {
         customerGlu.closeWebviewOnDeeplinkEvent(close: bool);
-        let userInfo = ["name": "khushbu"]
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.catchDeeplinkNotification(notification:)), name: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT"), object: nil)
+        let userInfo = ["name": "khushbu"];
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: userInfo)
   
-        NotificationCenter.default.addObserver(self, selector: #selector(self.catchDeeplinkNotification(notification:)), name: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT"), object: nil)
     }
         
     
     @objc
     func catchDeeplinkNotification(notification: NSNotification) {
-            //do stuff using the userInfo property of the notification object
-            if let userInfo = notification.userInfo as? [String: Any] // or use if you know the type  [AnyHashable : Any]
-            {
-                 print(userInfo)
-            }
+        Rncustomerglu.shared?.emitEvent(withName: "CUSTOMERGLU_DEEPLINK_EVENT", body: ["progress": 12])
         }
 
     @objc
     func isFcmApn(_ fcm:String) -> Void {
         customerGlu.isFcmApn(fcmApn:fcm)
     }
-  
+    
     @objc
     func configureSafeArea(_ safe:NSDictionary) -> Void {
         print(safe["bottomHeight"] as Any);
@@ -153,7 +182,6 @@ class Rncustomerglu: NSObject{
 
     @objc
     func CGApplication() -> Void {
-
     }
 
     @objc
@@ -208,15 +236,11 @@ class Rncustomerglu: NSObject{
     }
         
     
-    @objc
-     static func requiresMainQueueSetup() -> Bool {
-       return true
-     }
-    
-    @objc
-    func constantsToExport() -> [String: Any]! {
-      return ["someKey": "someValue"]
+    override class func requiresMainQueueSetup() -> Bool {
+           return false
     }
+    
+
     
     private func colorWithHexString(hexString: String) -> UIColor {
 
@@ -263,4 +287,7 @@ class Rncustomerglu: NSObject{
         }
 
 }
+
+
+
 

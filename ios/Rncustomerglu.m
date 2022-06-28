@@ -9,8 +9,8 @@
  
 
 
-@interface RCT_EXTERN_MODULE(Rncustomerglu, NSObject)
-
+@interface RCT_EXTERN_MODULE(Rncustomerglu, RCTEventEmitter)
+RCT_EXTERN_METHOD(supportedEvents)
 RCT_EXTERN_METHOD(registerDevice)
 RCT_EXTERN_METHOD(dataClear)
 RCT_EXTERN_METHOD(sendData:(NSDictionary *)property)
@@ -20,12 +20,11 @@ RCT_EXTERN_METHOD(enableAnalytic:(BOOL *)bool)
 RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)
 RCT_EXTERN_METHOD(enablePrecaching)
-RCT_EXTERN_METHOD(gluSDKDebuggingMode(BOOL *)bool)
+RCT_EXTERN_METHOD(gluSDKDebuggingMode:(BOOL *)bool)
 RCT_EXTERN_METHOD(enableEntryPoints:(BOOL *)bool)
 RCT_EXTERN_METHOD(closeWebView:(BOOL *)bool (RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(isFcmApn:(NSString *)fcm)
 RCT_EXTERN_METHOD(configureSafeArea:(NSDictionary *)safe)
-
 RCT_EXTERN_METHOD(SetDefaultBannerImage:(NSString *)url)
 RCT_EXTERN_METHOD(UpdateProfile)
 RCT_EXTERN_METHOD(DisplayCustomerGluNotification)
