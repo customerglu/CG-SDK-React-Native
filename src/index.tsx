@@ -1,4 +1,5 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeEventEmitter, NativeModules, Platform, requireNativeComponent, UIManager } from 'react-native';
+// import React from 'react';
 
 const LINKING_ERROR =
   `The package 'react-native-rncustomerglu' doesn't seem to be linked. Make sure: \n\n` +
@@ -17,16 +18,43 @@ const Rncustomerglu = NativeModules.Rncustomerglu
       },
     }
   );
-console.log("NativeModules1231", NativeModules);
-console.log("Rncustomerglu123123123", Rncustomerglu)
 
-// export function multiply(a:number,b:number): Promise<number> {
-//   return Rncustomerglu.multiply(a,b);
+
+// const BannerWidgetNativeComponent = requireNativeComponent('BannerWidget');
+
+
+// export default function BannerWidget(props: Props) {
+//   return <BannerWidgetNativeComponent {...props} />;
 // }
+
+
+type CgnativeuiProps = {
+  bannerId: string;
+};
+
+const ComponentName = 'BannerWidget';
+export const BannerWidget =
+  UIManager.getViewManagerConfig(ComponentName) != null
+    ? requireNativeComponent<CgnativeuiProps>(ComponentName)
+    : () => {
+      throw new Error(LINKING_ERROR);
+    };
+
+
+// const eventEmitter = new NativeEventEmitter(NativeModules.DisplayCustomerGluNotification);
+// console.log("eventEmitter", eventEmitter);
+// console.log("hello event", eventEmitter.addListener('CUSTOMERGLU_ANALYTICS_EVENT', (event) => {
+//   console.log("pppkgkfjhg", event) // "someValue"
+// }))
+
+
 export function registerEx(): Promise<number> {
   return Rncustomerglu.registerDevice();
 }
 
+export function RegisterDevice(userdata: Object): Promise<number> {
+  return Rncustomerglu.registerDeviceAndroid(userdata);
+}
 export function dataClearEx(): Promise<number> {
   return Rncustomerglu.dataClear();
 }
@@ -41,6 +69,11 @@ export function loadCampaignIdByEx(id: String): Promise<number> {
 }
 export function enableAnalyticEx(b: Boolean): Promise<number> {
   return Rncustomerglu.enableAnalytic(b);
+}
+
+export function sendEventToJsEx(b: NativeEventEmitter): Promise<number> {
+  console.log("NativeEventEmitter", NativeEventEmitter);
+  return Rncustomerglu.sendEventToJs(b);
 }
 
 export function disableGluSdkEx(a: Boolean): Promise<number> {
@@ -64,7 +97,9 @@ export function closeWebViewEx(b: Boolean): Promise<number> {
 export function isFcmApnEx(id: Boolean): Promise<number> {
   return Rncustomerglu.isFcmApn(id);
 }
-
+// export function configureSafeAreaEx(topH: Number, bottomH: Number, topColor: String, bottomColr: String): Promise<number> {
+//   return Rncustomerglu.configureSafeArea(topH, bottomH, topColor, bottomColr);
+// }
 
 export function configureSafeAreaEx(obj: Object): Promise<number> {
   return Rncustomerglu.configureSafeArea(obj);
@@ -78,6 +113,9 @@ export function SetDefaultBannerImageEx(url: String): Promise<number> {
 export function UpdateProfileEx(): Promise<number> {
   return Rncustomerglu.UpdateProfile();
 }
+export function UpdateProfileExAndroid(userdata: Object): Promise<number> {
+  return Rncustomerglu.UpdateProfileAndroid(userdata);
+}
 export function DisplayCustomerGluNotificationEx(): Promise<number> {
   return Rncustomerglu.DisplayCustomerGluNotification();
 }
@@ -87,7 +125,7 @@ export function CGApplicationEx(): Promise<number> {
 export function DisplayBackGroundNotificationEx(): Promise<number> {
   return Rncustomerglu.DisplayBackGroundNotification();
 }
-export function GetRefferalIdEx(url: URL): Promise<number> {
+export function GetRefferalIdEx(url: String): Promise<number> {
   return Rncustomerglu.GetRefferalId(url);
 }
 export function LoadAllCampaginsEx(): Promise<number> {
@@ -108,4 +146,5 @@ export function configureWhiteListedDomainsEx(): Promise<number> {
 export function configureDomainCodeMsgEx(): Promise<number> {
   return Rncustomerglu.configureDomainCodeMsg();
 }
+
 

@@ -2,14 +2,21 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '13.0'
+  use_frameworks!
+  $RNFirebaseAsStaticFramework = true
 
 target 'RncustomergluExample' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
+# -------- ADD this library to link with podspac --------------
+
   pod 'react-native-rncustomerglu', :path => '../..'
 
+
+  
+  # pod "react-native-broadcast-manager", :path => '../../node_modules/@applicaster/react-native-broadcast-manager'
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and

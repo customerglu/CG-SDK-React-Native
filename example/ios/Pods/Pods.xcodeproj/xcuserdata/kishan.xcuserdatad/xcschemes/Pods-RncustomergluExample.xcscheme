@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9F728FB705DD878C1AE9EEC1235F8AE6"
-               BuildableName = "libPods-RncustomergluExample.a"
+               BuildableName = "Pods_RncustomergluExample.framework"
                BlueprintName = "Pods-RncustomergluExample"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

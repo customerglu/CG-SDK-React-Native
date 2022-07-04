@@ -9,8 +9,17 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.4"
+    "@react-native-community/push-notification-ios": "^1.10.1",
+    "@react-native-firebase/app": "^15.1.1",
+    "@react-native-firebase/messaging": "^15.1.1",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
+    "react": "18.2.0",
+    "react-native": "0.69.0",
+    "react-native-notifications": "^4.3.1",
+    "react-native-push-notification": "^8.1.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

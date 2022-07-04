@@ -16,13 +16,12 @@
 
     ],
     "CustomerGlu": [
-      "2.0.3"
+      "2.0.4"
     ]
   },
   "platforms": {
     "ios": "11.0"
   },
   "swift_versions": "5.0",
-  "static_framework": true,
   "swift_version": "5.0"
 }

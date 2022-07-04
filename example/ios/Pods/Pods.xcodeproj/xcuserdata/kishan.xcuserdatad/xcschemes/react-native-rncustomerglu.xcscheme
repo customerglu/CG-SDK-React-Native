@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A6EB4E0688A4E28DC58FDFD2E5A649B5"
-               BuildableName = "libreact-native-rncustomerglu.a"
+               BuildableName = "react_native_rncustomerglu.framework"
                BlueprintName = "react-native-rncustomerglu"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

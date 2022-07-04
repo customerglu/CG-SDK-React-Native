@@ -8,7 +8,7 @@ com/example/reactnativerncustomerglu/ReactNativeFlipper.java
  com.example.reactnativerncustomerglu.ReactNativeFlipper$2$1
 com/example/reactnativerncustomerglu/MainActivity.java
  com.example.reactnativerncustomerglu.MainActivity
-com/example/reactnativerncustomerglu/BuildConfig.java
- com.example.reactnativerncustomerglu.BuildConfig
 com/facebook/react/PackageList.java
  com.facebook.react.PackageList
+com/example/reactnativerncustomerglu/BuildConfig.java
+ com.example.reactnativerncustomerglu.BuildConfig

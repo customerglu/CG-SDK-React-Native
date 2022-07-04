@@ -462,7 +462,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)init)
 
   CFHTTPMessageSetHeaderFieldValue(request, CFSTR("Origin"), (__bridge CFStringRef)_url.RCTSR_origin);
 
-  if (_requestedProtocols) {
+  if (_requestedProtocols && _requestedProtocols.count > 0) {
     CFHTTPMessageSetHeaderFieldValue(request, CFSTR("Sec-WebSocket-Protocol"), (__bridge CFStringRef)[_requestedProtocols componentsJoinedByString:@", "]);
   }
 
@@ -782,6 +782,10 @@ static inline BOOL closeCodeIsValid(int closeCode)
 
 - (void)_handleFrameWithData:(NSData *)frameData opCode:(NSInteger)opcode
 {
+  // copy frameData before handling,
+  // to avoid concurrent updates to the value at the pointer
+  frameData = [frameData copy];
+
   // Check that the current data is valid UTF8
 
   BOOL isControlFrame = (opcode == RCTSROpCodePing || opcode == RCTSROpCodePong || opcode == RCTSROpCodeConnectionClose);

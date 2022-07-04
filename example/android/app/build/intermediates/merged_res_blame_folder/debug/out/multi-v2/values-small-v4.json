@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kishan/Documents/git/CG-SDK-React-Native/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
+            "outputFile": "/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-3/b9a82162c71123e34ea75cd97459f74c/transformed/material-1.4.0/res/values-small-v4/values-small-v4.xml",
+                    "source": "/home/pooja/.gradle/caches/transforms-2/files-2.1/97ed20c4805122cb37926be8f7f55040/material-1.4.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

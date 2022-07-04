@@ -33,7 +33,7 @@ public class OpenWalletViewController: UIViewController {
         if ApplicationManager.doValidateToken() == true {
             callOpenWalletApi()
         } else {
-            openWalletViewModel.updateProfile { success, _ in
+            openWalletViewModel.updateProfile { success in
                 if success {
                     self.callOpenWalletApi()
                 } else {

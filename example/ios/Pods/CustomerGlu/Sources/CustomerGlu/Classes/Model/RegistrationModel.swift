@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 public struct RegistrationModel: Codable {
     public var success: Bool?
     public var data: MyData?

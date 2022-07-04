@@ -24,7 +24,10 @@ RCT_EXTERN_METHOD(gluSDKDebuggingMode:(BOOL *)bool)
 RCT_EXTERN_METHOD(enableEntryPoints:(BOOL *)bool)
 RCT_EXTERN_METHOD(closeWebView:(BOOL *)bool (RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(isFcmApn:(NSString *)fcm)
+//RCT_EXTERN_METHOD(configureSafeArea:(NSNumber *)topH (NSNumber *)bottomH (NSString *)tsac (NSString *)bsac)
+//RCT_EXTERN_METHOD(sendData:(NSString *)event (NSDictionary *)property)
 RCT_EXTERN_METHOD(configureSafeArea:(NSDictionary *)safe)
+
 RCT_EXTERN_METHOD(SetDefaultBannerImage:(NSString *)url)
 RCT_EXTERN_METHOD(UpdateProfile)
 RCT_EXTERN_METHOD(DisplayCustomerGluNotification)
@@ -41,3 +44,6 @@ RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTRe
 
 @end
 
+//@interface RCT_EXTERN_MODULE(JsEventEmitter, RCTEventEmitter)
+//RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTResponseSenderBlock)callback)
+//@end

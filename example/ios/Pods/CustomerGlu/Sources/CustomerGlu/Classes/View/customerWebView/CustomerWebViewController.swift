@@ -160,7 +160,7 @@ public class CustomerWebViewController: UIViewController, WKNavigationDelegate, 
             CustomerGlu.getInstance.setCurrentClassName(className: CustomerGlu.getInstance.activescreenname)
         }
         if (true == self.canpost){
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: self.postdata as? [String: Any])
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: self.postdata)
             self.canpost = false
             self.postdata = [String:Any]()
         }
@@ -242,7 +242,7 @@ public class CustomerWebViewController: UIViewController, WKNavigationDelegate, 
                     }else{
                         // Post notification
                         self.canpost = false
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: self.postdata as? [String: Any])
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: self.postdata)
                         self.postdata = [String:Any]()
                     }
                 }

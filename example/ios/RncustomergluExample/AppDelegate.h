@@ -7,9 +7,20 @@
 
 #import <React/RCTBridgeDelegate.h>
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
+#import <UserNotifications/UNUserNotificationCenter.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, RCTBridgeDelegate>
 
+//@interface PublicBridgeHelper : NSObject
+//-(RCTBridge*)getBridge;
+//@end
+
+
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, RCTBridgeDelegate, UNUserNotificationCenterDelegate>
 @property (nonatomic, strong) UIWindow *window;
-
+ 
 @end
+

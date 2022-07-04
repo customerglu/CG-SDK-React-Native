@@ -111,7 +111,7 @@ class FloatingButtonController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         imageview.addGestureRecognizer(tap)
-       
+        
         window.imageview?.isHidden = true
         self.imageview.isHidden = true
     }
@@ -129,19 +129,22 @@ class FloatingButtonController: UIViewController {
         super.viewDidLayoutSubviews()
     }
     
-    public func dismissFloatingButton(){
-            if CustomerGlu.getInstance.arrFloatingButton.contains(self) {
-                
-                let finalfloatBtn = CustomerGlu.getInstance.popupDict.filter {
-                    $0._id == floatInfo?._id
-                }
-                CustomerGlu.getInstance.updateShowCount(showCount: finalfloatBtn[0], eventData: floatInfo!)
-                if let index = CustomerGlu.getInstance.arrFloatingButton.firstIndex(where: {$0 === self}) {
-                    CustomerGlu.getInstance.arrFloatingButton.remove(at: index)
-                    window.dismiss()
-                }
+    public func dismissFloatingButton(is_remove: Bool){
+        if CustomerGlu.getInstance.arrFloatingButton.contains(self) {
+            
+            let finalfloatBtn = CustomerGlu.getInstance.popupDict.filter {
+                $0._id == floatInfo?._id
             }
+            if is_remove == true {
+                CustomerGlu.getInstance.updateShowCount(showCount: finalfloatBtn[0], eventData: floatInfo!)
+            }
+            if let index = CustomerGlu.getInstance.arrFloatingButton.firstIndex(where: {$0 === self}) {
+                CustomerGlu.getInstance.arrFloatingButton.remove(at: index)
+                window.dismiss()
+            }
+        }
     }
+    
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
         
         let translation = sender.translation(in: imageview)
@@ -157,17 +160,15 @@ class FloatingButtonController: UIViewController {
         if(sender.state == .began){
             dismisview.isHidden = false
         } else if (sender.state == .ended) {
-            
             dismisview.isHidden = true
             if dismisimageview.globalFrame!.intersects(imageview.globalFrame!){
-                self.dismissFloatingButton()
+                self.dismissFloatingButton(is_remove: true)
             }
-            
         }
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-
+        
         CustomerGlu.getInstance.callEventPublishNudge(data: floatInfo!, className: CustomerGlu.getInstance.activescreenname, actionType: "OPEN")
         
         if floatInfo?.mobile.content[0].openLayout == "FULL-DEFAULT" {

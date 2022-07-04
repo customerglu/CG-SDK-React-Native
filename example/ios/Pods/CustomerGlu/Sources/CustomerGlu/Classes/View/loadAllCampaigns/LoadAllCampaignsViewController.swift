@@ -54,7 +54,7 @@ public class LoadAllCampaignsViewController: UIViewController {
         if ApplicationManager.doValidateToken() == true {
             getCampaign()
         } else {
-            loadAllCampaignsViewModel.updateProfile { success, _ in
+            loadAllCampaignsViewModel.updateProfile { success in
                 if success {
                     self.getCampaign()
                 } else {

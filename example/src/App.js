@@ -114,7 +114,9 @@ import {
   TouchableOpacity,
   FlatList
 } from 'react-native';
-import { registerEx, dataClearEx, sendDataEX, loadCampaignIdByEx, enableAnalyticEx, openWalletEx, disableGluSdkEx, configureLoaderColourEx, enablePrecachingEx, gluSDKDebuggingModeEx, enableEntryPointsEx, closeWebViewEx, isFcmApnEx, configureSafeAreaEx, SetDefaultBannerImageEx, UpdateProfileEx, DisplayCustomerGluNotificationEx, CGApplicationEx, DisplayBackGroundNotificationEx, GetRefferalIdEx, LoadAllCampaginsEx, LoadCampaginsByFilterEx, SetCurrentClassNameEx, OpenWalletWithUrlEx, configureWhiteListedDomainsEx, configureDomainCodeMsgEx } from 'react-native-rncustomerglu';
+import {UpdateProfileExAndroid, sendEventToJs, RegisterDevice, registerEx, dataClearEx, sendDataEX, loadCampaignIdByEx, enableAnalyticEx, openWalletEx, disableGluSdkEx, configureLoaderColourEx, enablePrecachingEx, gluSDKDebuggingModeEx, enableEntryPointsEx, closeWebViewEx, isFcmApnEx, configureSafeAreaEx, SetDefaultBannerImageEx, UpdateProfileEx, DisplayCustomerGluNotificationEx, CGApplicationEx, DisplayBackGroundNotificationEx, GetRefferalIdEx, LoadAllCampaginsEx, LoadCampaginsByFilterEx, SetCurrentClassNameEx, OpenWalletWithUrlEx, configureWhiteListedDomainsEx, configureDomainCodeMsgEx } from 'react-native-rncustomerglu';
+// import { sendBroadcastEvent } from '@applicaster/react-native-broadcast-manager';
+import { BannerWidget } from 'react-native-rncustomerglu';
 const Data = [
   { id: 0, name: 'Registration' },
   { id: 1, name: 'Clear Data' },
@@ -150,6 +152,10 @@ const fun_name = ['registerUser', 'dataClear', 'sendData', 'openWallet', 'loadCa
 export default function App() {
 
   useEffect(() => {
+    // const eventEmitter = new NativeEventEmitter(NativeModules.DisplayCustomerGluNotification);
+    // this.eventListener = eventEmitter.addListener('CUSTOMERGLU_ANALYTICS_EVENT', (event) => {
+    //   console.log(event)
+    // });
 
   }, []);
 
@@ -158,8 +164,17 @@ export default function App() {
   // for list
   function MyClass() {
     this.registerUser = async () => {
-      console.log("registerUser");
-      registerEx()
+      let userdata = { userId: 'testUser_1' };
+      // registerEx()
+      try {
+        var ok = await RegisterDevice(userdata);
+        console.log(ok)
+      }
+      catch (e) {
+        console.log('e:' + e);
+      }
+
+
     }
     this.dataClear = async () => {
       console.log("clear data");
@@ -182,6 +197,11 @@ export default function App() {
 
     this.enableAnalyics = async () => {
       console.log("enableAnalyics");
+      // console.log("sendEventToJs", sendEventToJs);
+      // const eventEmitter = new NativeEventEmitter(NativeModules.DisplayCustomerGluNotification);
+      // this.eventListener = eventEmitter.addListener('CUSTOMERGLU_ANALYTICS_EVENT', (event) => {
+      //   console.log(event)
+      // });
       enableAnalyticEx(true)
 
     }
@@ -198,7 +218,7 @@ export default function App() {
       enablePrecachingEx()
     }
     this.gluSDKDebuggingMode = async () => {
-      console.log("gluSDKDebuggingMode123");
+      console.log("gluSDKDebuggingMode");
       gluSDKDebuggingModeEx(true)
     }
     this.enableEntryPoints = async () => {
@@ -219,6 +239,7 @@ export default function App() {
         topHeight: 44, bottomHeight: 34,
         topSafeAreaColor: "#00FF00", bottomSafeAreaColor: "#FF0000"
       }
+      // configureSafeAreaEx(10, 10, "#00FF00", "#FF0000")
       configureSafeAreaEx(obj)
     }
     this.SetDefaultBannerImage = async () => {
@@ -227,13 +248,15 @@ export default function App() {
     }
     this.UpdateProfile = async () => {
       console.log("UpdateProfile");
-      UpdateProfileEx()
+      let userdata = { userId: 'testUser_1' };
+      // UpdateProfileEx()
+      UpdateProfileExAndroid(userdata);
     }
     this.DisplayCustomerGluNotification = async () => {
       console.log("DisplayCustomerGluNotification");
       const eventEmitter = new NativeEventEmitter(NativeModules.DisplayCustomerGluNotification);
       this.eventListener = eventEmitter.addListener('CUSTOMERGLU_ANALYTICS_EVENT', (event) => {
-        console.log(event)
+        console.log('event......', event)
       });
       DisplayCustomerGluNotificationEx()
     }
@@ -293,9 +316,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <StatusBar hidden />
-      <View style={styles.header}><Text style={styles.txtHed}>Home</Text></View>
-      <View style={{ flex: 1, marginTop: 50, margin: 10 }}>
+    
+      <BannerWidget
+        bannerId="entry1"
+      />
+      <View style={{ flex: 1, marginTop: 10, margin: 10 }}>
         <FlatList
           data={Data}
           keyExtractor={item => item.id.toString()}
@@ -304,6 +329,8 @@ export default function App() {
             return (<View style={{ height: 1 }} />);
           }}
         />
+
+
       </View>
     </View >
   );
@@ -330,7 +357,6 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#D4D4D4',
-    height: 50,
   },
   txtHed: {
     textAlign: 'center',

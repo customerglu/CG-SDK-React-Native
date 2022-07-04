@@ -3,10 +3,12 @@ import CustomerGlu
 import UIKit
 import React
 
+
+//let bridgeHelperInstance = PublicBridgeHelper()
+//private let SomeEventName = Notification.Name("someEventName")
 let customerGlu = CustomerGlu.getInstance
 @objc(Rncustomerglu)
 class Rncustomerglu: RCTEventEmitter{
-    
     static var shared:Rncustomerglu?
       
       private var supportedEventNames: Set<String> = ["CUSTOMERGLU_ANALYTICS_EVENT","CUSTOMERGLU_DEEPLINK_EVENT"]
@@ -17,17 +19,20 @@ class Rncustomerglu: RCTEventEmitter{
            super.init()
         Rncustomerglu.shared = self
        }
+    
     override func startObserving() {
             hasAttachedListener = true
         }
         override func stopObserving() {
             hasAttachedListener = false
         }
+        
         // Must return an array of the supported events. Any unsupported events will throw errors
         // if they are passed in to `sendEvent`
         override func supportedEvents() -> [String] {
             return Array(supportedEventNames)
         }
+    
     
     func emitEvent(withName name: String, body: Any!) {
          if hasAttachedListener && supportedEventNames.contains(name) {
@@ -42,14 +47,15 @@ class Rncustomerglu: RCTEventEmitter{
                         userData["userId"] = "test-08mar-17"
                         userData["userName"] = ""
        
-        customerGlu.registerDevice(userdata: userData,loadcampaigns: true) { success, registrationModel in
+        customerGlu.registerDevice(userdata: userData,loadcampaigns: true) { success in
                                 if success {
-                                   print("Register Successfully \(String(describing: registrationModel))")
+                                   print("Register Successfully")
                                 } else {
                                     print("error")
                                 }
                             }
     }
+    
     
     @objc(dataClear)
     func dataClear() -> Void {
@@ -59,6 +65,12 @@ class Rncustomerglu: RCTEventEmitter{
 
     @objc
     func sendData(_ property:NSDictionary) -> Void {
+        
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("EntryPointLoaded").rawValue), object: nil, userInfo: nil)
+//
+//        let userInfo = ["name": "khushbu"]
+//
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name("CUSTOMERGLU_DEEPLINK_EVENT").rawValue), object: nil, userInfo: userInfo)
         
         customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
         print(property["eventName"] as Any)
@@ -136,6 +148,11 @@ class Rncustomerglu: RCTEventEmitter{
     
     @objc
     func catchDeeplinkNotification(notification: NSNotification) {
+            //do stuff using the userInfo property of the notification object
+//            if let userInfo = notification.userInfo as? [String: Any] // or use if you know the type  [AnyHashable : Any]
+//            {
+//                 print(userInfo)
+//            }
         Rncustomerglu.shared?.emitEvent(withName: "CUSTOMERGLU_DEEPLINK_EVENT", body: ["progress": 12])
         }
 
@@ -144,6 +161,18 @@ class Rncustomerglu: RCTEventEmitter{
         customerGlu.isFcmApn(fcmApn:fcm)
     }
     
+   
+   
+//    @objc
+//    func configureSafeArea(_ topH:Int, _ bottomH:Int, _ tsac:String, _ bsac: String) -> Void {
+//        print("hello safe Area");
+//        let color1 = colorWithHexString(hexString: tsac )
+//        print(color1);
+//        let color2 = colorWithHexString(hexString: bsac )
+//        print(color2);
+//        customerGlu.configureSafeArea(topHeight: topH, bottomHeight: bottomH,
+//                                      topSafeAreaColor: color1, bottomSafeAreaColor: color2)
+//    }
     @objc
     func configureSafeArea(_ safe:NSDictionary) -> Void {
         print(safe["bottomHeight"] as Any);
@@ -165,9 +194,9 @@ class Rncustomerglu: RCTEventEmitter{
         var userData = [String: AnyHashable]()
                         userData["userId"] = "test-08mar-17"
                         userData["userName"] = ""
-        customerGlu.updateProfile(userdata: userData) { success, registrationModel in
+        customerGlu.updateProfile(userdata: userData) { success in
             if success {
-               print("Update Successfully \(String(describing: registrationModel))")
+               print("Update Successfully ")
             } else {
                 print("error")
             }
@@ -182,11 +211,15 @@ class Rncustomerglu: RCTEventEmitter{
 
     @objc
     func CGApplication() -> Void {
+//        customerGlu.cgapplication(UIApplication, didReceiveRemoteNotification: [AnyHashable : Any]) { <#UIBackgroundFetchResult#> in
+//            <#code#>
+//        }
     }
 
     @objc
     func DisplayBackGroundNotification() -> Void {
         print("DisplayBackGroundNotification");
+//        customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable] )
     }
     
     @objc
@@ -240,6 +273,10 @@ class Rncustomerglu: RCTEventEmitter{
            return false
     }
     
+//    @objc
+//    func constantsToExport() -> [String: Any]! {
+//      return ["someKey": "someValue"]
+//    }
 
     
     private func colorWithHexString(hexString: String) -> UIColor {
@@ -290,4 +327,14 @@ class Rncustomerglu: RCTEventEmitter{
 
 
 
-
+//@objc(JsEventEmitter)
+//class JsEventEmitter: RCTEventEmitter {
+//    @objc func sendEvent(notification: NSNotification) {
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.catchDeeplinkNotification(notification:)), name: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT"), object: nil)
+//
+//    }
+//    @objc func catchDeeplinkNotification(notification: NSNotification) {
+//        print(notification.userInfo as Any)
+//}
+//
+//}

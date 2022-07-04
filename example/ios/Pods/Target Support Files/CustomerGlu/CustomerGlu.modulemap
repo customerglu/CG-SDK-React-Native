@@ -1,4 +1,4 @@
-module CustomerGlu {
+framework module CustomerGlu {
   umbrella header "CustomerGlu-umbrella.h"
 
   export *

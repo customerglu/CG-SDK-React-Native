@@ -1,12 +1,11 @@
 /*
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 #import "RCTSurfaceHostingView.h"
-
 #import "RCTConstants.h"
 #import "RCTDefines.h"
 #import "RCTSurface.h"
@@ -27,9 +26,9 @@
   RCTSurfaceStage _stage;
 }
 
-+ (RCTSurface *)createSurfaceWithBridge:(RCTBridge *)bridge
-                             moduleName:(NSString *)moduleName
-                      initialProperties:(NSDictionary *)initialProperties
++ (id<RCTSurfaceProtocol>)createSurfaceWithBridge:(RCTBridge *)bridge
+                                       moduleName:(NSString *)moduleName
+                                initialProperties:(NSDictionary *)initialProperties
 {
   return [[RCTSurface alloc] initWithBridge:bridge moduleName:moduleName initialProperties:initialProperties];
 }
@@ -43,14 +42,17 @@ RCT_NOT_IMPLEMENTED(-(nullable instancetype)initWithCoder : (NSCoder *)coder)
              initialProperties:(NSDictionary *)initialProperties
                sizeMeasureMode:(RCTSurfaceSizeMeasureMode)sizeMeasureMode
 {
-  RCTSurface *surface = [[self class] createSurfaceWithBridge:bridge
-                                                   moduleName:moduleName
-                                            initialProperties:initialProperties];
-  [surface start];
-  return [self initWithSurface:surface sizeMeasureMode:sizeMeasureMode];
+  id<RCTSurfaceProtocol> surface = [[self class] createSurfaceWithBridge:bridge
+                                                              moduleName:moduleName
+                                                       initialProperties:initialProperties];
+  if (self = [self initWithSurface:surface sizeMeasureMode:sizeMeasureMode]) {
+    [surface start];
+  }
+  return self;
 }
 
-- (instancetype)initWithSurface:(RCTSurface *)surface sizeMeasureMode:(RCTSurfaceSizeMeasureMode)sizeMeasureMode
+- (instancetype)initWithSurface:(id<RCTSurfaceProtocol>)surface
+                sizeMeasureMode:(RCTSurfaceSizeMeasureMode)sizeMeasureMode
 {
   if (self = [super initWithFrame:CGRectZero]) {
     _surface = surface;
@@ -59,6 +61,9 @@ RCT_NOT_IMPLEMENTED(-(nullable instancetype)initWithCoder : (NSCoder *)coder)
     _surface.delegate = self;
     _stage = surface.stage;
     [self _updateViews];
+
+    // For backward compatibility with RCTRootView, set a color here instead of transparent (OS default).
+    self.backgroundColor = [UIColor whiteColor];
   }
 
   return self;
@@ -78,8 +83,9 @@ RCT_NOT_IMPLEMENTED(-(nullable instancetype)initWithCoder : (NSCoder *)coder)
 
   RCTSurfaceMinimumSizeAndMaximumSizeFromSizeAndSizeMeasureMode(
       self.bounds.size, _sizeMeasureMode, &minimumSize, &maximumSize);
+  CGRect windowFrame = [self.window convertRect:self.frame fromView:self.superview];
 
-  [_surface setMinimumSize:minimumSize maximumSize:maximumSize];
+  [_surface setMinimumSize:minimumSize maximumSize:maximumSize viewportOffset:windowFrame.origin];
 }
 
 - (CGSize)intrinsicContentSize

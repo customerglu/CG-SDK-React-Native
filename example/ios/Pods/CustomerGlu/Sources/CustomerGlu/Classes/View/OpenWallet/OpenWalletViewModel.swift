@@ -9,13 +9,13 @@ import Foundation
 
 class OpenWalletViewModel {
 
-    public func updateProfile(completion: @escaping (Bool, RegistrationModel?) -> Void) {
+    public func updateProfile(completion: @escaping (Bool) -> Void) {
         let userData = [String: AnyHashable]()
-        CustomerGlu.getInstance.updateProfile(userdata: userData) { success, registrationModel in
+        CustomerGlu.getInstance.updateProfile(userdata: userData) { success in
             if success {
-                completion(true, registrationModel)
+                completion(true)
             } else {
-                completion(false, nil)
+                completion(false)
                 print("error")
             }
         }

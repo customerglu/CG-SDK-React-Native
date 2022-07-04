@@ -15,9 +15,9 @@ DESC
   s.source       = { :git => "https://github.com/nehagupta1995/Awesome.git", :tag => "#{s.version}" }
   s.source_files = "ios/**/*"
   s.dependency "React-Core"
-  s.dependency "CustomerGlu", "2.0.3"
-
+  s.dependency "CustomerGlu", "2.0.4"
   s.platform = :ios, '11.0'
   s.swift_version = '5.0'
 
+  
 end

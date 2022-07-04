@@ -143,5 +143,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "@applicaster/react-native-broadcast-manager": "^0.2.5"
   }
 }
