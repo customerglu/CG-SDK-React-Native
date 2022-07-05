@@ -64,4 +64,5 @@ dependencies {
   implementation 'com.github.customerglu:CG-SDK-Android:5c3d00ea49'
   implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
   implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.firebase:firebase-messaging:23.0.6'
 }

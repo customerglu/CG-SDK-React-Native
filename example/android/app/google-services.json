@@ -1,0 +1,84 @@
+{
+  "project_info": {
+    "project_number": "421104677220",
+    "project_id": "modpod-e0ff6",
+    "storage_bucket": "modpod-e0ff6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421104677220:android:f77a59d078c290db808a71",
+        "android_client_info": {
+          "package_name": "com.customerglu.nudgetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421104677220-rvotgts5086sqldnfrk84nj2i1pll101.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO6T-C4hvJLE81DvjWEzNzpU_jOdZuEMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421104677220-rvotgts5086sqldnfrk84nj2i1pll101.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "421104677220-7oi3gboce6kjdfh0gkcvmf6na7r58bq2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.marax.customerdemo",
+                "app_store_id": "1596757104"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421104677220:android:42a6f9c16c6b8fa3808a71",
+        "android_client_info": {
+          "package_name": "com.example.modpod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421104677220-rvotgts5086sqldnfrk84nj2i1pll101.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO6T-C4hvJLE81DvjWEzNzpU_jOdZuEMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421104677220-rvotgts5086sqldnfrk84nj2i1pll101.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "421104677220-7oi3gboce6kjdfh0gkcvmf6na7r58bq2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.marax.customerdemo",
+                "app_store_id": "1596757104"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

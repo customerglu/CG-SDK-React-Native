@@ -160,7 +160,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void registerDevice(Promise promise) {
     Map<String, Object> userData = new HashMap<>();
-    String user_id = "testUser_1";
+    String user_id = "pooja_test_1";
     userData.put("user_id", user_id);
     customerGlu.registerDevice(getReactApplicationContext(), userData, true, new DataListner() {
       //this method registers the user
@@ -217,18 +217,46 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
 
 
+//  public void sendData(ReadableMap readableMap) {
+//    try {
+//      JSONObject obj = convertMapToJson(readableMap);
+//      HashMap<String, Object> eventProperties = new HashMap<>();
+//      eventProperties.put("eventName", obj.get("eventName"));
+//      eventProperties.put("eventProperties", obj.get("eventProperties"));
+//      String evnt = (String) obj.get("eventName");
+//
+//      customerGlu.sendEvent(getReactApplicationContext(), "completePurchase1", eventProperties);
+//
+//    } catch (JSONException e) {
+//      e.printStackTrace();
+//    }
+//  }
+
   public void sendData(ReadableMap readableMap) {
     try {
-      JSONObject obj = convertMapToJson(readableMap);
-      HashMap<String, Object> eventProperties = new HashMap<>();
-      eventProperties.put("eventName", obj.get("eventName"));
-      eventProperties.put("eventProperties", obj.get("eventProperties"));
+      JSONObject obj= convertMapToJson(readableMap);
+      Log.d("Hello",String.valueOf("eventProperties"));
+      HashMap<String,Object> eventProperties = new HashMap<>();
+      eventProperties.put("eventName",obj.get("eventName"));
+      eventProperties.put("eventProperties",obj.get("eventProperties"));
       String evnt = (String) obj.get("eventName");
-      customerGlu.sendEvent(getReactApplicationContext(), evnt, eventProperties);
+//      Array prop = (Array) obj.get("eventProperties");
+      Log.d("event",String.valueOf(eventProperties));
+      Log.d("event",String.valueOf(obj.get("eventProperties")));
+      Log.d("event",String.valueOf(obj.get("eventName")));
+//      Log.d("event",String.valueOf(prop));
+      Log.d("event",String.valueOf(evnt));
+      customerGlu.sendEvent(getReactApplicationContext(),evnt,eventProperties);
+
 
     } catch (JSONException e) {
       e.printStackTrace();
     }
+
+//    HashMap<String,Object> eventProperties = new HashMap<>();
+//    eventProperties.put("orderValue",1000);
+//    customerGlu.sendEvent(getReactApplicationContext(),"Order_Placed",eventProperties);
+//    Log.d("sendEvent", String.valueOf("sendEvent"));
   }
 
 
@@ -254,8 +282,12 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @ReactMethod
   public void disableGluSdk(Boolean bool) {
-    customerGlu.disableGluSdk(bool);
+//    customerGlu.disableGluSdk(bool);
     Log.d("disableGluSdk", String.valueOf(bool));
+
+//    customerGlu.displayCustomerGluNotification(this,json,R.drawable.icon,0.5,true);
+
+
   }
 
   @ReactMethod
@@ -299,7 +331,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void UpdateProfile() {
     Map<String, Object> userData = new HashMap<>();
-    String user_id = "testUser_1";
+    String user_id = "pooja_test_1";
     userData.put("userId", user_id);
     customerGlu.updateProfile(getReactApplicationContext(), userData, new DataListner() {
       @Override
@@ -336,10 +368,14 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void DisplayCustomerGluNotification() {
-    callNotification();
-    callDeeplink();
-    Log.d("displayCgNotification", String.valueOf("cg Notification"));
+  public void DisplayCustomerGluNotification(ReadableMap data) {
+//    callNotification();
+//    callDeeplink();
+    Log.d("displayCgNotification", String.valueOf(data));
+JSONObject jsonObject=convertMapToJson(data);
+    Log.d("displayCgNotification....", String.valueOf(jsonObject));
+    customerGlu.displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.common_google_signin_btn_icon_dark,0.5,true);
+
   }
 
   @ReactMethod

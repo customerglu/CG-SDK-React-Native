@@ -1,5 +1,7 @@
 package com.example.reactnativerncustomerglu;
 
+import android.content.Intent;
+
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
@@ -12,5 +14,9 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
 
     return "RncustomergluExample";
+  }
+  @Override
+  public void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
   }
 }

@@ -359,7 +359,7 @@ PODS:
     - Firebase/Messaging (= 9.2.0)
     - React-Core
     - RNFBApp
-  - RNScreens (3.13.1):
+  - RNScreens (3.14.1):
     - React-Core
     - React-RCTImage
   - Yoga (1.14.0)
@@ -374,7 +374,7 @@ DEPENDENCIES:
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
-  - React-bridging (from `../node_modules/react-native/ReactCommon/react/bridging`)
+  - React-bridging (from `../node_modules/react-native/ReactCommon`)
   - React-callinvoker (from `../node_modules/react-native/ReactCommon/callinvoker`)
   - React-Codegen (from `build/generated/ios`)
   - React-Core (from `../node_modules/react-native/`)
@@ -441,7 +441,7 @@ EXTERNAL SOURCES:
   React:
     :path: "../node_modules/react-native/"
   React-bridging:
-    :path: "../node_modules/react-native/ReactCommon/react/bridging"
+    :path: "../node_modules/react-native/ReactCommon"
   React-callinvoker:
     :path: "../node_modules/react-native/ReactCommon/callinvoker"
   React-Codegen:
@@ -521,7 +521,7 @@ SPEC CHECKSUMS:
   RCTRequired: eff60a46da0f496a6c76c8f60108c20626860d27
   RCTTypeSafety: 8cc8a45d0e2f93f1b42b5b2bbf23c4143f19935a
   React: 8a8fc19196a41141ecb5bde33c97091cdc25ccd8
-  React-bridging: 543858c1fc01ed8264585c5a2646305d20225840
+  React-bridging: 3720b805c73fdddb0d428ea33682cb8e48824208
   React-callinvoker: cc62aa541f261cee6f990f870dbf6aff38f97eef
   React-Codegen: a80f7ec979174e44dcaecc9d5639ac84a7077a71
   React-Core: 7faa8679c6f38b5462a71d55b399483f46365e44
@@ -544,13 +544,13 @@ SPEC CHECKSUMS:
   React-RCTText: 9c5de1f593a548a2dbeb991ee01c88bef86f0659
   React-RCTVibration: 7549ef7b07aad1cc629f4c6d88c325366f26423c
   React-runtimeexecutor: 7ad268dee53d001697e13264c6bc8e95a902352e
-  ReactCommon: 74a3b8ee497c6d50ce86ef57e15c4c5bf654b83d
+  ReactCommon: db2f1ca00e72b1ccc8d98b617cd85b4b95eef50b
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
-  RNFBApp: e3e4af6906a891d46af60340b4313b63eb082de9
-  RNFBMessaging: a6b4015aa22521335b2bb804106d2776cde8185b
-  RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
+  RNFBApp: ac7643ca8c013ac175da0f2d2776d9a5f4eae00d
+  RNFBMessaging: cb9898af0dfb01d66a57c7bb01389fb2d3ef4fb6
+  RNScreens: aa9a97835afbbdc18a4757870b2b59b7d9fae16a
   Yoga: 4935173923cabaa830e195be3e8e4cac045a8f90
 
-PODFILE CHECKSUM: 06b498a2e07ac07f28a70707f8c1f22f6a92e5fa
+PODFILE CHECKSUM: ed72bd7c11316e62a1719bc7386aadcabb3770b4
 
 COCOAPODS: 1.11.3

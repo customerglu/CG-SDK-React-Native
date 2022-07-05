@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.customerglu:CG-SDK-Android:5c3d00ea49@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/res" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

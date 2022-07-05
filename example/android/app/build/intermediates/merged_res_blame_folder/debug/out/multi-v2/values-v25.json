@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
+            "outputFile": "/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "/home/pooja/.gradle/caches/transforms-2/files-2.1/78c9620c152bb6de4c5d9c6cc507f6cc/appcompat-1.4.1/res/values-v25/values-v25.xml",
+                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4f09c914e6a10e1023bc5e01d5885228/appcompat-1.4.1/res/values-v25/values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

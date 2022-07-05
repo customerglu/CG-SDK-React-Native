@@ -10,10 +10,10 @@ com/reactnativerncustomerglu/Bannerwidget/RncustomergluModule.java
  com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule$6
 com/reactnativerncustomerglu/BuildConfig.java
  com.reactnativerncustomerglu.BuildConfig
-com/reactnativerncustomerglu/Bannerwidget/Bannerwidget/bannerWidget.java
- com.reactnativerncustomerglu.Bannerwidget.Bannerwidget.bannerWidget
 com/reactnativerncustomerglu/RncustomergluPackage.java
  com.reactnativerncustomerglu.RncustomergluPackage
+com/reactnativerncustomerglu/Bannerwidget/Bannerwidget/bannerWidget.java
+ com.reactnativerncustomerglu.Bannerwidget.Bannerwidget.bannerWidget
 com/reactnativerncustomerglu/RncustomergluModule.java
  com.reactnativerncustomerglu.RncustomergluModule
  com.reactnativerncustomerglu.RncustomergluModule$1

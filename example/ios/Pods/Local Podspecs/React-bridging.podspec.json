@@ -12,9 +12,10 @@
     "git": "https://github.com/facebook/react-native.git",
     "tag": "v0.69.0"
   },
-  "source_files": "**/*.{cpp,h}",
-  "exclude_files": "tests",
+  "source_files": "react/bridging/**/*.{cpp,h}",
+  "exclude_files": "react/bridging/tests",
   "header_dir": "react/bridging",
+  "header_mappings_dir": ".",
   "compiler_flags": "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32",
   "pod_target_xcconfig": {
     "HEADER_SEARCH_PATHS": "\"$(PODS_ROOT)/RCT-Folly\"",

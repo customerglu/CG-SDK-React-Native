@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.reactnativerncustomerglu"
+3    package="com.customerglu.nudgetest"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -9,248 +9,634 @@
 9        android:targetSdkVersion="31" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/debug/AndroidManifest.xml:5:5-77
-11-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/debug/AndroidManifest.xml:5:22-75
+11-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/debug/AndroidManifest.xml:5:5-77
+11-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/debug/AndroidManifest.xml:5:22-75
 12    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-12-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:4:4-86
-12-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:4:21-84
+12-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:4:4-86
+12-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:4:21-84
 13    <uses-permission android:name="android.permission.INTERNET" />
-13-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:5:5-67
-13-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:5:22-64
+13-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:5:5-67
+13-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:5:22-64
 14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-14-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:6:3-77
-14-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:6:20-74
-15    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-15-->[com.facebook.flipper:flipper:0.99.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ea851f0cc50b60d7c38a6af0965cd0/jetified-flipper-0.99.0/AndroidManifest.xml:16:5-76
-15-->[com.facebook.flipper:flipper:0.99.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ea851f0cc50b60d7c38a6af0965cd0/jetified-flipper-0.99.0/AndroidManifest.xml:16:22-73
-16    <uses-permission android:name="android.permission.REORDER_TASKS" />
-16-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:24:5-72
-16-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:24:22-69
-17
-18    <application
-18-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:7:5-29:19
-19        android:name="com.example.reactnativerncustomerglu.MainApplication"
-19-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:8:7-38
-20        android:allowBackup="false"
-20-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:12:7-34
-21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.7.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/cdd9e6c35f6757fe6b6e27bda0416162/core-1.7.0/AndroidManifest.xml:24:18-86
-22        android:debuggable="true"
-23        android:extractNativeLibs="false"
-24        android:icon="@mipmap/ic_launcher"
-24-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:10:7-41
-25        android:label="@string/app_name"
-25-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:9:7-39
-26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:11:7-52
-27        android:testOnly="true"
-28        android:theme="@style/AppTheme"
-28-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:13:7-38
-29        android:usesCleartextTraffic="true" >
-29-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/debug/AndroidManifest.xml:7:18-53
-30        <meta-data
-30-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:14:7-106
-31            android:name="CUSTOMERGLU_WRITE_KEY"
-31-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:14:18-54
-32            android:value="G4VCVVAcLub8hx5SaeqH3pRqLBmDFrwy" />
-32-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:14:55-103
-33
-34        <activity
-34-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:16:7-27:18
-35            android:name="com.example.reactnativerncustomerglu.MainActivity"
-35-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:17:9-37
-36            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-36-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:19:9-86
-37            android:exported="true"
-37-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:21:9-32
-38            android:label="@string/app_name"
-38-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:18:9-41
-39            android:launchMode="singleTask"
-39-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:20:9-40
-40            android:windowSoftInputMode="adjustResize" >
-40-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:22:9-51
-41            <intent-filter>
-41-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:23:9-26:25
-42                <action android:name="android.intent.action.MAIN" />
-42-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:13-65
-42-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:21-62
-43
-44                <category android:name="android.intent.category.LAUNCHER" />
-44-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:25:13-73
-44-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:25:23-70
-45            </intent-filter>
-46        </activity>
-47        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-47-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:28:7-84
-47-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:28:17-81
-48        <activity
-48-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:12:9-15:56
-49            android:name="com.customerglu.sdk.Web.OpenCustomerGluWeb"
-49-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:13:13-70
-50            android:screenOrientation="portrait"
-50-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:14:13-49
-51            android:theme="@style/Theme.Transparent" />
-51-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:15:13-53
-52        <activity
-52-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:16:9-27:20
-53            android:name="com.customerglu.sdk.notification.NotificationWeb"
-53-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:17:13-76
-54            android:exported="false"
-54-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:18:13-37
-55            android:protectionLevel="signature"
-55-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:19:13-48
-56            android:screenOrientation="portrait"
-56-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:20:13-49
-57            android:theme="@style/Theme.Transparent" >
-57-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:21:13-53
-58            <intent-filter>
-58-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:22:13-26:29
-59                <action android:name="OPEN_WEB" />
-59-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:23:17-51
-59-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:23:25-48
-60
-61                <category android:name="android.intent.category.DEFAULT" />
-61-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:25:17-76
-61-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:25:27-73
-62            </intent-filter>
-63        </activity>
-64        <activity
-64-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:28:9-32:20
-65            android:name="com.customerglu.sdk.notification.BottomSheet"
-65-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:29:13-72
-66            android:screenOrientation="portrait"
-66-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:30:13-49
-67            android:theme="@style/Theme.Transparent" >
-67-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:31:13-53
-68        </activity>
-69        <activity
-69-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:33:9-37:20
-70            android:name="com.customerglu.sdk.notification.BottomDialog"
-70-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:34:13-73
-71            android:screenOrientation="portrait"
-71-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:35:13-49
-72            android:theme="@style/Theme.Transparent" >
-72-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:36:13-53
-73        </activity>
-74        <activity
-74-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:38:9-42:20
-75            android:name="com.customerglu.sdk.notification.MiddleDialog"
-75-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:39:13-73
-76            android:screenOrientation="portrait"
-76-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:40:13-49
-77            android:theme="@style/Theme.Transparent" >
-77-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:41:13-53
-78        </activity>
-79        <activity
-79-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:43:9-47:20
-80            android:name="com.customerglu.sdk.Screens.RewardScreen"
-80-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:44:13-68
-81            android:screenOrientation="portrait"
-81-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:45:13-49
-82            android:theme="@style/Theme.Transparent" >
-82-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:46:13-53
-83        </activity>
-84        <activity
-84-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:48:9-51:56
-85            android:name="com.customerglu.sdk.Web.RewardWeb"
-85-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:49:13-61
-86            android:screenOrientation="portrait"
-86-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:50:13-49
-87            android:theme="@style/Theme.Transparent" />
-87-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:51:13-53
-88        <activity
-88-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:52:9-55:56
-89            android:name="com.customerglu.sdk.Web.FilterReward"
-89-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:53:13-64
-90            android:screenOrientation="portrait"
-90-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:54:13-49
-91            android:theme="@style/Theme.Transparent" />
-91-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:55:13-53
-92
-93        <provider
-93-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:57:9-65:20
-94            android:name="androidx.core.content.FileProvider"
-94-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:58:13-62
-95            android:authorities="com.example.reactnativerncustomerglu.provider"
-95-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:59:13-60
-96            android:exported="false"
-96-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:60:13-37
-97            android:grantUriPermissions="true" >
-97-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:61:13-47
-98            <meta-data
-98-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:62:13-64:57
-99                android:name="android.support.FILE_PROVIDER_PATHS"
-99-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:63:17-67
-100                android:resource="@xml/provider_path" />
-100-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /home/pooja/.gradle/caches/transforms-2/files-2.1/6e5350dd0bf4d5fc68a075ba6ef7c304/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:64:17-54
-101        </provider>
-102        <provider
-102-->[androidx.emoji2:emoji2:1.0.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ff5dde620dd8687b2fddad0e0fb22a/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
-103            android:name="androidx.startup.InitializationProvider"
-103-->[androidx.emoji2:emoji2:1.0.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ff5dde620dd8687b2fddad0e0fb22a/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
-104            android:authorities="com.example.reactnativerncustomerglu.androidx-startup"
-104-->[androidx.emoji2:emoji2:1.0.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ff5dde620dd8687b2fddad0e0fb22a/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
-105            android:exported="false" >
-105-->[androidx.emoji2:emoji2:1.0.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ff5dde620dd8687b2fddad0e0fb22a/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
-106            <meta-data
-106-->[androidx.emoji2:emoji2:1.0.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ff5dde620dd8687b2fddad0e0fb22a/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
-107                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-107-->[androidx.emoji2:emoji2:1.0.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ff5dde620dd8687b2fddad0e0fb22a/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
-108                android:value="androidx.startup" />
-108-->[androidx.emoji2:emoji2:1.0.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/c4ff5dde620dd8687b2fddad0e0fb22a/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
-109            <meta-data
-109-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/24de3b5cf6e4f85e85d0c8287dcc69c3/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
-110                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-110-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/24de3b5cf6e4f85e85d0c8287dcc69c3/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
-111                android:value="androidx.startup" />
-111-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/24de3b5cf6e4f85e85d0c8287dcc69c3/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
-112        </provider>
-113
-114        <activity
-114-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:27:9-34:20
-115            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
-115-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:28:13-99
-116            android:exported="true"
-116-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:29:13-36
-117            android:theme="@android:style/Theme" >
-117-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:30:13-49
-118            <intent-filter>
-118-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:31:13-33:29
-119                <action android:name="android.intent.action.MAIN" />
-119-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:13-65
-119-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:21-62
-120            </intent-filter>
-121        </activity>
-122        <activity
-122-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:35:9-42:20
-123            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
-123-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:36:13-95
-124            android:exported="true"
-124-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:37:13-36
-125            android:theme="@android:style/Theme" >
-125-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:38:13-49
-126            <intent-filter>
-126-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:31:13-33:29
-127                <action android:name="android.intent.action.MAIN" />
-127-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:13-65
-127-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:21-62
-128            </intent-filter>
-129        </activity>
-130        <activity
-130-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:43:9-50:20
-131            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
-131-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:44:13-103
-132            android:exported="true"
-132-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:45:13-36
-133            android:theme="@android:style/Theme.Dialog" >
-133-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:46:13-56
-134            <intent-filter>
-134-->[androidx.test:core:1.4.0] /home/pooja/.gradle/caches/transforms-2/files-2.1/2cf932de25ab4ba63044c92b4a972dcd/jetified-core-1.4.0/AndroidManifest.xml:31:13-33:29
-135                <action android:name="android.intent.action.MAIN" />
-135-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:13-65
-135-->/home/pooja/Downloads/rncustomerglu/rncustomerglu/example/android/app/src/main/AndroidManifest.xml:24:21-62
-136            </intent-filter>
-137        </activity>
-138    </application>
-139
-140</manifest>
+14-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:6:3-77
+14-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:6:20-74
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:7:3-66
+15-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:7:20-63
+16    <uses-permission android:name="com.customerglu.nudgetest.permission.C2D_MESSAGE" />
+17    <uses-permission android:name="android.permission.VIBRATE" />
+17-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:10:3-64
+17-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:10:20-61
+18    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+18-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:11:3-78
+18-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:11:20-76
+19    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+19-->[com.facebook.flipper:flipper:0.99.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e7cd70ab6fcce02ad43aecffdfd59167/jetified-flipper-0.99.0/AndroidManifest.xml:16:5-76
+19-->[com.facebook.flipper:flipper:0.99.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e7cd70ab6fcce02ad43aecffdfd59167/jetified-flipper-0.99.0/AndroidManifest.xml:16:22-73
+20    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+20-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:26:5-77
+20-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:26:22-74
+21    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+21-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:29:5-82
+21-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:29:22-79
+22    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+22-->[com.google.android.gms:play-services-measurement-api:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4ad4cb8ff73d0197b1ab272abf3d561a/jetified-play-services-measurement-api-21.0.0/AndroidManifest.xml:25:5-79
+22-->[com.google.android.gms:play-services-measurement-api:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4ad4cb8ff73d0197b1ab272abf3d561a/jetified-play-services-measurement-api-21.0.0/AndroidManifest.xml:25:22-76
+23    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+23-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:26:5-110
+23-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:26:22-107
+24    <uses-permission android:name="android.permission.REORDER_TASKS" /> <!-- for android -->
+24-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:24:5-72
+24-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:24:22-69
+25    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
+26    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
+27    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+28    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
+29    <!-- for Samsung -->
+30    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+30-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+30-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+31    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
+31-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+31-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+32    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+32-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+32-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+33    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
+33-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+33-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+34    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+34-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+34-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+35    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
+35-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+35-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+36    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
+36-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+36-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+37    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+38    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+39    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+40    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+41    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+42    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+43    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+44    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+45    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a77ca0bc054dd23979de963fe53713/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+46
+47    <application
+47-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:13:3-62:19
+48        android:name="com.example.reactnativerncustomerglu.MainApplication"
+48-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:14:7-38
+49        android:allowBackup="false"
+49-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:18:7-34
+50        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+50-->[androidx.core:core:1.7.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/60f8b8180c193c9257518585748e057d/core-1.7.0/AndroidManifest.xml:24:18-86
+51        android:debuggable="true"
+52        android:extractNativeLibs="false"
+53        android:icon="@mipmap/ic_launcher"
+53-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:16:7-41
+54        android:label="@string/app_name"
+54-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:15:7-39
+55        android:roundIcon="@mipmap/ic_launcher_round"
+55-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:17:7-52
+56        android:testOnly="true"
+57        android:theme="@style/AppTheme"
+57-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:19:7-38
+58        android:usesCleartextTraffic="true" >
+58-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/debug/AndroidManifest.xml:7:18-53
+59        <meta-data
+59-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:20:7-106
+60            android:name="CUSTOMERGLU_WRITE_KEY"
+60-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:20:18-54
+61            android:value="G4VCVVAcLub8hx5SaeqH3pRqLBmDFrwy" />
+61-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:20:55-103
+62
+63        <activity
+63-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:22:7-33:18
+64            android:name="com.example.reactnativerncustomerglu.MainActivity"
+64-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:23:9-37
+65            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+65-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:25:9-86
+66            android:exported="true"
+66-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:27:9-32
+67            android:label="@string/app_name"
+67-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:24:9-41
+68            android:launchMode="singleTask"
+68-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:26:9-40
+69            android:windowSoftInputMode="adjustResize" >
+69-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:28:9-51
+70            <intent-filter>
+70-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:29:9-32:25
+71                <action android:name="android.intent.action.MAIN" />
+71-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:13-65
+71-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:21-62
+72
+73                <category android:name="android.intent.category.LAUNCHER" />
+73-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:31:13-73
+73-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:31:23-70
+74            </intent-filter>
+75        </activity>
+76        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" /> <!-- notification -->
+76-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:34:7-84
+76-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:34:17-81
+77        <meta-data
+77-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:38:5-39:30
+78            android:name="com.dieam.reactnativepushnotification.notification_foreground"
+78-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:38:17-93
+79            android:value="false" /> <!-- Change the resource name to your App's accent color - or any other color you want -->
+79-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:39:7-28
+80        <meta-data
+80-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:41:5-42:40
+81            android:name="com.dieam.reactnativepushnotification.notification_color"
+81-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:41:17-88
+82            android:resource="@color/white" /> <!-- or @android:color/{name} to use a standard color -->
+82-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:42:7-38
+83        <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />
+83-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:44:5-104
+83-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:44:15-101
+84        <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
+84-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:45:5-106
+84-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:45:15-103
+85        <receiver
+85-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:46:5-53:16
+86            android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver"
+86-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:46:15-111
+87            android:exported="false" >
+87-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:47:7-31
+88            <intent-filter>
+88-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:48:7-52:23
+89                <action android:name="android.intent.action.BOOT_COMPLETED" />
+89-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:49:9-71
+89-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:49:17-68
+90                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+90-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:50:9-74
+90-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:50:17-71
+91                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+91-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:51:9-73
+91-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:51:17-71
+92            </intent-filter>
+93        </receiver>
+94
+95        <service
+95-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:55:5-61:15
+96            android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService"
+96-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:56:7-101
+97            android:exported="false" >
+97-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:57:7-31
+98            <intent-filter>
+98-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:58:7-60:23
+99                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+99-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:59:9-70
+99-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:59:17-67
+100            </intent-filter>
+101        </service>
+102        <service
+102-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-16:40
+103            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingHeadlessService"
+103-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-103
+104            android:exported="false" />
+104-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-37
+105        <service
+105-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:9-23:19
+106            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingService"
+106-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-95
+107            android:exported="false" >
+107-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-37
+108            <intent-filter>
+108-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:58:7-60:23
+109                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+109-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:59:9-70
+109-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:59:17-67
+110            </intent-filter>
+111        </service>
+112
+113        <receiver
+113-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:9-32:20
+114            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingReceiver"
+114-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-96
+115            android:exported="true"
+115-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-36
+116            android:permission="com.google.android.c2dm.permission.SEND" >
+116-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-73
+117            <intent-filter>
+117-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-31:29
+118                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+118-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:17-81
+118-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:25-78
+119            </intent-filter>
+120        </receiver>
+121
+122        <meta-data
+122-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:34:9-36:36
+123            android:name="firebase_messaging_auto_init_enabled"
+123-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-64
+124            android:value="true" />
+124-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:13-33
+125        <meta-data
+125-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:37:9-39:32
+126            android:name="com.google.firebase.messaging.default_notification_channel_id"
+126-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:38:13-89
+127            android:value="" />
+127-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-29
+128        <meta-data
+128-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:40:9-42:47
+129            android:name="com.google.firebase.messaging.default_notification_color"
+129-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:41:13-84
+130            android:resource="@color/white" />
+130-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:42:13-44
+131        <meta-data
+131-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-13:36
+132            android:name="app_data_collection_default_enabled"
+132-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-63
+133            android:value="true" />
+133-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-33
+134
+135        <service
+135-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-23:19
+136            android:name="com.google.firebase.components.ComponentDiscoveryService"
+136-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-84
+137            android:directBootAware="true"
+137-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-43
+138            android:exported="false" >
+138-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
+139            <meta-data
+139-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-22:85
+140                android:name="com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar"
+140-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:17-120
+141                android:value="com.google.firebase.components.ComponentRegistrar" />
+141-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:17-82
+142            <meta-data
+142-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:56:13-58:85
+143                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+143-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:57:17-119
+144                android:value="com.google.firebase.components.ComponentRegistrar" />
+144-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:58:17-82
+145            <meta-data
+145-->[com.google.firebase:firebase-datatransport:18.1.5] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/9fa0e45e4af312441d882725c06beb43/jetified-firebase-datatransport-18.1.5/AndroidManifest.xml:28:13-30:85
+146                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+146-->[com.google.firebase:firebase-datatransport:18.1.5] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/9fa0e45e4af312441d882725c06beb43/jetified-firebase-datatransport-18.1.5/AndroidManifest.xml:29:17-115
+147                android:value="com.google.firebase.components.ComponentRegistrar" />
+147-->[com.google.firebase:firebase-datatransport:18.1.5] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/9fa0e45e4af312441d882725c06beb43/jetified-firebase-datatransport-18.1.5/AndroidManifest.xml:30:17-82
+148            <meta-data
+148-->[com.google.android.gms:play-services-measurement-api:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4ad4cb8ff73d0197b1ab272abf3d561a/jetified-play-services-measurement-api-21.0.0/AndroidManifest.xml:31:13-33:85
+149                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+149-->[com.google.android.gms:play-services-measurement-api:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4ad4cb8ff73d0197b1ab272abf3d561a/jetified-play-services-measurement-api-21.0.0/AndroidManifest.xml:32:17-139
+150                android:value="com.google.firebase.components.ComponentRegistrar" />
+150-->[com.google.android.gms:play-services-measurement-api:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4ad4cb8ff73d0197b1ab272abf3d561a/jetified-play-services-measurement-api-21.0.0/AndroidManifest.xml:33:17-82
+151            <meta-data
+151-->[com.google.firebase:firebase-installations:17.0.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2745e6bb20f5d4cad5212f0bacb034ca/jetified-firebase-installations-17.0.1/AndroidManifest.xml:18:13-20:85
+152                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+152-->[com.google.firebase:firebase-installations:17.0.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2745e6bb20f5d4cad5212f0bacb034ca/jetified-firebase-installations-17.0.1/AndroidManifest.xml:19:17-127
+153                android:value="com.google.firebase.components.ComponentRegistrar" />
+153-->[com.google.firebase:firebase-installations:17.0.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2745e6bb20f5d4cad5212f0bacb034ca/jetified-firebase-installations-17.0.1/AndroidManifest.xml:20:17-82
+154        </service>
+155
+156        <provider
+156-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:9-29:38
+157            android:name="io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider"
+157-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-88
+158            android:authorities="com.customerglu.nudgetest.reactnativefirebaseappinitprovider"
+158-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-86
+159            android:exported="false"
+159-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-37
+160            android:initOrder="99" />
+160-->[:react-native-firebase_app] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-35
+161
+162        <receiver
+162-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:32:9-39:20
+163            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+163-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:33:13-78
+164            android:exported="true"
+164-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:34:13-36
+165            android:permission="com.google.android.c2dm.permission.SEND" >
+165-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:35:13-73
+166            <intent-filter>
+166-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-31:29
+167                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+167-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:17-81
+167-->[:react-native-firebase_messaging] /Users/kishan/Documents/RNCustomerGlu-local/example/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:25-78
+168            </intent-filter>
+169        </receiver>
+170        <!--
+171             FirebaseMessagingService performs security checks at runtime,
+172             but set to not exported to explicitly avoid allowing another app to call it.
+173        -->
+174        <service
+174-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:45:9-52:19
+175            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+175-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:46:13-82
+176            android:directBootAware="true"
+176-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:47:13-43
+177            android:exported="false" >
+177-->[com.google.firebase:firebase-messaging:23.0.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml:48:13-37
+178            <intent-filter android:priority="-500" >
+178-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:58:7-60:23
+179                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+179-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:59:9-70
+179-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:59:17-67
+180            </intent-filter>
+181        </service>
+182        <service
+182-->[com.google.android.datatransport:transport-backend-cct:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/917d1ed0f145075471cc92b51d4235fd/jetified-transport-backend-cct-3.1.6/AndroidManifest.xml:29:9-35:19
+183            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+183-->[com.google.android.datatransport:transport-backend-cct:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/917d1ed0f145075471cc92b51d4235fd/jetified-transport-backend-cct-3.1.6/AndroidManifest.xml:30:13-103
+184            android:exported="false" >
+184-->[com.google.android.datatransport:transport-backend-cct:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/917d1ed0f145075471cc92b51d4235fd/jetified-transport-backend-cct-3.1.6/AndroidManifest.xml:31:13-37
+185            <meta-data
+185-->[com.google.android.datatransport:transport-backend-cct:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/917d1ed0f145075471cc92b51d4235fd/jetified-transport-backend-cct-3.1.6/AndroidManifest.xml:32:13-34:39
+186                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+186-->[com.google.android.datatransport:transport-backend-cct:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/917d1ed0f145075471cc92b51d4235fd/jetified-transport-backend-cct-3.1.6/AndroidManifest.xml:33:17-94
+187                android:value="cct" />
+187-->[com.google.android.datatransport:transport-backend-cct:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/917d1ed0f145075471cc92b51d4235fd/jetified-transport-backend-cct-3.1.6/AndroidManifest.xml:34:17-36
+188        </service>
+189        <service
+189-->[com.google.android.datatransport:transport-runtime:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a2733fa15ebee7ddfab62dbcac112ce9/jetified-transport-runtime-3.1.6/AndroidManifest.xml:26:9-30:19
+190            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+190-->[com.google.android.datatransport:transport-runtime:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a2733fa15ebee7ddfab62dbcac112ce9/jetified-transport-runtime-3.1.6/AndroidManifest.xml:27:13-117
+191            android:exported="false"
+191-->[com.google.android.datatransport:transport-runtime:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a2733fa15ebee7ddfab62dbcac112ce9/jetified-transport-runtime-3.1.6/AndroidManifest.xml:28:13-37
+192            android:permission="android.permission.BIND_JOB_SERVICE" >
+192-->[com.google.android.datatransport:transport-runtime:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a2733fa15ebee7ddfab62dbcac112ce9/jetified-transport-runtime-3.1.6/AndroidManifest.xml:29:13-69
+193        </service>
+194
+195        <receiver
+195-->[com.google.android.datatransport:transport-runtime:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a2733fa15ebee7ddfab62dbcac112ce9/jetified-transport-runtime-3.1.6/AndroidManifest.xml:32:9-34:40
+196            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+196-->[com.google.android.datatransport:transport-runtime:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a2733fa15ebee7ddfab62dbcac112ce9/jetified-transport-runtime-3.1.6/AndroidManifest.xml:33:13-132
+197            android:exported="false" />
+197-->[com.google.android.datatransport:transport-runtime:3.1.6] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a2733fa15ebee7ddfab62dbcac112ce9/jetified-transport-runtime-3.1.6/AndroidManifest.xml:34:13-37
+198
+199        <provider
+199-->[com.google.firebase:firebase-common:20.1.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/447cae240960e96b53fa133b816fa69e/jetified-firebase-common-20.1.1/AndroidManifest.xml:26:9-31:39
+200            android:name="com.google.firebase.provider.FirebaseInitProvider"
+200-->[com.google.firebase:firebase-common:20.1.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/447cae240960e96b53fa133b816fa69e/jetified-firebase-common-20.1.1/AndroidManifest.xml:27:13-77
+201            android:authorities="com.customerglu.nudgetest.firebaseinitprovider"
+201-->[com.google.firebase:firebase-common:20.1.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/447cae240960e96b53fa133b816fa69e/jetified-firebase-common-20.1.1/AndroidManifest.xml:28:13-72
+202            android:directBootAware="true"
+202-->[com.google.firebase:firebase-common:20.1.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/447cae240960e96b53fa133b816fa69e/jetified-firebase-common-20.1.1/AndroidManifest.xml:29:13-43
+203            android:exported="false"
+203-->[com.google.firebase:firebase-common:20.1.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/447cae240960e96b53fa133b816fa69e/jetified-firebase-common-20.1.1/AndroidManifest.xml:30:13-37
+204            android:initOrder="100" />
+204-->[com.google.firebase:firebase-common:20.1.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/447cae240960e96b53fa133b816fa69e/jetified-firebase-common-20.1.1/AndroidManifest.xml:31:13-36
+205
+206        <activity
+206-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:12:9-15:56
+207            android:name="com.customerglu.sdk.Web.OpenCustomerGluWeb"
+207-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:13:13-70
+208            android:screenOrientation="portrait"
+208-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:14:13-49
+209            android:theme="@style/Theme.Transparent" />
+209-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:15:13-53
+210        <activity
+210-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:16:9-27:20
+211            android:name="com.customerglu.sdk.notification.NotificationWeb"
+211-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:17:13-76
+212            android:exported="false"
+212-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:18:13-37
+213            android:protectionLevel="signature"
+213-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:19:13-48
+214            android:screenOrientation="portrait"
+214-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:20:13-49
+215            android:theme="@style/Theme.Transparent" >
+215-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:21:13-53
+216            <intent-filter>
+216-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:22:13-26:29
+217                <action android:name="OPEN_WEB" />
+217-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:23:17-51
+217-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:23:25-48
+218
+219                <category android:name="android.intent.category.DEFAULT" />
+219-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:25:17-76
+219-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:25:27-73
+220            </intent-filter>
+221        </activity>
+222        <activity
+222-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:28:9-32:20
+223            android:name="com.customerglu.sdk.notification.BottomSheet"
+223-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:29:13-72
+224            android:screenOrientation="portrait"
+224-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:30:13-49
+225            android:theme="@style/Theme.Transparent" >
+225-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:31:13-53
+226        </activity>
+227        <activity
+227-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:33:9-37:20
+228            android:name="com.customerglu.sdk.notification.BottomDialog"
+228-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:34:13-73
+229            android:screenOrientation="portrait"
+229-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:35:13-49
+230            android:theme="@style/Theme.Transparent" >
+230-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:36:13-53
+231        </activity>
+232        <activity
+232-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:38:9-42:20
+233            android:name="com.customerglu.sdk.notification.MiddleDialog"
+233-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:39:13-73
+234            android:screenOrientation="portrait"
+234-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:40:13-49
+235            android:theme="@style/Theme.Transparent" >
+235-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:41:13-53
+236        </activity>
+237        <activity
+237-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:43:9-47:20
+238            android:name="com.customerglu.sdk.Screens.RewardScreen"
+238-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:44:13-68
+239            android:screenOrientation="portrait"
+239-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:45:13-49
+240            android:theme="@style/Theme.Transparent" >
+240-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:46:13-53
+241        </activity>
+242        <activity
+242-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:48:9-51:56
+243            android:name="com.customerglu.sdk.Web.RewardWeb"
+243-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:49:13-61
+244            android:screenOrientation="portrait"
+244-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:50:13-49
+245            android:theme="@style/Theme.Transparent" />
+245-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:51:13-53
+246        <activity
+246-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:52:9-55:56
+247            android:name="com.customerglu.sdk.Web.FilterReward"
+247-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:53:13-64
+248            android:screenOrientation="portrait"
+248-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:54:13-49
+249            android:theme="@style/Theme.Transparent" />
+249-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:55:13-53
+250
+251        <provider
+251-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:57:9-65:20
+252            android:name="androidx.core.content.FileProvider"
+252-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:58:13-62
+253            android:authorities="com.customerglu.nudgetest.provider"
+253-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:59:13-60
+254            android:exported="false"
+254-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:60:13-37
+255            android:grantUriPermissions="true" >
+255-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:61:13-47
+256            <meta-data
+256-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:62:13-64:57
+257                android:name="android.support.FILE_PROVIDER_PATHS"
+257-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:63:17-67
+258                android:resource="@xml/provider_path" />
+258-->[com.github.customerglu:CG-SDK-Android:5c3d00ea49] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/0ea63a89b7c9e9b58a201742f35c15b0/jetified-CG-SDK-Android-5c3d00ea49/AndroidManifest.xml:64:17-54
+259        </provider>
+260
+261        <receiver
+261-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:29:9-33:20
+262            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+262-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:30:13-85
+263            android:enabled="true"
+263-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:31:13-35
+264            android:exported="false" >
+264-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:32:13-37
+265        </receiver>
+266
+267        <service
+267-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:35:9-38:40
+268            android:name="com.google.android.gms.measurement.AppMeasurementService"
+268-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:36:13-84
+269            android:enabled="true"
+269-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:37:13-35
+270            android:exported="false" />
+270-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:38:13-37
+271        <service
+271-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:39:9-43:72
+272            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+272-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:40:13-87
+273            android:enabled="true"
+273-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:41:13-35
+274            android:exported="false"
+274-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:42:13-37
+275            android:permission="android.permission.BIND_JOB_SERVICE" />
+275-->[com.google.android.gms:play-services-measurement:21.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1986d14dc6cf4708eed4fb2e91470012/jetified-play-services-measurement-21.0.0/AndroidManifest.xml:43:13-69
+276
+277        <activity
+277-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:23:9-27:75
+278            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+278-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:24:13-93
+279            android:excludeFromRecents="true"
+279-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:25:13-46
+280            android:exported="false"
+280-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:26:13-37
+281            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+281-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:27:13-72
+282        <!--
+283            Service handling Google Sign-In user revocation. For apps that do not integrate with
+284            Google Sign-In, this service will never be started.
+285        -->
+286        <service
+286-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:33:9-37:51
+287            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+287-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:34:13-89
+288            android:exported="true"
+288-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:35:13-36
+289            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+289-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:36:13-107
+290            android:visibleToInstantApps="true" />
+290-->[com.google.android.gms:play-services-auth:20.2.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/AndroidManifest.xml:37:13-48
+291
+292        <activity
+292-->[com.google.android.gms:play-services-base:18.0.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7d544c0bdce5e322c2a1e8860c735113/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+293            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+293-->[com.google.android.gms:play-services-base:18.0.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7d544c0bdce5e322c2a1e8860c735113/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+294            android:exported="false"
+294-->[com.google.android.gms:play-services-base:18.0.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7d544c0bdce5e322c2a1e8860c735113/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+295            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+295-->[com.google.android.gms:play-services-base:18.0.1] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7d544c0bdce5e322c2a1e8860c735113/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+296
+297        <meta-data
+297-->[com.google.android.gms:play-services-basement:18.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e1f91c70fbc4c9f5cb84d604318e6815/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+298            android:name="com.google.android.gms.version"
+298-->[com.google.android.gms:play-services-basement:18.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e1f91c70fbc4c9f5cb84d604318e6815/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+299            android:value="@integer/google_play_services_version" />
+299-->[com.google.android.gms:play-services-basement:18.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e1f91c70fbc4c9f5cb84d604318e6815/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+300
+301        <provider
+301-->[androidx.emoji2:emoji2:1.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/ff73c6959ce28abafde8552812b3f0b6/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+302            android:name="androidx.startup.InitializationProvider"
+302-->[androidx.emoji2:emoji2:1.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/ff73c6959ce28abafde8552812b3f0b6/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+303            android:authorities="com.customerglu.nudgetest.androidx-startup"
+303-->[androidx.emoji2:emoji2:1.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/ff73c6959ce28abafde8552812b3f0b6/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+304            android:exported="false" >
+304-->[androidx.emoji2:emoji2:1.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/ff73c6959ce28abafde8552812b3f0b6/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+305            <meta-data
+305-->[androidx.emoji2:emoji2:1.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/ff73c6959ce28abafde8552812b3f0b6/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+306                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+306-->[androidx.emoji2:emoji2:1.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/ff73c6959ce28abafde8552812b3f0b6/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+307                android:value="androidx.startup" />
+307-->[androidx.emoji2:emoji2:1.0.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/ff73c6959ce28abafde8552812b3f0b6/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+308            <meta-data
+308-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2ab2149e4365e6cd5164192d66df7331/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+309                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+309-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2ab2149e4365e6cd5164192d66df7331/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+310                android:value="androidx.startup" />
+310-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2ab2149e4365e6cd5164192d66df7331/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+311        </provider>
+312
+313        <activity
+313-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:27:9-34:20
+314            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+314-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:28:13-99
+315            android:exported="true"
+315-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:29:13-36
+316            android:theme="@android:style/Theme" >
+316-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:30:13-49
+317            <intent-filter>
+317-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:31:13-33:29
+318                <action android:name="android.intent.action.MAIN" />
+318-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:13-65
+318-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:21-62
+319            </intent-filter>
+320        </activity>
+321        <activity
+321-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:35:9-42:20
+322            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+322-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:36:13-95
+323            android:exported="true"
+323-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:37:13-36
+324            android:theme="@android:style/Theme" >
+324-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:38:13-49
+325            <intent-filter>
+325-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:31:13-33:29
+326                <action android:name="android.intent.action.MAIN" />
+326-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:13-65
+326-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:21-62
+327            </intent-filter>
+328        </activity>
+329        <activity
+329-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:43:9-50:20
+330            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+330-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:44:13-103
+331            android:exported="true"
+331-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:45:13-36
+332            android:theme="@android:style/Theme.Dialog" >
+332-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:46:13-56
+333            <intent-filter>
+333-->[androidx.test:core:1.4.0] /Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4bebb5e115c55a6c632b8c5fdec777cc/jetified-core-1.4.0/AndroidManifest.xml:31:13-33:29
+334                <action android:name="android.intent.action.MAIN" />
+334-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:13-65
+334-->/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/src/main/AndroidManifest.xml:30:21-62
+335            </intent-filter>
+336        </activity>
+337    </application>
+338
+339</manifest>

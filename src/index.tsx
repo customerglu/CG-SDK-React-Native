@@ -116,8 +116,8 @@ export function UpdateProfileEx(): Promise<number> {
 export function UpdateProfileExAndroid(userdata: Object): Promise<number> {
   return Rncustomerglu.UpdateProfileAndroid(userdata);
 }
-export function DisplayCustomerGluNotificationEx(): Promise<number> {
-  return Rncustomerglu.DisplayCustomerGluNotification();
+export function DisplayCustomerGluNotificationEx(data:Object): Promise<number> {
+  return Rncustomerglu.DisplayCustomerGluNotification(data);
 }
 export function CGApplicationEx(): Promise<number> {
   return Rncustomerglu.CGApplication();

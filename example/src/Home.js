@@ -13,7 +13,7 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
-import { registerEx, dataClearEx, sendDataEX, loadCampaignIdByEx, enableAnalyticEx, openWalletEx, disableGluSdkEx, configureLoaderColourEx, enablePrecachingEx, gluSDKDebuggingModeEx, enableEntryPointsEx, closeWebViewEx, isFcmApnEx, configureSafeAreaEx, SetDefaultBannerImageEx, UpdateProfileEx, DisplayCustomerGluNotificationEx, CGApplicationEx, DisplayBackGroundNotificationEx, GetRefferalIdEx, LoadAllCampaginsEx, LoadCampaginsByFilterEx, SetCurrentClassNameEx, OpenWalletWithUrlEx, configureWhiteListedDomainsEx, configureDomainCodeMsgEx } from 'react-native-rncustomerglu';
+import { registerEx, RegisterDevice, dataClearEx, sendDataEX, loadCampaignIdByEx, enableAnalyticEx, openWalletEx, disableGluSdkEx, configureLoaderColourEx, enablePrecachingEx, gluSDKDebuggingModeEx, enableEntryPointsEx, closeWebViewEx, isFcmApnEx, configureSafeAreaEx, SetDefaultBannerImageEx, UpdateProfileEx, DisplayCustomerGluNotificationEx, CGApplicationEx, DisplayBackGroundNotificationEx, GetRefferalIdEx, LoadAllCampaginsEx, LoadCampaginsByFilterEx, SetCurrentClassNameEx, OpenWalletWithUrlEx, configureWhiteListedDomainsEx, configureDomainCodeMsgEx } from 'react-native-rncustomerglu';
 // import { sendBroadcastEvent } from '@applicaster/react-native-broadcast-manager';
 const Data = [
     { id: 0, name: 'Registration' },
@@ -76,15 +76,27 @@ export default function Home({ navigation }) {
     function MyClass() {
         this.registerUser = async () => {
             console.log("registerUser");
-            registerEx()
+            // registerEx()
+            let userdata = { userId: 'testUser_1', firebaseToken: 'ejhaMwpEROeW0Y4NoFedGz:APA91bGwg7mBqPBpzUKx5WYGDF8FqdKAujjO-1YJrCqwiBnEmqDBUAK2x4j4v27ee4Tk9obsxfLplAT9VyW1D1bqfLevXm2clIP-PxuvliS_Qwy9QvoONdGv-3nwm3jms4_Nq8dzSYHG' };
+            // registerEx()
+            try {
+                var ok = await RegisterDevice(userdata);
+                console.log(ok)
+            }
+            catch (e) {
+                console.log('e:' + e);
+            }
         }
+
+
+
         this.dataClear = async () => {
             console.log("clear data");
             dataClearEx()
         }
         this.sendData = async () => {
             console.log("sendDataEX");
-            let obj = { eventName: "Order_Placed", eventProperties: ["orderValue", 1000] }
+            let obj = { eventName: "completePurchase", eventProperties: ["orderValue", 1000] }
             sendDataEX(obj);
         }
         this.openWallet = async () => {
