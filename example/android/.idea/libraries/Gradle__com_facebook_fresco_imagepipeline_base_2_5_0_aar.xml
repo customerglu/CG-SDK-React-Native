@@ -1,15 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.fresco:imagepipeline-base:2.5.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/403e3c3e33aee08c17e75e7237c8e48c/jetified-imagepipeline-base-2.5.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7e53991875a890357d42b4d273cf75ce/jetified-imagepipeline-base-2.5.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/17d140ee95a63c9c7886691425b3b163/transformed/jetified-imagepipeline-base-2.5.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5e64adbc655f50dd2d428d4f6f12960/jetified-imagepipeline-base-2.5.0/res" />
       <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/b5e64adbc655f50dd2d428d4f6f12960/jetified-imagepipeline-base-2.5.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/403e3c3e33aee08c17e75e7237c8e48c/jetified-imagepipeline-base-2.5.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/403e3c3e33aee08c17e75e7237c8e48c/jetified-imagepipeline-base-2.5.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/403e3c3e33aee08c17e75e7237c8e48c/jetified-imagepipeline-base-2.5.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7e53991875a890357d42b4d273cf75ce/jetified-imagepipeline-base-2.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7e53991875a890357d42b4d273cf75ce/jetified-imagepipeline-base-2.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/7e53991875a890357d42b4d273cf75ce/jetified-imagepipeline-base-2.5.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/modules-2/files-2.1/com.facebook.fresco/imagepipeline-base/2.5.0/5604219f983b774dae12d1cfa4c77b09a9c7e05a/imagepipeline-base-2.5.0-javadoc.jar!/" />

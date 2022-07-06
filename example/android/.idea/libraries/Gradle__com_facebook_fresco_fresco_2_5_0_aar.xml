@@ -1,15 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.fresco:fresco:2.5.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/fd10aee00b215fb80eae9d150fcb2926/jetified-fresco-2.5.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2d524d1ae22e9bf8c544d0a84f0b3ec5/jetified-fresco-2.5.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b55764384d9f20cbd44122ed6324e652/transformed/jetified-fresco-2.5.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a951196b20b47da2ad4d545d7017564b/jetified-fresco-2.5.0/res" />
       <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/a951196b20b47da2ad4d545d7017564b/jetified-fresco-2.5.0/res" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/fd10aee00b215fb80eae9d150fcb2926/jetified-fresco-2.5.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/fd10aee00b215fb80eae9d150fcb2926/jetified-fresco-2.5.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/fd10aee00b215fb80eae9d150fcb2926/jetified-fresco-2.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2d524d1ae22e9bf8c544d0a84f0b3ec5/jetified-fresco-2.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2d524d1ae22e9bf8c544d0a84f0b3ec5/jetified-fresco-2.5.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/2d524d1ae22e9bf8c544d0a84f0b3ec5/jetified-fresco-2.5.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/modules-2/files-2.1/com.facebook.fresco/fresco/2.5.0/9f914483b8b5588ae70563d73d8459cf81d6194/fresco-2.5.0-javadoc.jar!/" />

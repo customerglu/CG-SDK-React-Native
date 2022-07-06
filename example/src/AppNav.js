@@ -6,19 +6,29 @@ import Profile from './Profile'
 const Stack = createNativeStackNavigator();
 import PushNotification from "react-native-push-notification";
 import { registerEx, RegisterDevice, dataClearEx, sendDataEX, loadCampaignIdByEx, enableAnalyticEx, openWalletEx, disableGluSdkEx, configureLoaderColourEx, enablePrecachingEx, gluSDKDebuggingModeEx, enableEntryPointsEx, closeWebViewEx, isFcmApnEx, configureSafeAreaEx, SetDefaultBannerImageEx, UpdateProfileEx, DisplayCustomerGluNotificationEx, CGApplicationEx, DisplayBackGroundNotificationEx, GetRefferalIdEx, LoadAllCampaginsEx, LoadCampaginsByFilterEx, SetCurrentClassNameEx, OpenWalletWithUrlEx, configureWhiteListedDomainsEx, configureDomainCodeMsgEx } from 'react-native-rncustomerglu';
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
 PushNotification.configure({
     // (optional) Called when Token is generated (iOS and Android)
-    onRegister: function (token) {
-        console.log("TOKEN:", token);
+    onRegister: async function (token) {
+        console.log("TOKEN:", token.token);
+        await AsyncStorage.setItem('fcmToken', JSON.stringify(token.token))
+
     },
 
     // (required) Called when a remote is received or opened, or local notification is opened
     onNotification: function (notification) {
-        console.log("NOTIFICATION:", notification.data);
-        DisplayCustomerGluNotificationEx(notification.data);
+        console.log("NOTIFICATION:", notification);
+        console.log('notification.foreground', notification.foreground)
+        if (notification.foreground) {
+            // PushNotification.localNotification(notification);
+            PushNotification.getChannels(function (channels) {
+                console.log('getchannels gives us', channels);
+            });
+            console.log('notification.foreground click', notification.data, notification.foreground)
 
+            DisplayCustomerGluNotificationEx(notification.data);
 
+        }
 
         // process the notification
 

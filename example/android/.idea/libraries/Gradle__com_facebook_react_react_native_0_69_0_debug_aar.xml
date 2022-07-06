@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.react:react-native:0.69.0:debug@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/5af781b269255b38ed5b33fb7f74f9da/jetified-react-native-0.69.0-debug/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/b49c8453e43446f8a7083265299070fc/jetified-react-native-0.69.0-debug/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/5af781b269255b38ed5b33fb7f74f9da/jetified-react-native-0.69.0-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/5af781b269255b38ed5b33fb7f74f9da/jetified-react-native-0.69.0-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/5af781b269255b38ed5b33fb7f74f9da/jetified-react-native-0.69.0-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/b49c8453e43446f8a7083265299070fc/jetified-react-native-0.69.0-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/b49c8453e43446f8a7083265299070fc/jetified-react-native-0.69.0-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/b49c8453e43446f8a7083265299070fc/jetified-react-native-0.69.0-debug/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

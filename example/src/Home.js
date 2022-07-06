@@ -1,7 +1,7 @@
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { Alert } from 'react-native';
-import { DeviceEventEmitter, NativeEventEmitter } from 'react-native';
+import { DeviceEventEmitter, NativeEventEmitter, AppState } from 'react-native';
 import { useIsFocused, useFocusEffect, useRoute } from "@react-navigation/native";
 import { BannerWidget } from 'react-native-rncustomerglu';
 import {
@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import { registerEx, RegisterDevice, dataClearEx, sendDataEX, loadCampaignIdByEx, enableAnalyticEx, openWalletEx, disableGluSdkEx, configureLoaderColourEx, enablePrecachingEx, gluSDKDebuggingModeEx, enableEntryPointsEx, closeWebViewEx, isFcmApnEx, configureSafeAreaEx, SetDefaultBannerImageEx, UpdateProfileEx, DisplayCustomerGluNotificationEx, CGApplicationEx, DisplayBackGroundNotificationEx, GetRefferalIdEx, LoadAllCampaginsEx, LoadCampaginsByFilterEx, SetCurrentClassNameEx, OpenWalletWithUrlEx, configureWhiteListedDomainsEx, configureDomainCodeMsgEx } from 'react-native-rncustomerglu';
 // import { sendBroadcastEvent } from '@applicaster/react-native-broadcast-manager';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 const Data = [
     { id: 0, name: 'Registration' },
     { id: 1, name: 'Clear Data' },
@@ -49,7 +51,9 @@ const fun_name = ['registerUser', 'dataClear', 'sendData', 'openWallet', 'loadCa
 
 export default function Home({ navigation }) {
 
-
+    const [token, setToken] = useState("");
+    const appState = useRef(AppState.currentState);
+    const [appStateVisible, setAppStateVisible] = useState(appState.current);
 
     useEffect(() => {
         // const eventEmitter = new NativeEventEmitter(NativeModules.DisplayCustomerGluNotification);
@@ -59,8 +63,24 @@ export default function Home({ navigation }) {
         // SetCurrentClassNameEx(className);
         // console.log("className", className);
 
+        console.log("appState", appState);
+        const gettoken = async () => {
+            let fcmToken = await AsyncStorage.getItem('fcmToken');
+            setToken(fcmToken);
+            console.log('fcmToken', fcmToken);
+        }
+
+
+        gettoken();
 
     }, []);
+
+    // gettoken = async () => {
+    //     let fcmToken = await AsyncStorage.getItem('fcmToken');
+    //     setToken(fcmToken);
+    //     console.log(fcmToken);
+    //     return fcmToken;
+    // }
 
     const route = useRoute();
     useFocusEffect(
@@ -75,9 +95,14 @@ export default function Home({ navigation }) {
     // for list
     function MyClass() {
         this.registerUser = async () => {
+            // await gettoken();
+            console.log("getToken", token)
             console.log("registerUser");
             // registerEx()
-            let userdata = { userId: 'testUser_1', firebaseToken: 'ejhaMwpEROeW0Y4NoFedGz:APA91bGwg7mBqPBpzUKx5WYGDF8FqdKAujjO-1YJrCqwiBnEmqDBUAK2x4j4v27ee4Tk9obsxfLplAT9VyW1D1bqfLevXm2clIP-PxuvliS_Qwy9QvoONdGv-3nwm3jms4_Nq8dzSYHG' };
+            let userdata = {
+                userId: 'neha_test_1',
+                firebaseToken: JSON.parse(token)
+            };
             // registerEx()
             try {
                 var ok = await RegisterDevice(userdata);

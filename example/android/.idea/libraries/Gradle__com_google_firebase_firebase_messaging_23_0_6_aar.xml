@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-messaging:23.0.6@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/res" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/97596fd2c8bfdcba102f91cf78db7078/jetified-firebase-messaging-23.0.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/5ef0373657416d47599ed7366e49fa0f/jetified-firebase-messaging-23.0.6/res" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/5ef0373657416d47599ed7366e49fa0f/jetified-firebase-messaging-23.0.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/5ef0373657416d47599ed7366e49fa0f/jetified-firebase-messaging-23.0.6/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/modules-2/files-2.1/com.google.firebase/firebase-messaging/23.0.6/2f1bb1f33de5f472d36bd0312dac01a607bec791/firebase-messaging-23.0.6-javadoc.jar!/" />

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "/Users/kishan/ReactProject/RNCustomerGlu-local/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f25b2103a0e174a9b89fab056c3b49ba/jetified-play-services-auth-20.2.0/res/values-watch-v20/values.xml",
+                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/edaa4767c31b4f779cdec78c75871340/jetified-play-services-auth-20.2.0/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4f09c914e6a10e1023bc5e01d5885228/appcompat-1.4.1/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a3da6c88446b36474c30857eac2225/appcompat-1.4.1/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

@@ -243,7 +243,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 //      Array prop = (Array) obj.get("eventProperties");
       Log.d("event",String.valueOf(eventProperties));
       Log.d("event",String.valueOf(obj.get("eventProperties")));
-      Log.d("event",String.valueOf(obj.get("eventName")));
+      Log.e("event name----",String.valueOf(obj.get("eventName")));
 //      Log.d("event",String.valueOf(prop));
       Log.d("event",String.valueOf(evnt));
       customerGlu.sendEvent(getReactApplicationContext(),evnt,eventProperties);
@@ -372,9 +372,9 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 //    callNotification();
 //    callDeeplink();
     Log.d("displayCgNotification", String.valueOf(data));
-JSONObject jsonObject=convertMapToJson(data);
+    JSONObject jsonObject=convertMapToJson(data);
     Log.d("displayCgNotification....", String.valueOf(jsonObject));
-    customerGlu.displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.common_google_signin_btn_icon_dark,0.5,true);
+    customerGlu.displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5,true);
 
   }
 

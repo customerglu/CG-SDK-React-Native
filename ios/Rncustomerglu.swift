@@ -20,7 +20,7 @@ class Rncustomerglu: RCTEventEmitter{
         Rncustomerglu.shared = self
        }
     
-    override func startObserving() {
+        override func startObserving() {
             hasAttachedListener = true
         }
         override func stopObserving() {

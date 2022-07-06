@@ -1,15 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.fresco:imagepipeline:2.5.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1d283b20ebc33d5d31c2254a7642646b/jetified-imagepipeline-2.5.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/cec744631b1a9c690e1e1f7c3f737c2f/jetified-imagepipeline-2.5.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4a905345b2ba8b494f2f9ff07bbffcb2/transformed/jetified-imagepipeline-2.5.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/794ec9261c19d8cfcb96166139730b65/jetified-imagepipeline-2.5.0/res" />
       <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/794ec9261c19d8cfcb96166139730b65/jetified-imagepipeline-2.5.0/res" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1d283b20ebc33d5d31c2254a7642646b/jetified-imagepipeline-2.5.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1d283b20ebc33d5d31c2254a7642646b/jetified-imagepipeline-2.5.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/1d283b20ebc33d5d31c2254a7642646b/jetified-imagepipeline-2.5.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/cec744631b1a9c690e1e1f7c3f737c2f/jetified-imagepipeline-2.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/cec744631b1a9c690e1e1f7c3f737c2f/jetified-imagepipeline-2.5.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/daemon/6.5/caches/transforms-2/files-2.1/cec744631b1a9c690e1e1f7c3f737c2f/jetified-imagepipeline-2.5.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/daemon/6.5/caches/modules-2/files-2.1/com.facebook.fresco/imagepipeline/2.5.0/617209dd72b6c5d9a0351c867b32a329733c7dd3/imagepipeline-2.5.0-javadoc.jar!/" />

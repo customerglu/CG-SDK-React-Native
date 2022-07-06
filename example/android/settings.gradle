@@ -4,11 +4,12 @@ include ':app'
 
 include ':reactnativerncustomerglu'
 project(':reactnativerncustomerglu').projectDir = new File(rootProject.projectDir, '../../android')
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
 
-    maven { url 'https://jitpack.io' }
 
-  }
-}
+//dependencyResolutionManagement {
+//  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//  repositories {
+//    maven { url 'https://jitpack.io' }
+//
+//  }
+//}

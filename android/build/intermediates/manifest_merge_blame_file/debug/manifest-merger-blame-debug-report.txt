@@ -3,8 +3,8 @@
 3    package="com.reactnativerncustomerglu" > <!-- only value should be changed -->
 4    <uses-sdk
 5        android:minSdkVersion="26"
-5-->/Users/kishan/Documents/RNCustomerGlu-local/android/src/main/AndroidManifest.xml
+5-->/Users/kishan/ReactProject/RNCustomerGlu-local/android/src/main/AndroidManifest.xml
 6        android:targetSdkVersion="31" />
-6-->/Users/kishan/Documents/RNCustomerGlu-local/android/src/main/AndroidManifest.xml
+6-->/Users/kishan/ReactProject/RNCustomerGlu-local/android/src/main/AndroidManifest.xml
 7
 8</manifest>

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kishan/Documents/RNCustomerGlu-local/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/Users/kishan/ReactProject/RNCustomerGlu-local/example/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/f5ce5281dbb5fbb6ac27961a6e71f516/material-1.4.0/res/values-night-v8/values-night-v8.xml",
+                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/32a7a8cb7997ddea0060683afb87d9ba/material-1.4.0/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/4f09c914e6a10e1023bc5e01d5885228/appcompat-1.4.1/res/values-night-v8/values-night-v8.xml",
+                    "source": "/Users/kishan/.gradle/daemon/6.5/caches/transforms-2/files-2.1/e8a3da6c88446b36474c30857eac2225/appcompat-1.4.1/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
