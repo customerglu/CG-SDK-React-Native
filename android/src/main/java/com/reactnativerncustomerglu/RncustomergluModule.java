@@ -1,5 +1,7 @@
 package com.reactnativerncustomerglu;
 
+import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -140,12 +142,14 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @Override
   public void onHostResume() {
+   customerGlu.showEntryPoint(mContext.getCurrentActivity(),"HomeScreen");
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
   }
 
   @Override
   public void onHostPause() {
+
 //    mContext.unregisterReceiver(mMessageReceiver);
   }
 
@@ -368,7 +372,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void DisplayCustomerGluNotification(ReadableMap data) {
+  public void DisplayBackGroundNotification(ReadableMap data) {
 //    callNotification();
 //    callDeeplink();
     Log.d("displayCgNotification", String.valueOf(data));
@@ -385,7 +389,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void DisplayBackGroundNotification() {
+  public void DisplayCustomerGluNotification() {
     Log.d("displaybgNotification", String.valueOf("DisplayBackGroundNotification"));
   }
 
@@ -423,7 +427,14 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @ReactMethod
   public void SetCurrentClassName(String classname) {
-    Log.d("SetCurrentClassName", String.valueOf("function not in android"));
+    Log.d("SetCurrentClassName", String.valueOf(classname));
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        customerGlu.setScreenName(getReactApplicationContext(),classname);
+
+      }
+    });
   }
 
   @ReactMethod
@@ -441,6 +452,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   public void configureDomainCodeMsg() {
     Log.d("configureDomainCodeMsg", String.valueOf("method not found in android"));
   }
+
+
 
   private JSONObject convertMapToJson(ReadableMap readableMap) {
     JSONObject jsonObject = new JSONObject();

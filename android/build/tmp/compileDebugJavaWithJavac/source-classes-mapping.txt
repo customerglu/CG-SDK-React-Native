@@ -1,13 +1,3 @@
-com/reactnativerncustomerglu/Bannerwidget/RncustomergluPackage.java
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluPackage
-com/reactnativerncustomerglu/Bannerwidget/RncustomergluModule.java
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule$1
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule$2
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule$3
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule$4
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule$5
- com.reactnativerncustomerglu.Bannerwidget.RncustomergluModule$6
 com/reactnativerncustomerglu/BuildConfig.java
  com.reactnativerncustomerglu.BuildConfig
 com/reactnativerncustomerglu/RncustomergluPackage.java
@@ -22,6 +12,7 @@ com/reactnativerncustomerglu/RncustomergluModule.java
  com.reactnativerncustomerglu.RncustomergluModule$4
  com.reactnativerncustomerglu.RncustomergluModule$5
  com.reactnativerncustomerglu.RncustomergluModule$6
+ com.reactnativerncustomerglu.RncustomergluModule$7
 com/reactnativerncustomerglu/Bannerwidget/Bannerwidget/BannerWidgetViewGroupManager.java
  com.reactnativerncustomerglu.Bannerwidget.Bannerwidget.BannerWidgetViewGroupManager
 com/reactnativerncustomerglu/Bannerwidget/wrapperview/WrapperView.java
