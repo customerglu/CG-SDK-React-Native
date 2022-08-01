@@ -254,4 +254,16 @@ google-services.json
 # Android Profiling
 *.hprof
 
+# Example projects files
+example/android/build
+example/android/app/build
+example/android/.gradle/
+example/node_modules/
+example/yarn.lock
+android/build/
+example/android/.idea/modules.xml
+example/android/app/build/
+example/node_modules/
+example/yarn.lock
+
 # End of https://www.toptal.com/developers/gitignore/api/reactnative
