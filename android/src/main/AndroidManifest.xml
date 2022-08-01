@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.reactnativerncustomerglu">
+
+  <!-- only value should be changed -->
+
+
+    <application>
+
+      <receiver android:name=".RncustomergluModule" />
+    </application>
+</manifest>

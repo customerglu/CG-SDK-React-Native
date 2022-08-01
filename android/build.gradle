@@ -1,0 +1,70 @@
+buildscript {
+  if (project == rootProject) {
+    repositories {
+      google()
+      mavenCentral()
+
+      maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+      classpath 'com.android.tools.build:gradle:4.2.0'
+
+
+    }
+  }
+
+}
+
+apply plugin: 'com.android.library'
+
+def safeExtGet(prop, fallback) {
+  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
+android {
+  compileSdkVersion safeExtGet('Rncustomerglu_compileSdkVersion', 31)
+  defaultConfig {
+    minSdkVersion safeExtGet('Rncustomerglu_minSdkVersion', 26)
+    targetSdkVersion safeExtGet('Rncustomerglu_targetSdkVersion', 31)
+    versionCode 1
+    versionName "1.0"
+
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+    }
+  }
+  lintOptions {
+    disable 'GradleCompatible'
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+
+repositories {
+  mavenLocal()
+  maven {
+    // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+    url("$rootDir/../node_modules/react-native/android")
+  }
+  google()
+  mavenCentral()
+
+  maven { url "https://jitpack.io" }
+}
+
+dependencies {
+  //noinspection GradleDynamicVersion
+  implementation "com.facebook.react:react-native:+"  // From node_modules
+  implementation 'com.github.customerglu:CG-SDK-Android:v2.0.6'
+//  implementation 'com.github.customerglu:CG-SDK-Android:5f69d2c451'
+  implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+  implementation 'com.google.code.gson:gson:2.8.6'
+  implementation 'androidx.cardview:cardview:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.2.0'
+}

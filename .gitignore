@@ -255,6 +255,7 @@ google-services.json
 *.hprof
 
 # Example projects files
+example/ios/Pods/
 example/android/build
 example/android/app/build
 example/android/.gradle/
@@ -266,4 +267,5 @@ example/android/app/build/
 example/node_modules/
 example/yarn.lock
 
+*.lock
 # End of https://www.toptal.com/developers/gitignore/api/reactnative
