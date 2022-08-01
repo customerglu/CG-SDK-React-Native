@@ -4,10 +4,10 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '13.0'
 install! 'cocoapods', :deterministic_uuids => false
 use_frameworks! :linkage => :static
-
+pod 'Firebase/Messaging'
 
   # use_frameworks!
-  # $RNFirebaseAsStaticFramework = true
+  $RNFirebaseAsStaticFramework = true
 
 target 'RncustomergluExample' do
   config = use_native_modules!
@@ -26,8 +26,9 @@ target 'RncustomergluExample' do
 
   pod 'react-native-rncustomerglu', :path => '../..'
    
-
-  
+ pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+  pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
+  pod 'RNFBMessaging', :path => '../node_modules/@react-native-firebase/messaging'
   # pod "react-native-broadcast-manager", :path => '../../node_modules/@applicaster/react-native-broadcast-manager'
   # Enables Flipper.
   #

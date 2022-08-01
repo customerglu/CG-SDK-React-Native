@@ -13,7 +13,7 @@ buildscript {
 
     }
   }
-  ext.kotlin_version = '1.5.10'
+
 }
 
 apply plugin: 'com.android.library'
@@ -61,8 +61,10 @@ repositories {
 dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"  // From node_modules
-//  implementation 'com.github.customerglu:CG-SDK-Android:5c3d00ea49'
-  implementation 'com.github.customerglu:CG-SDK-Android:v2.0.5'
+  implementation 'com.github.customerglu:CG-SDK-Android:v2.0.6'
+//  implementation 'com.github.customerglu:CG-SDK-Android:5f69d2c451'
   implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
   implementation 'com.google.code.gson:gson:2.8.6'
+  implementation 'androidx.cardview:cardview:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.2.0'
 }

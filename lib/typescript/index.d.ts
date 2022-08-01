@@ -1,9 +1,4 @@
 import { NativeEventEmitter } from 'react-native';
-declare type CgnativeuiProps = {
-    bannerId: string;
-};
-export declare const BannerWidget: import("react-native").HostComponent<CgnativeuiProps> | (() => never);
-export declare function registerEx(): Promise<number>;
 export declare function RegisterDevice(userdata: Object): Promise<number>;
 export declare function dataClearEx(): Promise<number>;
 export declare function sendDataEX(obj: Object): Promise<number>;
@@ -23,13 +18,13 @@ export declare function SetDefaultBannerImageEx(url: String): Promise<number>;
 export declare function UpdateProfileEx(): Promise<number>;
 export declare function UpdateProfileExAndroid(userdata: Object): Promise<number>;
 export declare function DisplayCustomerGluNotificationEx(): Promise<number>;
-export declare function CGApplicationEx(): Promise<number>;
-export declare function DisplayBackGroundNotificationEx(): Promise<number>;
+export declare function CGApplicationEx(obj: Object): Promise<number>;
+export declare function DisplayBackGroundNotificationEx(obj: Object): Promise<number>;
 export declare function GetRefferalIdEx(url: String): Promise<number>;
 export declare function LoadAllCampaginsEx(): Promise<number>;
 export declare function LoadCampaginsByFilterEx(obj: Object): Promise<number>;
-export declare function SetCurrentClassNameEx(clName: String): Promise<number>;
+export declare function SetCurrentClassNameEx(clname: String): Promise<number>;
 export declare function OpenWalletWithUrlEx(url: String): Promise<number>;
 export declare function configureWhiteListedDomainsEx(): Promise<number>;
 export declare function configureDomainCodeMsgEx(): Promise<number>;
-export {};
+export declare function setApnFcmTokenEx(a: string, b: String): Promise<number>;

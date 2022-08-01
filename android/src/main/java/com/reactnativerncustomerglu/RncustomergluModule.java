@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.customerglu.sdk.Banners.Banner;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactContext;
@@ -47,17 +48,19 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 
 @ReactModule(name = RncustomergluModule.NAME)
-public class RncustomergluModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
+public class RncustomergluModule extends ReactContextBaseJavaModule implements LifecycleEventListener
+{
   public static final String TAG = RncustomergluModule.class.getName();
-
+  public static String Myclassname = "";
   public static final String NAME = "Rncustomerglu";
-  public CustomerGlu customerGlu;
   private static ReactApplicationContext mContext;
 
 
@@ -65,13 +68,16 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     super(reactContext);
     mContext = reactContext;
     reactContext.addLifecycleEventListener(this);
-    customerGlu = CustomerGlu.getInstance();
+    CustomerGlu.initializeSdk(getReactApplicationContext());
+
+
   }
 
 
   private final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
     @Override
     public void onReceive(Context context, Intent intent) {
+      Log.d(TAG,"on Received....");
       try {
         if (intent.getAction().equalsIgnoreCase("CUSTOMERGLU_ANALYTICS_EVENT")) {
           /* If you want to listen CUSTOMERGLU_ANALYTICS_EVENT */
@@ -80,7 +86,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
             JSONObject jsonObject = new JSONObject(data);
             WritableMap map = jsonToWritableMap(jsonObject);
             sendEventToJs("CUSTOMERGLU_ANALYTICS_EVENT", map);
-            Toast.makeText(context, "CUSTOMERGLU_ANALYTICS_EVENT " + jsonObject.toString(), Toast.LENGTH_SHORT).show();
           }
         }
 
@@ -90,12 +95,26 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
           if (intent.getStringExtra("data") != null) {
             String data = intent.getStringExtra("data");
             JSONObject jsonObject = new JSONObject(data);
-//          String message = jsonObject.getString("deepLink");
             WritableMap map = jsonToWritableMap(jsonObject);
             sendEventToJs("CUSTOMERGLU_DEEPLINK_EVENT", map);
-            Toast.makeText(context, "CUSTOMERGLU_DEEPLINK_EVENT " + jsonObject.toString(), Toast.LENGTH_LONG).show();
           }
         }
+
+
+
+
+        if (intent.getAction().equalsIgnoreCase("CUSTOMERGLU_BANNER_LOADED")) {
+          /* If you want to listen CUSTOMERGLU_BANNER_LOADED */
+          if (intent.getStringExtra("data") != null) {
+            String data = intent.getStringExtra("data");
+            JSONObject jsonObject = new JSONObject(data);
+            WritableMap map = jsonToWritableMap(jsonObject);
+            sendEventToJs("CUSTOMERGLU_BANNER_LOADED", map);
+          }
+        }
+
+
+
       } catch (Exception e) {
         System.out.println(e);
       }
@@ -104,31 +123,18 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   };
 
   private void registerBroadcastReceiver() {
-    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
-  }
+    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
+    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
 
-  //doubt
-  private void callNotification() {
-    Intent intent = new Intent();
-    intent.setAction("CUSTOMERGLU_ANALYTICS_EVENT");
-    mContext.sendBroadcast(intent);
-  }
-
-  private void callDeeplink() {
-    Intent intent = new Intent();
-    intent.setAction("CUSTOMERGLU_DEEPLINK_EVENT");
-    mContext.sendBroadcast(intent);
   }
 
 
-  private void sendEventToJs(String eventName, WritableMap eventId) {
+  private void sendEventToJs(String eventName, WritableMap map) {
     try {
-      ReactContext reactContext = RncustomergluModule.mContext;
-      reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-        .emit(eventName, eventId);
+      getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+        .emit(eventName, map);
     } catch (Exception e) {
-      Log.d("ReactNativeJS", "Exception in sendEvent in EventReminderBroadcastReceiver is:" + e.toString());
     }
 
   }
@@ -142,62 +148,42 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @Override
   public void onHostResume() {
-   customerGlu.showEntryPoint(mContext.getCurrentActivity(),"HomeScreen");
-    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
+    Log.e(TAG,"On Host Resume....");
+    CustomerGlu.getInstance().showEntryPoint(getReactApplicationContext().getCurrentActivity());
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
+    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
+    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
+
   }
 
   @Override
   public void onHostPause() {
-
 //    mContext.unregisterReceiver(mMessageReceiver);
   }
 
   @Override
   public void onHostDestroy() {
-    mContext.unregisterReceiver(mMessageReceiver);
+//    mContext.unregisterReceiver(mMessageReceiver);
+
   }
 
   // Example method
   // See https://reactnative.dev/docs/native-modules-android
 
-  @ReactMethod
-  public void registerDevice(Promise promise) {
-    Map<String, Object> userData = new HashMap<>();
-    String user_id = "pooja_test_1";
-    userData.put("user_id", user_id);
-    customerGlu.registerDevice(getReactApplicationContext(), userData, true, new DataListner() {
-      //this method registers the user
-      @Override
-      public void onSuccess(RegisterModal registerModal) {
-        Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
-        RegisterModal remodal = registerModal;
-        Log.d("registerModal", String.valueOf(remodal.getData().getUser()));
 
-      }
-
-      @Override
-      public void onFail(String message) {
-        Toast.makeText(getReactApplicationContext(), "" + message, Toast.LENGTH_SHORT).show();
-        Log.d("registerModal123", String.valueOf("fail"));
-      }
-    });
-
-  }
 
   @ReactMethod
-  public void registerDeviceAndroid(ReadableMap map, Promise promise) {
+  public void registerDevice(ReadableMap map, Promise promise) {
     JSONObject jsonObject = convertMapToJson(map);
     HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
     Log.d(TAG, "userdata----> " + userData.toString());
 
-    customerGlu.registerDevice(getReactApplicationContext(), userData, true, new DataListner() {
+    CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, true, new DataListner() {
       //this method registers the user
       @Override
       public void onSuccess(RegisterModal registerModal) {
         Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
         RegisterModal remodal = registerModal;
-        Log.d("registerModal", String.valueOf(remodal.getData()));
         promise.resolve("Register Successfully");
 
       }
@@ -205,7 +191,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
       @Override
       public void onFail(String message) {
         Toast.makeText(getReactApplicationContext(), "" + message, Toast.LENGTH_SHORT).show();
-        Log.d("registerModal123", message);
         promise.reject(message);
 
       }
@@ -215,152 +200,92 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @ReactMethod
   public void dataClear() {
-    customerGlu.clearGluData(getReactApplicationContext());
+    CustomerGlu.getInstance().clearGluData(getCurrentActivity());
   }
 
   @ReactMethod
 
 
-//  public void sendData(ReadableMap readableMap) {
-//    try {
-//      JSONObject obj = convertMapToJson(readableMap);
-//      HashMap<String, Object> eventProperties = new HashMap<>();
-//      eventProperties.put("eventName", obj.get("eventName"));
-//      eventProperties.put("eventProperties", obj.get("eventProperties"));
-//      String evnt = (String) obj.get("eventName");
-//
-//      customerGlu.sendEvent(getReactApplicationContext(), "completePurchase1", eventProperties);
-//
-//    } catch (JSONException e) {
-//      e.printStackTrace();
-//    }
-//  }
 
   public void sendData(ReadableMap readableMap) {
     try {
       JSONObject obj= convertMapToJson(readableMap);
-      Log.d("Hello",String.valueOf("eventProperties"));
       HashMap<String,Object> eventProperties = new HashMap<>();
       eventProperties.put("eventName",obj.get("eventName"));
       eventProperties.put("eventProperties",obj.get("eventProperties"));
       String evnt = (String) obj.get("eventName");
-//      Array prop = (Array) obj.get("eventProperties");
-      Log.d("event",String.valueOf(eventProperties));
-      Log.d("event",String.valueOf(obj.get("eventProperties")));
-      Log.e("event name----",String.valueOf(obj.get("eventName")));
-//      Log.d("event",String.valueOf(prop));
-      Log.d("event",String.valueOf(evnt));
-      customerGlu.sendEvent(getReactApplicationContext(),evnt,eventProperties);
-
+      CustomerGlu.getInstance().sendEvent(getReactApplicationContext(),evnt,eventProperties);
 
     } catch (JSONException e) {
       e.printStackTrace();
     }
 
-//    HashMap<String,Object> eventProperties = new HashMap<>();
-//    eventProperties.put("orderValue",1000);
-//    customerGlu.sendEvent(getReactApplicationContext(),"Order_Placed",eventProperties);
-//    Log.d("sendEvent", String.valueOf("sendEvent"));
   }
 
 
   @ReactMethod
   public void openWallet() {
-    customerGlu.openWallet(getReactApplicationContext());
-    Log.d("Open Wallet", String.valueOf("Open Wallet called"));
+    CustomerGlu.getInstance().openWallet(getReactApplicationContext());
   }
 
   @ReactMethod
   public void loadCampaignIdBy(String id) {
-    customerGlu.loadCampaignById(getReactApplicationContext(), id);
-    Log.d("id", String.valueOf(id));
+    CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id);
   }
 
   @ReactMethod
   public void enableAnalytic(Boolean bool) {
-    customerGlu.enableAnalyticsEvent(bool);
-    Log.d("enableAnalytic", String.valueOf(bool));
-    registerBroadcastReceiver();
+    CustomerGlu.getInstance().enableAnalyticsEvent(bool);
+
   }
 
 
   @ReactMethod
   public void disableGluSdk(Boolean bool) {
-//    customerGlu.disableGluSdk(bool);
-    Log.d("disableGluSdk", String.valueOf(bool));
-
-//    customerGlu.displayCustomerGluNotification(this,json,R.drawable.icon,0.5,true);
-
+    CustomerGlu.getInstance().disableGluSdk(bool);
 
   }
 
   @ReactMethod
   public void configureLoaderColour(String color) {
-    customerGlu.configureLoaderColour(getReactApplicationContext(), color);
-    Log.d("configureLoaderColour", String.valueOf(color));
+    CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), color);
   }
 
   @ReactMethod
   public void enablePrecaching() {
-    customerGlu.enablePrecaching(getReactApplicationContext());
-    Log.d("enablePrecaching", String.valueOf("enablePrecaching"));
+    CustomerGlu.getInstance().enablePrecaching(getReactApplicationContext());
   }
 
   @ReactMethod
   public void gluSDKDebuggingMode(Boolean bol) {
-    customerGlu.gluSDKDebuggingMode(getReactApplicationContext(), bol);
-    Log.d("gluSDKDebuggingMode", String.valueOf(bol));
+    CustomerGlu.getInstance().gluSDKDebuggingMode(getCurrentActivity(), bol);
   }
 
   @ReactMethod
   public void enableEntryPoints(Boolean bol) {
-    customerGlu.enableEntryPoints(getReactApplicationContext(), bol);
-    Log.d("enableEntryPoints", String.valueOf(bol));
+    CustomerGlu.getInstance().enableEntryPoints(getCurrentActivity(), bol);
   }
 
   @ReactMethod
   public void closeWebView(Boolean bol) {
-    customerGlu.closeWebviewOnDeeplinkEvent(bol);
-    //sendbroadcast
-    Log.d("closeWEbView", String.valueOf(bol));
-
+    CustomerGlu.getInstance().closeWebviewOnDeeplinkEvent(bol);
   }
 
   @ReactMethod
   public void SetDefaultBannerImage(String url) {
-    customerGlu.setDefaultBannerImage(getReactApplicationContext(), url);
-    Log.d("closeWEbView", String.valueOf(url));
-  }
-
-  @ReactMethod
-  public void UpdateProfile() {
-    Map<String, Object> userData = new HashMap<>();
-    String user_id = "pooja_test_1";
-    userData.put("userId", user_id);
-    customerGlu.updateProfile(getReactApplicationContext(), userData, new DataListner() {
-      @Override
-      public void onSuccess(RegisterModal registerModal) {
-
-      }
-
-      @Override
-      public void onFail(String message) {
-
-      }
-    });
-    Log.d("updateProfile", String.valueOf(userData));
+    CustomerGlu.getInstance().setDefaultBannerImage(getCurrentActivity(), url);
   }
 
 
+
   @ReactMethod
-  public void UpdateProfileAndroid(ReadableMap map, Promise promise) {
+  public void UpdateProfile(ReadableMap map, Promise promise) {
     JSONObject jsonObject = convertMapToJson(map);
     HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-
-    customerGlu.updateProfile(getReactApplicationContext(), userData, new DataListner() {
+    CustomerGlu.getInstance().updateProfile(getReactApplicationContext(), userData, new DataListner() {
       @Override
       public void onSuccess(RegisterModal registerModal) {
-        Log.d("Success", "Profile Update Successfully..");
+        Toast.makeText(getReactApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
       }
 
       @Override
@@ -368,42 +293,34 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
       }
     });
-    Log.d("updateProfile", String.valueOf(userData));
   }
 
   @ReactMethod
   public void DisplayBackGroundNotification(ReadableMap data) {
-//    callNotification();
-//    callDeeplink();
-    Log.d("displayCgNotification", String.valueOf(data));
     JSONObject jsonObject=convertMapToJson(data);
-    Log.d("displayCgNotification....", String.valueOf(jsonObject));
-    customerGlu.displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5,true);
+    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5,true);
 
   }
 
   @ReactMethod
   public void CGApplication() {
-//    helloMyEvent("myAndroidEvent",String.valueOf("gdfhjggj"));
-    Log.d("CGApplication", String.valueOf("CGApplication method not found in android"));
   }
 
   @ReactMethod
   public void DisplayCustomerGluNotification() {
-    Log.d("displaybgNotification", String.valueOf("DisplayBackGroundNotification"));
+    registerBroadcastReceiver();
+
+
   }
 
   @ReactMethod
   public void GetRefferalId(String url) throws MalformedURLException {
     Uri myURL = Uri.parse(url);
-    String referID = customerGlu.getReferralId(myURL);
-    Log.d("getReferralId", String.valueOf(referID));
+    String referID = CustomerGlu.getInstance().getReferralId(myURL);
   }
 
   @ReactMethod
   public void LoadAllCampagins() {
-    customerGlu.loadAllCampaigns(getReactApplicationContext());
-    Log.d("loadAllCampaigns", String.valueOf("loadAllCampaigns"));
   }
 
   @ReactMethod
@@ -414,45 +331,57 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
       campaignData.put("campaignId", obj.get("campaignId"));
       campaignData.put("status", obj.get("status"));
       campaignData.put("type", obj.get("type"));
-      customerGlu.loadCampaignsByFilter(getReactApplicationContext(), campaignData);
+      CustomerGlu.getInstance().loadCampaignsByFilter(getReactApplicationContext(), campaignData);
     } catch (JSONException e) {
       e.printStackTrace();
     }
-//    Map<String,Object> userData = new HashMap<>();
-//    String user_id="testUser_1";
-//    userData.put("userId",user_id);
-//    customerGlu.loadCampaignsByFilter(getReactApplicationContext(),userData);
-//    Log.d("loadCampaignsByFilter", String.valueOf(userData));
   }
 
   @ReactMethod
   public void SetCurrentClassName(String classname) {
-    Log.d("SetCurrentClassName", String.valueOf(classname));
+    this.Myclassname = classname;
     runOnUiThread(new Runnable() {
       @Override
       public void run() {
-        customerGlu.setScreenName(getReactApplicationContext(),classname);
+        CustomerGlu.getInstance().setScreenName(getReactApplicationContext(),classname);
 
       }
     });
   }
 
   @ReactMethod
-  public void OpenWalletWithUrl() {
-    Log.d("OpenWalletWithUrl", String.valueOf("method not found in android"));
+  public void OpenWalletWithUrl(String url) {
   }
 
   @ReactMethod
-  public void configureWhiteListedDomains() {
-    Log.d("connfigureWhiteListed", String.valueOf("method not found in android"));
+  public void configureWhiteListedDomains(ReadableArray readableArray) {
+    try {
+      JSONArray obj = convertArrayToJson(readableArray);
+      ArrayList<String> listdata = new ArrayList<String>();
+      for (int i=0;i<obj.length();i++){
+        listdata.add((String) obj.get(i));
+
+      }
+      CustomerGlu.getInstance().configureWhiteListedDomains(listdata);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+
   }
 
 
   @ReactMethod
-  public void configureDomainCodeMsg() {
-    Log.d("configureDomainCodeMsg", String.valueOf("method not found in android"));
-  }
+  public void configureDomainCodeMsg(ReadableMap readableMap) {
+    try {
+      JSONObject obj = convertMapToJson(readableMap);
+      int code = (int) obj.get("code");
+      String msg = (String) obj.get("msg");
+      CustomerGlu.getInstance().configureDomainCodeMsg(code,msg);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
 
+  }
 
 
   private JSONObject convertMapToJson(ReadableMap readableMap) {
@@ -593,5 +522,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
     return writableArray;
   }
+
+
 //  public static native int nativeMultiply(int a, int b);
 }

@@ -8,17 +8,16 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
-import { SetCurrentClassNameEx } from 'react-native-rncustomerglu';
+import { SetCurrentClassName, gluSDKDebuggingMode } from 'react-native-rncustomerglu';
 import { useIsFocused, useFocusEffect, useRoute } from "@react-navigation/native";
 
 export default function Profile({ navigation }) {
-    // const [user, setUser] = React.useState("Hello.js");
 
     const route = useRoute();
     useFocusEffect(
         React.useCallback(() => {
             console.log("route name", route.name);
-            // SetCurrentClassNameEx(className);
+            SetCurrentClassName("HomeScreen");
         }, [navigation])
     );
 

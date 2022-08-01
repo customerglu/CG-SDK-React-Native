@@ -145,7 +145,6 @@
     ]
   },
   "dependencies": {
-    "@applicaster/react-native-broadcast-manager": "^0.2.5",
-    "react-native-push-notification": "^8.1.1"
+    "@applicaster/react-native-broadcast-manager": "^0.2.5"
   }
 }
