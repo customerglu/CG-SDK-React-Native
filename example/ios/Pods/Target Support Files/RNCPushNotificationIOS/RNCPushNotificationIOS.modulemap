@@ -1,6 +1,0 @@
-framework module RNCPushNotificationIOS {
-  umbrella header "RNCPushNotificationIOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

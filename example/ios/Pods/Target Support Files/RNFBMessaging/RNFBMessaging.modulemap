@@ -1,6 +1,0 @@
-framework module RNFBMessaging {
-  umbrella header "RNFBMessaging-umbrella.h"
-
-  export *
-  module * { export * }
-}
