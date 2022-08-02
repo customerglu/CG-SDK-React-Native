@@ -56,7 +56,6 @@ const HomeScreen = ({ navigation }) => {
 
 
     useEffect(() => {
-        // const eventfheight = null;
         //enableEntryPointsEx(true);
         enableAnalytic(true);
         closeWebView(true)
@@ -76,15 +75,15 @@ const HomeScreen = ({ navigation }) => {
             'CUSTOMERGLU_BANNER_LOADED',
             (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...', reminder)
         );
-        if (Platform.OS === "ios") {
+        if (Platform.OS === 'ios') {
             const eventfheight = RncustomergluManagerEmitter.addListener(
                 'CGBANNER_FINAL_HEIGHT',
-                (reminder) => {
+                (reminder) =>
                     console.log('CGBANNER_FINAL_HEIGHT....', reminder["entry1"])
-                    if (reminder["entry1"]) {
-                        // setFinalHeight(reminder["entry1"] * windowHeight / 100);
-                    }
-                }
+                // if (reminder["entry1"]) {
+                //     // setFinalHeight(reminder["entry1"] * windowHeight / 100);
+                // }
+
             );
         }
 
@@ -92,7 +91,10 @@ const HomeScreen = ({ navigation }) => {
             eventanalytics.remove();
             eventdeeplink.remove();
             eventbanner.remove();
-            eventfheight.remove();
+            if (Platform.OS === 'ios') {
+                eventfheight.remove();
+
+            }
 
         }
 
