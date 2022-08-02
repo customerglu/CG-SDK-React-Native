@@ -1,7 +1,7 @@
 {
   "name": "react-native-rncustomerglu",
-  "version": "0.1.0",
-  "description": "yes t is",
+  "version": "0.0.1",
+  "description": "CustomerGlu React Native plugin",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/nehagupta1995/Awesome",
-  "author": "Neha Gupta <neha.gupta@emorphis.in> (https://github.com/nehagupta1995/Awesome)",
+  "repository": "https://github.com/customerglu/CG-SDK-React-Native",
+  "author": "CustomerGlu <code@customerglu.net> (https://github.com/customerglu/CG-SDK-React-Native)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nehagupta1995/Awesome/issues"
+    "url": "https://github.com/customerglu/CG-SDK-React-Native/issues"
   },
-  "homepage": "https://github.com/nehagupta1995/Awesome#readme",
+  "homepage": "https://github.com/customerglu/CG-SDK-React-Native/blob/main/README.md",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
