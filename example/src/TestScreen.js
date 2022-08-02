@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
-import { SetCurrentClassName } from 'react-native-rncustomerglu';
+import { SetCurrentClassName, GetRefferalId } from 'react-native-rncustomerglu';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 
 export default function CartScreen({ navigation }) {
@@ -22,6 +22,23 @@ export default function CartScreen({ navigation }) {
         }, [navigation])
     );
 
+    const referIdFunc = async () => {
+        try {
+            const eventId = await GetRefferalId(
+                'https://www.google.com?klkkl=ghjh&userId=123&cftcf=4594',
+            );
+            console.log(`Created a new event with id ${eventId}`);
+        } catch (e) {
+            console.error(e);
+        }
+
+
+
+
+        // GetRefferalId('https://reactnative.dev/docs/native-modules-android', (referID) => { console.log("referID1234", referID) })
+    }
+
+
     return (
         <View style={styles.mainContatiner}>
 
@@ -30,8 +47,8 @@ export default function CartScreen({ navigation }) {
                 source={require('../assets/quiz.png')}
                 style={styles.imageStyle}
             />
-            <TouchableOpacity style={styles.touchbtn}>
-                <Text style={styles.addTxt}>Add to cart</Text>
+            <TouchableOpacity style={styles.touchbtn} onPress={() => referIdFunc()}>
+                <Text style={styles.addTxt}>Refer Here</Text>
             </TouchableOpacity>
         </View>
     )

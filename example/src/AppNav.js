@@ -41,16 +41,18 @@ PushNotification.configure({
             });
             console.log("Notification data123", notification.data);
             if (notification.data.glu_message_type) {
+                //ios notification open from forgroud
                 console.log('notification.124567', notification.foreground)
-                DisplayBackGroundNotification(notification.data)
+                DisplayBackGroundNotification(notification.data, true)
 
             } else {
                 console.log('notification.10230', notification.foreground)
-                DisplayBackGroundNotification(notification.data.data)
+                DisplayBackGroundNotification(notification.data.data, true)
             }
         } else {
+            //ios  notification open from Background 
             console.log("Notification data456", notification.data.data);
-            DisplayBackGroundNotification(notification.data)
+            DisplayBackGroundNotification(notification.data, true)
 
         }
         // process the notification
@@ -72,9 +74,9 @@ PushNotification.configure({
         badge: true,
         sound: true,
     },
-  
+
     popInitialNotification: true,
-  
+
     requestPermissions: true,
 });
 

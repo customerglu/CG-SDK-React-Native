@@ -57,11 +57,11 @@ export function dataClear(): Promise<number> {
 export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
-export function openWallet(): Promise<number> {
-  return Rncustomerglu.openWallet();
+export function openWallet(autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.openWallet(autoclosewebview);
 }
-export function loadCampaignIdBy(id: String): Promise<number> {
-  return Rncustomerglu.loadCampaignIdBy(id);
+export function loadCampaignIdBy(id: String, autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.loadCampaignIdBy(id, autoclosewebview);
 }
 export function enableAnalytic(b: Boolean): Promise<number> {
   return Rncustomerglu.enableAnalytic(b);
@@ -112,8 +112,8 @@ export function DisplayCustomerGluNotification(): Promise<number> {
 export function CGApplication(): Promise<number> {
   return Rncustomerglu.CGApplication();
 }
-export function DisplayBackGroundNotification(obj: Object): Promise<number> {
-  return Rncustomerglu.DisplayBackGroundNotification(obj);
+export function DisplayBackGroundNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.DisplayBackGroundNotification(obj, autoclosewebview);
 }
 export function GetRefferalId(url: String): Promise<number> {
   return Rncustomerglu.GetRefferalId(url);

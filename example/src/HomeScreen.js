@@ -25,8 +25,9 @@ import {
     gluSDKDebuggingModeEx,
     enableEntryPointsEx,
     configureLoaderColourEx,
-    closeWebViewEx,
-    enableAnalytic
+    closeWebView,
+    enableAnalytic,
+    loadCampaignIdBy
 } from 'react-native-rncustomerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -55,42 +56,43 @@ const HomeScreen = ({ navigation }) => {
 
 
     useEffect(() => {
+        // const eventfheight = null;
         //enableEntryPointsEx(true);
         enableAnalytic(true);
-        // closeWebViewEx(true)
+        closeWebView(true)
 
-        // const { Rncustomerglu } = NativeModules;
-        // const RncustomergluManagerEmitter = new NativeEventEmitter(Rncustomerglu);
+        const { Rncustomerglu } = NativeModules;
+        const RncustomergluManagerEmitter = new NativeEventEmitter(Rncustomerglu);
 
-        // const eventanalytics = RncustomergluManagerEmitter.addListener(
-        //     'CUSTOMERGLU_ANALYTICS_EVENT',
-        //     (reminder) => console.log('CUSTOMERGLU_ANALYTICS_EVENT...', reminder)
-        // );
-        // const eventdeeplink = RncustomergluManagerEmitter.addListener(
-        //     'CUSTOMERGLU_DEEPLINK_EVENT',
-        //     (reminder) => console.log('CUSTOMERGLU_DEEPLINK_EVENT...', reminder)
-        // );
-        // const eventbanner = RncustomergluManagerEmitter.addListener(
-        //     'CUSTOMERGLU_BANNER_LOADED',
-        //     (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...', reminder)
-        // );
-        // if (Platform.OS === "ios") {
-        //     const eventfheight = RncustomergluManagerEmitter.addListener(
-        //         'CGBANNER_FINAL_HEIGHT',
-        //         (reminder) => {
-        //             console.log('CGBANNER_FINAL_HEIGHT....', reminder["entry1"])
-        //             if (reminder["entry1"]) {
-        //                 // setFinalHeight(reminder["entry1"] * windowHeight / 100);
-        //             }
-        //         }
-        //     );
-        // }
+        const eventanalytics = RncustomergluManagerEmitter.addListener(
+            'CUSTOMERGLU_ANALYTICS_EVENT',
+            (reminder) => console.log('CUSTOMERGLU_ANALYTICS_EVENT...', reminder)
+        );
+        const eventdeeplink = RncustomergluManagerEmitter.addListener(
+            'CUSTOMERGLU_DEEPLINK_EVENT',
+            (reminder) => console.log('CUSTOMERGLU_DEEPLINK_EVENT...', reminder)
+        );
+        const eventbanner = RncustomergluManagerEmitter.addListener(
+            'CUSTOMERGLU_BANNER_LOADED',
+            (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...', reminder)
+        );
+        if (Platform.OS === "ios") {
+            const eventfheight = RncustomergluManagerEmitter.addListener(
+                'CGBANNER_FINAL_HEIGHT',
+                (reminder) => {
+                    console.log('CGBANNER_FINAL_HEIGHT....', reminder["entry1"])
+                    if (reminder["entry1"]) {
+                        // setFinalHeight(reminder["entry1"] * windowHeight / 100);
+                    }
+                }
+            );
+        }
 
         return () => {
-            // eventanalytics.remove();
-            // eventdeeplink.remove();
-            // eventbanner.remove();
-            // eventfheight.remove();
+            eventanalytics.remove();
+            eventdeeplink.remove();
+            eventbanner.remove();
+            eventfheight.remove();
 
         }
 
@@ -143,7 +145,9 @@ const HomeScreen = ({ navigation }) => {
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
-                    <TouchableOpacity style={styles.containerBox} onPress={() => openWallet()}>
+                    <TouchableOpacity style={styles.containerBox}
+                        onPress={() => openWallet()}>
+                        {/* // onPress={() => loadCampaignIdBy("1", false)}> */}
                         <Image
                             source={require('../assets/purse.png')}
                             style={styles.imageStyle} />

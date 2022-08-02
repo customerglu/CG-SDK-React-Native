@@ -184,14 +184,15 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
       public void onSuccess(RegisterModal registerModal) {
         Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
         RegisterModal remodal = registerModal;
-        promise.resolve("Register Successfully");
+        promise.resolve(true);
+
 
       }
 
       @Override
       public void onFail(String message) {
         Toast.makeText(getReactApplicationContext(), "" + message, Toast.LENGTH_SHORT).show();
-        promise.reject(message);
+        promise.resolve(false);
 
       }
     });
@@ -222,15 +223,14 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   }
 
-
   @ReactMethod
-  public void openWallet() {
-    CustomerGlu.getInstance().openWallet(getReactApplicationContext());
+  public void openWallet(Boolean autoclosewebview) {
+    CustomerGlu.getInstance().openWallet(getReactApplicationContext(),autoclosewebview);
   }
 
   @ReactMethod
-  public void loadCampaignIdBy(String id) {
-    CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id);
+  public void loadCampaignIdBy(String id, Boolean autoclosewebview) {
+    CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, autoclosewebview);
   }
 
   @ReactMethod
@@ -296,9 +296,9 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void DisplayBackGroundNotification(ReadableMap data) {
+  public void DisplayBackGroundNotification(ReadableMap data,Boolean autoclosewebview) {
     JSONObject jsonObject=convertMapToJson(data);
-    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5,true);
+    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5, autoclosewebview);
 
   }
 
@@ -309,18 +309,18 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void DisplayCustomerGluNotification() {
     registerBroadcastReceiver();
-
-
   }
 
   @ReactMethod
-  public void GetRefferalId(String url) throws MalformedURLException {
+  public void GetRefferalId(String url, Promise promise) throws MalformedURLException {
     Uri myURL = Uri.parse(url);
     String referID = CustomerGlu.getInstance().getReferralId(myURL);
+    promise.resolve(referID);
   }
 
   @ReactMethod
   public void LoadAllCampagins() {
+    CustomerGlu.getInstance().loadAllCampaigns(getReactApplicationContext());
   }
 
   @ReactMethod

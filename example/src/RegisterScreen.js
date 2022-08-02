@@ -131,7 +131,7 @@ const RegisterScreen = ({ navigation }) => {
                 enableAnalytic(true)
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
-                if (ok == "Register Successfully") {
+                if (ok == true) {
                     setUserId('');
                     await AsyncStorage.setItem("isRegisterScuccess", JSON.stringify(true));
                     navigation.navigate('HomeScreen');
@@ -141,6 +141,8 @@ const RegisterScreen = ({ navigation }) => {
 
                     // }, 100);
                     // navigation.navigate('HomeScreen');
+                } else {
+                    console.log("false string", ok)
                 }
             }
             catch (e) {
