@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
-import { SetCurrentClassName, gluSDKDebuggingMode } from 'react-native-rncustomerglu';
+import { SetCurrentClassName, gluSDKDebuggingMode } from '@customerglu/react-native-rncustomerglu';
 import { useIsFocused, useFocusEffect, useRoute } from "@react-navigation/native";
 
 export default function Profile({ navigation }) {

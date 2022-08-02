@@ -16,7 +16,7 @@ import {
     NativeModules,
     LogBox
 } from 'react-native';
-import { SetCurrentClassName } from 'react-native-rncustomerglu';
+import { SetCurrentClassName } from '@customerglu/react-native-rncustomerglu';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import {
     BannerWidget,
@@ -27,7 +27,7 @@ import {
     configureLoaderColour,
     closeWebView,
     enableAnalytic
-} from 'react-native-rncustomerglu';
+} from '@customerglu/react-native-rncustomerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform, Animated } from 'react-native';
 LogBox.ignoreLogs(['new NativeEventemitter()']);
