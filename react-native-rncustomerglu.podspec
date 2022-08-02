@@ -12,7 +12,7 @@ DESC
   s.homepage     = package["homepage"]
   s.license      = package["license"]
   s.authors      = package["author"]
-  s.source       = { :git => "https://github.com/nehagupta1995/Awesome.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/customerglu/CG-SDK-React-Native.git", :tag => "#{s.version}" }
   s.source_files = "ios/**/*"
   s.dependency "React-Core"
   s.dependency "CustomerGlu", "2.0.5"
