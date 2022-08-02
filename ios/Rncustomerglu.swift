@@ -51,9 +51,9 @@ class Rncustomerglu: RCTEventEmitter{
     @objc func registerDevice(_ userdata:NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         customerGlu.registerDevice(userdata: userdata as! [String : AnyHashable],loadcampaigns: true) { success in
                                 if success {
-                                    resolve("Register Successfully")
+                                    resolve(true)
                                 } else {
-                                    
+                                    resolve(false)
                                 }
                             }
     }
@@ -71,14 +71,14 @@ class Rncustomerglu: RCTEventEmitter{
         customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
     }
 
-    @objc(openWallet)
-    func openWallet() -> Void {
-        customerGlu.openWallet()
+    @objc
+    func openWallet(_ bool:Bool) -> Void {
+        customerGlu.openWallet(auto_close_webview: bool)
     }
     
     @objc
-    func loadCampaignIdBy(_ id:String) -> Void {
-        customerGlu.loadCampaignById(campaign_id: id)
+    func loadCampaignIdBy(_ id:String, auto_close_webview bool:Bool) -> Void {
+        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
     }
     
     @objc
@@ -185,17 +185,18 @@ class Rncustomerglu: RCTEventEmitter{
        
             
 
-    @objc func DisplayBackGroundNotification(_ obj:NSDictionary) -> Void {
+    @objc func DisplayBackGroundNotification(_ obj:NSDictionary, auto_close_webview bool:Bool) -> Void {
         DispatchQueue.main.async {
-            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable] );
+            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview: bool );
         }
         }
-    
     
 
+
     @objc
-    func GetRefferalId(_ url:URL) -> Void {
+    func GetRefferalId(_ url:URL, resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
        let refferId =  customerGlu.getReferralId(deepLink: url)
+        resolve(refferId)
     }
     
     @objc

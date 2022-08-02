@@ -6,7 +6,7 @@ import {
     StyleSheet,
     TouchableOpacity,
 } from 'react-native';
-import { SetCurrentClassName, sendData } from 'react-native-rncustomerglu';
+import { SetCurrentClassName, sendData } from '@customerglu/react-native-rncustomerglu';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 
 export default function CartScreen({ navigation }) {

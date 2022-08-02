@@ -1,6 +1,6 @@
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { setApnFcmToken} from 'react-native-rncustomerglu'
+import { setApnFcmToken } from '@customerglu/react-native-rncustomerglu'
 import PushNotification from 'react-native-push-notification';
 import { Platform } from 'react-native';
 export async function requestUserPermission() {
@@ -43,7 +43,7 @@ export const notificationListner = async () => {
 
     messaging().onMessage(async remoteMessage => {
         console.log('A new FCM message arrived!', remoteMessage);
-        console.log("remoteMessage", remoteMessage.data.data)
+        console.log("remoteMessage1234", remoteMessage.data.data)
 
         // DisplayBackGroundNotificationEx(remoteMessage.notification.data);
         PushNotification.localNotification({
@@ -63,27 +63,27 @@ export const notificationListner = async () => {
 
 
 
-    messaging().onNotificationOpenedApp(remoteMessage => {
-        console.log("stringify", remoteMessage.notification);
-        // DisplayBackGroundNotificationEx(remoteMessage.notification);
-        // CGApplicationEx(remoteMessage.notification);
-        console.log('notification caused App to open from background:', remoteMessage.notification);
+    // messaging().onNotificationOpenedApp(remoteMessage => {
+    //     console.log("stringify", remoteMessage.notification);
+    //     // DisplayBackGroundNotificationEx(remoteMessage.notification);
+    //     // CGApplicationEx(remoteMessage.notification);
+    //     console.log('notification caused App to open from background:', remoteMessage.notification);
 
-    });
+    // });
 
-    messaging().getInitialNotification().then(remoteMessage => {
-        console.log('notification from quit state', remoteMessage.notification);
-        console.log("remote message", remoteMessage.notification)
-        if (remoteMessage) {
-            PushNotification.localNotification({
-                message: remoteMessage.notification.body,
-                title: remoteMessage.notification.title,
+    // messaging().getInitialNotification().then(remoteMessage => {
+    //     console.log('notification from quit state', remoteMessage.notification);
+    //     console.log("remote message", remoteMessage.notification)
+    //     if (remoteMessage) {
+    //         PushNotification.localNotification({
+    //             message: remoteMessage.notification.body,
+    //             title: remoteMessage.notification.title,
 
-            });
+    //         });
 
-        }
+    //     }
 
-    });
+    // });
 
     // messaging().onMessage(remoteMessage => {
     //     PushNotification.localNotification({
