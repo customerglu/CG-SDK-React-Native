@@ -24,7 +24,7 @@ import {
     enableEntryPoints,
     SetCurrentClassName,
     enableAnalytic
-} from '@customerglu/react-native-rncustomerglu';
+} from 'react-native-customerglu';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useRoute } from "@react-navigation/native";

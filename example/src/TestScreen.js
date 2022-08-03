@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
-import { SetCurrentClassName, GetRefferalId } from '@customerglu/react-native-rncustomerglu';
+import { SetCurrentClassName, GetRefferalId } from 'react-native-customerglu';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 
 export default function CartScreen({ navigation }) {
