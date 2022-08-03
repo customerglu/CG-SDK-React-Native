@@ -1,5 +1,5 @@
 {
-  "name": "@customerglu/react-native-customerglu",
+  "name": "react-native-customerglu",
   "version": "0.0.1",
   "description": "CustomerGlu React Native plugin",
   "main": "lib/commonjs/index",
@@ -36,7 +36,10 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/customerglu/CG-SDK-React-Native.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/customerglu/CG-SDK-React-Native.git"
+  },
   "author": "CustomerGlu <code@customerglu.net> (https://github.com/customerglu/CG-SDK-React-Native)",
   "license": "MIT",
   "bugs": {
@@ -44,7 +47,7 @@
   },
   "homepage": "https://github.com/customerglu/CG-SDK-React-Native/blob/main/README.md",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
@@ -146,5 +149,9 @@
   },
   "dependencies": {
     "@applicaster/react-native-broadcast-manager": "^0.2.5"
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
   }
 }
