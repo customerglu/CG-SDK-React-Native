@@ -1,6 +1,6 @@
 {
-  "name": "@customerglu/react-native-rncustomerglu",
-  "version": "0.0.2",
+  "name": "react-native-customerglu",
+  "version": "0.0.5",
   "description": "CustomerGlu React Native plugin",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
