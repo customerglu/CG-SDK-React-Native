@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator();
 import messaging from "@react-native-firebase/messaging"
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
-import { DisplayBackGroundNotification } from '@customerglu/react-native-rncustomerglu';
+import { DisplayBackGroundNotification } from 'react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { requestUserPermission, notificationListner } from './NotificationServices'
 import { Platform, LogBox } from 'react-native';

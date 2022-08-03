@@ -46,7 +46,7 @@ export const BannerWidget =
       throw new Error(LINKING_ERROR);
     };
 // console.log("BannerWidget", requireNativeComponent('BannerWidget'));
-console.log("BannerWidget", UIManager.getViewManagerConfig('BannerWidget'));
+// console.log("BannerWidget", UIManager.getViewManagerConfig('BannerWidget'));
 
 export function RegisterDevice(userdata: Object): Promise<number> {
   return Rncustomerglu.registerDevice(userdata);
