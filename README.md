@@ -17,13 +17,13 @@ Android - Requires minSdkVersion should be 21
 OPTION 1 -
 Add the CustomerGlu React Native plugin in package.json file 
 ``` 
-"react-native-rncustomerglu": "^1.0.0"
+"react-native-customerglu": "^1.0.0"
 ``` 
 
 OPTION 2 - 
 Run this command With npm:
 ``` 
-npm install react-native-rncustomerglu
+npm install react-native-customerglu
 ``` 
 
 # Initialise CustomerGlu SDK 
