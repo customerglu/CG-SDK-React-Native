@@ -1,5 +1,5 @@
 {
-  "name": "react-native-customerglu",
+  "name": "@customerglu/react-native-customerglu",
   "version": "1.0.0",
   "description": "CustomerGlu React Native plugin",
   "main": "lib/commonjs/index",
@@ -147,9 +147,7 @@
       ]
     ]
   },
-  "dependencies": {
-    "@applicaster/react-native-broadcast-manager": "^0.2.5"
-  },
+  "dependencies": {},
   "directories": {
     "example": "example",
     "lib": "lib"
