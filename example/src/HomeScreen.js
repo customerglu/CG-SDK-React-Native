@@ -16,7 +16,7 @@ import {
     NativeModules,
     LogBox
 } from 'react-native';
-import { SetCurrentClassName } from 'react-native-customerglu';
+import { SetCurrentClassName } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute, CommonActions } from "@react-navigation/native";
 import {
     BannerWidget,
@@ -28,7 +28,7 @@ import {
     closeWebView,
     enableAnalytic,
     loadCampaignIdBy
-} from 'react-native-customerglu';
+} from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 import { useNavigation, StackActions } from '@react-navigation/native';

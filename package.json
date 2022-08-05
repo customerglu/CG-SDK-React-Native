@@ -1,6 +1,6 @@
 {
-  "name": "react-native-customerglu",
-  "version": "1.0.0",
+  "name": "@customerglu/react-native-customerglu",
+  "version": "1.0.1",
   "description": "CustomerGlu React Native plugin",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "react-native-rncustomerglu.podspec",
+    "react-native-customerglu.podspec",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",
@@ -147,9 +147,7 @@
       ]
     ]
   },
-  "dependencies": {
-    "@applicaster/react-native-broadcast-manager": "^0.2.5"
-  },
+  "dependencies": {},
   "directories": {
     "example": "example",
     "lib": "lib"

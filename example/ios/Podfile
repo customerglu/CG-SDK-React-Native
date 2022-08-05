@@ -24,7 +24,7 @@ target 'RncustomergluExample' do
     
 # -------- ADD this library to link with podspac --------------
 
-  pod 'react-native-rncustomerglu', :path => '../..'
+  pod 'react-native-customerglu', :path => '../..'
    
  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
   pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'

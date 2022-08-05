@@ -10,7 +10,7 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
-import { SetCurrentClassName, sendData } from 'react-native-customerglu';
+import { SetCurrentClassName, sendData } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 
 const ShopScreen = ({ navigation }) => {
