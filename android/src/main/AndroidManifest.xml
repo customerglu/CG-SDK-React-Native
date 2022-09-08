@@ -4,8 +4,5 @@
   <!-- only value should be changed -->
 
 
-    <application>
-
-      <receiver android:name=".RncustomergluModule" />
-    </application>
+  
 </manifest>
