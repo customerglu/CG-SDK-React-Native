@@ -24,7 +24,7 @@ const ShopScreen = ({ navigation }) => {
     );
 
     const handleCompletePurchase = () => {
-        let obj = { eventName: "completePurchase", eventProperties: ["orderValue", 1000] }
+        let obj = { eventName: "completePurchase", eventProperties: { "orderValue": 1000 } }
         sendData(obj);
     }
 

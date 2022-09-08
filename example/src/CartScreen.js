@@ -20,7 +20,7 @@ export default function CartScreen({ navigation }) {
     );
 
     const handleCompletePurchase = () => {
-        let obj = { eventName: "completePurchase1", eventProperties: ["orderValue", 1000] }
+        let obj = { eventName: "completePurchase", eventProperties: { "orderValue": 1000 } }
         sendData(obj);
     }
 
