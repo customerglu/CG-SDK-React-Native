@@ -414,6 +414,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
             break;
           case Array:
             jsonObject.put(key, convertArrayToJson(readableMap.getArray(key)));
+          case Map:
+            jsonObject.put(key, convertMapToJson(readableMap.getMap(key)));
           default:
             // Do nothing and fail silently
         }
