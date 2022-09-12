@@ -68,7 +68,6 @@ export function enableAnalytic(b: Boolean): Promise<number> {
 }
 
 export function sendEventToJs(b: NativeEventEmitter): Promise<number> {
-  console.log("NativeEventEmitter", NativeEventEmitter);
   return Rncustomerglu.sendEventToJs(b);
 }
 
