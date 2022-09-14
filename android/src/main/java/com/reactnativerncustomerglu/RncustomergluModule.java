@@ -52,6 +52,7 @@ import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 
@@ -182,8 +183,9 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
       //this method registers the user
       @Override
       public void onSuccess(RegisterModal registerModal) {
-        Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
         RegisterModal remodal = registerModal;
+        Log.d(TAG,"Registered!...");
         promise.resolve(true);
 
 
@@ -191,7 +193,9 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
       @Override
       public void onFail(String message) {
-        Toast.makeText(getReactApplicationContext(), "" + message, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getReactApplicationContext(), "" + message, Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"Registeration Failed!..."+message.toString());
+
         promise.resolve(false);
 
       }
@@ -211,16 +215,55 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   public void sendData(ReadableMap readableMap) {
     try {
       JSONObject obj= convertMapToJson(readableMap);
-      HashMap<String,Object> eventProperties = new HashMap<>();
-      eventProperties.put("eventName",obj.get("eventName"));
-      eventProperties.put("eventProperties",obj.get("eventProperties"));
       String evnt = (String) obj.get("eventName");
-      CustomerGlu.getInstance().sendEvent(getReactApplicationContext(),evnt,eventProperties);
+//      Log.e(TAG,"eventProperties"+jsonToMap(obj.getJSONObject("eventProperties")));
+      CustomerGlu.getInstance().sendEvent(getReactApplicationContext(),evnt, jsonToMap(obj.getJSONObject("eventProperties")));
 
     } catch (JSONException e) {
       e.printStackTrace();
     }
 
+  }
+  public static Map<String, Object> jsonToMap(JSONObject json) throws JSONException {
+    Map<String, Object> retMap = new HashMap<String, Object>();    if(json != JSONObject.NULL) {
+      retMap = toMap(json);
+    }
+    return retMap;
+  }
+  public static Map<String, Object> toMap(JSONObject object) throws JSONException {
+    Map<String, Object> map = new HashMap<String, Object>();
+    Iterator<String> keysItr = object.keys();
+    while(keysItr.hasNext()) {
+      String key = keysItr.next();
+      Object value = object.get(key);
+
+      if(value instanceof JSONArray) {
+        value = toList((JSONArray) value);
+      }
+
+      else if(value instanceof JSONObject) {
+        value = toMap((JSONObject) value);
+      }
+      map.put(key, value);
+    }
+    return map;
+  }
+  public static List<Object> toList(JSONArray array) throws JSONException {
+    List<Object> list = new ArrayList<Object>();
+    for(int i = 0; i < array.length(); i++) {
+      Object value = array.get(i);
+      if(value instanceof JSONArray) {
+        value = toList((JSONArray) value);
+      }
+
+
+
+      else if(value instanceof JSONObject) {
+        value = toMap((JSONObject) value);
+      }
+      list.add(value);
+    }
+    return list;
   }
 
   @ReactMethod
@@ -285,11 +328,14 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     CustomerGlu.getInstance().updateProfile(getReactApplicationContext(), userData, new DataListner() {
       @Override
       public void onSuccess(RegisterModal registerModal) {
-        Toast.makeText(getReactApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getReactApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"Profile Updated!...");
+
       }
 
       @Override
       public void onFail(String message) {
+        Log.d(TAG,"Profile Not Updated!..."+message.toString());
 
       }
     });

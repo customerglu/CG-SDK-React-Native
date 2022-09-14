@@ -22,12 +22,9 @@ import {
     BannerWidget,
     dataClear,
     openWallet,
-    gluSDKDebuggingModeEx,
-    enableEntryPointsEx,
-    configureLoaderColourEx,
+    gluSDKDebuggingMode,
     closeWebView,
     enableAnalytic,
-    loadCampaignIdBy
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -41,14 +38,16 @@ const HomeScreen = ({ navigation }) => {
     const [fcmtoken, setFcmToken] = useState("");
     const appState = useRef(AppState.currentState);
     const [appStateVisible, setAppStateVisible] = useState(appState.current);
-    const [finalHeight, setFinalHeight] = useState();
+    const [finalHeight, setFinalHeight] = useState(0);
     const windowHeight = Dimensions.get('window').height;
     const _navigation = useNavigation();
     const route = useRoute();
     useFocusEffect(
         React.useCallback(() => {
+            //Dashboard  MoreScreen
             console.log('navigation change..........', route.name)
             SetCurrentClassName(route.name);
+
 
 
         }, [])
@@ -57,6 +56,7 @@ const HomeScreen = ({ navigation }) => {
 
     useEffect(() => {
         //enableEntryPointsEx(true);
+        gluSDKDebuggingMode(true)
         enableAnalytic(true);
         closeWebView(true)
 
@@ -73,16 +73,21 @@ const HomeScreen = ({ navigation }) => {
         );
         const eventbanner = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_BANNER_LOADED',
-            (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...', reminder)
+            (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...>>>>>', reminder)
         );
+        let eventfheight = null
         if (Platform.OS === 'ios') {
-            const eventfheight = RncustomergluManagerEmitter.addListener(
+            eventfheight = RncustomergluManagerEmitter.addListener(
                 'CGBANNER_FINAL_HEIGHT',
-                (reminder) =>
-                    console.log('CGBANNER_FINAL_HEIGHT....', reminder["entry1"])
-                // if (reminder["entry1"]) {
-                //     // setFinalHeight(reminder["entry1"] * windowHeight / 100);
-                // }
+                (reminder) => {
+                    console.log('reminder----', reminder);
+                    console.log('reminder["entry1"]....', reminder["entry1"])
+                    if (reminder["entry1"]) {
+                        setFinalHeight(reminder["entry1"] * windowHeight / 100);
+
+                    }
+
+                }
 
             );
         }
@@ -92,6 +97,7 @@ const HomeScreen = ({ navigation }) => {
             eventdeeplink.remove();
             eventbanner.remove();
             if (Platform.OS === 'ios') {
+                console.log('destroy.!!!!!!!!')
                 eventfheight.remove();
 
             }
@@ -164,13 +170,10 @@ const HomeScreen = ({ navigation }) => {
                     </TouchableOpacity>
 
                 </View>
-
                 <BannerWidget
-                    style={{ flex: 1, width: '100%', height: Platform.OS === 'ios' ? finalHeight : null, marginTop: 20, }}
+                    style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
                     bannerId="entry1"
                 />
-
-
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')}>
                         <Image
