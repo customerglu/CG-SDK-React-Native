@@ -77,7 +77,7 @@ class Rncustomerglu: RCTEventEmitter{
     }
     
     @objc
-    func loadCampaignIdBy(_ id:String, auto_close_webview bool:Bool) -> Void {
+    func loadCampaignById(_ id:String, auto_close_webview bool:Bool) -> Void {
         customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
     }
     

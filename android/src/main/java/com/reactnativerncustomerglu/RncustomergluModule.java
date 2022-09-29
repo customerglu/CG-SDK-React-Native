@@ -272,7 +272,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void loadCampaignIdBy(String id, Boolean autoclosewebview) {
+  public void loadCampaignById(String id, Boolean autoclosewebview) {
     CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, autoclosewebview);
   }
 
