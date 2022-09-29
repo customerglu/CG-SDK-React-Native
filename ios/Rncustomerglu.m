@@ -17,7 +17,7 @@ RCT_EXTERN_METHOD(registerDevice:(NSDictionary *)userdata resolver:(RCTPromiseRe
 RCT_EXTERN_METHOD(dataClear)
 RCT_EXTERN_METHOD(sendData:(NSDictionary *)property)
 RCT_EXTERN_METHOD(openWallet:(BOOL *)bool)
-RCT_EXTERN_METHOD(loadCampaignIdBy:(NSString *)id auto_close_webview:(BOOL *)bool)
+RCT_EXTERN_METHOD(loadCampaignById:(NSString *)id auto_close_webview:(BOOL *)bool)
 RCT_EXTERN_METHOD(enableAnalytic:(BOOL *)bool)
 RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)

@@ -60,8 +60,8 @@ export function sendData(obj: Object): Promise<number> {
 export function openWallet(autoclosewebview: Boolean = false): Promise<number> {
   return Rncustomerglu.openWallet(autoclosewebview);
 }
-export function loadCampaignIdBy(id: String, autoclosewebview: Boolean = false): Promise<number> {
-  return Rncustomerglu.loadCampaignIdBy(id, autoclosewebview);
+export function loadCampaignById(id: String, autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.loadCampaignById(id, autoclosewebview);
 }
 export function enableAnalytic(b: Boolean): Promise<number> {
   return Rncustomerglu.enableAnalytic(b);

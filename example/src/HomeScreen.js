@@ -155,7 +155,7 @@ const HomeScreen = ({ navigation }) => {
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox}
                         onPress={() => openWallet()}>
-                        {/* // onPress={() => loadCampaignIdBy("1", false)}> */}
+                        {/* // onPress={() => loadCampaignById("1", false)}> */}
                         <Image
                             source={require('../assets/purse.png')}
                             style={styles.imageStyle} />
