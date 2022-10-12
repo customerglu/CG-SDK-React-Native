@@ -49,7 +49,7 @@ class Rncustomerglu: RCTEventEmitter{
     
     
     @objc func registerDevice(_ userdata:NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-        customerGlu.registerDevice(userdata: userdata as! [String : AnyHashable],loadcampaigns: true) { success in
+        customerGlu.registerDevice(userdata: userdata as! [String : AnyHashable]) { success in
                                 if success {
                                     resolve(true)
                                 } else {

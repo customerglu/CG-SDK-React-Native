@@ -15,7 +15,7 @@ DESC
   s.source       = { :git => "https://github.com/customerglu/CG-SDK-React-Native.git", :tag => "#{s.version}" }
   s.source_files = "ios/**/*"
   s.dependency "React-Core"
-  s.dependency "CustomerGlu", "2.0.6"
+  s.dependency "CustomerGlu", "2.1.0"
   s.dependency "RNFBApp"
   s.platform = :ios, '11.0'
   s.swift_version = '5.0'

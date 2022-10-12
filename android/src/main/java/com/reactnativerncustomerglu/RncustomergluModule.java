@@ -179,7 +179,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
     Log.d(TAG, "userdata----> " + userData.toString());
 
-    CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, true, new DataListner() {
+    CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, new DataListner() {
       //this method registers the user
       @Override
       public void onSuccess(RegisterModal registerModal) {
