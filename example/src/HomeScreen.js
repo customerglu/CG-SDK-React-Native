@@ -126,7 +126,22 @@ const openNudgeTest=()=>{
     openNudge(openNudgeData);
 
 }
+const openWalletTest=()=>{
+    let openWalletData = {
+        nudgeConfiguration:{
+            layout:'middle-default',
+             opacity:'0.8',
+             url:'http://google.com',
+             closeOnDeepLink:true,
+             absoluteHeight:'50',
+             relativeHeight:'60'
+        },
+        
 
+    };
+    openWallet(openWalletData);
+
+}
     const clearDataFunc = async () => {
 
         dataClear();
@@ -172,8 +187,8 @@ const openNudgeTest=()=>{
 
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox}
-                        onPress={() => openNudgeTest()}>
-                        {/* // onPress={() => loadCampaignById("1", false)}> */}
+                        onPress={() => openWalletTest()}>
+                         {/* openNudgeTest() */}
                         <Image
                             source={require('../assets/purse.png')}
                             style={styles.imageStyle} />

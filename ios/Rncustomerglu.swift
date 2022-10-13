@@ -199,16 +199,10 @@ class Rncustomerglu: RCTEventEmitter{
         CustomerGlu.getInstance.cgapplication(application, didReceiveRemoteNotification: userInfo, backgroundAlpha: 0.5 ,auto_close_webview:false,fetchCompletionHandler: completionHandler)     }
              }
         
-       
-            
-
-    @objc func DisplayBackGroundNotification(_ obj:NSDictionary, auto_close_webview bool:Bool) -> Void {
+    @objc func DisplayCGNotification(_ obj:NSDictionary, auto_close_webview bool:Bool,opacity:Double) -> Void {
         DispatchQueue.main.async {
-            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview: bool );
+            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview: <#T##Bool#>)     }
         }
-        }
-    
-
 
     @objc
     func GetRefferalId(_ url:URL, resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {

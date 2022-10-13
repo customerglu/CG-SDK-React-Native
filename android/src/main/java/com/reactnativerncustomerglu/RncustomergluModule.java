@@ -253,11 +253,51 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     return list;
   }
-
   @ReactMethod
   public void openWallet(Boolean autoclosewebview) {
     CustomerGlu.getInstance().openWallet(getReactApplicationContext(),autoclosewebview);
   }
+
+//  @ReactMethod
+//  public void openWallet(Boolean autoclosewebview,ReadableMap readableMap) {
+//    Log.e(TAG,"openwallet-----"+autoclosewebview+" "+readableMap.toString());
+//    try {
+//      JSONObject nudgeConfigurationdata;
+//      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+//      JSONObject obj = convertMapToJson(readableMap);
+//
+//      if(obj.has("nudgeConfiguration")) {
+//        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+//        if (nudgeConfigurationdata.has("layout")) {
+//          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+//        }
+//        if (nudgeConfigurationdata.has("opacity")) {
+//          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+//        }
+//        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+//          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+//        }else{
+//          nudgeConfiguration.setCloseOnDeepLink(autoclosewebview);
+//        }
+//        if (nudgeConfigurationdata.has("absoluteHeight")) {
+//          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+//        }
+//        if (nudgeConfigurationdata.has("relativeHeight")) {
+//          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+//        }
+//
+//        CustomerGlu.getInstance().openWallet(getReactApplicationContext(),nudgeConfiguration);
+//      }else{
+//        nudgeConfiguration.setCloseOnDeepLink(autoclosewebview);
+//        CustomerGlu.getInstance().openWallet(getReactApplicationContext(),nudgeConfiguration);
+//      }
+//
+//    } catch (JSONException e) {
+//      e.printStackTrace();
+//    }
+//
+//  }
+
 
   @ReactMethod
   public void loadCampaignById(String id, Boolean autoclosewebview) {
@@ -330,9 +370,16 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void DisplayBackGroundNotification(ReadableMap data,Boolean autoclosewebview) {
+  public void DisplayCGNotification(ReadableMap data,Boolean autoclosewebview,Double opacity) {
+    Log.e(TAG,"DisplayCGNotification---"+opacity);
     JSONObject jsonObject=convertMapToJson(data);
-    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5, autoclosewebview);
+    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,opacity, autoclosewebview);
+
+  }
+  @ReactMethod
+  public void DisplayCGBackgroundNotification(ReadableMap data,Boolean autoclosewebview) {
+    JSONObject jsonObject=convertMapToJson(data);
+    CustomerGlu.getInstance().displayCustomerGluBackgroundNotification(getReactApplicationContext(),jsonObject,autoclosewebview);
 
   }
 
@@ -405,24 +452,30 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void OpenNudgeRN(ReadableMap readableMap){
     try {
+      String nudgeid="";
+      JSONObject nudgeConfigurationdata;
+      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
       JSONObject obj = convertMapToJson(readableMap);
-      String nudgeid =  obj.getString("nudgeid");
-      JSONObject nudgeConfigurationdata=  obj.getJSONObject("nudgeConfiguration");
-      NudgeConfiguration nudgeConfiguration=new NudgeConfiguration();
-      if(nudgeConfigurationdata.has("layout")){
-        nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+      if(obj.has("nudgeid")){
+        nudgeid =  obj.getString("nudgeid");
       }
-      if(nudgeConfigurationdata.has("opacity")){
-        nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
-      }
-      if(nudgeConfigurationdata.has("closeOnDeepLink")){
-        nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
-      }
-      if(nudgeConfigurationdata.has("absoluteHeight")){
-        nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
-      }
-      if(nudgeConfigurationdata.has("relativeHeight")){
-        nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+      if(obj.has("nudgeConfiguration")) {
+        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+        if (nudgeConfigurationdata.has("layout")) {
+          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+        }
+        if (nudgeConfigurationdata.has("opacity")) {
+          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+        }
+        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+        }
+        if (nudgeConfigurationdata.has("absoluteHeight")) {
+          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+        }
+        if (nudgeConfigurationdata.has("relativeHeight")) {
+          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+        }
       }
       CustomerGlu.getInstance().openNudge(getReactApplicationContext(),nudgeid, nudgeConfiguration);
     } catch (JSONException e) {

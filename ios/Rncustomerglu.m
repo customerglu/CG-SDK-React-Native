@@ -33,7 +33,7 @@ RCT_EXTERN_METHOD(UpdateProfile:(NSDictionary *)userdata resolver:(RCTPromiseRes
                   rejecter:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(DisplayCustomerGluNotification)
 RCT_EXTERN_METHOD(CGApplication:(NSDictionary *)userInfo)
-RCT_EXTERN_METHOD(DisplayBackGroundNotification:(NSDictionary *)obj auto_close_webview:(BOOL *)bool)
+RCT_EXTERN_METHOD(DisplayCGNotification:(NSDictionary *)obj auto_close_webview:(BOOL *)bool)
 RCT_EXTERN_METHOD(GetRefferalId:(NSURL *)url resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(LoadAllCampagins)

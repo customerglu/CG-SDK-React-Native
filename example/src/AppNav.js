@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator();
 import messaging from "@react-native-firebase/messaging"
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
-import { DisplayBackGroundNotification } from '@customerglu/react-native-customerglu';
+import { DisplayCGNotification,DisplayCGBackgroundNotification } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { requestUserPermission, notificationListner } from './NotificationServices'
 import { Platform, LogBox } from 'react-native';
@@ -41,18 +41,24 @@ PushNotification.configure({
             });
             console.log("Notification data123", notification.data);
             if (notification.data.glu_message_type) {
-                //ios notification open from forgroud
+                //ios notification open from forground
                 console.log('notification.124567', notification.foreground)
-                DisplayBackGroundNotification(notification.data, true)
+                DisplayCGNotification(notification.data, true,0.9)
 
             } else {
                 console.log('notification.10230', notification.foreground)
-                DisplayBackGroundNotification(notification.data.data, true)
+                DisplayCGNotification(notification.data.data, true)
             }
         } else {
             //ios  notification open from Background 
-            console.log("Notification data456", notification.data.data);
-            DisplayBackGroundNotification(notification.data, true)
+            console.log("Notification data456", notification.data);
+            // DisplayBackGroundNotification(notification.data, true)
+            if(Platform==='android'){
+                DisplayCGBackgroundNotification(notification.data, true)
+            }else{
+                DisplayCGNotification(notification.data, true)
+            }
+           
 
         }
         // process the notification

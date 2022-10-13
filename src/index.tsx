@@ -57,9 +57,15 @@ export function dataClear(): Promise<number> {
 export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
-export function openWallet(autoclosewebview: Boolean = false): Promise<number> {
+export function openWallet(obj:Object={},autoclosewebview: Boolean = false): Promise<number> {
+  console.log('obj---',obj)
+ obj['autoclosewebview']=autoclosewebview
+
+  console.log('obj@@@@@',obj)
+  
   return Rncustomerglu.openWallet(autoclosewebview);
 }
+
 export function loadCampaignById(id: String, autoclosewebview: Boolean = false): Promise<number> {
   return Rncustomerglu.loadCampaignById(id, autoclosewebview);
 }
@@ -111,9 +117,14 @@ export function DisplayCustomerGluNotification(): Promise<number> {
 export function CGApplication(): Promise<number> {
   return Rncustomerglu.CGApplication();
 }
-export function DisplayBackGroundNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
-  return Rncustomerglu.DisplayBackGroundNotification(obj, autoclosewebview);
+export function DisplayCGNotification(obj: Object, autoclosewebview: Boolean = false, opacity=0.5): Promise<number> {
+  return Rncustomerglu.DisplayCGNotification(obj, autoclosewebview,opacity);
 }
+
+export function DisplayCGBackgroundNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.DisplayCGBackgroundNotification(obj, autoclosewebview);
+}
+
 export function GetRefferalId(url: String): Promise<number> {
   return Rncustomerglu.GetRefferalId(url);
 }
