@@ -57,6 +57,23 @@ class Rncustomerglu: RCTEventEmitter{
                                 }
                             }
     }
+    @objc func OpenNudgeRN(_ nudgeData:NSDictionary) -> Void {
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+        let nudgeId:String=nudgeData["nudgeid"] as? String ?? ""
+        if((nudgeData["nudgeConfiguration"]) != nil){
+            nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? true
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+          
+        }
+          
+        customerGlu.openNudge(nudgeId: nudgeId,nudgeConfiguration:nudgeconfigData)
+        
+    }
 
     
     @objc(dataClear)

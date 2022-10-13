@@ -143,3 +143,7 @@ export function getBannerHeight(): Promise<number> {
   return Rncustomerglu.getBannerHeight();
 }
 
+export function openNudge(data:object): Promise<string> {
+  return Rncustomerglu.OpenNudgeRN(data);
+}
+

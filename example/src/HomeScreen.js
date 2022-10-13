@@ -25,6 +25,7 @@ import {
     gluSDKDebuggingMode,
     closeWebView,
     enableAnalytic,
+    openNudge
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -59,6 +60,7 @@ const HomeScreen = ({ navigation }) => {
         gluSDKDebuggingMode(true)
         enableAnalytic(true);
         closeWebView(true)
+       
 
         const { Rncustomerglu } = NativeModules;
         const RncustomergluManagerEmitter = new NativeEventEmitter(Rncustomerglu);
@@ -107,7 +109,23 @@ const HomeScreen = ({ navigation }) => {
 
     }, []);
 
+const openNudgeTest=()=>{
+    let openNudgeData = {
+        nudgeid:'nudge1',
+        nudgeConfiguration:{
+            layout:'middle-default',
+             opacity:'0.8',
+             url:'http://google.com',
+             closeOnDeepLink:true,
+             absoluteHeight:'50',
+             relativeHeight:'60'
+        },
+        
 
+    };
+    openNudge(openNudgeData);
+
+}
 
     const clearDataFunc = async () => {
 
@@ -154,7 +172,7 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox}
-                        onPress={() => openWallet()}>
+                        onPress={() => openNudgeTest()}>
                         {/* // onPress={() => loadCampaignById("1", false)}> */}
                         <Image
                             source={require('../assets/purse.png')}

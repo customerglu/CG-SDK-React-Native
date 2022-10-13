@@ -2,31 +2,22 @@ package com.reactnativerncustomerglu;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.customerglu.sdk.entrypoints.Banner;
-import com.facebook.react.bridge.ActivityEventListener;
+import com.customerglu.sdk.Modal.NudgeConfiguration;
 import com.facebook.react.bridge.LifecycleEventListener;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.Arguments;
 import com.customerglu.sdk.CustomerGlu;
 import com.customerglu.sdk.Interface.DataListner;
 import com.customerglu.sdk.Modal.RegisterModal;
@@ -45,11 +36,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -412,6 +400,35 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     } catch (JSONException e) {
       e.printStackTrace();
     }
+
+  }
+  @ReactMethod
+  public void OpenNudgeRN(ReadableMap readableMap){
+    try {
+      JSONObject obj = convertMapToJson(readableMap);
+      String nudgeid =  obj.getString("nudgeid");
+      JSONObject nudgeConfigurationdata=  obj.getJSONObject("nudgeConfiguration");
+      NudgeConfiguration nudgeConfiguration=new NudgeConfiguration();
+      if(nudgeConfigurationdata.has("layout")){
+        nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+      }
+      if(nudgeConfigurationdata.has("opacity")){
+        nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+      }
+      if(nudgeConfigurationdata.has("closeOnDeepLink")){
+        nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+      }
+      if(nudgeConfigurationdata.has("absoluteHeight")){
+        nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+      }
+      if(nudgeConfigurationdata.has("relativeHeight")){
+        nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+      }
+      CustomerGlu.getInstance().openNudge(getReactApplicationContext(),nudgeid, nudgeConfiguration);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+
 
   }
 
