@@ -65,7 +65,7 @@ class Rncustomerglu: RCTEventEmitter{
             nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
             nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
             nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
-            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? true
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
             nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
             nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
           
@@ -98,12 +98,12 @@ class Rncustomerglu: RCTEventEmitter{
             nudgeconfig=walletData["nudgeConfiguration"] as! NSDictionary
             nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
             nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
-            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? true
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
             nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
             nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
           
         }else if((walletData["autoclosewebview"]) != nil){
-            nudgeconfigData.closeOnDeepLink=walletData["autoclosewebview"] as? Bool ?? true
+            nudgeconfigData.closeOnDeepLink=walletData["autoclosewebview"] as? Bool ?? false
         }
         customerGlu.openWallet(nudgeConfiguration: nudgeconfigData)
 //        customerGlu.openWallet(auto_close_webview: bool)
@@ -119,12 +119,12 @@ class Rncustomerglu: RCTEventEmitter{
             nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
             nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
             nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
-            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? true
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
             nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
             nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
           
         }else if((nudgeData["autoclosewebview"]) != nil){
-            nudgeconfigData.closeOnDeepLink=nudgeData["autoclosewebview"] as? Bool ?? true
+            nudgeconfigData.closeOnDeepLink=nudgeData["autoclosewebview"] as? Bool ?? false
         }
         customerGlu.loadCampaignById(campaign_id:id, nudgeConfiguration: nudgeconfigData)
 //        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
@@ -265,13 +265,7 @@ class Rncustomerglu: RCTEventEmitter{
         }
     }
     
-    @objc
-    func OpenWalletWithUrl(_ url:String) -> Void {
-        DispatchQueue.main.async {
-        customerGlu.openWalletWithURL(url: url)
-        }
-    }
-    
+
     
     @objc
     func configureWhiteListedDomains(_ domain:NSArray) -> Void {

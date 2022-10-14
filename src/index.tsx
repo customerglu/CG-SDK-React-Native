@@ -147,9 +147,7 @@ export function LoadCampaginsByFilter(obj: Object): Promise<number> {
 export function SetCurrentClassName(clname: String): Promise<number> {
   return Rncustomerglu.SetCurrentClassName(clname);
 }
-export function OpenWalletWithUrl(url: String): Promise<number> {
-  return Rncustomerglu.OpenWalletWithUrl(url);
-}
+
 export function configureWhiteListedDomains(arr: Array<String>): Promise<number> {
   return Rncustomerglu.configureWhiteListedDomains(arr);
 }

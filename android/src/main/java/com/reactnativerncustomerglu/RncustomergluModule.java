@@ -243,9 +243,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
       if(value instanceof JSONArray) {
         value = toList((JSONArray) value);
       }
-
-
-
       else if(value instanceof JSONObject) {
         value = toMap((JSONObject) value);
       }
@@ -253,12 +250,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     return list;
   }
-//  @ReactMethod
-//  public void openWallet(ReableMa) {
-//    Log.e(TAG,"openwallet-----"+autoclosewebview);
-//    CustomerGlu.getInstance().openWallet(getReactApplicationContext(),autoclosewebview);
-//  }
-
   @ReactMethod
   public void openWallet(ReadableMap readableMap) {
     Log.e(TAG,"openwallet-----"+readableMap.toString());
@@ -460,9 +451,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     });
   }
 
-  @ReactMethod
-  public void OpenWalletWithUrl(String url) {
-  }
+
 
   @ReactMethod
   public void configureWhiteListedDomains(ReadableArray readableArray) {

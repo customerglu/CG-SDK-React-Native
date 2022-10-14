@@ -110,23 +110,7 @@ const HomeScreen = ({ navigation }) => {
 
     }, []);
 
-const openNudgeTest=()=>{
-    let openNudgeData = {
-        nudgeid:'nudge1',
-        nudgeConfiguration:{
-            layout:'middle-default',
-             opacity:'0.8',
-             url:'http://google.com',
-             closeOnDeepLink:true,
-             absoluteHeight:'50',
-             relativeHeight:'60'
-        },
-        
 
-    };
-    openNudge(openNudgeData);
-
-}
 const openWalletTest=()=>{
     let openWalletData = {
         nudgeConfiguration:{
@@ -137,8 +121,21 @@ const openWalletTest=()=>{
              relativeHeight:'60'
         },
     };
-loadCampaignById("CAMPAIGN_ID/TAG",true,openWalletData)
+    let openNudgeData = {
+        nudgeid:'nudge1',
+        nudgeConfiguration:{
+            layout:'middle-default',
+             opacity:'0.8',
+             url:'http://google.com',
+             closeOnDeepLink:true,
+             absoluteHeight:'50',
+             relativeHeight:'60'
+        },
+    };
+// loadCampaignById("CAMPAIGN_ID/TAG",true)
     // openWallet(true);
+    openNudge(openNudgeData);
+
 
 }
     const clearDataFunc = async () => {
