@@ -58,12 +58,10 @@ export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
 export function openWallet(obj:Object={},autoclosewebview: Boolean = false): Promise<number> {
-  console.log('obj---',obj)
  obj['autoclosewebview']=autoclosewebview
-
-  console.log('obj@@@@@',obj)
+ console.log('obj@@@@@',obj)
   
-  return Rncustomerglu.openWallet(autoclosewebview);
+  return Rncustomerglu.openWallet(obj);
 }
 
 export function loadCampaignById(id: String, autoclosewebview: Boolean = false): Promise<number> {

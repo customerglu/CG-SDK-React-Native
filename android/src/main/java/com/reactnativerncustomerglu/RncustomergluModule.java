@@ -253,50 +253,49 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     return list;
   }
-  @ReactMethod
-  public void openWallet(Boolean autoclosewebview) {
-    CustomerGlu.getInstance().openWallet(getReactApplicationContext(),autoclosewebview);
-  }
-
 //  @ReactMethod
-//  public void openWallet(Boolean autoclosewebview,ReadableMap readableMap) {
-//    Log.e(TAG,"openwallet-----"+autoclosewebview+" "+readableMap.toString());
-//    try {
-//      JSONObject nudgeConfigurationdata;
-//      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
-//      JSONObject obj = convertMapToJson(readableMap);
-//
-//      if(obj.has("nudgeConfiguration")) {
-//        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
-//        if (nudgeConfigurationdata.has("layout")) {
-//          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
-//        }
-//        if (nudgeConfigurationdata.has("opacity")) {
-//          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
-//        }
-//        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
-//          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
-//        }else{
-//          nudgeConfiguration.setCloseOnDeepLink(autoclosewebview);
-//        }
-//        if (nudgeConfigurationdata.has("absoluteHeight")) {
-//          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
-//        }
-//        if (nudgeConfigurationdata.has("relativeHeight")) {
-//          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
-//        }
-//
-//        CustomerGlu.getInstance().openWallet(getReactApplicationContext(),nudgeConfiguration);
-//      }else{
-//        nudgeConfiguration.setCloseOnDeepLink(autoclosewebview);
-//        CustomerGlu.getInstance().openWallet(getReactApplicationContext(),nudgeConfiguration);
-//      }
-//
-//    } catch (JSONException e) {
-//      e.printStackTrace();
-//    }
-//
+//  public void openWallet(ReableMa) {
+//    Log.e(TAG,"openwallet-----"+autoclosewebview);
+//    CustomerGlu.getInstance().openWallet(getReactApplicationContext(),autoclosewebview);
 //  }
+
+  @ReactMethod
+  public void openWallet(ReadableMap readableMap) {
+    Log.e(TAG,"openwallet-----"+readableMap.toString());
+    try {
+      JSONObject nudgeConfigurationdata;
+      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+      JSONObject obj = convertMapToJson(readableMap);
+
+      if(obj.has("nudgeConfiguration")) {
+        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+        if (nudgeConfigurationdata.has("layout")) {
+          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+        }
+        if (nudgeConfigurationdata.has("opacity")) {
+          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+        }
+        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+        }
+        if (nudgeConfigurationdata.has("absoluteHeight")) {
+          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+        }
+        if (nudgeConfigurationdata.has("relativeHeight")) {
+          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+        }
+        CustomerGlu.getInstance().openWallet(getReactApplicationContext(), nudgeConfiguration);
+
+      }
+     else if(obj.has("autoclosewebview")){
+        nudgeConfiguration.setCloseOnDeepLink(obj.getBoolean("autoclosewebview"));
+        CustomerGlu.getInstance().openWallet(getReactApplicationContext(), nudgeConfiguration);
+      }
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+
+  }
 
 
   @ReactMethod

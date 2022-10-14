@@ -129,15 +129,12 @@ const openNudgeTest=()=>{
 const openWalletTest=()=>{
     let openWalletData = {
         nudgeConfiguration:{
-            layout:'middle-default',
+             layout:'middle-default',
              opacity:'0.8',
-             url:'http://google.com',
              closeOnDeepLink:true,
              absoluteHeight:'50',
              relativeHeight:'60'
         },
-        
-
     };
     openWallet(openWalletData);
 

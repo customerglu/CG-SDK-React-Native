@@ -89,8 +89,24 @@ class Rncustomerglu: RCTEventEmitter{
     }
 
     @objc
-    func openWallet(_ bool:Bool) -> Void {
-        customerGlu.openWallet(auto_close_webview: bool)
+    func openWallet(_ walletData:NSDictionary) -> Void {
+        print("walletData--",walletData)
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+        if((walletData["nudgeConfiguration"]) != nil){
+            
+            nudgeconfig=walletData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? true
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+          
+        }else if((walletData["autoclosewebview"]) != nil){
+            nudgeconfigData.closeOnDeepLink=walletData["autoclosewebview"] as? Bool ?? true
+        }
+        customerGlu.openWallet(nudgeConfiguration: nudgeconfigData)
+//        customerGlu.openWallet(auto_close_webview: bool)
     }
     
     @objc
@@ -201,7 +217,9 @@ class Rncustomerglu: RCTEventEmitter{
         
     @objc func DisplayCGNotification(_ obj:NSDictionary, auto_close_webview bool:Bool,opacity:Double) -> Void {
         DispatchQueue.main.async {
-            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview: <#T##Bool#>)     }
+            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview:bool)
+            
+        }
         }
 
     @objc
