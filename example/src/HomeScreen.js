@@ -25,7 +25,8 @@ import {
     gluSDKDebuggingMode,
     closeWebView,
     enableAnalytic,
-    openNudge
+    openNudge,
+    loadCampaignById
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -136,7 +137,8 @@ const openWalletTest=()=>{
              relativeHeight:'60'
         },
     };
-    openWallet(openWalletData);
+loadCampaignById("CAMPAIGN_ID/TAG",true,openWalletData)
+    // openWallet(true);
 
 }
     const clearDataFunc = async () => {

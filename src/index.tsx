@@ -57,16 +57,28 @@ export function dataClear(): Promise<number> {
 export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
-export function openWallet(obj:Object={},autoclosewebview: Boolean = false): Promise<number> {
- obj['autoclosewebview']=autoclosewebview
- console.log('obj@@@@@',obj)
-  
-  return Rncustomerglu.openWallet(obj);
+export function openWallet(autoclosewebview: Boolean = false,obj:Object={}): Promise<number> {
+  console.log(autoclosewebview,obj,typeof autoclosewebview)
+
+  if(typeof autoclosewebview==='boolean'){
+    obj['autoclosewebview']=autoclosewebview
+    return Rncustomerglu.openWallet(obj);
+  }else if(typeof autoclosewebview==='object'){
+    return Rncustomerglu.openWallet(autoclosewebview);
+  }
 }
 
-export function loadCampaignById(id: String, autoclosewebview: Boolean = false): Promise<number> {
-  return Rncustomerglu.loadCampaignById(id, autoclosewebview);
+export function loadCampaignById(id: String,autoclosewebview: Boolean = false,obj:Object={}): Promise<number> {
+  console.log(autoclosewebview,obj,typeof autoclosewebview)
+
+  if(typeof autoclosewebview==='boolean'){
+    obj['autoclosewebview']=autoclosewebview
+    return Rncustomerglu.loadCampaignById(id, obj);
+  }else if(typeof autoclosewebview==='object'){
+    return Rncustomerglu.loadCampaignById(id, autoclosewebview);
+  }
 }
+
 export function enableAnalytic(b: Boolean): Promise<number> {
   return Rncustomerglu.enableAnalytic(b);
 }

@@ -299,8 +299,39 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
 
   @ReactMethod
-  public void loadCampaignById(String id, Boolean autoclosewebview) {
-    CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, autoclosewebview);
+  public void loadCampaignById(String id, ReadableMap readableMap) {
+    Log.e(TAG,"loadCampaignById-----"+readableMap.toString());
+    try {
+      JSONObject nudgeConfigurationdata;
+      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+      JSONObject obj = convertMapToJson(readableMap);
+
+      if(obj.has("nudgeConfiguration")) {
+        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+        if (nudgeConfigurationdata.has("layout")) {
+          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+        }
+        if (nudgeConfigurationdata.has("opacity")) {
+          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+        }
+        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+        }
+        if (nudgeConfigurationdata.has("absoluteHeight")) {
+          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+        }
+        if (nudgeConfigurationdata.has("relativeHeight")) {
+          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+        }
+      } else if(obj.has("autoclosewebview")){
+        nudgeConfiguration.setCloseOnDeepLink(obj.getBoolean("autoclosewebview"));
+      }
+      CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, nudgeConfiguration);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+
+
   }
 
   @ReactMethod

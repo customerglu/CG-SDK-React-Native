@@ -110,8 +110,24 @@ class Rncustomerglu: RCTEventEmitter{
     }
     
     @objc
-    func loadCampaignById(_ id:String, auto_close_webview bool:Bool) -> Void {
-        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
+    func loadCampaignById(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
+        print("loadCampaignById--",id,nudgeData)
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+        if((nudgeData["nudgeConfiguration"]) != nil){
+            
+            nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? true
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+          
+        }else if((nudgeData["autoclosewebview"]) != nil){
+            nudgeconfigData.closeOnDeepLink=nudgeData["autoclosewebview"] as? Bool ?? true
+        }
+        customerGlu.loadCampaignById(campaign_id:id, nudgeConfiguration: nudgeconfigData)
+//        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
     }
     
     @objc
