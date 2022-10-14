@@ -16,8 +16,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* RncustomergluExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RncustomergluExampleTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		82F488C328F833D80012F5A1 /* main.jsbundle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F488C228F833D80012F5A1 /* main.jsbundle.xib */; };
-		82F488C928F8416E0012F5A1 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 82F488C828F8416E0012F5A1 /* main.jsbundle */; };
+		82BC205828F9A35100DD2CCC /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 82BC205628F9A26F00DD2CCC /* main.jsbundle */; };
 		DA7A50A02862F6CA009EF426 /* BroadcastReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A509F2862F6CA009EF426 /* BroadcastReceiver.swift */; };
 		DAC3D26028745C4A0084D627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAC3D25F28745C4A0084D627 /* GoogleService-Info.plist */; };
 		E0068CE82B0371F73959EED7 /* Pods_RncustomergluExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F46479C6615714EEED41FB /* Pods_RncustomergluExample.framework */; };
@@ -54,8 +53,7 @@
 		2D02E4901E0B4A5D006451C7 /* RncustomergluExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RncustomergluExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F7ED3B7971BE374F7B8635 /* Pods-RncustomergluExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RncustomergluExample.debug.xcconfig"; path = "Target Support Files/Pods-RncustomergluExample/Pods-RncustomergluExample.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RncustomergluExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		82F488C228F833D80012F5A1 /* main.jsbundle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = main.jsbundle.xib; sourceTree = "<group>"; };
-		82F488C828F8416E0012F5A1 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		82BC205628F9A26F00DD2CCC /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		A2F46479C6615714EEED41FB /* Pods_RncustomergluExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RncustomergluExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7A509E2862F6C9009EF426 /* RncustomergluExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RncustomergluExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA7A509F2862F6CA009EF426 /* BroadcastReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastReceiver.swift; sourceTree = "<group>"; };
@@ -119,7 +117,7 @@
 		13B07FAE1A68108700A75B9A /* RncustomergluExample */ = {
 			isa = PBXGroup;
 			children = (
-				82F488C828F8416E0012F5A1 /* main.jsbundle */,
+				82BC205628F9A26F00DD2CCC /* main.jsbundle */,
 				DAC3D26128745D730084D627 /* RncustomergluExample.entitlements */,
 				DAC3D25F28745C4A0084D627 /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -130,7 +128,6 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				DA7A509F2862F6CA009EF426 /* BroadcastReceiver.swift */,
 				DA7A509E2862F6C9009EF426 /* RncustomergluExample-Bridging-Header.h */,
-				82F488C228F833D80012F5A1 /* main.jsbundle.xib */,
 			);
 			name = RncustomergluExample;
 			sourceTree = "<group>";
@@ -328,9 +325,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82F488C328F833D80012F5A1 /* main.jsbundle.xib in Resources */,
+				82BC205828F9A35100DD2CCC /* main.jsbundle in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				82F488C928F8416E0012F5A1 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				DAC3D26028745C4A0084D627 /* GoogleService-Info.plist in Resources */,
 			);

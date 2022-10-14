@@ -162,7 +162,12 @@ export function getBannerHeight(): Promise<number> {
   return Rncustomerglu.getBannerHeight();
 }
 
-export function openNudge(data:object): Promise<string> {
-  return Rncustomerglu.OpenNudgeRN(data);
+export function openNudge(nudgeid:String,data:object={}): Promise<string> {
+  if(nudgeid!=null){
+    return Rncustomerglu.OpenNudgeRN(nudgeid,data);
+  }else{
+    throw new Error("nudgeId can't be empty");
+    
+  }
 }
 

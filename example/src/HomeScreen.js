@@ -122,19 +122,19 @@ const openWalletTest=()=>{
         },
     };
     let openNudgeData = {
-        nudgeid:'nudge1',
         nudgeConfiguration:{
-            layout:'middle-default',
+            layout:'bottom-default',
              opacity:'0.8',
              url:'http://google.com',
-             closeOnDeepLink:true,
-             absoluteHeight:'50',
-             relativeHeight:'60'
+             closeOnDeepLink:false,
+            //  absoluteHeight:'50',
+            //  relativeHeight:'90'
         },
     };
-// loadCampaignById("CAMPAIGN_ID/TAG",true)
-    // openWallet(true);
-    openNudge(openNudgeData);
+
+loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
+    openWallet(openWalletData);
+    // openNudge("nudge1");  // optional
 
 
 }

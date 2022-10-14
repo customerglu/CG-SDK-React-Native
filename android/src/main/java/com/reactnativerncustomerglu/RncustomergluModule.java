@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 
 import com.customerglu.sdk.Modal.NudgeConfiguration;
 import com.facebook.react.bridge.LifecycleEventListener;
+import com.facebook.react.bridge.NativeMap;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
@@ -400,6 +401,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void DisplayCGBackgroundNotification(ReadableMap data,Boolean autoclosewebview) {
     JSONObject jsonObject=convertMapToJson(data);
+    Log.d(TAG,"DisplayCGBackgroundNotification---"+jsonObject+" "+ autoclosewebview);
     CustomerGlu.getInstance().displayCustomerGluBackgroundNotification(getReactApplicationContext(),jsonObject,autoclosewebview);
 
   }
@@ -469,34 +471,37 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   }
   @ReactMethod
-  public void OpenNudgeRN(ReadableMap readableMap){
+  public void OpenNudgeRN(String nudgeid,ReadableMap readableMap){
+    Log.d(TAG,"nudeg----"+readableMap.hasKey("nudgeConfiguration"));
+    NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
     try {
-      String nudgeid="";
-      JSONObject nudgeConfigurationdata;
-      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
-      JSONObject obj = convertMapToJson(readableMap);
-      if(obj.has("nudgeid")){
-        nudgeid =  obj.getString("nudgeid");
+      if(readableMap.hasKey("nudgeConfiguration")) {
+        JSONObject nudgeConfigurationdata;
+
+        JSONObject obj = convertMapToJson(readableMap);
+        if (obj.has("nudgeid")) {
+          nudgeid = obj.getString("nudgeid");
+        }
+        if (obj.has("nudgeConfiguration")) {
+          nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+          if (nudgeConfigurationdata.has("layout")) {
+            nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+          }
+          if (nudgeConfigurationdata.has("opacity")) {
+            nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+          }
+          if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+            nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+          }
+          if (nudgeConfigurationdata.has("absoluteHeight")) {
+            nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+          }
+          if (nudgeConfigurationdata.has("relativeHeight")) {
+            nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+          }
+        }
       }
-      if(obj.has("nudgeConfiguration")) {
-        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
-        if (nudgeConfigurationdata.has("layout")) {
-          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
-        }
-        if (nudgeConfigurationdata.has("opacity")) {
-          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
-        }
-        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
-          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
-        }
-        if (nudgeConfigurationdata.has("absoluteHeight")) {
-          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
-        }
-        if (nudgeConfigurationdata.has("relativeHeight")) {
-          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
-        }
-      }
-      CustomerGlu.getInstance().openNudge(getReactApplicationContext(),nudgeid, nudgeConfiguration);
+      CustomerGlu.getInstance().openNudge(getReactApplicationContext(),nudgeid,nudgeConfiguration);
     } catch (JSONException e) {
       e.printStackTrace();
     }

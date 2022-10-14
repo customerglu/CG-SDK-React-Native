@@ -53,7 +53,7 @@ PushNotification.configure({
             //ios  notification open from Background 
             console.log("Notification data456", notification.data);
             // DisplayBackGroundNotification(notification.data, true)
-            if(Platform==='android'){
+            if(Platform.OS==='android'){
                 DisplayCGBackgroundNotification(notification.data, true)
             }else{
                 DisplayCGNotification(notification.data, true)

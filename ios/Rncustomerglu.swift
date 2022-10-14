@@ -57,10 +57,12 @@ class Rncustomerglu: RCTEventEmitter{
                                 }
                             }
     }
-    @objc func OpenNudgeRN(_ nudgeData:NSDictionary) -> Void {
+    
+    @objc func OpenNudgeRN(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
+      
         let nudgeconfigData=CGNudgeConfiguration()
         var nudgeconfig:NSDictionary;
-        let nudgeId:String=nudgeData["nudgeid"] as? String ?? ""
+       
         if((nudgeData["nudgeConfiguration"]) != nil){
             nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
             nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
@@ -71,7 +73,7 @@ class Rncustomerglu: RCTEventEmitter{
           
         }
           
-        customerGlu.openNudge(nudgeId: nudgeId,nudgeConfiguration:nudgeconfigData)
+        customerGlu.openNudge(nudgeId: id,nudgeConfiguration:nudgeconfigData)
         
     }
 
