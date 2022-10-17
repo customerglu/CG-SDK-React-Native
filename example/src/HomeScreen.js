@@ -85,7 +85,7 @@ const HomeScreen = ({ navigation }) => {
                 (reminder) => {
                     console.log('reminder----', reminder);
                     console.log('reminder["entry1"]....', reminder["entry1"])
-                    if (reminder["entry1"]) {
+                    if (reminder && reminder["entry1"]) {
                         setFinalHeight(reminder["entry1"] * windowHeight / 100);
 
                     }
@@ -132,9 +132,9 @@ const openWalletTest=()=>{
         },
     };
 
-loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
+// loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
     openWallet(openWalletData);
-    // openNudge("nudge1");  // optional
+    // openNudge("nudge1", openNudgeData);  // optional
 
 
 }

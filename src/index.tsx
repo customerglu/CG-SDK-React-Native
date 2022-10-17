@@ -127,8 +127,8 @@ export function DisplayCustomerGluNotification(): Promise<number> {
 export function CGApplication(): Promise<number> {
   return Rncustomerglu.CGApplication();
 }
-export function DisplayCGNotification(obj: Object, autoclosewebview: Boolean = false, opacity=0.5): Promise<number> {
-  return Rncustomerglu.DisplayCGNotification(obj, autoclosewebview,opacity);
+export function DisplayCGNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.DisplayCGNotification(obj, autoclosewebview);
 }
 
 export function DisplayCGBackgroundNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {

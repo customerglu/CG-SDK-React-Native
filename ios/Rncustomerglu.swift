@@ -233,7 +233,7 @@ class Rncustomerglu: RCTEventEmitter{
         CustomerGlu.getInstance.cgapplication(application, didReceiveRemoteNotification: userInfo, backgroundAlpha: 0.5 ,auto_close_webview:false,fetchCompletionHandler: completionHandler)     }
              }
         
-    @objc func DisplayCGNotification(_ obj:NSDictionary, auto_close_webview bool:Bool,opacity:Double) -> Void {
+    @objc func DisplayCGNotification(_ obj:NSDictionary, auto_close_webview bool:Bool) -> Void {
         DispatchQueue.main.async {
             customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview:bool)
             

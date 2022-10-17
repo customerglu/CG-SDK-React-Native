@@ -39,6 +39,7 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -166,15 +167,16 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   public void registerDevice(ReadableMap map, Promise promise) {
     JSONObject jsonObject = convertMapToJson(map);
     HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-    Log.d(TAG, "userdata----> " + userData.toString());
+    Log.d(TAG, "userdata----> " + userData.toString()+" "+new Date().getTime());
 
     CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, new DataListner() {
       //this method registers the user
       @Override
       public void onSuccess(RegisterModal registerModal) {
 //        Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
+
         RegisterModal remodal = registerModal;
-        Log.d(TAG,"Registered!...");
+        Log.d(TAG,"Registered!..."+" "+new Date().getTime());
         promise.resolve(true);
 
 
