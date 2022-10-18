@@ -128,6 +128,9 @@ RCTBridge *rnBridge;
   NSLog(@"cgUserNotificationCenter");
   completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
 
+//  completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+
+//  [[CustomerGlu getInstance] cgUserNotificationCenter:center willPresent:notification withCompletionHandler:completionHandler];
 }
 
 //- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -212,6 +215,31 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void (^)(void))completionHandler
 {
+//  NSDictionary* dic = [[[[response notification] request] content] userInfo];
+//
+//  if(dic != NULL){
+//    if(dic[@"data"] != NULL){
+//      [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic[@"data"] auto_close_webview:TRUE];
+//    }else{
+//      [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic auto_close_webview:TRUE];
+//    }
+//  }
+//  if ([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+//      // User did tap at remote notification
+//    [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic auto_close_webview:TRUE];
+//
+//  }else{
+//    [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic[@"data"] auto_close_webview:TRUE];
+//  }
+  
+//  if ([response.notification.request.trigger isKindOfClass:[UNLocationNotificationTrigger class]]) {
+//      // User did tap at remote notification
+//
+//
+//  }
+
+
+  
   [RNCPushNotificationIOS didReceiveNotificationResponse:response];
 }
 

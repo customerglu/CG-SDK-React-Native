@@ -181,14 +181,14 @@ const RegisterScreen = ({ navigation }) => {
     };
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1,marginTop:10 }}>
             <ScrollView
                 keyboardShouldPersistTaps="handled"
                 contentContainerStyle={{
                     justifyContent: 'center',
                     alignContent: 'center',
                 }}>
-                <View style={{ alignItems: 'center' }}>
+                <View style={{ alignItems: 'center', }}>
                     <Image
                         source={require('../assets/customerglu.jpg')}
                         style={{
