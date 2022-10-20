@@ -63,6 +63,9 @@ export function openWallet(autoclosewebview: Boolean = false,obj:Object={}): Pro
     return Rncustomerglu.openWallet(obj);
   }else if(typeof autoclosewebview==='object'){
     return Rncustomerglu.openWallet(autoclosewebview);
+  }else{
+    obj['autoclosewebview']=autoclosewebview
+    return Rncustomerglu.openWallet(obj);
   }
 }
 
@@ -72,6 +75,9 @@ export function loadCampaignById(id: String,autoclosewebview: Boolean = false,ob
     return Rncustomerglu.loadCampaignById(id, obj);
   }else if(typeof autoclosewebview==='object'){
     return Rncustomerglu.loadCampaignById(id, autoclosewebview);
+  }else{
+    obj['autoclosewebview']=autoclosewebview
+    return Rncustomerglu.loadCampaignById(id, obj);
   }
 }
 
