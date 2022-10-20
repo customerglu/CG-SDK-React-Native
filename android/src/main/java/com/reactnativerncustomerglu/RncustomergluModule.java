@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 
@@ -394,10 +396,10 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void DisplayCGNotification(ReadableMap data,Boolean autoclosewebview,Double opacity) {
-    Log.e(TAG,"DisplayCGNotification---"+opacity);
+  public void DisplayCGNotification(ReadableMap data,Boolean autoclosewebview) {
     JSONObject jsonObject=convertMapToJson(data);
-    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,opacity, autoclosewebview);
+    int icon=getMyAppIcon(this.getReactApplicationContext());
+    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,icon,0.5, autoclosewebview);
 
   }
   @ReactMethod
@@ -407,8 +409,22 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     CustomerGlu.getInstance().displayCustomerGluBackgroundNotification(getReactApplicationContext(),jsonObject,autoclosewebview);
 
   }
+  public int getMyAppIcon(Context context) {
+    final PackageManager packageManager = context.getPackageManager();
+    final ApplicationInfo applicationInfo;
+    int appIconResId = 0;
+    try {
+      applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+      appIconResId = applicationInfo.icon;
 
-  @ReactMethod
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
+    return appIconResId;
+  }
+
+
+    @ReactMethod
   public void CGApplication() {
   }
 

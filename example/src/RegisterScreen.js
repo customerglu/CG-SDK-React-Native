@@ -69,7 +69,7 @@ const RegisterScreen = ({ navigation }) => {
     let userdataAndroid = null, userdataios = null, timer1 = null;
     useFocusEffect(
         React.useCallback(() => {
-            console.log("route name", route.name);
+            console.log("route name", route.name,animating);
             SetCurrentClassName(route.name);
 
         }, [navigation])
@@ -118,7 +118,11 @@ const RegisterScreen = ({ navigation }) => {
         if (token && userid) {
             userdataAndroid = {
                 userId: userid,
-                firebaseToken: token
+                firebaseToken: token,
+                customAttributes:{
+                    "isTestUser": true
+           
+               }
 
             };
             userdataios = {

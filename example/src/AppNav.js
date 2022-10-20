@@ -43,7 +43,7 @@ PushNotification.configure({
             if (notification.data.glu_message_type) {
                 //ios notification open from forground
                 console.log('notification.124567', notification.foreground)
-                DisplayCGNotification(notification.data, true,0.9)
+                DisplayCGNotification(notification.data, true)
 
             } else {
                 console.log('notification.10230', notification.foreground)

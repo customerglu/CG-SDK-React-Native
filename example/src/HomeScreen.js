@@ -72,7 +72,17 @@ const HomeScreen = ({ navigation }) => {
         );
         const eventdeeplink = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_DEEPLINK_EVENT',
-            (reminder) => console.log('CUSTOMERGLU_DEEPLINK_EVENT...', reminder)
+            (reminder) => 
+            {
+                if (Platform.OS === 'ios') {
+                    reminder = reminder.data
+                }
+                console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
+                if(reminder && reminder.campaignId){
+                loadCampaignById(reminder.campaignId)
+                }
+            }
+            
         );
         const eventbanner = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_BANNER_LOADED',

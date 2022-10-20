@@ -58,8 +58,6 @@ export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
 export function openWallet(autoclosewebview: Boolean = false,obj:Object={}): Promise<number> {
-  console.log(autoclosewebview,obj,typeof autoclosewebview)
-
   if(typeof autoclosewebview==='boolean'){
     obj['autoclosewebview']=autoclosewebview
     return Rncustomerglu.openWallet(obj);
@@ -69,8 +67,6 @@ export function openWallet(autoclosewebview: Boolean = false,obj:Object={}): Pro
 }
 
 export function loadCampaignById(id: String,autoclosewebview: Boolean = false,obj:Object={}): Promise<number> {
-  console.log(autoclosewebview,obj,typeof autoclosewebview)
-
   if(typeof autoclosewebview==='boolean'){
     obj['autoclosewebview']=autoclosewebview
     return Rncustomerglu.loadCampaignById(id, obj);
