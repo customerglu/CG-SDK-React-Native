@@ -136,7 +136,7 @@ const openWalletTest=()=>{
             layout:'bottom-default',
              opacity:'0.8',
              url:'http://google.com',
-             closeOnDeepLink:false,
+             closeOnDeepLink:true,
             //  absoluteHeight:'50',
             //  relativeHeight:'90'
         },

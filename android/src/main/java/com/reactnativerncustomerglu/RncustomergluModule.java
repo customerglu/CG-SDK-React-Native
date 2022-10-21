@@ -257,40 +257,39 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
   @ReactMethod
   public void openWallet(ReadableMap readableMap) {
-    Log.e(TAG,"openwallet-----"+readableMap.toString());
     try {
-      JSONObject nudgeConfigurationdata;
-      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
-      JSONObject obj = convertMapToJson(readableMap);
+      if(readableMap.hasKey("nudgeConfiguration")) {
+      Log.e(TAG, "openwallet-----" + readableMap.toString());
 
-      if(obj.has("nudgeConfiguration")) {
-        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
-        if (nudgeConfigurationdata.has("layout")) {
-          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
-        }
-        if (nudgeConfigurationdata.has("opacity")) {
-          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
-        }
-        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
-          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
-        }
-        if (nudgeConfigurationdata.has("absoluteHeight")) {
-          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
-        }
-        if (nudgeConfigurationdata.has("relativeHeight")) {
-          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
-        }
-        CustomerGlu.getInstance().openWallet(getReactApplicationContext(), nudgeConfiguration);
+        JSONObject nudgeConfigurationdata;
+        NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+        JSONObject obj = convertMapToJson(readableMap);
+          nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+          if (nudgeConfigurationdata.has("layout")) {
+            nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+          }
+          if (nudgeConfigurationdata.has("opacity")) {
+            nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+          }
+          if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+            nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+          }
+          if (nudgeConfigurationdata.has("absoluteHeight")) {
+            nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+          }
+          if (nudgeConfigurationdata.has("relativeHeight")) {
+            nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+          }
+          CustomerGlu.getInstance().openWallet(getReactApplicationContext(), nudgeConfiguration);
 
-      }
-     else if(obj.has("autoclosewebview")){
-        nudgeConfiguration.setCloseOnDeepLink(obj.getBoolean("autoclosewebview"));
-        CustomerGlu.getInstance().openWallet(getReactApplicationContext(), nudgeConfiguration);
-      }
+
+
+    }else{
+      CustomerGlu.getInstance().openWallet(getReactApplicationContext());
+    }
     } catch (JSONException e) {
       e.printStackTrace();
     }
-
   }
 
 
@@ -300,9 +299,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     try {
       JSONObject nudgeConfigurationdata;
       NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
-      JSONObject obj = convertMapToJson(readableMap);
-
-      if(obj.has("nudgeConfiguration")) {
+      if(readableMap.hasKey("nudgeConfiguration")) {
+        JSONObject obj = convertMapToJson(readableMap);
         nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
         if (nudgeConfigurationdata.has("layout")) {
           nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
@@ -319,10 +317,10 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         if (nudgeConfigurationdata.has("relativeHeight")) {
           nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
         }
-      } else if(obj.has("autoclosewebview")){
-        nudgeConfiguration.setCloseOnDeepLink(obj.getBoolean("autoclosewebview"));
+        CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, nudgeConfiguration);
+      } else {
+        CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(),id);
       }
-      CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, nudgeConfiguration);
     } catch (JSONException e) {
       e.printStackTrace();
     }

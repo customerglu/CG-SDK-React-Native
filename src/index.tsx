@@ -45,8 +45,6 @@ export const BannerWidget =
     : () => {
       throw new Error(LINKING_ERROR);
     };
-// console.log("BannerWidget", requireNativeComponent('BannerWidget'));
-// console.log("BannerWidget", UIManager.getViewManagerConfig('BannerWidget'));
 
 export function RegisterDevice(userdata: Object): Promise<number> {
   return Rncustomerglu.registerDevice(userdata);
@@ -57,28 +55,13 @@ export function dataClear(): Promise<number> {
 export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
-export function openWallet(autoclosewebview: Boolean = false,obj:Object={}): Promise<number> {
-  if(typeof autoclosewebview==='boolean'){
-    obj['autoclosewebview']=autoclosewebview
-    return Rncustomerglu.openWallet(obj);
-  }else if(typeof autoclosewebview==='object'){
-    return Rncustomerglu.openWallet(autoclosewebview);
-  }else{
-    obj['autoclosewebview']=autoclosewebview
-    return Rncustomerglu.openWallet(obj);
-  }
+export function openWallet(obj:Object={}): Promise<number> {
+  return Rncustomerglu.openWallet(obj)
 }
 
-export function loadCampaignById(id: String,autoclosewebview: Boolean = false,obj:Object={}): Promise<number> {
-  if(typeof autoclosewebview==='boolean'){
-    obj['autoclosewebview']=autoclosewebview
+export function loadCampaignById(id: String,obj:Object={}): Promise<number> {
     return Rncustomerglu.loadCampaignById(id, obj);
-  }else if(typeof autoclosewebview==='object'){
-    return Rncustomerglu.loadCampaignById(id, autoclosewebview);
-  }else{
-    obj['autoclosewebview']=autoclosewebview
-    return Rncustomerglu.loadCampaignById(id, obj);
-  }
+  
 }
 
 export function enableAnalytic(b: Boolean): Promise<number> {

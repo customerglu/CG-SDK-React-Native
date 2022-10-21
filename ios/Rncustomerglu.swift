@@ -104,8 +104,6 @@ class Rncustomerglu: RCTEventEmitter{
             nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
             nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
           
-        }else if((walletData["autoclosewebview"]) != nil){
-            nudgeconfigData.closeOnDeepLink=walletData["autoclosewebview"] as? Bool ?? false
         }
         customerGlu.openWallet(nudgeConfiguration: nudgeconfigData)
 //        customerGlu.openWallet(auto_close_webview: bool)
@@ -125,8 +123,6 @@ class Rncustomerglu: RCTEventEmitter{
             nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
             nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
           
-        }else if((nudgeData["autoclosewebview"]) != nil){
-            nudgeconfigData.closeOnDeepLink=nudgeData["autoclosewebview"] as? Bool ?? false
         }
         customerGlu.loadCampaignById(campaign_id:id, nudgeConfiguration: nudgeconfigData)
 //        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
