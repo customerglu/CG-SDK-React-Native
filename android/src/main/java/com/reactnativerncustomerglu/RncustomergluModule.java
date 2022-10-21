@@ -396,8 +396,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void DisplayCGNotification(ReadableMap data,Boolean autoclosewebview) {
     JSONObject jsonObject=convertMapToJson(data);
-    int icon=getMyAppIcon(this.getReactApplicationContext());
-    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,icon,0.5, autoclosewebview);
+    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5, autoclosewebview);
 
   }
   @ReactMethod
@@ -406,19 +405,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     Log.d(TAG,"DisplayCGBackgroundNotification---"+jsonObject+" "+ autoclosewebview);
     CustomerGlu.getInstance().displayCustomerGluBackgroundNotification(getReactApplicationContext(),jsonObject,autoclosewebview);
 
-  }
-  public int getMyAppIcon(Context context) {
-    final PackageManager packageManager = context.getPackageManager();
-    final ApplicationInfo applicationInfo;
-    int appIconResId = 0;
-    try {
-      applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
-      appIconResId = applicationInfo.icon;
-
-    } catch (PackageManager.NameNotFoundException e) {
-      e.printStackTrace();
-    }
-    return appIconResId;
   }
 
 

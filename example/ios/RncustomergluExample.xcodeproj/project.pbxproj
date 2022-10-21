@@ -16,8 +16,8 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* RncustomergluExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RncustomergluExampleTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		824DD999290159DA00DFA73C /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 824DD998290159D900DFA73C /* main.jsbundle */; };
-		824DD99B290159E500DFA73C /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 824DD99A290159E500DFA73C /* assets */; };
+		82B175322902886A00499FEA /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 82B175312902886A00499FEA /* main.jsbundle */; };
+		82DD1C322902A390006632A6 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 82DD1C312902A390006632A6 /* assets */; };
 		DA7A50A02862F6CA009EF426 /* BroadcastReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A509F2862F6CA009EF426 /* BroadcastReceiver.swift */; };
 		DAC3D26028745C4A0084D627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAC3D25F28745C4A0084D627 /* GoogleService-Info.plist */; };
 		E0068CE82B0371F73959EED7 /* Pods_RncustomergluExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F46479C6615714EEED41FB /* Pods_RncustomergluExample.framework */; };
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* RncustomergluExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RncustomergluExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RncustomergluExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RncustomergluExampleTests.m; sourceTree = "<group>"; };
@@ -54,8 +55,8 @@
 		2D02E4901E0B4A5D006451C7 /* RncustomergluExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RncustomergluExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F7ED3B7971BE374F7B8635 /* Pods-RncustomergluExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RncustomergluExample.debug.xcconfig"; path = "Target Support Files/Pods-RncustomergluExample/Pods-RncustomergluExample.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RncustomergluExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		824DD998290159D900DFA73C /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		824DD99A290159E500DFA73C /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		82B175312902886A00499FEA /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		82DD1C312902A390006632A6 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		A2F46479C6615714EEED41FB /* Pods_RncustomergluExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RncustomergluExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7A509E2862F6C9009EF426 /* RncustomergluExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RncustomergluExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA7A509F2862F6CA009EF426 /* BroadcastReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastReceiver.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 			children = (
 				DAC3D26128745D730084D627 /* RncustomergluExample.entitlements */,
 				DAC3D25F28745C4A0084D627 /* GoogleService-Info.plist */,
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -162,8 +164,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				824DD99A290159E500DFA73C /* assets */,
-				824DD998290159D900DFA73C /* main.jsbundle */,
+				82DD1C312902A390006632A6 /* assets */,
+				82B175312902886A00499FEA /* main.jsbundle */,
 				13B07FAE1A68108700A75B9A /* RncustomergluExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RncustomergluExampleTests */,
@@ -328,8 +330,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				824DD99B290159E500DFA73C /* assets in Resources */,
-				824DD999290159DA00DFA73C /* main.jsbundle in Resources */,
+				82B175322902886A00499FEA /* main.jsbundle in Resources */,
+				82DD1C322902A390006632A6 /* assets in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				DAC3D26028745C4A0084D627 /* GoogleService-Info.plist in Resources */,
@@ -366,7 +368,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=/usr/local/bin/node../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "export NODE_BINARY=node../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -585,7 +587,7 @@
 				CODE_SIGN_ENTITLEMENTS = RncustomergluExample/RncustomergluExample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hitesh Landge (4U53ALDQTS)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = XZR7N982GP;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RncustomergluExample/Info.plist;
@@ -616,7 +618,7 @@
 				CODE_SIGN_ENTITLEMENTS = RncustomergluExample/RncustomergluExample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hitesh Landge (4U53ALDQTS)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = XZR7N982GP;
 				INFOPLIST_FILE = RncustomergluExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -871,7 +873,7 @@
 				00E356F71AD99517003FC87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RncustomergluExample" */ = {
 			isa = XCConfigurationList;
@@ -880,7 +882,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "RncustomergluExample-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -889,7 +891,7 @@
 				2D02E4981E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "RncustomergluExample-tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -898,7 +900,7 @@
 				2D02E49A1E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RncustomergluExample" */ = {
 			isa = XCConfigurationList;
@@ -907,7 +909,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
