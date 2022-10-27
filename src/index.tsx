@@ -45,8 +45,6 @@ export const BannerWidget =
     : () => {
       throw new Error(LINKING_ERROR);
     };
-// console.log("BannerWidget", requireNativeComponent('BannerWidget'));
-// console.log("BannerWidget", UIManager.getViewManagerConfig('BannerWidget'));
 
 export function RegisterDevice(userdata: Object): Promise<number> {
   return Rncustomerglu.registerDevice(userdata);
@@ -57,12 +55,15 @@ export function dataClear(): Promise<number> {
 export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
-export function openWallet(autoclosewebview: Boolean = false): Promise<number> {
-  return Rncustomerglu.openWallet(autoclosewebview);
+export function openWallet(obj:Object={}): Promise<number> {
+  return Rncustomerglu.openWallet(obj)
 }
-export function loadCampaignById(id: String, autoclosewebview: Boolean = false): Promise<number> {
-  return Rncustomerglu.loadCampaignById(id, autoclosewebview);
+
+export function loadCampaignById(id: String,obj:Object={}): Promise<number> {
+    return Rncustomerglu.loadCampaignById(id, obj);
+  
 }
+
 export function enableAnalytic(b: Boolean): Promise<number> {
   return Rncustomerglu.enableAnalytic(b);
 }
@@ -111,9 +112,14 @@ export function DisplayCustomerGluNotification(): Promise<number> {
 export function CGApplication(): Promise<number> {
   return Rncustomerglu.CGApplication();
 }
-export function DisplayBackGroundNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
-  return Rncustomerglu.DisplayBackGroundNotification(obj, autoclosewebview);
+export function DisplayCGNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.DisplayCGNotification(obj, autoclosewebview);
 }
+
+export function DisplayCGBackgroundNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
+  return Rncustomerglu.DisplayCGBackgroundNotification(obj, autoclosewebview);
+}
+
 export function GetRefferalId(url: String): Promise<number> {
   return Rncustomerglu.GetRefferalId(url);
 }
@@ -126,9 +132,7 @@ export function LoadCampaginsByFilter(obj: Object): Promise<number> {
 export function SetCurrentClassName(clname: String): Promise<number> {
   return Rncustomerglu.SetCurrentClassName(clname);
 }
-export function OpenWalletWithUrl(url: String): Promise<number> {
-  return Rncustomerglu.OpenWalletWithUrl(url);
-}
+
 export function configureWhiteListedDomains(arr: Array<String>): Promise<number> {
   return Rncustomerglu.configureWhiteListedDomains(arr);
 }
@@ -141,5 +145,14 @@ export function setApnFcmToken(a: string, b: String): Promise<number> {
 }
 export function getBannerHeight(): Promise<number> {
   return Rncustomerglu.getBannerHeight();
+}
+
+export function openNudge(nudgeid:String,data:object={}): Promise<string> {
+  if(nudgeid!=null){
+    return Rncustomerglu.OpenNudgeRN(nudgeid,data);
+  }else{
+    throw new Error("nudgeId can't be empty");
+    
+  }
 }
 

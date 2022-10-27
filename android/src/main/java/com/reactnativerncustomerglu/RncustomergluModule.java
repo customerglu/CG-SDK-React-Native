@@ -1,32 +1,28 @@
 package com.reactnativerncustomerglu;
 
+import static com.customerglu.sdk.Utils.Comman.printDebugLogs;
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.customerglu.sdk.entrypoints.Banner;
-import com.facebook.react.bridge.ActivityEventListener;
+import com.customerglu.sdk.Modal.NudgeConfiguration;
+import com.customerglu.sdk.Utils.Comman;
 import com.facebook.react.bridge.LifecycleEventListener;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.Arguments;
 import com.customerglu.sdk.CustomerGlu;
 import com.customerglu.sdk.Interface.DataListner;
 import com.customerglu.sdk.Modal.RegisterModal;
@@ -45,11 +41,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.EventListener;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -177,15 +171,16 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   public void registerDevice(ReadableMap map, Promise promise) {
     JSONObject jsonObject = convertMapToJson(map);
     HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-    Log.d(TAG, "userdata----> " + userData.toString());
+    Log.d(TAG, "userdata----> " + userData.toString()+" "+new Date().getTime());
 
-    CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, true, new DataListner() {
+    CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, new DataListner() {
       //this method registers the user
       @Override
       public void onSuccess(RegisterModal registerModal) {
 //        Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
+
         RegisterModal remodal = registerModal;
-        Log.d(TAG,"Registered!...");
+        Log.d(TAG,"Registered!..."+" "+new Date().getTime());
         promise.resolve(true);
 
 
@@ -255,9 +250,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
       if(value instanceof JSONArray) {
         value = toList((JSONArray) value);
       }
-
-
-
       else if(value instanceof JSONObject) {
         value = toMap((JSONObject) value);
       }
@@ -265,15 +257,77 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     return list;
   }
-
   @ReactMethod
-  public void openWallet(Boolean autoclosewebview) {
-    CustomerGlu.getInstance().openWallet(getReactApplicationContext(),autoclosewebview);
+  public void openWallet(ReadableMap readableMap) {
+    try {
+      if(readableMap.hasKey("nudgeConfiguration")) {
+      Log.e(TAG, "openwallet-----" + readableMap.toString());
+
+        JSONObject nudgeConfigurationdata;
+        NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+        JSONObject obj = convertMapToJson(readableMap);
+          nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+          if (nudgeConfigurationdata.has("layout")) {
+            nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+          }
+          if (nudgeConfigurationdata.has("opacity")) {
+            nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+          }
+          if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+            nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+          }
+          if (nudgeConfigurationdata.has("absoluteHeight")) {
+            nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+          }
+          if (nudgeConfigurationdata.has("relativeHeight")) {
+            nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+          }
+          CustomerGlu.getInstance().openWallet(getReactApplicationContext(), nudgeConfiguration);
+
+
+
+    }else{
+      CustomerGlu.getInstance().openWallet(getReactApplicationContext());
+    }
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
   }
 
+
   @ReactMethod
-  public void loadCampaignById(String id, Boolean autoclosewebview) {
-    CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, autoclosewebview);
+  public void loadCampaignById(String id, ReadableMap readableMap) {
+    Log.e(TAG,"loadCampaignById-----"+readableMap.toString());
+    try {
+      JSONObject nudgeConfigurationdata;
+      NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+      if(readableMap.hasKey("nudgeConfiguration")) {
+        JSONObject obj = convertMapToJson(readableMap);
+        nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+        if (nudgeConfigurationdata.has("layout")) {
+          nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+        }
+        if (nudgeConfigurationdata.has("opacity")) {
+          nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+        }
+        if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+          nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+        }
+        if (nudgeConfigurationdata.has("absoluteHeight")) {
+          nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+        }
+        if (nudgeConfigurationdata.has("relativeHeight")) {
+          nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+        }
+        CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(), id, nudgeConfiguration);
+      } else {
+        CustomerGlu.getInstance().loadCampaignById(getReactApplicationContext(),id);
+      }
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+
+
   }
 
   @ReactMethod
@@ -342,13 +396,51 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void DisplayBackGroundNotification(ReadableMap data,Boolean autoclosewebview) {
+  public void DisplayCGNotification(ReadableMap data,Boolean autoclosewebview) {
     JSONObject jsonObject=convertMapToJson(data);
-    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5, autoclosewebview);
+    if(getAppIcon(getReactApplicationContext())!=0) {
+      CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(), jsonObject, getAppIcon(getReactApplicationContext()), 0.5, autoclosewebview);
+    }else{
+      CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(), jsonObject, R.drawable.notification, 0.5, autoclosewebview);
+
+    }
+  }
+
+  private static int getAppIcon(Context context) {
+
+    try {
+      ApplicationInfo ai = context.getPackageManager().getApplicationInfo(
+              context.getPackageName(), PackageManager.GET_META_DATA);
+      Bundle bundle = ai.metaData;
+      int myAPIKey = bundle.getInt("CUSTOMERGLU_NOTIFICATION_ICON");
+      printDebugLogs("API KEY : " + myAPIKey);
+      return myAPIKey;
+    } catch (Exception e) {
+      Comman.printErrorLogs(e.toString());
+      return 0;
+    }
+  }
+
+
+
+
+
+
+
+
+
+  @ReactMethod
+  public void DisplayCGBackgroundNotification(ReadableMap data,Boolean autoclosewebview) {
+    JSONObject jsonObject=convertMapToJson(data);
+    Log.d(TAG,"DisplayCGBackgroundNotification---"+jsonObject+" "+ autoclosewebview);
+    CustomerGlu.getInstance().displayCustomerGluBackgroundNotification(getReactApplicationContext(),jsonObject,autoclosewebview);
 
   }
 
-  @ReactMethod
+
+
+
+    @ReactMethod
   public void CGApplication() {
   }
 
@@ -395,9 +487,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     });
   }
 
-  @ReactMethod
-  public void OpenWalletWithUrl(String url) {
-  }
+
 
   @ReactMethod
   public void configureWhiteListedDomains(ReadableArray readableArray) {
@@ -412,6 +502,44 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     } catch (JSONException e) {
       e.printStackTrace();
     }
+
+  }
+  @ReactMethod
+  public void OpenNudgeRN(String nudgeid,ReadableMap readableMap){
+    Log.d(TAG,"nudeg----"+readableMap.hasKey("nudgeConfiguration"));
+    NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+    try {
+      if(readableMap.hasKey("nudgeConfiguration")) {
+        JSONObject nudgeConfigurationdata;
+
+        JSONObject obj = convertMapToJson(readableMap);
+        if (obj.has("nudgeid")) {
+          nudgeid = obj.getString("nudgeid");
+        }
+        if (obj.has("nudgeConfiguration")) {
+          nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+          if (nudgeConfigurationdata.has("layout")) {
+            nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+          }
+          if (nudgeConfigurationdata.has("opacity")) {
+            nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+          }
+          if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+            nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+          }
+          if (nudgeConfigurationdata.has("absoluteHeight")) {
+            nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+          }
+          if (nudgeConfigurationdata.has("relativeHeight")) {
+            nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+          }
+        }
+      }
+      CustomerGlu.getInstance().openNudge(getReactApplicationContext(),nudgeid,nudgeConfiguration);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+
 
   }
 

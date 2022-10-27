@@ -15,7 +15,9 @@
       android:allowBackup="false"
       android:theme="@style/AppTheme">
       <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="G4VCVVAcLub8hx5SaeqH3pRqLBmDFrwy" />
-
+      <meta-data
+          android:name="CUSTOMERGLU_NOTIFICATION_ICON"
+          android:resource="@drawable/notification" />
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

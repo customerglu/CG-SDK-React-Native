@@ -25,6 +25,8 @@ import {
     gluSDKDebuggingMode,
     closeWebView,
     enableAnalytic,
+    openNudge,
+    loadCampaignById
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -59,6 +61,7 @@ const HomeScreen = ({ navigation }) => {
         gluSDKDebuggingMode(true)
         enableAnalytic(true);
         closeWebView(true)
+       
 
         const { Rncustomerglu } = NativeModules;
         const RncustomergluManagerEmitter = new NativeEventEmitter(Rncustomerglu);
@@ -69,7 +72,17 @@ const HomeScreen = ({ navigation }) => {
         );
         const eventdeeplink = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_DEEPLINK_EVENT',
-            (reminder) => console.log('CUSTOMERGLU_DEEPLINK_EVENT...', reminder)
+            (reminder) => 
+            {
+                if (Platform.OS === 'ios') {
+                    reminder = reminder.data
+                }
+                console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
+                if(reminder && reminder.campaignId){
+                loadCampaignById(reminder.campaignId)
+                }
+            }
+            
         );
         const eventbanner = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_BANNER_LOADED',
@@ -82,7 +95,7 @@ const HomeScreen = ({ navigation }) => {
                 (reminder) => {
                     console.log('reminder----', reminder);
                     console.log('reminder["entry1"]....', reminder["entry1"])
-                    if (reminder["entry1"]) {
+                    if (reminder && reminder["entry1"]) {
                         setFinalHeight(reminder["entry1"] * windowHeight / 100);
 
                     }
@@ -108,7 +121,33 @@ const HomeScreen = ({ navigation }) => {
     }, []);
 
 
+const openWalletTest=()=>{
+    let openWalletData = {
+        nudgeConfiguration:{
+             layout:'middle-default',
+             opacity:'0.8',
+             closeOnDeepLink:true,
+             absoluteHeight:'50',
+             relativeHeight:'60'
+        },
+    };
+    let openNudgeData = {
+        nudgeConfiguration:{
+            layout:'bottom-default',
+             opacity:'0.8',
+             url:'http://google.com',
+             closeOnDeepLink:true,
+            //  absoluteHeight:'50',
+            //  relativeHeight:'90'
+        },
+    };
 
+// loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
+    openWallet(openWalletData);
+    // openNudge("nudge1", openNudgeData);  // optional
+
+
+}
     const clearDataFunc = async () => {
 
         dataClear();
@@ -154,8 +193,8 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox}
-                        onPress={() => openWallet()}>
-                        {/* // onPress={() => loadCampaignById("1", false)}> */}
+                        onPress={() => openWalletTest()}>
+                         {/* openNudgeTest() */}
                         <Image
                             source={require('../assets/purse.png')}
                             style={styles.imageStyle} />

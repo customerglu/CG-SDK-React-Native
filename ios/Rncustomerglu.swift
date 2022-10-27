@@ -49,13 +49,32 @@ class Rncustomerglu: RCTEventEmitter{
     
     
     @objc func registerDevice(_ userdata:NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-        customerGlu.registerDevice(userdata: userdata as! [String : AnyHashable],loadcampaigns: true) { success in
+        customerGlu.registerDevice(userdata: userdata as! [String : AnyHashable]) { success in
                                 if success {
                                     resolve(true)
                                 } else {
                                     resolve(false)
                                 }
                             }
+    }
+    
+    @objc func OpenNudgeRN(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
+      
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+       
+        if((nudgeData["nudgeConfiguration"]) != nil){
+            nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+          
+        }
+          
+        customerGlu.openNudge(nudgeId: id,nudgeConfiguration:nudgeconfigData)
+        
     }
 
     
@@ -72,13 +91,41 @@ class Rncustomerglu: RCTEventEmitter{
     }
 
     @objc
-    func openWallet(_ bool:Bool) -> Void {
-        customerGlu.openWallet(auto_close_webview: bool)
+    func openWallet(_ walletData:NSDictionary) -> Void {
+        print("walletData--",walletData)
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+        if((walletData["nudgeConfiguration"]) != nil){
+            
+            nudgeconfig=walletData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+          
+        }
+        customerGlu.openWallet(nudgeConfiguration: nudgeconfigData)
+//        customerGlu.openWallet(auto_close_webview: bool)
     }
     
     @objc
-    func loadCampaignById(_ id:String, auto_close_webview bool:Bool) -> Void {
-        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
+    func loadCampaignById(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
+        print("loadCampaignById--",id,nudgeData)
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+        if((nudgeData["nudgeConfiguration"]) != nil){
+            
+            nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+          
+        }
+        customerGlu.loadCampaignById(campaign_id:id, nudgeConfiguration: nudgeconfigData)
+//        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
     }
     
     @objc
@@ -182,16 +229,12 @@ class Rncustomerglu: RCTEventEmitter{
         CustomerGlu.getInstance.cgapplication(application, didReceiveRemoteNotification: userInfo, backgroundAlpha: 0.5 ,auto_close_webview:false,fetchCompletionHandler: completionHandler)     }
              }
         
-       
-            
-
-    @objc func DisplayBackGroundNotification(_ obj:NSDictionary, auto_close_webview bool:Bool) -> Void {
+    @objc func DisplayCGNotification(_ obj:NSDictionary, auto_close_webview bool:Bool) -> Void {
         DispatchQueue.main.async {
-            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview: bool );
+            customerGlu.displayBackgroundNotification(remoteMessage: obj as! [String : AnyHashable], auto_close_webview:bool)
+            
         }
         }
-    
-
 
     @objc
     func GetRefferalId(_ url:URL, resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
@@ -220,13 +263,7 @@ class Rncustomerglu: RCTEventEmitter{
         }
     }
     
-    @objc
-    func OpenWalletWithUrl(_ url:String) -> Void {
-        DispatchQueue.main.async {
-        customerGlu.openWalletWithURL(url: url)
-        }
-    }
-    
+
     
     @objc
     func configureWhiteListedDomains(_ domain:NSArray) -> Void {

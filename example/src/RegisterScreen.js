@@ -13,6 +13,7 @@ import {
     TouchableOpacity,
     ScrollView,
     Alert,
+    ActivityIndicator
 
 } from 'react-native';
 import {
@@ -64,10 +65,11 @@ import { Platform } from 'react-native';
 const RegisterScreen = ({ navigation }) => {
     const [userid, setUserId] = useState('')
     const route = useRoute();
+    const[animating,setanimation]=useState(false)
     let userdataAndroid = null, userdataios = null, timer1 = null;
     useFocusEffect(
         React.useCallback(() => {
-            console.log("route name", route.name);
+            console.log("route name", route.name,animating);
             SetCurrentClassName(route.name);
 
         }, [navigation])
@@ -112,11 +114,15 @@ const RegisterScreen = ({ navigation }) => {
         const token = await messaging().getToken();
         console.log("getToken", token)
         // Send registration data in Object     
-
+        setanimation(!animating)
         if (token && userid) {
             userdataAndroid = {
                 userId: userid,
-                firebaseToken: token
+                firebaseToken: token,
+                customAttributes:{
+                    "isTestUser": true
+           
+               }
 
             };
             userdataios = {
@@ -133,8 +139,9 @@ const RegisterScreen = ({ navigation }) => {
                 console.log('Register....', ok);
                 if (ok == true) {
                     setUserId('');
+                    setanimation(!animating)
                     await AsyncStorage.setItem("isRegisterScuccess", JSON.stringify(true));
-                    navigation.navigate('HomeScreen');
+                    navigation.replace('HomeScreen');
 
                     // timer1 = setTimeout(() => {
                     //     console.log("timer", 'timer1')
@@ -142,6 +149,7 @@ const RegisterScreen = ({ navigation }) => {
                     // }, 100);
                     // navigation.navigate('HomeScreen');
                 } else {
+                    setanimation(!animating)
                     console.log("false string", ok)
                 }
             }
@@ -181,14 +189,14 @@ const RegisterScreen = ({ navigation }) => {
     };
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1,marginTop:10 }}>
             <ScrollView
                 keyboardShouldPersistTaps="handled"
                 contentContainerStyle={{
                     justifyContent: 'center',
                     alignContent: 'center',
                 }}>
-                <View style={{ alignItems: 'center' }}>
+                <View style={{ alignItems: 'center', }}>
                     <Image
                         source={require('../assets/customerglu.jpg')}
                         style={{
@@ -221,7 +229,13 @@ const RegisterScreen = ({ navigation }) => {
                         onPress={handleSubmitButton}>
                         <Text style={styles.buttonTextStyle}>REGISTER</Text>
                     </TouchableOpacity>
+
                 </KeyboardAvoidingView>
+                <ActivityIndicator 
+                size={'large'} 
+                color={'green'}
+                animating = {animating}
+                />
             </ScrollView>
         </View>
     );
