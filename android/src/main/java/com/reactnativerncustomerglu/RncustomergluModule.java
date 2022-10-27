@@ -1,5 +1,6 @@
 package com.reactnativerncustomerglu;
 
+import static com.customerglu.sdk.Utils.Comman.printDebugLogs;
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
 import android.content.BroadcastReceiver;
@@ -9,13 +10,14 @@ import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.customerglu.sdk.Modal.NudgeConfiguration;
+import com.customerglu.sdk.Utils.Comman;
 import com.facebook.react.bridge.LifecycleEventListener;
-import com.facebook.react.bridge.NativeMap;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
@@ -396,9 +398,37 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void DisplayCGNotification(ReadableMap data,Boolean autoclosewebview) {
     JSONObject jsonObject=convertMapToJson(data);
-    CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(),jsonObject,R.drawable.notification,0.5, autoclosewebview);
+    if(getAppIcon(getReactApplicationContext())!=0) {
+      CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(), jsonObject, getAppIcon(getReactApplicationContext()), 0.5, autoclosewebview);
+    }else{
+      CustomerGlu.getInstance().displayCustomerGluNotification(getReactApplicationContext(), jsonObject, R.drawable.notification, 0.5, autoclosewebview);
 
+    }
   }
+
+  private static int getAppIcon(Context context) {
+
+    try {
+      ApplicationInfo ai = context.getPackageManager().getApplicationInfo(
+              context.getPackageName(), PackageManager.GET_META_DATA);
+      Bundle bundle = ai.metaData;
+      int myAPIKey = bundle.getInt("CUSTOMERGLU_NOTIFICATION_ICON");
+      printDebugLogs("API KEY : " + myAPIKey);
+      return myAPIKey;
+    } catch (Exception e) {
+      Comman.printErrorLogs(e.toString());
+      return 0;
+    }
+  }
+
+
+
+
+
+
+
+
+
   @ReactMethod
   public void DisplayCGBackgroundNotification(ReadableMap data,Boolean autoclosewebview) {
     JSONObject jsonObject=convertMapToJson(data);
@@ -406,6 +436,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     CustomerGlu.getInstance().displayCustomerGluBackgroundNotification(getReactApplicationContext(),jsonObject,autoclosewebview);
 
   }
+
+
 
 
     @ReactMethod
