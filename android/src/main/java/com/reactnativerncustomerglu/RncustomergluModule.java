@@ -257,6 +257,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     return list;
   }
+
   @ReactMethod
   public void openWallet(ReadableMap readableMap) {
     try {
@@ -333,7 +334,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void enableAnalytic(Boolean bool) {
     CustomerGlu.getInstance().enableAnalyticsEvent(bool);
-
   }
 
 

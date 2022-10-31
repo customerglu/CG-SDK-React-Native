@@ -22,11 +22,12 @@ import {
     BannerWidget,
     dataClear,
     openWallet,
-    gluSDKDebuggingMode,
+    gluSDKDebuggingMode,enableEntryPoints,
     closeWebView,
     enableAnalytic,
     openNudge,
-    loadCampaignById
+    loadCampaignById,
+    EmbedBannerWidget
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -41,6 +42,8 @@ const HomeScreen = ({ navigation }) => {
     const appState = useRef(AppState.currentState);
     const [appStateVisible, setAppStateVisible] = useState(appState.current);
     const [finalHeight, setFinalHeight] = useState(0);
+    const [finalEBHeight, setEBFinalHeight] = useState(0);
+
     const windowHeight = Dimensions.get('window').height;
     const _navigation = useNavigation();
     const route = useRoute();
@@ -57,11 +60,8 @@ const HomeScreen = ({ navigation }) => {
 
 
     useEffect(() => {
-        //enableEntryPointsEx(true);
-        gluSDKDebuggingMode(true)
         enableAnalytic(true);
         closeWebView(true)
-       
 
         const { Rncustomerglu } = NativeModules;
         const RncustomergluManagerEmitter = new NativeEventEmitter(Rncustomerglu);
@@ -88,7 +88,7 @@ const HomeScreen = ({ navigation }) => {
             'CUSTOMERGLU_BANNER_LOADED',
             (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...>>>>>', reminder)
         );
-        let eventfheight = null
+        let eventfheight = null,EmbedBannerHeight=null
         if (Platform.OS === 'ios') {
             eventfheight = RncustomergluManagerEmitter.addListener(
                 'CGBANNER_FINAL_HEIGHT',
@@ -103,6 +103,19 @@ const HomeScreen = ({ navigation }) => {
                 }
 
             );
+            EmbedBannerHeight = RncustomergluManagerEmitter.addListener(
+                'CGEMBED_FINAL_HEIGHT',
+                (reminder) => {
+                    console.log('reminder----', reminder);
+                    console.log('reminder["embedded1"]....', reminder["embedded1"])
+                    if (reminder && reminder["embedded1"]) {
+                        setEBFinalHeight(reminder["embedded1"]);
+// console.log('reminder["embedded1"] * windowHeight / 100',reminder["embedded1"] * windowHeight / 100)
+                    }
+
+                }
+
+            );
         }
 
         return () => {
@@ -112,6 +125,7 @@ const HomeScreen = ({ navigation }) => {
             if (Platform.OS === 'ios') {
                 console.log('destroy.!!!!!!!!')
                 eventfheight.remove();
+                EmbedBannerHeight.remove()
 
             }
 
@@ -169,7 +183,7 @@ const openWalletTest=()=>{
 
     return (
         <SafeAreaView flex={1}>
-            <View style={{ flex: 1, backgroundColor: '#fff', }}>
+            <ScrollView style={{ flexGrow: 1, backgroundColor: '#fff', }}>
                 <View style={{ flex: 1.3, alignItems: 'center', backgroundColor: '#000', height: '35%', justifyContent: 'center', padding: 10 }}>
                     <Image
                         source={require('../assets/customerglu.jpg')}
@@ -178,7 +192,7 @@ const openWalletTest=()=>{
                             alignContent: 'center',
                             alignSelf: 'center',
                             width: '100%',
-                            height: 120,
+                            height: 60,
                             resizeMode: 'contain',
                         }}
                     />
@@ -209,9 +223,13 @@ const openWalletTest=()=>{
                     </TouchableOpacity>
 
                 </View>
-                <BannerWidget
+                {/* <BannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
                     bannerId="entry1"
+                /> */}
+                <EmbedBannerWidget
+                    style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
+                    bannerId="embedded1"
                 />
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')}>
@@ -232,7 +250,7 @@ const openWalletTest=()=>{
 
 
 
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };

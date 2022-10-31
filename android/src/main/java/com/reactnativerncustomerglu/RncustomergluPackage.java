@@ -7,6 +7,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.reactnativerncustomerglu.Bannerwidget.Bannerwidget.BannerWidgetViewGroupManager;
+import com.reactnativerncustomerglu.EmbedBannerwidget.EmbedBannerwidget.EBannerWidgetVGManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +26,7 @@ public class RncustomergluPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
       return Arrays.asList(
+        new EBannerWidgetVGManager(),
         new BannerWidgetViewGroupManager()
       );
     }
