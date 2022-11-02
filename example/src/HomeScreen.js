@@ -88,6 +88,11 @@ const HomeScreen = ({ navigation }) => {
             'CUSTOMERGLU_BANNER_LOADED',
             (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...>>>>>', reminder)
         );
+
+        const invalidCampid = RncustomergluManagerEmitter.addListener(
+            'CG_INVALID_CAMPAIGN_ID',
+            (reminder) => console.log('CG_INVALID_CAMPAIGN_ID...>>>>>', reminder)
+        );
         let eventfheight = null,EmbedBannerHeight=null
         if (Platform.OS === 'ios') {
             eventfheight = RncustomergluManagerEmitter.addListener(
@@ -122,6 +127,7 @@ const HomeScreen = ({ navigation }) => {
             eventanalytics.remove();
             eventdeeplink.remove();
             eventbanner.remove();
+            invalidCampid.remove()
             if (Platform.OS === 'ios') {
                 console.log('destroy.!!!!!!!!')
                 eventfheight.remove();
@@ -158,7 +164,7 @@ const openWalletTest=()=>{
 
 // loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
     openWallet(openWalletData);
-    // openNudge("nudge1", openNudgeData);  // optional
+// openNudge("nudge1", openNudgeData);  // optional
 
 
 }

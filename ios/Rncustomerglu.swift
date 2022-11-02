@@ -8,7 +8,7 @@ let customerGlu = CustomerGlu.getInstance
 class Rncustomerglu: RCTEventEmitter{
     static var shared:Rncustomerglu?
     
-    private var supportedEventNames: Set<String> = ["CUSTOMERGLU_ANALYTICS_EVENT","CUSTOMERGLU_DEEPLINK_EVENT","CGBANNER_FINAL_HEIGHT","CUSTOMERGLU_BANNER_LOADED","CGEMBED_FINAL_HEIGHT"]
+    private var supportedEventNames: Set<String> = ["CUSTOMERGLU_ANALYTICS_EVENT","CUSTOMERGLU_DEEPLINK_EVENT","CGBANNER_FINAL_HEIGHT","CUSTOMERGLU_BANNER_LOADED","CGEMBED_FINAL_HEIGHT","CG_INVALID_CAMPAIGN_ID"]
     private var hasAttachedListener = true
     
     
@@ -23,9 +23,18 @@ class Rncustomerglu: RCTEventEmitter{
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CUSTOMERGLU_BANNER_LOADED"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CG_INVALID_CAMPAIGN_ID"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CGBANNER_FINAL_HEIGHT"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CGEMBED_FINAL_HEIGHT"), object: nil)
+        
+        setPlatformAndSdkVersion()
+    }
+    func setPlatformAndSdkVersion(){
+
+//        customerGlu.app_platform=''
+//        customerGlu.sdk_version=''
     }
     
     override func startObserving() {
@@ -147,7 +156,6 @@ class Rncustomerglu: RCTEventEmitter{
             }
            
         }else{
-            
             Rncustomerglu.shared?.emitEvent(withName: notification.name.rawValue, body: notification.userInfo)
         }
         let userInfo = notification.userInfo as? [String: Any]
