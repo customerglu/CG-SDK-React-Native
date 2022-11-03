@@ -20,6 +20,7 @@ import { SetCurrentClassName } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute, CommonActions } from "@react-navigation/native";
 import {
     BannerWidget,
+    EmbedBannerWidget,
     dataClear,
     openWallet,
     gluSDKDebuggingMode,enableEntryPoints,
@@ -27,7 +28,6 @@ import {
     enableAnalytic,
     openNudge,
     loadCampaignById,
-    EmbedBannerWidget
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -115,7 +115,6 @@ const HomeScreen = ({ navigation }) => {
                     console.log('reminder["embedded1"]....', reminder["embedded1"])
                     if (reminder && reminder["embedded1"]) {
                         setEBFinalHeight(reminder["embedded1"]);
-// console.log('reminder["embedded1"] * windowHeight / 100',reminder["embedded1"] * windowHeight / 100)
                     }
 
                 }
@@ -163,28 +162,18 @@ const openWalletTest=()=>{
     };
 
 // loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
-    openWallet(openWalletData);
+    // openWallet(openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
-
-
 }
     const clearDataFunc = async () => {
 
         dataClear();
         await AsyncStorage.setItem("isRegisterScuccess", JSON.stringify(false));
-        // navigation.navigate('RegisterScreen')
-        // _navigation.reset({
-        //     index: 0,
-        //     routes: [{ name: 'RegisterScreen' }],
-        // });
         navigation.dispatch(
             CommonActions.reset({
                 index: 0,
                 routes: [{ name: "RegisterScreen" }]
             }));
-        // navigation.replace('RegisterScreen');
-        // navigation.goBack()
-        // navigation.dispatch(StackActions.replace('RegisterScreen'))
     }
 
     return (

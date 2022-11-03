@@ -122,7 +122,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
           }
         }
 
-if (intent.getAction().equalsIgnoreCase("CG_INVALID_CAMPAIGN_ID")) {
+      if (intent.getAction().equalsIgnoreCase("CG_INVALID_CAMPAIGN_ID")) {
           /* If you want to listen CG_INVALID_CAMPAIGN_ID */
           if (intent.getStringExtra("data") != null) {
             String data = intent.getStringExtra("data");
@@ -233,10 +233,11 @@ if (intent.getAction().equalsIgnoreCase("CG_INVALID_CAMPAIGN_ID")) {
   @ReactMethod
   public void sendData(ReadableMap readableMap) {
     try {
+      String evnt="";
       JSONObject obj= convertMapToJson(readableMap);
-      String evnt = (String) obj.
-              get("eventName");
-//      Log.e(TAG,"eventProperties"+jsonToMap(obj.getJSONObject("eventProperties")));
+      if(obj.has("eventName")){
+        evnt = (String) obj.get("eventName");}
+      Log.e(TAG,"eventProperties"+evnt);
       CustomerGlu.getInstance().sendEvent(getReactApplicationContext(),evnt, jsonToMap(obj.getJSONObject("eventProperties")));
 
     } catch (JSONException e) {
@@ -573,8 +574,8 @@ if (intent.getAction().equalsIgnoreCase("CG_INVALID_CAMPAIGN_ID")) {
   public void configureDomainCodeMsg(ReadableMap readableMap) {
     try {
       JSONObject obj = convertMapToJson(readableMap);
-      int code = (int) obj.get("code");
-      String msg = (String) obj.get("msg");
+      int code = obj.has("code")? (int) obj.get("code"):0;
+      String msg = obj.has("msg")?(String) obj.get("msg"):"";
       CustomerGlu.getInstance().configureDomainCodeMsg(code,msg);
     } catch (JSONException e) {
       e.printStackTrace();
