@@ -47,17 +47,21 @@ const HomeScreen = ({ navigation }) => {
     const windowHeight = Dimensions.get('window').height;
     const _navigation = useNavigation();
     const route = useRoute();
-    useFocusEffect(
-        React.useCallback(() => {
-            //Dashboard  MoreScreen
-            console.log('navigation change..........', route.name)
-            SetCurrentClassName(route.name);
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         //Dashboard  MoreScreen
+    //         console.log('navigation change..........', route.name)
+    //         SetCurrentClassName(route.name);
 
 
 
-        }, [])
-    );
+    //     }, [])
+    // );
 
+    const onSizeChange = React.useCallback(e => {
+        console.log('rrrrrr---',e)
+        setEBFinalHeight(e.nativeEvent.height);
+      }, []);
 
     useEffect(() => {
         enableAnalytic(true);
@@ -94,33 +98,33 @@ const HomeScreen = ({ navigation }) => {
             (reminder) => console.log('CG_INVALID_CAMPAIGN_ID...>>>>>', reminder)
         );
         let eventfheight = null,EmbedBannerHeight=null
-        if (Platform.OS === 'ios') {
-            eventfheight = RncustomergluManagerEmitter.addListener(
-                'CGBANNER_FINAL_HEIGHT',
-                (reminder) => {
-                    console.log('reminder----', reminder);
-                    console.log('reminder["entry1"]....', reminder["entry1"])
-                    if (reminder && reminder["entry1"]) {
-                        setFinalHeight(reminder["entry1"] * windowHeight / 100);
+        // if (Platform.OS === 'ios') {
+        //     eventfheight = RncustomergluManagerEmitter.addListener(
+        //         'CGBANNER_FINAL_HEIGHT',
+        //         (reminder) => {
+        //             console.log('reminder----', reminder);
+        //             console.log('reminder["entry1"]....', reminder["entry1"])
+        //             if (reminder && reminder["entry1"]) {
+        //                 setFinalHeight(reminder["entry1"] * windowHeight / 100);
 
-                    }
+        //             }
 
-                }
+        //         }
 
-            );
-            EmbedBannerHeight = RncustomergluManagerEmitter.addListener(
-                'CGEMBED_FINAL_HEIGHT',
-                (reminder) => {
-                    console.log('reminder----', reminder);
-                    console.log('reminder["embedded1"]....', reminder["embedded1"])
-                    if (reminder && reminder["embedded1"]) {
-                        setEBFinalHeight(reminder["embedded1"]);
-                    }
+        //     );
+        //     EmbedBannerHeight = RncustomergluManagerEmitter.addListener(
+        //         'CGEMBED_FINAL_HEIGHT',
+        //         (reminder) => {
+        //             console.log('reminder----', reminder);
+        //             console.log('reminder["embedded1"]....', reminder["embedded1"])
+        //             if (reminder && reminder["embedded1"]) {
+        //                 setEBFinalHeight(reminder["embedded1"]);
+        //             }
 
-                }
+        //         }
 
-            );
-        }
+        //     );
+        // }
 
         return () => {
             eventanalytics.remove();
@@ -129,8 +133,8 @@ const HomeScreen = ({ navigation }) => {
             invalidCampid.remove()
             if (Platform.OS === 'ios') {
                 console.log('destroy.!!!!!!!!')
-                eventfheight.remove();
-                EmbedBannerHeight.remove()
+                // eventfheight.remove();
+                // EmbedBannerHeight.remove()
 
             }
 
@@ -161,8 +165,8 @@ const openWalletTest=()=>{
         },
     };
 
-// loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
-    // openWallet(openWalletData);
+// loadCampaignById("042a1048-569e-47c8-853c-33af1e325c9",openWalletData)
+    openWallet();
 // openNudge("nudge1", openNudgeData);  // optional
 }
     const clearDataFunc = async () => {
@@ -222,10 +226,14 @@ const openWalletTest=()=>{
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
                     bannerId="entry1"
                 /> */}
-                <EmbedBannerWidget
+                {/* <EmbedBannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
                     bannerId="embedded1"
-                />
+                /> */}
+
+<EmbedBannerWidget style={{ height:finalEBHeight }} onSizeChange={onSizeChange} />
+
+
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')}>
                         <Image

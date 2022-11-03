@@ -27,7 +27,7 @@ public class EBannerWidget extends LinearLayout {
 
   public void setEBannerId(String id) {
     Context context1 = context.getCurrentActivity();
-    cgEmbedbanner = new CGEmbedView(context1, id);
+    cgEmbedbanner = new CGEmbedView(context1, "embedded1");
     addView(cgEmbedbanner);
   }
 

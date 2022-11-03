@@ -4,7 +4,6 @@ import {
   UIManager
 } from 'react-native';
 // import React from 'react';
-
 const LINKING_ERROR =
   `The package 'react-native-rncustomerglu' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -71,7 +70,7 @@ export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }
 export function openWallet(obj:Object={}): Promise<number> {
-  return Rncustomerglu.openWallet(obj)
+  return Rncustomerglu.openWallet(obj);
 }
 
 export function loadCampaignById(id: String,obj:Object={}): Promise<number> {
