@@ -4,6 +4,12 @@ import UIKit
 import React
 
 let customerGlu = CustomerGlu.getInstance
+extension Double {
+    func roundToDecimal(_ fractionDigits: Int) -> Double {
+        let multiplier = pow(10, Double(fractionDigits))
+        return Darwin.round(self * multiplier) / multiplier
+    }
+}
 @objc(Rncustomerglu)
 class Rncustomerglu: RCTEventEmitter{
     static var shared:Rncustomerglu?
@@ -76,11 +82,11 @@ class Rncustomerglu: RCTEventEmitter{
         
         if((nudgeData["nudgeConfiguration"]) != nil){
             nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
-            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
-            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "full-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.0")!
             nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
-            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
-            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? Double(nudgeconfig["relativeHeight"] as? String ?? "0.0")!
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? Double(nudgeconfig["absoluteHeight"] as? String ?? "0.0")!
             
         }
         
@@ -109,16 +115,19 @@ class Rncustomerglu: RCTEventEmitter{
         if((walletData["nudgeConfiguration"]) != nil){
             
             nudgeconfig=walletData["nudgeConfiguration"] as! NSDictionary
-            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
-            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "full-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.0")!
             nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
-            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
-            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? Double(nudgeconfig["relativeHeight"] as? String ?? "0.0")!
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? Double(nudgeconfig["absoluteHeight"] as? String ?? "0.0")!
+
             
+
         }
         customerGlu.openWallet(nudgeConfiguration: nudgeconfigData)
         //        customerGlu.openWallet(auto_close_webview: bool)
     }
+    
     
     @objc
     func loadCampaignById(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
@@ -128,11 +137,11 @@ class Rncustomerglu: RCTEventEmitter{
         if((nudgeData["nudgeConfiguration"]) != nil){
             
             nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
-            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "middle-default"
-            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? 0.0
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "full-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.0")!
             nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
-            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? 0.0
-            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? 0.0
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? Double(nudgeconfig["relativeHeight"] as? String ?? "0.0")!
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? Double(nudgeconfig["absoluteHeight"] as? String ?? "0.0")!
             
         }
         customerGlu.loadCampaignById(campaign_id:id, nudgeConfiguration: nudgeconfigData)

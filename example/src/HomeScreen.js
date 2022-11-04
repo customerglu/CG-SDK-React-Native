@@ -146,8 +146,8 @@ const openWalletTest=()=>{
              layout:'middle-default',
              opacity:'0.8',
              closeOnDeepLink:true,
-             absoluteHeight:'50',
-             relativeHeight:'60'
+             absoluteHeight:700,
+             relativeHeight:0
         },
     };
     let openNudgeData = {
@@ -156,14 +156,14 @@ const openWalletTest=()=>{
              opacity:'0.8',
              url:'http://google.com',
              closeOnDeepLink:true,
-            //  absoluteHeight:'50',
-            //  relativeHeight:'90'
+             absoluteHeight:'50',
+             relativeHeight:50
         },
     };
 
 // loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
     // openWallet(openWalletData);
-// openNudge("nudge1", openNudgeData);  // optional
+openNudge("nudge1", openNudgeData);  // optional
 }
     const clearDataFunc = async () => {
 
@@ -218,10 +218,10 @@ const openWalletTest=()=>{
                     </TouchableOpacity>
 
                 </View>
-                {/* <BannerWidget
+                <BannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
                     bannerId="entry1"
-                /> */}
+                />
                 <EmbedBannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
                     bannerId="embedded1"

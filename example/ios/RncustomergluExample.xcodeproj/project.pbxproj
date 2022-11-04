@@ -16,8 +16,6 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* RncustomergluExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RncustomergluExampleTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		82B175322902886A00499FEA /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 82B175312902886A00499FEA /* main.jsbundle */; };
-		82DD1C322902A390006632A6 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 82DD1C312902A390006632A6 /* assets */; };
 		DA7A50A02862F6CA009EF426 /* BroadcastReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A509F2862F6CA009EF426 /* BroadcastReceiver.swift */; };
 		DAC3D26028745C4A0084D627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAC3D25F28745C4A0084D627 /* GoogleService-Info.plist */; };
 		E0068CE82B0371F73959EED7 /* Pods_RncustomergluExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F46479C6615714EEED41FB /* Pods_RncustomergluExample.framework */; };
@@ -55,8 +53,6 @@
 		2D02E4901E0B4A5D006451C7 /* RncustomergluExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RncustomergluExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F7ED3B7971BE374F7B8635 /* Pods-RncustomergluExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RncustomergluExample.debug.xcconfig"; path = "Target Support Files/Pods-RncustomergluExample/Pods-RncustomergluExample.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RncustomergluExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		82B175312902886A00499FEA /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		82DD1C312902A390006632A6 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		A2F46479C6615714EEED41FB /* Pods_RncustomergluExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RncustomergluExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7A509E2862F6C9009EF426 /* RncustomergluExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RncustomergluExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA7A509F2862F6CA009EF426 /* BroadcastReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastReceiver.swift; sourceTree = "<group>"; };
@@ -164,8 +160,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				82DD1C312902A390006632A6 /* assets */,
-				82B175312902886A00499FEA /* main.jsbundle */,
 				13B07FAE1A68108700A75B9A /* RncustomergluExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RncustomergluExampleTests */,
@@ -330,8 +324,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82B175322902886A00499FEA /* main.jsbundle in Resources */,
-				82DD1C322902A390006632A6 /* assets in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				DAC3D26028745C4A0084D627 /* GoogleService-Info.plist in Resources */,
@@ -585,7 +577,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RncustomergluExample/RncustomergluExample.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hitesh Landge (4U53ALDQTS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = XZR7N982GP;
@@ -616,7 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RncustomergluExample/RncustomergluExample.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hitesh Landge (4U53ALDQTS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = XZR7N982GP;

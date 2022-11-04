@@ -23,7 +23,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CUSTOMERGLU_WRITE_KEY</key>
-	<string>OVA5l7RPWd9xq4yOpkgKW31K9UubK1nuaO3BZxWN</string>
+	<string>G4VCVVAcLub8hx5SaeqH3pRqLBmDFrwy</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<string>NO</string>
 	<key>LSRequiresIPhoneOS</key>

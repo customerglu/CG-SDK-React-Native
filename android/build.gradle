@@ -62,7 +62,7 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"  // From node_modules
 //  implementation 'com.github.customerglu:CG-SDK-Android:9be3d940f1'
-  implementation 'com.github.customerglu:CG-SDK-Android:7d9cd98b14'
+  implementation 'com.github.customerglu:CG-SDK-Android:v2.1.1'
 //  implementation 'com.github.customerglu:CG-SDK-Android:5f69d2c451'
   implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
   implementation 'com.google.code.gson:gson:2.8.6'
