@@ -46,6 +46,21 @@ export const BannerWidget =
       throw new Error(LINKING_ERROR);
     };
 
+
+type CgEmbedBannerProps = {
+      bannerId: string;
+    };
+
+const EmbedBannerName='EmbedBannerWidget'
+export const EmbedBannerWidget =
+  UIManager.getViewManagerConfig(EmbedBannerName) != null
+    ? requireNativeComponent<CgEmbedBannerProps>(EmbedBannerName)
+    : () => {
+      throw new Error(LINKING_ERROR);
+    };
+
+
+
 export function RegisterDevice(userdata: Object): Promise<number> {
   return Rncustomerglu.registerDevice(userdata);
 }

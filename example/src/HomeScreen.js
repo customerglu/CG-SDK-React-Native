@@ -20,13 +20,14 @@ import { SetCurrentClassName } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute, CommonActions } from "@react-navigation/native";
 import {
     BannerWidget,
+    EmbedBannerWidget,
     dataClear,
     openWallet,
-    gluSDKDebuggingMode,
+    gluSDKDebuggingMode,enableEntryPoints,
     closeWebView,
     enableAnalytic,
     openNudge,
-    loadCampaignById
+    loadCampaignById,
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -41,6 +42,8 @@ const HomeScreen = ({ navigation }) => {
     const appState = useRef(AppState.currentState);
     const [appStateVisible, setAppStateVisible] = useState(appState.current);
     const [finalHeight, setFinalHeight] = useState(0);
+    const [finalEBHeight, setEBFinalHeight] = useState(0);
+
     const windowHeight = Dimensions.get('window').height;
     const _navigation = useNavigation();
     const route = useRoute();
@@ -57,11 +60,8 @@ const HomeScreen = ({ navigation }) => {
 
 
     useEffect(() => {
-        //enableEntryPointsEx(true);
-        gluSDKDebuggingMode(true)
         enableAnalytic(true);
         closeWebView(true)
-       
 
         const { Rncustomerglu } = NativeModules;
         const RncustomergluManagerEmitter = new NativeEventEmitter(Rncustomerglu);
@@ -88,7 +88,12 @@ const HomeScreen = ({ navigation }) => {
             'CUSTOMERGLU_BANNER_LOADED',
             (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...>>>>>', reminder)
         );
-        let eventfheight = null
+
+        const invalidCampid = RncustomergluManagerEmitter.addListener(
+            'CG_INVALID_CAMPAIGN_ID',
+            (reminder) => console.log('CG_INVALID_CAMPAIGN_ID...>>>>>', reminder)
+        );
+        let eventfheight = null,EmbedBannerHeight=null
         if (Platform.OS === 'ios') {
             eventfheight = RncustomergluManagerEmitter.addListener(
                 'CGBANNER_FINAL_HEIGHT',
@@ -103,15 +108,29 @@ const HomeScreen = ({ navigation }) => {
                 }
 
             );
+            EmbedBannerHeight = RncustomergluManagerEmitter.addListener(
+                'CGEMBED_FINAL_HEIGHT',
+                (reminder) => {
+                    console.log('reminder----', reminder);
+                    console.log('reminder["embedded1"]....', reminder["embedded1"])
+                    if (reminder && reminder["embedded1"]) {
+                        setEBFinalHeight(reminder["embedded1"]);
+                    }
+
+                }
+
+            );
         }
 
         return () => {
             eventanalytics.remove();
             eventdeeplink.remove();
             eventbanner.remove();
+            invalidCampid.remove()
             if (Platform.OS === 'ios') {
                 console.log('destroy.!!!!!!!!')
                 eventfheight.remove();
+                EmbedBannerHeight.remove()
 
             }
 
@@ -127,8 +146,8 @@ const openWalletTest=()=>{
              layout:'middle-default',
              opacity:'0.8',
              closeOnDeepLink:true,
-             absoluteHeight:'50',
-             relativeHeight:'60'
+             absoluteHeight:700,
+             relativeHeight:0
         },
     };
     let openNudgeData = {
@@ -137,39 +156,29 @@ const openWalletTest=()=>{
              opacity:'0.8',
              url:'http://google.com',
              closeOnDeepLink:true,
-            //  absoluteHeight:'50',
-            //  relativeHeight:'90'
+             absoluteHeight:'50',
+             relativeHeight:50
         },
     };
 
 // loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
-    openWallet(openWalletData);
-    // openNudge("nudge1", openNudgeData);  // optional
-
-
+    // openWallet(openWalletData);
+openNudge("nudge1", openNudgeData);  // optional
 }
     const clearDataFunc = async () => {
 
         dataClear();
         await AsyncStorage.setItem("isRegisterScuccess", JSON.stringify(false));
-        // navigation.navigate('RegisterScreen')
-        // _navigation.reset({
-        //     index: 0,
-        //     routes: [{ name: 'RegisterScreen' }],
-        // });
         navigation.dispatch(
             CommonActions.reset({
                 index: 0,
                 routes: [{ name: "RegisterScreen" }]
             }));
-        // navigation.replace('RegisterScreen');
-        // navigation.goBack()
-        // navigation.dispatch(StackActions.replace('RegisterScreen'))
     }
 
     return (
         <SafeAreaView flex={1}>
-            <View style={{ flex: 1, backgroundColor: '#fff', }}>
+            <ScrollView style={{ flexGrow: 1, backgroundColor: '#fff', }}>
                 <View style={{ flex: 1.3, alignItems: 'center', backgroundColor: '#000', height: '35%', justifyContent: 'center', padding: 10 }}>
                     <Image
                         source={require('../assets/customerglu.jpg')}
@@ -178,7 +187,7 @@ const openWalletTest=()=>{
                             alignContent: 'center',
                             alignSelf: 'center',
                             width: '100%',
-                            height: 120,
+                            height: 60,
                             resizeMode: 'contain',
                         }}
                     />
@@ -213,6 +222,10 @@ const openWalletTest=()=>{
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
                     bannerId="entry1"
                 />
+                <EmbedBannerWidget
+                    style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
+                    bannerId="embedded1"
+                />
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')}>
                         <Image
@@ -232,7 +245,7 @@ const openWalletTest=()=>{
 
 
 
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };

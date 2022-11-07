@@ -1,6 +1,7 @@
 package com.reactnativerncustomerglu;
 
 import static com.customerglu.sdk.Utils.Comman.printDebugLogs;
+import static com.facebook.react.bridge.UiThreadUtil.isOnUiThread;
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
 import android.content.BroadcastReceiver;
@@ -64,8 +65,21 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     mContext = reactContext;
     reactContext.addLifecycleEventListener(this);
     CustomerGlu.initializeSdk(getReactApplicationContext());
+    setPlatformAndSdkVersion();
+  }
+  @ReactMethod
+  public void addListener(String eventName) {
+  }
+  @ReactMethod
+  public void removeListeners(Integer count) {
+  }
 
+  private void setPlatformAndSdkVersion() {
+    if(CustomerGlu.getInstance()!=null){
 
+      CustomerGlu.cg_sdk_version="1.1.0";
+      CustomerGlu.cg_app_platform="REACT_NATIVE";
+    }
   }
 
 
@@ -108,6 +122,16 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
           }
         }
 
+      if (intent.getAction().equalsIgnoreCase("CG_INVALID_CAMPAIGN_ID")) {
+          /* If you want to listen CG_INVALID_CAMPAIGN_ID */
+          if (intent.getStringExtra("data") != null) {
+            String data = intent.getStringExtra("data");
+            JSONObject jsonObject = new JSONObject(data);
+            WritableMap map = jsonToWritableMap(jsonObject);
+            sendEventToJs("CG_INVALID_CAMPAIGN_ID", map);
+          }
+        }
+
 
 
       } catch (Exception e) {
@@ -121,6 +145,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
+    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
 
   }
 
@@ -148,6 +173,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
     mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
+    mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
 
   }
 
@@ -199,19 +225,19 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
   @ReactMethod
-  public void dataClear() {
+  public void dataClear()
+  {
     CustomerGlu.getInstance().clearGluData(getCurrentActivity());
   }
 
   @ReactMethod
-
-
-
   public void sendData(ReadableMap readableMap) {
     try {
+      String evnt="";
       JSONObject obj= convertMapToJson(readableMap);
-      String evnt = (String) obj.get("eventName");
-//      Log.e(TAG,"eventProperties"+jsonToMap(obj.getJSONObject("eventProperties")));
+      if(obj.has("eventName")){
+        evnt = (String) obj.get("eventName");}
+      Log.e(TAG,"eventProperties"+evnt);
       CustomerGlu.getInstance().sendEvent(getReactApplicationContext(),evnt, jsonToMap(obj.getJSONObject("eventProperties")));
 
     } catch (JSONException e) {
@@ -257,6 +283,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     return list;
   }
+
   @ReactMethod
   public void openWallet(ReadableMap readableMap) {
     try {
@@ -333,7 +360,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void enableAnalytic(Boolean bool) {
     CustomerGlu.getInstance().enableAnalyticsEvent(bool);
-
   }
 
 
@@ -441,7 +467,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
 
     @ReactMethod
-  public void CGApplication() {
+    public void CGApplication() {
   }
 
   @ReactMethod
@@ -548,8 +574,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   public void configureDomainCodeMsg(ReadableMap readableMap) {
     try {
       JSONObject obj = convertMapToJson(readableMap);
-      int code = (int) obj.get("code");
-      String msg = (String) obj.get("msg");
+      int code = obj.has("code")? (int) obj.get("code"):0;
+      String msg = obj.has("msg")?(String) obj.get("msg"):"";
       CustomerGlu.getInstance().configureDomainCodeMsg(code,msg);
     } catch (JSONException e) {
       e.printStackTrace();

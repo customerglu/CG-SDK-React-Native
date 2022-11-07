@@ -11,6 +11,11 @@
 
 @interface RCT_EXTERN_MODULE(BannerWidget, RCTViewManager)
      RCT_EXPORT_VIEW_PROPERTY(bannerId, NSString)
+@end
+
+@interface RCT_EXTERN_MODULE(EmbedBannerWidget, RCTViewManager)
+     RCT_EXPORT_VIEW_PROPERTY(bannerId, NSString)
+
 //       RCT_CUSTOM_VIEW_PROPERTY(name, NSString, BannerWidget)
 //          {
 //           NSLog(@"%@", json);
