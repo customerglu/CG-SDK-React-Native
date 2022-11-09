@@ -93,6 +93,9 @@ export function disableGluSdk(a: Boolean): Promise<number> {
 export function configureLoaderColour(colr: String): Promise<number> {
   return Rncustomerglu.configureLoaderColour(colr);
 }
+export function setLoaderBackgroundColor(colr: String): Promise<number> {
+  return Rncustomerglu.setLoaderBackgroundColor(colr);
+}
 export function enablePrecaching(): Promise<number> {
   return Rncustomerglu.enablePrecaching();
 }

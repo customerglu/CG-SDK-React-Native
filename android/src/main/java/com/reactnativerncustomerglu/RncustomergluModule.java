@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -372,6 +373,38 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   @ReactMethod
   public void configureLoaderColour(String color) {
     CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), color);
+  }
+  @ReactMethod
+  public void setLoaderBackgroundColor(String clr) {
+    Log.e(TAG, "color->>>>>>"+clr);
+    if(clr!=null && clr.length()==9) {
+      int red = Integer.valueOf(clr.substring(1, 3), 16);
+      int green = Integer.valueOf(clr.substring(3, 5), 16);
+      int blue = Integer.valueOf(clr.substring(5, 7), 16);
+      int alpha = Integer.parseInt(clr.substring(7, 9), 16);
+      String alphaHex = To00Hex(alpha);
+      String blueHex = To00Hex(blue);
+      String greenHex = To00Hex(green);
+      String redHex = To00Hex(red);
+      StringBuilder str = new StringBuilder("#");
+      str.append(alphaHex);
+      str.append(redHex );
+      str.append(greenHex);
+      str.append(blueHex);
+      Log.e(TAG, "colo1-----" + red + " " + green + " " + blue + " " + alpha+" "+str.toString());
+
+//    CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), str.toString());
+
+    }else
+    {
+      //    CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), color);
+
+    }
+  }
+
+  private static String To00Hex(int value) {
+    String hex = "00".concat(Integer.toHexString(value));
+    return hex.substring(hex.length()-2, hex.length());
   }
 
   @ReactMethod

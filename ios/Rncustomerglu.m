@@ -22,6 +22,7 @@ RCT_EXTERN_METHOD(loadCampaignById:(NSString *)id nudgeconfigdata:(NSDictionary 
 RCT_EXTERN_METHOD(enableAnalytic:(BOOL *)bool)
 RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)
+RCT_EXTERN_METHOD(setLoaderBackgroundColor:(NSString *)colr)
 RCT_EXTERN_METHOD(enablePrecaching)
 RCT_EXTERN_METHOD(gluSDKDebuggingMode:(BOOL *)bool)
 RCT_EXTERN_METHOD(enableEntryPoints:(BOOL *)bool)
