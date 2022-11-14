@@ -146,7 +146,7 @@ const openWalletTest=()=>{
              layout:'middle-default',
              opacity:'0.8',
              closeOnDeepLink:true,
-             absoluteHeight:700,
+             absoluteHeight:0,
              relativeHeight:0
         },
     };

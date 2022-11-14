@@ -46,8 +46,8 @@ extension UIColor {
                 
             }
         }
-
-        return nil
+        self.init(red:1, green: 1, blue: 1, alpha: 1.0)
+        return 
     }
 }
 @objc(Rncustomerglu)
@@ -220,12 +220,20 @@ class Rncustomerglu: RCTEventEmitter{
         let color = colorWithHexString(hexString: colr )
         customerGlu.configureLoaderColour(color: [color])
     }
+
+    @objc
+    func configureStatusBarColour(_ color: String) -> Void {
+       print("configureStatusBarColour------",color)
+    }
+    
     
     @objc
-    func setLoaderBackgroundColor(_ colr: String) -> Void {
-        let color = UIColor(hex: colr )
-        print("setLoaderBackgroundColor------",color)
-//        customerGlu.configureLoaderColour(color: [color])
+    func configureLoadingScreenColor(_ color: String) -> Void {
+        let argbcolor = UIColor(hex: color )
+        print("configureLoadingScreenColor------",argbcolor)
+        customerGlu.configureLoadingScreenColor(color: argbcolor ?? UIColor.white)
+        
+        
     }
     @objc
     func enablePrecaching() -> Void {

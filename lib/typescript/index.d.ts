@@ -16,6 +16,8 @@ export declare function enableAnalytic(b: Boolean): Promise<number>;
 export declare function sendEventToJs(b: NativeEventEmitter): Promise<number>;
 export declare function disableGluSdk(a: Boolean): Promise<number>;
 export declare function configureLoaderColour(colr: String): Promise<number>;
+export declare function configureStatusBarColour(color: String): Promise<number>;
+export declare function configureLoadingScreenColor(color: String): Promise<number>;
 export declare function enablePrecaching(): Promise<number>;
 export declare function gluSDKDebuggingMode(b: Boolean): Promise<number>;
 export declare function enableEntryPoints(b: boolean): Promise<number>;

@@ -374,8 +374,18 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   public void configureLoaderColour(String color) {
     CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), color);
   }
+
   @ReactMethod
-  public void setLoaderBackgroundColor(String clr) {
+  public void configureStatusBarColour(String color) {
+    CustomerGlu.getInstance().configureStatusBarColour(color);
+  }
+
+ @ReactMethod
+  public void configureSafeArea(ReadableMap map) {
+  }
+
+  @ReactMethod
+  public void configureLoadingScreenColor(String clr) {
     Log.e(TAG, "color->>>>>>"+clr);
     if(clr!=null && clr.length()==9) {
       int red = Integer.valueOf(clr.substring(1, 3), 16);
@@ -393,12 +403,11 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
       str.append(blueHex);
       Log.e(TAG, "colo1-----" + red + " " + green + " " + blue + " " + alpha+" "+str.toString());
 
-//    CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), str.toString());
+    CustomerGlu.getInstance().configureLoadingScreenColor(str.toString());
 
     }else
     {
-      //    CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), color);
-
+          CustomerGlu.getInstance().configureLoadingScreenColor(clr);
     }
   }
 
