@@ -24,7 +24,7 @@ import {
     configureLoaderColour,
     enableEntryPoints,
     SetCurrentClassName,
-    enableAnalytic
+    enableAnalytic,configureLoadingScreenColor,configureStatusBarColour,configureSafeArea
 } from '@customerglu/react-native-customerglu';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -65,11 +65,11 @@ import { Platform } from 'react-native';
 const RegisterScreen = ({ navigation }) => {
     const [userid, setUserId] = useState('')
     const route = useRoute();
-    const[animating,setanimation]=useState(false)
+    const [animating, setanimation] = useState(false)
     let userdataAndroid = null, userdataios = null, timer1 = null;
     useFocusEffect(
         React.useCallback(() => {
-            console.log("route name", route.name,animating);
+            console.log("route name", route.name, animating);
             SetCurrentClassName(route.name);
 
         }, [navigation])
@@ -119,10 +119,10 @@ const RegisterScreen = ({ navigation }) => {
             userdataAndroid = {
                 userId: userid,
                 firebaseToken: token,
-                customAttributes:{
+                customAttributes: {
                     "isTestUser": true
-           
-               }
+
+                }
 
             };
             userdataios = {
@@ -133,7 +133,17 @@ const RegisterScreen = ({ navigation }) => {
             try {
                 gluSDKDebuggingMode(true);
                 enableEntryPoints(true);
-                configureLoaderColour("#00FF00");
+
+                configureLoaderColour("#00ff00");
+                configureLoadingScreenColor("#934fffff");
+                configureStatusBarColour('#0000ff')
+
+                let obj = {
+                    topHeight: 100, bottomHeight: 100,
+                    topSafeAreaColor: "#000034", bottomSafeAreaColor: "#FF0000"
+                }
+                configureSafeArea(obj);
+
                 enableAnalytic(true)
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
@@ -189,7 +199,7 @@ const RegisterScreen = ({ navigation }) => {
     };
 
     return (
-        <View style={{ flex: 1,marginTop:10 }}>
+        <View style={{ flex: 1, marginTop: 10 }}>
             <ScrollView
                 keyboardShouldPersistTaps="handled"
                 contentContainerStyle={{
@@ -231,10 +241,10 @@ const RegisterScreen = ({ navigation }) => {
                     </TouchableOpacity>
 
                 </KeyboardAvoidingView>
-                <ActivityIndicator 
-                size={'large'} 
-                color={'green'}
-                animating = {animating}
+                <ActivityIndicator
+                    size={'large'}
+                    color={'green'}
+                    animating={animating}
                 />
             </ScrollView>
         </View>
