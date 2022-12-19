@@ -42,6 +42,7 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -196,32 +197,34 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @ReactMethod
   public void registerDevice(ReadableMap map, Promise promise) {
-    JSONObject jsonObject = convertMapToJson(map);
-    HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-    Log.d(TAG, "userdata----> " + userData.toString()+" "+new Date().getTime());
+    if(map!=null) {
+      JSONObject jsonObject = convertMapToJson(map);
+      HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
+      Log.d(TAG, "userdata----> " + userData.toString() + " " + new Date().getTime());
 
-    CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, new DataListner() {
-      //this method registers the user
-      @Override
-      public void onSuccess(RegisterModal registerModal) {
+      CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, new DataListner() {
+        //this method registers the user
+        @Override
+        public void onSuccess(RegisterModal registerModal) {
 //        Toast.makeText(getReactApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
 
-        RegisterModal remodal = registerModal;
-        Log.d(TAG,"Registered!..."+" "+new Date().getTime());
-        promise.resolve(true);
+          RegisterModal remodal = registerModal;
+          Log.d(TAG, "Registered!..." + " " + new Date().getTime());
+          promise.resolve(true);
 
 
-      }
+        }
 
-      @Override
-      public void onFail(String message) {
+        @Override
+        public void onFail(String message) {
 //        Toast.makeText(getReactApplicationContext(), "" + message, Toast.LENGTH_SHORT).show();
-        Log.d(TAG,"Registeration Failed!..."+message.toString());
+          Log.d(TAG, "Registeration Failed!..." + message.toString());
 
-        promise.resolve(false);
+          promise.resolve(false);
 
-      }
-    });
+        }
+      });
+    }
 
   }
 
@@ -233,16 +236,28 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @ReactMethod
   public void sendData(ReadableMap readableMap) {
-    try {
-      String evnt="";
-      JSONObject obj= convertMapToJson(readableMap);
-      if(obj.has("eventName")){
-        evnt = (String) obj.get("eventName");}
-      Log.e(TAG,"eventProperties"+evnt);
-      CustomerGlu.getInstance().sendEvent(getReactApplicationContext(),evnt, jsonToMap(obj.getJSONObject("eventProperties")));
-
-    } catch (JSONException e) {
-      e.printStackTrace();
+    Log.e(TAG, "rereadableMapquest----- " + readableMap);
+    if(readableMap!=null) {
+      try {
+        String evnt = "";
+        JSONObject obj = convertMapToJson(readableMap);
+        Log.e(TAG, "request----- " + obj);
+        if (obj.has("eventName")) {
+          evnt = (String) obj.get("eventName");
+        }
+        if (obj.has("eventProperties")) {
+          Object eventProperties = obj.get("eventProperties");
+          if (eventProperties instanceof JSONObject) {
+            Log.e(TAG, "data>>>>>----- " + (JSONObject) eventProperties);
+            CustomerGlu.getInstance().sendEvent(getReactApplicationContext(), evnt, jsonToMap((JSONObject) eventProperties));
+          }
+        } else {
+          Map<String, Object> s = new HashMap<>();
+          CustomerGlu.getInstance().sendEvent(getReactApplicationContext(), evnt, s);
+        }
+      } catch (JSONException e) {
+        e.printStackTrace();
+      }
     }
 
   }
@@ -445,22 +460,24 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
   @ReactMethod
   public void UpdateProfile(ReadableMap map, Promise promise) {
-    JSONObject jsonObject = convertMapToJson(map);
-    HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-    CustomerGlu.getInstance().updateProfile(getReactApplicationContext(), userData, new DataListner() {
-      @Override
-      public void onSuccess(RegisterModal registerModal) {
+    if(map!=null) {
+      JSONObject jsonObject = convertMapToJson(map);
+      HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
+      CustomerGlu.getInstance().updateProfile(getReactApplicationContext(), userData, new DataListner() {
+        @Override
+        public void onSuccess(RegisterModal registerModal) {
 //        Toast.makeText(getReactApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
-        Log.d(TAG,"Profile Updated!...");
+          Log.d(TAG, "Profile Updated!...");
 
-      }
+        }
 
-      @Override
-      public void onFail(String message) {
-        Log.d(TAG,"Profile Not Updated!..."+message.toString());
+        @Override
+        public void onFail(String message) {
+          Log.d(TAG, "Profile Not Updated!..." + message.toString());
 
-      }
-    });
+        }
+      });
+    }
   }
 
   @ReactMethod
@@ -626,7 +643,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
   }
 
 
-  private JSONObject convertMapToJson(ReadableMap readableMap) {
+  private static JSONObject convertMapToJson(ReadableMap readableMap) {
     JSONObject jsonObject = new JSONObject();
     if (readableMap == null) {
       return null;
@@ -638,6 +655,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     while (iterator.hasNextKey()) {
       String key = iterator.nextKey();
       ReadableType readableType = readableMap.getType(key);
+      Log.e(TAG,"readableType"+readableType+" "+readableMap.toString());
       try {
         switch (readableType) {
           case Null:
@@ -652,12 +670,13 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
             break;
           case String:
             jsonObject.put(key, readableMap.getString(key));
-
             break;
           case Array:
             jsonObject.put(key, convertArrayToJson(readableMap.getArray(key)));
+            break;
           case Map:
             jsonObject.put(key, convertMapToJson(readableMap.getMap(key)));
+            break;
           default:
             // Do nothing and fail silently
         }
@@ -682,9 +701,9 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         case String:
           array.put(readableArray.getString(i));
           break;
-//        case Map:
-//          array.put(readableMapToJson(readableArray.getMap(i)));
-//          break;
+        case Map:
+          array.put(convertMapToJson(readableArray.getMap(i)));
+          break;
         case Array:
           array.put(convertArrayToJson(readableArray.getArray(i)));
           break;
