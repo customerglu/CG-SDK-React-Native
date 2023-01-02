@@ -94,6 +94,22 @@ export function configureLoaderColour(colr: String): Promise<number> {
   return Rncustomerglu.configureLoaderColour(colr);
 }
 
+//2jan2023
+
+export function configureDarkBackgroundColor(colr: String): Promise<number> {
+  return Rncustomerglu.configureDarkBackgroundColor(colr);
+}
+export function configureLightBackgroundColor(colr: String): Promise<number> {
+  return Rncustomerglu.configureLightBackgroundColor(colr);
+}
+export function listenToDarkMode(isdarkmode: Boolean): Promise<number> {
+  return Rncustomerglu.listenToDarkMode(isdarkmode);
+}
+export function enableDarkMode(darkmode: Boolean): Promise<number> {
+  return Rncustomerglu.enableDarkMode(darkmode);
+}
+//end
+
 export function configureStatusBarColour(color: String): Promise<number> {
   return Rncustomerglu.configureStatusBarColour(color);
 }

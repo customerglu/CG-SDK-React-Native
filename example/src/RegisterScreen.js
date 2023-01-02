@@ -24,7 +24,11 @@ import {
     configureLoaderColour,
     enableEntryPoints,
     SetCurrentClassName,
-    enableAnalytic,configureLoadingScreenColor,configureStatusBarColour,configureSafeArea
+    enableAnalytic, configureLoadingScreenColor, configureStatusBarColour, configureSafeArea,
+    configureDarkBackgroundColor,
+    configureLightBackgroundColor,
+    listenToDarkMode,
+    enableDarkMode
 } from '@customerglu/react-native-customerglu';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -135,6 +139,14 @@ const RegisterScreen = ({ navigation }) => {
                 enableEntryPoints(true);
 
                 configureLoaderColour("#00ff00");
+
+                //2jan2023
+                configureDarkBackgroundColor("#00ff00");
+                configureLightBackgroundColor("#00ff00");
+                listenToDarkMode(true);
+                enableDarkMode(true);
+                //end
+
                 configureLoadingScreenColor("#934fffff");
                 configureStatusBarColour('#0000ff')
 
