@@ -15,6 +15,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotifications/UNUserNotificationCenter.h>
 #import <RNCPushNotificationIOS.h>
+#import <React/RCTLinkingManager.h>
 @import CustomerGlu;
 
 #ifdef FB_SONARKIT_ENABLED
@@ -24,6 +25,7 @@
 #import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
+
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
@@ -47,6 +49,18 @@ RCTBridge *rnBridge;
 //@end
 
 @implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity
+ restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler
+{
+  return [RCTLinkingManager
+            application:application
+            continueUserActivity:userActivity
+            restorationHandler:restorationHandler
+         ];
+  
+//  return  [RCTLingki];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 

@@ -19,10 +19,10 @@ const Stack = createNativeStackNavigator();
 import messaging from "@react-native-firebase/messaging"
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
-import { DisplayCGNotification,DisplayCGBackgroundNotification } from '@customerglu/react-native-customerglu';
+import { DisplayCGNotification,DisplayCGBackgroundNotification,handleDeepLinkUri } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { requestUserPermission, notificationListner } from './NotificationServices'
-import { Platform, LogBox } from 'react-native';
+import { Platform, LogBox, Linking } from 'react-native';
 LogBox.ignoreAllLogs();
 
 PushNotification.configure({
@@ -87,6 +87,31 @@ PushNotification.configure({
 });
 
 const App = () => {
+
+    function _handleOpenUrl(event) {
+        console.log('handleOpenUrl', event.url);
+        handleDeepLinkUri(event?.url)
+
+      }
+      
+        // this handles the case where a deep link launches the application
+        Linking.getInitialURL()
+          .then((url) => {
+            if (url) {
+              console.log('launch url', url);
+              _handleOpenUrl({url});
+            }
+          })
+          .catch((err) => console.error('launch url error', err));
+      
+        useEffect(() => {
+          Linking.addEventListener('url', _handleOpenUrl);
+          return () => {
+            Linking.removeEventListener('url', _handleOpenUrl);
+          };
+        }, []);
+
+        
     useEffect(() => {
         if (Platform.OS === 'ios') {
             const type = 'notification';

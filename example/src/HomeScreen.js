@@ -68,8 +68,16 @@ const HomeScreen = ({ navigation }) => {
 
         const eventanalytics = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_ANALYTICS_EVENT',
-            (reminder) => console.log('CUSTOMERGLU_ANALYTICS_EVENT...', reminder)
+            (reminder) => 
+            console.log('CUSTOMERGLU_ANALYTICS_EVENT...', reminder)
         );
+
+        const CG_UNI_DEEPLINK_EVENT = RncustomergluManagerEmitter.addListener(
+            'CG_UNI_DEEPLINK_EVENT',
+            (reminder) => 
+            console.log('CG_UNI_DEEPLINK_EVENT...', reminder)
+        );
+
         const eventdeeplink = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_DEEPLINK_EVENT',
             (reminder) => 
@@ -77,7 +85,7 @@ const HomeScreen = ({ navigation }) => {
                 if (Platform.OS === 'ios') {
                     reminder = reminder.data
                 }
-                console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
+                // console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
                 if(reminder && reminder.campaignId){
                 loadCampaignById(reminder.campaignId)
                 }
@@ -86,12 +94,14 @@ const HomeScreen = ({ navigation }) => {
         );
         const eventbanner = RncustomergluManagerEmitter.addListener(
             'CUSTOMERGLU_BANNER_LOADED',
-            (reminder) => console.log('CUSTOMERGLU_BANNER_LOADED...>>>>>', reminder)
+            (reminder) => 
+            console.log('CUSTOMERGLU_BANNER_LOADED...>>>>>', reminder)
         );
 
         const invalidCampid = RncustomergluManagerEmitter.addListener(
             'CG_INVALID_CAMPAIGN_ID',
-            (reminder) => console.log('CG_INVALID_CAMPAIGN_ID...>>>>>', reminder)
+            (reminder) => 
+            console.log('CG_INVALID_CAMPAIGN_ID...>>>>>', reminder)
         );
         let eventfheight = null,EmbedBannerHeight=null
         if (Platform.OS === 'ios') {
@@ -99,7 +109,7 @@ const HomeScreen = ({ navigation }) => {
                 'CGBANNER_FINAL_HEIGHT',
                 (reminder) => {
                     console.log('reminder----', reminder);
-                    console.log('reminder["entry1"]....', reminder["entry1"])
+                    // console.log('reminder["entry1"]....', reminder["entry1"])
                     if (reminder && reminder["entry1"]) {
                         setFinalHeight(reminder["entry1"] * windowHeight / 100);
 
@@ -112,7 +122,7 @@ const HomeScreen = ({ navigation }) => {
                 'CGEMBED_FINAL_HEIGHT',
                 (reminder) => {
                     console.log('reminder----', reminder);
-                    console.log('reminder["embedded1"]....', reminder["embedded1"])
+                    // console.log('reminder["embedded1"]....', reminder["embedded1"])
                     if (reminder && reminder["embedded1"]) {
                         setEBFinalHeight(reminder["embedded1"]);
                     }
@@ -127,6 +137,7 @@ const HomeScreen = ({ navigation }) => {
             eventdeeplink.remove();
             eventbanner.remove();
             invalidCampid.remove()
+            CG_UNI_DEEPLINK_EVENT.remove()
             if (Platform.OS === 'ios') {
                 console.log('destroy.!!!!!!!!')
                 eventfheight.remove();

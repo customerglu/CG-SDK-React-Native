@@ -14,10 +14,14 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.customerglu.sdk.Interface.CGDeepLinkListener;
+import com.customerglu.sdk.Modal.DeepLinkWormholeModel;
 import com.customerglu.sdk.Modal.NudgeConfiguration;
+import com.customerglu.sdk.Utils.CGConstants;
 import com.customerglu.sdk.Utils.Comman;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.WritableArray;
@@ -134,6 +138,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
                 }
 
 
+
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -174,7 +179,90 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
         mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
         mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
+        CustomerGlu.getInstance().setCgDeepLinkListener(new CGDeepLinkListener() {
+            @Override
+            public void onSuccess(CGConstants.CGSTATE message, DeepLinkWormholeModel.DeepLinkData deepLinkData) {
+                JSONObject jsonObject = null;
+                try {
+                    if (message.equals(CGConstants.CGSTATE.DEEPLINK_URL)) {
+                        String url = "";
+                        if (deepLinkData.getContent().getUrl() != null) {
+                            url = deepLinkData.getContent().getUrl();
+                            Log.e("DeepLink URL", "Success " + message);
+                        }
+                        // Add your logic
+                    }
+                    Log.e("Onelink", "Success " + message);
+                    jsonObject = new JSONObject();
+                    jsonObject.put("status",message.toString());
+                    Gson gson = new Gson();
+                    String json = gson.toJson(deepLinkData);
+                    JSONObject mJSONObject = new JSONObject(json);
+                    jsonObject.put("data",mJSONObject);
 
+                    Log.e("Onelink2", "Success " + jsonObject);
+//                    Intent intent = new Intent("CG_UNI_DEEPLINK_EVENT");
+//                    intent.putExtra("data", jsonObject.toString());
+//                    context.sendBroadcast(intent);
+
+                    WritableMap map = jsonToWritableMap(jsonObject);
+                    sendEventToJs("CG_UNI_DEEPLINK_EVENT", map);
+
+                    Log.e("Onelink4", "Success " + message);
+                }catch (Exception e)
+                {
+                    Log.e("Onelink ex ",e.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(CGConstants.CGSTATE exceptions) {
+                try {
+                    Log.e("Onelink", "Success " + exceptions);
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("status", exceptions.toString());
+
+                    JSONObject mJSONObject = new JSONObject();
+                    jsonObject.put("data", mJSONObject);
+                    WritableMap map = jsonToWritableMap(jsonObject);
+                    sendEventToJs("CG_UNI_DEEPLINK_EVENT", map);
+
+                    Log.e("Onelink2", "Success " + jsonObject);
+
+//
+//                    Intent intent = new Intent("CG_UNI_DEEPLINK_EVENT");
+//                    intent.putExtra("data", jsonObject.toString());
+//                    context.sendBroadcast(intent);
+                }catch (Exception e)
+                {
+                    Log.e("Onelink ex ",e.toString());
+
+                }
+
+            }
+        });
+
+    }
+    @ReactMethod
+    public void handleDeepLinkUri(String urls){
+        if(urls!=null){
+        Uri uri = Uri.parse(urls);
+        Comman.handleDeepLinkUri(uri);}
+        else
+        {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("status", "EXCEPTION");
+                JSONObject mJSONObject = new JSONObject();
+                jsonObject.put("data", mJSONObject);
+                WritableMap map = jsonToWritableMap(jsonObject);
+                sendEventToJs("CG_UNI_DEEPLINK_EVENT", map);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
     }
 
     @Override

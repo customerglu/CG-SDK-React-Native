@@ -14,7 +14,9 @@ import {
     AppState,
     Dimensions,
     NativeModules,
-    LogBox
+    LogBox,
+    Linking,
+    Alert
 } from 'react-native';
 import { SetCurrentClassName } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
@@ -31,21 +33,19 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform, Animated } from 'react-native';
 LogBox.ignoreLogs(['new NativeEventemitter()']);
-
 const SplashScreen = ({ navigation }) => {
     const appState = useRef(AppState.currentState);
     const windowHeight = Dimensions.get('window').height;
     const width = new Animated.Value(60);
     const height = new Animated.Value(60);
-
     const route = useRoute();
+
     useFocusEffect(
         React.useCallback(() => {
             // SetCurrentClassNameEx(route.name);
+            
         }, [])
     );
-
-
     useEffect(() => {
         let timer1 = null;
         Animated.timing(
@@ -82,8 +82,6 @@ const SplashScreen = ({ navigation }) => {
             clearTimeout(timer1);
         };
     }, [])
-
-
     return (
 
         <View style={{ flex: 1, backgroundColor: '#000', justifyContent: 'center', alignContent: 'center', alignItems: 'center', }}>

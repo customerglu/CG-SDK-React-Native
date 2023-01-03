@@ -109,6 +109,11 @@ export function enableDarkMode(darkmode: Boolean): Promise<number> {
   return Rncustomerglu.enableDarkMode(darkmode);
 }
 //end
+//3jan2023
+export function handleDeepLinkUri(url: String): Promise<number> {
+  return Rncustomerglu.handleDeepLinkUri(url);
+}
+//end
 
 export function configureStatusBarColour(color: String): Promise<number> {
   return Rncustomerglu.configureStatusBarColour(color);

@@ -10,6 +10,15 @@ extension Double {
         return Darwin.round(self * multiplier) / multiplier
     }
 }
+extension Encodable {
+    /// Encode into JSON and return `Data`
+    func jsonData() throws -> Data {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
+        return try encoder.encode(self)
+    }
+}
 extension UIColor {
     public convenience init?(hex: String) {
         let r, g, b, a: CGFloat
@@ -54,7 +63,7 @@ extension UIColor {
 class Rncustomerglu: RCTEventEmitter{
     static var shared:Rncustomerglu?
     
-    private var supportedEventNames: Set<String> = ["CUSTOMERGLU_ANALYTICS_EVENT","CUSTOMERGLU_DEEPLINK_EVENT","CGBANNER_FINAL_HEIGHT","CUSTOMERGLU_BANNER_LOADED","CGEMBED_FINAL_HEIGHT","CG_INVALID_CAMPAIGN_ID"]
+    private var supportedEventNames: Set<String> = ["CUSTOMERGLU_ANALYTICS_EVENT","CUSTOMERGLU_DEEPLINK_EVENT","CGBANNER_FINAL_HEIGHT","CUSTOMERGLU_BANNER_LOADED","CGEMBED_FINAL_HEIGHT","CG_INVALID_CAMPAIGN_ID","CG_UNI_DEEPLINK_EVENT"]
     private var hasAttachedListener = true
     
     
@@ -253,7 +262,73 @@ class Rncustomerglu: RCTEventEmitter{
     func enableDarkMode(_ darkmode: Bool) -> Void {
         customerGlu.enableDarkMode(isDarkModeEnabled: darkmode)
     }
-
+    @objc private func connvertEnumToString(cgstatus:CGSTATE) -> (String){
+            switch cgstatus {
+            case CGSTATE.SUCCESS:
+                return "SUCCESS"
+            case CGSTATE.USER_NOT_SIGNED_IN:
+                return "USER_NOT_SIGNED_IN"
+            case CGSTATE.INVALID_URL:
+                return "INVALID_URL"
+            case CGSTATE.INVALID_CAMPAIGN:
+                return "INVALID_CAMPAIGN"
+            case CGSTATE.CAMPAIGN_UNAVAILABLE:
+                return "CAMPAIGN_UNAVAILABLE"
+            case CGSTATE.NETWORK_EXCEPTION:
+                return "NETWORK_EXCEPTION"
+            case CGSTATE.DEEPLINK_URL:
+                return "DEEPLINK_URL"
+            case CGSTATE.EXCEPTION:
+                return "EXCEPTION"
+            default:
+                return "EXCEPTION"
+            }
+        }
+    //end
+    //3jan2023
+    @objc
+    func handleDeepLinkUri(_ url: String) -> Void {        
+        if(url.count > 0 && URL(string: url) != nil){
+        CustomerGlu.getInstance.openDeepLink(deepurl: URL(string: url)){ status, message, data in
+                       if(((CGSTATE.DEEPLINK_URL == status) || (CGSTATE.SUCCESS == status)) && data != nil){
+                           do{
+                               let jsonData = try data.jsonData()
+                               // To get dictionary from `Data`
+                               let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+                               guard let dictionary = json as? [String : Any] else {
+                                   let jsonObject = [
+                                       "status": self.connvertEnumToString(cgstatus: CGSTATE.EXCEPTION),
+                                       "data": [String : Any]()] as [String : Any]
+                                   let jsonData1 = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+                                   let jsonString1 = String(data: jsonData1!, encoding: .utf8)
+                                   Rncustomerglu.shared?.emitEvent(withName:"CG_UNI_DEEPLINK_EVENT", body: jsonString1)
+                                   return
+                               }
+                               let jsonObject = [
+                                   "status": self.connvertEnumToString(cgstatus: status),
+                                   "data": dictionary] as [String : Any]
+                               let jsonData1 = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+                               let jsonString1 = String(data: jsonData1!, encoding: .utf8)
+                               Rncustomerglu.shared?.emitEvent(withName:"CG_UNI_DEEPLINK_EVENT", body: jsonString1)
+                               }catch{
+                                   let jsonObject = [
+                                       "status": self.connvertEnumToString(cgstatus: CGSTATE.EXCEPTION),
+                                       "data": [String : Any]()] as [String : Any]
+                                   let jsonData1 = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+                                   let jsonString1 = String(data: jsonData1!, encoding: .utf8)
+                                   Rncustomerglu.shared?.emitEvent(withName:"CG_UNI_DEEPLINK_EVENT", body: jsonString1)
+                               }
+    }
+        }
+        }else{
+            let jsonObject = [
+                "status": self.connvertEnumToString(cgstatus: CGSTATE.EXCEPTION),
+                "data": [String : Any]()] as [String : Any]
+            let jsonData1 = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            let jsonString1 = String(data: jsonData1!, encoding: .utf8)
+            Rncustomerglu.shared?.emitEvent(withName:"CG_UNI_DEEPLINK_EVENT", body: jsonString1)
+        }
+    }
     //end
     @objc
     func enablePrecaching() -> Void {
