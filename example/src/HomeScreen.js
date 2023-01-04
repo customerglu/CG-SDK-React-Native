@@ -23,11 +23,14 @@ import {
     EmbedBannerWidget,
     dataClear,
     openWallet,
-    gluSDKDebuggingMode,enableEntryPoints,
     closeWebView,
     enableAnalytic,
     openNudge,
     loadCampaignById,
+    configureDarkBackgroundColor,
+    configureLightBackgroundColor,
+    listenToDarkMode,
+    enableDarkMode
 } from '@customerglu/react-native-customerglu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
@@ -62,6 +65,13 @@ const HomeScreen = ({ navigation }) => {
     useEffect(() => {
         enableAnalytic(true);
         closeWebView(true)
+
+        //2jan2023
+        // configureDarkBackgroundColor("#800000");
+        // configureLightBackgroundColor("#00ff00");
+        // listenToDarkMode(true);  //listenToSystemDarkLightMode
+        // enableDarkMode(false);
+        //end
 
         const { Rncustomerglu } = NativeModules;
         const RncustomergluManagerEmitter = new NativeEventEmitter(Rncustomerglu);
@@ -173,7 +183,7 @@ const openWalletTest=()=>{
     };
 
 // loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
-    openWallet();
+    openWallet(openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
 
