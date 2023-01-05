@@ -24,6 +24,15 @@ RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)
 RCT_EXTERN_METHOD(configureLoadingScreenColor:(NSString *)color)
 RCT_EXTERN_METHOD(configureStatusBarColour:(NSString *)color)
+//2jan2023
+RCT_EXTERN_METHOD(configureDarkBackgroundColor:(NSString *)colr)
+RCT_EXTERN_METHOD(configureLightBackgroundColor:(NSString *)colr)
+RCT_EXTERN_METHOD(listenToDarkMode:(BOOL *)isdarkmode)
+RCT_EXTERN_METHOD(enableDarkMode:(BOOL *)darkmode)
+//end
+//3jan2023
+RCT_EXTERN_METHOD(handleDeepLinkUri:(NSString *)url)
+//end
 RCT_EXTERN_METHOD(enablePrecaching)
 RCT_EXTERN_METHOD(gluSDKDebuggingMode:(BOOL *)bool)
 RCT_EXTERN_METHOD(enableEntryPoints:(BOOL *)bool)

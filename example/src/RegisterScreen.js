@@ -24,7 +24,11 @@ import {
     configureLoaderColour,
     enableEntryPoints,
     SetCurrentClassName,
-    enableAnalytic,configureLoadingScreenColor,configureStatusBarColour,configureSafeArea
+    enableAnalytic, configureLoadingScreenColor, configureStatusBarColour, configureSafeArea,
+    configureDarkBackgroundColor,
+    configureLightBackgroundColor,
+    listenToDarkMode,
+    enableDarkMode
 } from '@customerglu/react-native-customerglu';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -134,9 +138,9 @@ const RegisterScreen = ({ navigation }) => {
                 gluSDKDebuggingMode(true);
                 enableEntryPoints(true);
 
-                configureLoaderColour("#00ff00");
-                configureLoadingScreenColor("#934fffff");
-                configureStatusBarColour('#0000ff')
+                // configureLoaderColour("#00ff00");
+                // configureLoadingScreenColor("#934fffff");
+                // configureStatusBarColour('#0000ff')
 
                 let obj = {
                     topHeight: 100, bottomHeight: 100,
@@ -144,7 +148,7 @@ const RegisterScreen = ({ navigation }) => {
                 }
                 configureSafeArea(obj);
 
-                enableAnalytic(true)
+                // enableAnalytic(true)
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
                 if (ok == true) {
