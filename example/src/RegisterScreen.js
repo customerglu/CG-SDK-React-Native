@@ -138,9 +138,9 @@ const RegisterScreen = ({ navigation }) => {
                 gluSDKDebuggingMode(true);
                 enableEntryPoints(true);
 
-                configureLoaderColour("#00ff00");
-                configureLoadingScreenColor("#934fffff");
-                configureStatusBarColour('#0000ff')
+                // configureLoaderColour("#00ff00");
+                // configureLoadingScreenColor("#934fffff");
+                // configureStatusBarColour('#0000ff')
 
                 let obj = {
                     topHeight: 100, bottomHeight: 100,
@@ -148,7 +148,7 @@ const RegisterScreen = ({ navigation }) => {
                 }
                 configureSafeArea(obj);
 
-                enableAnalytic(true)
+                // enableAnalytic(true)
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
                 if (ok == true) {

@@ -63,7 +63,7 @@ const HomeScreen = ({ navigation }) => {
 
 
     useEffect(() => {
-        enableAnalytic(true);
+        // enableAnalytic(true);
         closeWebView(true)
 
         //2jan2023
@@ -167,7 +167,7 @@ const openWalletTest=()=>{
              layout:'middle-default',
              opacity:'0.8',
              closeOnDeepLink:true,
-             absoluteHeight:0,
+             absoluteHeight:700,
              relativeHeight:0
         },
     };
