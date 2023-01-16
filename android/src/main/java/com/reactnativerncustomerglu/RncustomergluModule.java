@@ -478,17 +478,19 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
     @ReactMethod
     public void configureDarkBackgroundColor(String color) {
-//        CustomerGlu.getInstance().listenToSystemDarkLightMode(getReactApplicationContext(), color);
+        if(color!=null){
+        CustomerGlu.getInstance().configureDarkBackgroundColor(color);}
     }
 
     @ReactMethod
     public void configureLightBackgroundColor(String color) {
-//        CustomerGlu.getInstance().configureLightBackgroundColor(getReactApplicationContext(), color);
+        if(color!=null){
+        CustomerGlu.getInstance().configureLightBackgroundColor(color);}
     }
 
     @ReactMethod
     public void listenToDarkMode(boolean isdarkmode) {
-        CustomerGlu.getInstance().listenToSystemDarkLightMode(isdarkmode);
+        CustomerGlu.getInstance().listenToSystemDarkMode(isdarkmode);
     }
 
     @ReactMethod
@@ -497,6 +499,34 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 //end
 
+//16jan2023
+    @ReactMethod
+    public void configureLightLoaderURL(String url){
+        if(url!=null){
+             CustomerGlu.getInstance().configureLightLoaderURL(getReactApplicationContext(), url);
+        }
+    }
+    @ReactMethod
+    public void configureDarkLoaderURL(String url){
+        if(url!=null){
+             CustomerGlu.getInstance().configureDarkLoaderURL(getReactApplicationContext(), url);
+        }
+
+    }
+    @ReactMethod
+    public void configureLightEmbedLoaderURL(String url){
+        if(url!=null){
+             CustomerGlu.getInstance().configureLightEmbedLoaderURL(getReactApplicationContext(), url);
+        }
+
+    }
+    @ReactMethod
+    public void configureDarkEmbedLoaderURL(String url){
+        if(url!=null){
+             CustomerGlu.getInstance().configureDarkEmbedLoaderURL(getReactApplicationContext(), url);
+        }
+    }
+    //end
     @ReactMethod
     public void configureStatusBarColour(String color) {
         CustomerGlu.getInstance().configureStatusBarColour(color);

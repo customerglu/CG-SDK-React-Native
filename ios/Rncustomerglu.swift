@@ -330,6 +330,26 @@ class Rncustomerglu: RCTEventEmitter{
         }
     }
     //end
+    
+    //16jan2023
+    @objc
+    func configureLightLoaderURL(_ url: String) -> Void {
+//        CustomerGlu.getInstance.configureLightLoaderURL(locallottieLoaderURL: url)
+    }
+    @objc
+    func configureDarkLoaderURL(_ url: String) -> Void {
+//        CustomerGlu.getInstance.configureDarkLoaderURL(locallottieLoaderURL: url)
+    }
+    @objc
+    func configureLightEmbedLoaderURL(_ url: String) -> Void {
+//        CustomerGlu.getInstance.configureLightEmbedLoaderURL(locallottieLoaderURL: url)
+    }
+    @objc
+    func configureDarkEmbedLoaderURL(_ url: String) -> Void {
+//        CustomerGlu.getInstance.configureDarkEmbedLoaderURL(locallottieLoaderURL: url)
+    }
+    //end
+    
     @objc
     func enablePrecaching() -> Void {
         
