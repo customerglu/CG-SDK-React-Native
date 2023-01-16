@@ -267,6 +267,7 @@ example/android/app/build/
 example/node_modules/
 example/yarn.lock
 example/ios/CGConfigSetting.xcconfig
+example/android/app/src/main/res/values/secret.xml
 
 *.lock
 # End of https://www.toptal.com/developers/gitignore/api/reactnative
