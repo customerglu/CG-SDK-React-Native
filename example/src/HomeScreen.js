@@ -243,7 +243,7 @@ const openWalletTest=()=>{
                 </View>
                 <BannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
-                    bannerId="entry1"
+                    bannerId="demo-quiz-banner1"
                 />
                 <EmbedBannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
