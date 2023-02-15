@@ -115,6 +115,20 @@ export function handleDeepLinkUri(url: String): Promise<number> {
 }
 //end
 
+//16jan2023
+export function configureLightLoaderURL(url: String): Promise<number> {
+  return Rncustomerglu.configureLightLoaderURL(url);
+}
+export function configureDarkLoaderURL(url: String): Promise<number> {
+  return Rncustomerglu.configureDarkLoaderURL(url);
+}
+export function configureLightEmbedLoaderURL(url: String): Promise<number> {
+  return Rncustomerglu.configureLightEmbedLoaderURL(url);
+}
+export function configureDarkEmbedLoaderURL(url: String): Promise<number> {
+  return Rncustomerglu.configureDarkEmbedLoaderURL(url);
+}
+//end
 export function configureStatusBarColour(color: String): Promise<number> {
   return Rncustomerglu.configureStatusBarColour(color);
 }

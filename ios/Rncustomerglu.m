@@ -33,6 +33,14 @@ RCT_EXTERN_METHOD(enableDarkMode:(BOOL *)darkmode)
 //3jan2023
 RCT_EXTERN_METHOD(handleDeepLinkUri:(NSString *)url)
 //end
+
+//16jan2023
+RCT_EXTERN_METHOD(configureLightLoaderURL:(NSString *)url)
+RCT_EXTERN_METHOD(configureDarkLoaderURL:(NSString *)url)
+RCT_EXTERN_METHOD(configureLightEmbedLoaderURL:(NSString *)url)
+RCT_EXTERN_METHOD(configureDarkEmbedLoaderURL:(NSString *)url)
+//end
+
 RCT_EXTERN_METHOD(enablePrecaching)
 RCT_EXTERN_METHOD(gluSDKDebuggingMode:(BOOL *)bool)
 RCT_EXTERN_METHOD(enableEntryPoints:(BOOL *)bool)

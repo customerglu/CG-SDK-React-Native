@@ -28,7 +28,7 @@ import {
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
     listenToDarkMode,
-    enableDarkMode
+    enableDarkMode,configureLightLoaderURL,configureDarkLoaderURL,configureLightEmbedLoaderURL,configureDarkEmbedLoaderURL
 } from '@customerglu/react-native-customerglu';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -137,7 +137,7 @@ const RegisterScreen = ({ navigation }) => {
             try {
                 gluSDKDebuggingMode(true);
                 enableEntryPoints(true);
-
+                // configureLightLoaderURL("https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-dark.json")
                 // configureLoaderColour("#00ff00");
                 // configureLoadingScreenColor("#934fffff");
                 // configureStatusBarColour('#0000ff')
@@ -152,6 +152,16 @@ const RegisterScreen = ({ navigation }) => {
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
                 if (ok == true) {
+                    enableDarkMode(false)
+                    listenToDarkMode(true),
+                    configureDarkBackgroundColor("#800000");
+                    configureLightBackgroundColor("#00ff00");
+                    configureDarkEmbedLoaderURL('https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-light.json')
+                    configureLightEmbedLoaderURL('https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-dark.json')
+                    configureLightLoaderURL("https://assets.customerglu.com/sdk-assets/default-loader.json")
+                    // configureDarkLoaderURL("https://assets.customerglu.com/sdk-assets/default-loader.json")
+                    configureDarkLoaderURL("https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-dark.json")
+                  
                     setUserId('');
                     setanimation(!animating)
                     await AsyncStorage.setItem("isRegisterScuccess", JSON.stringify(true));
