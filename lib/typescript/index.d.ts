@@ -1,9 +1,9 @@
 import { NativeEventEmitter } from 'react-native';
-type CgnativeuiProps = {
+declare type CgnativeuiProps = {
     bannerId: string;
 };
 export declare const BannerWidget: import("react-native").HostComponent<CgnativeuiProps> | (() => never);
-type CgEmbedBannerProps = {
+declare type CgEmbedBannerProps = {
     bannerId: string;
 };
 export declare const EmbedBannerWidget: import("react-native").HostComponent<CgEmbedBannerProps> | (() => never);

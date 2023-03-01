@@ -1,12 +1,14 @@
 package com.example.reactnativerncustomerglu;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.util.Log;
 
 import androidx.lifecycle.LifecycleObserver;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.bridge.LifecycleEventListener;
+import com.reactnativerncustomerglu.CGUtils;
 
 public class MainActivity extends ReactActivity implements LifecycleObserver
 {
@@ -28,6 +30,13 @@ public static final String TAG=MainActivity.class.getSimpleName();
   @Override
   protected void onResume() {
     super.onResume();
-    // setactivity
+  
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    CGUtils.handleConfigurationChanges(this);
+
   }
 }
