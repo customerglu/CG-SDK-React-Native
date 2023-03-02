@@ -282,7 +282,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = XZR7N982GP;
 						LastSwiftMigration = 1310;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -583,8 +583,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RncustomergluExample/RncustomergluExample.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Hitesh Landge (4U53ALDQTS)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = XZR7N982GP;
 				ENABLE_BITCODE = NO;
@@ -598,11 +598,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marax.customerdemo;
 				PRODUCT_NAME = RncustomergluExample;
-				PROVISIONING_PROFILE_SPECIFIER = Demo_development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RncustomergluExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -614,8 +617,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RncustomergluExample/RncustomergluExample.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Hitesh Landge (4U53ALDQTS)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = XZR7N982GP;
 				INFOPLIST_FILE = RncustomergluExample/Info.plist;
@@ -628,10 +631,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marax.customerdemo;
 				PRODUCT_NAME = RncustomergluExample;
-				PROVISIONING_PROFILE_SPECIFIER = Demo_development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RncustomergluExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
