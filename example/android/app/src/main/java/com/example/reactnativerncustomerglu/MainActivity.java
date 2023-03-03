@@ -7,6 +7,8 @@ import androidx.lifecycle.LifecycleObserver;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.bridge.LifecycleEventListener;
+import android.content.res.Configuration;
+import com.reactnativerncustomerglu.CGUtils;
 
 public class MainActivity extends ReactActivity implements LifecycleObserver
 {
@@ -30,4 +32,11 @@ public static final String TAG=MainActivity.class.getSimpleName();
     super.onResume();
     // setactivity
   }
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    CGUtils.handleConfigurationChanges(this);
+  }
+
+
 }
