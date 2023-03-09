@@ -424,9 +424,9 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RncustomergluExample/Pods-RncustomergluExample-resources.sh",
-				"${PODS_ROOT}/CustomerGlu/Sources/CustomerGlu/Resources/imagedismissblack.png",
-				"${PODS_ROOT}/CustomerGlu/Sources/CustomerGlu/Resources/imagedismissred.png",
-				"${BUILT_PRODUCTS_DIR}/CustomerGlu/CustomerGlu.framework/Storyboard.storyboardc",
+				"${PODS_ROOT}/CustomerGluRN/Sources/CustomerGluRN/Resources/imagedismissblack.png",
+				"${PODS_ROOT}/CustomerGluRN/Sources/CustomerGluRN/Resources/imagedismissred.png",
+				"${BUILT_PRODUCTS_DIR}/CustomerGluRN/CustomerGluRN.framework/Storyboard.storyboardc",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";

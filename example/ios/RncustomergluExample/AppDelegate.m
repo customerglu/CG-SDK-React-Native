@@ -16,7 +16,7 @@
 #import <UserNotifications/UNUserNotificationCenter.h>
 #import <RNCPushNotificationIOS.h>
 #import <React/RCTLinkingManager.h>
-@import CustomerGlu;
+@import CustomerGluRN;
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
