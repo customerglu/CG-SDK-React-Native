@@ -1,5 +1,5 @@
 import Foundation
-import CustomerGlu
+import CustomerGluRN
 import UIKit
 import React
 
@@ -90,7 +90,7 @@ class Rncustomerglu: RCTEventEmitter{
     func setPlatformAndSdkVersion(){
 
         CustomerGlu.app_platform="REACT_NATIVE"
-        CustomerGlu.sdk_version="1.2.3"
+        CustomerGlu.sdk_version="1.2.4"
     }
     
     override func startObserving() {
