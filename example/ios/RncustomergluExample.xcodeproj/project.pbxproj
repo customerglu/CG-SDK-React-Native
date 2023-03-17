@@ -424,15 +424,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RncustomergluExample/Pods-RncustomergluExample-resources.sh",
+				"${PODS_ROOT}/CustomerGluRN/Sources/CustomerGluRN/Resources/greenTick.png",
 				"${PODS_ROOT}/CustomerGluRN/Sources/CustomerGluRN/Resources/imagedismissblack.png",
 				"${PODS_ROOT}/CustomerGluRN/Sources/CustomerGluRN/Resources/imagedismissred.png",
+				"${PODS_ROOT}/CustomerGluRN/Sources/CustomerGluRN/Resources/redCross.png",
 				"${BUILT_PRODUCTS_DIR}/CustomerGluRN/CustomerGluRN.framework/Storyboard.storyboardc",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/greenTick.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/imagedismissblack.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/imagedismissred.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/redCross.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Storyboard.storyboardc",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
