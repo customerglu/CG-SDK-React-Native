@@ -69,7 +69,9 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         super(reactContext);
         mContext = reactContext;
         reactContext.addLifecycleEventListener(this);
-        CustomerGlu.initializeSdk(getReactApplicationContext());
+        if (!CustomerGlu.isInitialized){
+            CustomerGlu.getInstance().initializeSdk(getReactApplicationContext());
+        }
         setPlatformAndSdkVersion();
     }
 
@@ -84,7 +86,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "1.2.4";
+            CustomerGlu.cg_sdk_version = "1.3.0";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
