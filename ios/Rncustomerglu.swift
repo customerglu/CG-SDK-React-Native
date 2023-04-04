@@ -197,6 +197,27 @@ class Rncustomerglu: RCTEventEmitter{
         customerGlu.loadCampaignById(campaign_id:id, nudgeConfiguration: nudgeconfigData)
         //        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
     }
+        @objc
+    func loadCampaignWithUrl(_ url:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
+        print("loadCampaignWithUrl--",url,nudgeData)
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+        if((nudgeData["nudgeConfiguration"]) != nil){
+            
+            nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "full-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.0")!
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? Double(nudgeconfig["relativeHeight"] as? String ?? "0.0")!
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? Double(nudgeconfig["absoluteHeight"] as? String ?? "0.0")!
+            
+        }
+        DispatchQueue.main.async {
+        customerGlu.openNudgeWithURL(nudgeConfiguration: nudgeconfigData, nudgeURL: url)
+        }
+        //customerGlu.openWalletWithURL(url: url)
+        //        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
+    }
     
     @objc
     func enableAnalytic(_ bool:Bool) -> Void {

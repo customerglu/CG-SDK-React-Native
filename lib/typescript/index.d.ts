@@ -12,6 +12,7 @@ export declare function dataClear(): Promise<number>;
 export declare function sendData(obj: Object): Promise<number>;
 export declare function openWallet(obj?: Object): Promise<number>;
 export declare function loadCampaignById(id: String, obj?: Object): Promise<number>;
+export declare function loadCampaignWithUrl(url: String, obj?: Object): Promise<number>;
 export declare function enableAnalytic(b: Boolean): Promise<number>;
 export declare function sendEventToJs(b: NativeEventEmitter): Promise<number>;
 export declare function disableGluSdk(a: Boolean): Promise<number>;

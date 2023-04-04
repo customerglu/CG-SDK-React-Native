@@ -78,6 +78,10 @@ export function loadCampaignById(id: String,obj:Object={}): Promise<number> {
     return Rncustomerglu.loadCampaignById(id, obj);
   
 }
+export function loadCampaignWithUrl(url: String,obj:Object): Promise<number> {
+  return Rncustomerglu.loadCampaignWithUrl(url, obj);
+
+}
 
 export function enableAnalytic(b: Boolean): Promise<number> {
   return Rncustomerglu.enableAnalytic(b);

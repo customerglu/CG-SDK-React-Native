@@ -27,6 +27,7 @@ import {
     enableAnalytic,
     openNudge,
     loadCampaignById,
+    loadCampaignWithUrl,
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
     listenToDarkMode,
@@ -97,7 +98,7 @@ const HomeScreen = ({ navigation }) => {
                 }
                 // console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
                 if(reminder && reminder.campaignId){
-                loadCampaignById(reminder.campaignId)
+                loadCampaignById(reminder.campaignId,)
                 }
             }
             
@@ -164,11 +165,8 @@ const HomeScreen = ({ navigation }) => {
 const openWalletTest=()=>{
     let openWalletData = {
         nudgeConfiguration:{
-             layout:'middle-default',
-             opacity:'0.8',
-             closeOnDeepLink:true,
-             absoluteHeight:700,
-             relativeHeight:0
+             layout:'full-default',
+              closeOnDeepLink:true
         },
     };
     let openNudgeData = {
@@ -183,7 +181,7 @@ const openWalletTest=()=>{
     };
 
 // loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
-    openWallet(openWalletData);
+    loadCampaignWithUrl("https://constellation.customerglu.com/reward/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDA1OSIsImNsaWVudCI6IjZjYmIzZGQzLTE2ZDctNDM4ZC1iMTVmLThjOWRhOWUzNWQyOCIsImlhdCI6MTY4MDM1NTc1MiwiZXhwIjoxNzExODkxNzUyfQ.cGJOtzkkMNBTQ4elSeJ0g2q_HJcuNrHLBSZtXURJx0c&campaignId=8d5cc351-5966-4618-be47-bf802164f291&rewardUserId=4dae8d12-d9c1-44a1-bda4-5f7574de8979",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
 
