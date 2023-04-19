@@ -24,6 +24,7 @@ import {
     configureLoaderColour,
     enableEntryPoints,
     SetCurrentClassName,
+    allowAnonymousRegistration,
     enableAnalytic, configureLoadingScreenColor, configureStatusBarColour, configureSafeArea,
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
@@ -149,6 +150,7 @@ const RegisterScreen = ({ navigation }) => {
                 configureSafeArea(obj);
 
                 // enableAnalytic(true)
+                allowAnonymousRegistration(true)
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
                 if (ok == true) {

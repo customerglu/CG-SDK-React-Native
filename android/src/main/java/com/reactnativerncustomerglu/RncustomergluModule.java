@@ -499,6 +499,11 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         CustomerGlu.getInstance().enableAnalyticsEvent(bool);
     }
 
+    @ReactMethod
+    public void allowAnonymousRegistration(Boolean bool) {
+        CustomerGlu.getInstance().allowAnonymousRegistration(bool);
+    }
+
 
     @ReactMethod
     public void disableGluSdk(Boolean bool) {

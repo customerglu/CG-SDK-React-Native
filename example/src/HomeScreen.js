@@ -166,22 +166,24 @@ const openWalletTest=()=>{
     let openWalletData = {
         nudgeConfiguration:{
              layout:'full-default',
-              closeOnDeepLink:true
+              closeOnDeepLink:true,
+              absoluteHeight:0,
+              relativeHeight:0
         },
     };
-    let openNudgeData = {
-        nudgeConfiguration:{
-            layout:'bottom-default',
-             opacity:'0.8',
-             url:'http://google.com',
-             closeOnDeepLink:true,
-             absoluteHeight:'50',
-             relativeHeight:50
-        },
-    };
+    // let openNudgeData = {
+    //     nudgeConfiguration:{
+    //         layout:'bottom-default',
+    //          opacity:'0.8',
+    //          url:'http://google.com',
+    //          closeOnDeepLink:true,
+    //          absoluteHeight:'50',
+    //          relativeHeight:50
+    //     },
+    // };
 
-// loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
-    loadCampaignWithUrl("https://constellation.customerglu.com/reward/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDA1OSIsImNsaWVudCI6IjZjYmIzZGQzLTE2ZDctNDM4ZC1iMTVmLThjOWRhOWUzNWQyOCIsImlhdCI6MTY4MDM1NTc1MiwiZXhwIjoxNzExODkxNzUyfQ.cGJOtzkkMNBTQ4elSeJ0g2q_HJcuNrHLBSZtXURJx0c&campaignId=8d5cc351-5966-4618-be47-bf802164f291&rewardUserId=4dae8d12-d9c1-44a1-bda4-5f7574de8979",openWalletData);
+ loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
+   // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
 
@@ -241,7 +243,7 @@ const openWalletTest=()=>{
                 </View>
                 <BannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
-                    bannerId="demo-quiz-banner1"
+                    bannerId="homescreen_banner"
                 />
                 <EmbedBannerWidget
                     style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}

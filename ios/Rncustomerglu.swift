@@ -203,7 +203,7 @@ class Rncustomerglu: RCTEventEmitter{
         let nudgeconfigData=CGNudgeConfiguration()
         var nudgeconfig:NSDictionary;
         if((nudgeData["nudgeConfiguration"]) != nil){
-            
+        
             nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
             nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "full-default"
             nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.0")!

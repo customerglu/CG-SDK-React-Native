@@ -87,6 +87,10 @@ export function enableAnalytic(b: Boolean): Promise<number> {
   return Rncustomerglu.enableAnalytic(b);
 }
 
+export function allowAnonymousRegistration(b: Boolean): Promise<number> {
+  return Rncustomerglu.allowAnonymousRegistration(b);
+}
+
 export function sendEventToJs(b: NativeEventEmitter): Promise<number> {
   return Rncustomerglu.sendEventToJs(b);
 }
