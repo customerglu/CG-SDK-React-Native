@@ -119,8 +119,9 @@ const RegisterScreen = ({ navigation }) => {
         const token = await messaging().getToken();
         console.log("getToken", token)
         // Send registration data in Object     
+        allowAnonymousRegistration(true)
         setanimation(!animating)
-        if (token && userid) {
+        if (token) {
             userdataAndroid = {
                 userId: userid,
                 firebaseToken: token,
@@ -150,7 +151,7 @@ const RegisterScreen = ({ navigation }) => {
                 configureSafeArea(obj);
 
                 // enableAnalytic(true)
-                allowAnonymousRegistration(true)
+                allowAnonymousRegistration(false)
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
                 if (ok == true) {

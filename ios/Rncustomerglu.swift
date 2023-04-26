@@ -213,7 +213,7 @@ class Rncustomerglu: RCTEventEmitter{
             
         }
         DispatchQueue.main.async {
-        customerGlu.openNudgeWithURL(nudgeConfiguration: nudgeconfigData, nudgeURL: url)
+            customerGlu.openURLWithNudgeConfig(url: url, nudgeConfiguration: nudgeconfigData)
         }
         //customerGlu.openWalletWithURL(url: url)
         //        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
@@ -388,6 +388,10 @@ class Rncustomerglu: RCTEventEmitter{
     @objc
     func closeWebView(_ bool:Bool) -> Void {
         customerGlu.closeWebviewOnDeeplinkEvent(close: bool);
+    }
+    @objc
+    func allowAnonymousRegistration(_ bool: Bool)-> Void{
+        customerGlu.allowAnonymousRegistration(enabled: bool);
     }
     @objc
     func isFcmApn(_ fcm:String) -> Void {

@@ -64,6 +64,7 @@ RCT_EXTERN_METHOD(configureDomainCodeMsg:(NSDictionary *)codemsg)
 RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(setApnFcmToken:(NSString *)apn fcmToken:(NSString *)fcm)
 RCT_EXTERN_METHOD(getBannerHeight)
+RCT_EXTERN_METHOD(allowAnonymousRegistration:(BOOL *)bool)
 
 @end
 

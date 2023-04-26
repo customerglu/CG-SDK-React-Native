@@ -201,7 +201,6 @@ const openWalletTest=()=>{
 
     return (
         <SafeAreaView flex={1}>
-            <ScrollView style={{ flexGrow: 1, backgroundColor: '#fff', }}>
                 <View style={{ flex: 1.3, alignItems: 'center', backgroundColor: '#000', height: '35%', justifyContent: 'center', padding: 10 }}>
                     <Image
                         source={require('../assets/customerglu.jpg')}
@@ -241,14 +240,8 @@ const openWalletTest=()=>{
                     </TouchableOpacity>
 
                 </View>
-                <BannerWidget
-                    style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
-                    bannerId="homescreen_banner"
-                />
-                <EmbedBannerWidget
-                    style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
-                    bannerId="embedded1"
-                />
+               
+               
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')}>
                         <Image
@@ -266,9 +259,19 @@ const openWalletTest=()=>{
 
                 </View>
 
+                
+                    <BannerWidget
+                        style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
+                        bannerId="demo-quiz-banner1"
+                    />
+                    
+                    <EmbedBannerWidget
+                        style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
+                        bannerId="embedded1"
+                    />
+                
 
-
-            </ScrollView>
+            
         </SafeAreaView>
     );
 };
