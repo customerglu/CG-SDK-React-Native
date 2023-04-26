@@ -19,6 +19,7 @@ RCT_EXTERN_METHOD(OpenNudgeRN:(NSString *)id nudgeconfigdata:(NSDictionary *)nud
 RCT_EXTERN_METHOD(sendData:(NSDictionary *)property)
 RCT_EXTERN_METHOD(openWallet:(NSDictionary *)walletData)
 RCT_EXTERN_METHOD(loadCampaignById:(NSString *)id nudgeconfigdata:(NSDictionary *)nudgeData)
+RCT_EXTERN_METHOD(loadCampaignWithUrl:(NSString *)url nudgeconfigdata:(NSDictionary *)nudgeData)
 RCT_EXTERN_METHOD(enableAnalytic:(BOOL *)bool)
 RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)
@@ -63,6 +64,7 @@ RCT_EXTERN_METHOD(configureDomainCodeMsg:(NSDictionary *)codemsg)
 RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(setApnFcmToken:(NSString *)apn fcmToken:(NSString *)fcm)
 RCT_EXTERN_METHOD(getBannerHeight)
+RCT_EXTERN_METHOD(allowAnonymousRegistration:(BOOL *)bool)
 
 @end
 

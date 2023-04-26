@@ -27,6 +27,7 @@ import {
     enableAnalytic,
     openNudge,
     loadCampaignById,
+    loadCampaignWithUrl,
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
     listenToDarkMode,
@@ -97,7 +98,7 @@ const HomeScreen = ({ navigation }) => {
                 }
                 // console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
                 if(reminder && reminder.campaignId){
-                loadCampaignById(reminder.campaignId)
+                loadCampaignById(reminder.campaignId,)
                 }
             }
             
@@ -164,26 +165,25 @@ const HomeScreen = ({ navigation }) => {
 const openWalletTest=()=>{
     let openWalletData = {
         nudgeConfiguration:{
-             layout:'middle-default',
-             opacity:'0.8',
-             closeOnDeepLink:true,
-             absoluteHeight:700,
-             relativeHeight:0
+             layout:'full-default',
+              closeOnDeepLink:true,
+              absoluteHeight:0,
+              relativeHeight:0
         },
     };
-    let openNudgeData = {
-        nudgeConfiguration:{
-            layout:'bottom-default',
-             opacity:'0.8',
-             url:'http://google.com',
-             closeOnDeepLink:true,
-             absoluteHeight:'50',
-             relativeHeight:50
-        },
-    };
+    // let openNudgeData = {
+    //     nudgeConfiguration:{
+    //         layout:'bottom-default',
+    //          opacity:'0.8',
+    //          url:'http://google.com',
+    //          closeOnDeepLink:true,
+    //          absoluteHeight:'50',
+    //          relativeHeight:50
+    //     },
+    // };
 
-// loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
-    openWallet(openWalletData);
+ loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
+   // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
 
@@ -201,7 +201,6 @@ const openWalletTest=()=>{
 
     return (
         <SafeAreaView flex={1}>
-            <ScrollView style={{ flexGrow: 1, backgroundColor: '#fff', }}>
                 <View style={{ flex: 1.3, alignItems: 'center', backgroundColor: '#000', height: '35%', justifyContent: 'center', padding: 10 }}>
                     <Image
                         source={require('../assets/customerglu.jpg')}
@@ -241,14 +240,8 @@ const openWalletTest=()=>{
                     </TouchableOpacity>
 
                 </View>
-                <BannerWidget
-                    style={{ width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
-                    bannerId="demo-quiz-banner1"
-                />
-                <EmbedBannerWidget
-                    style={{ width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
-                    bannerId="embedded1"
-                />
+               
+               
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')}>
                         <Image
@@ -266,9 +259,19 @@ const openWalletTest=()=>{
 
                 </View>
 
+                
+                    <BannerWidget
+                        style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
+                        bannerId="demo-quiz-banner1"
+                    />
+                    
+                    <EmbedBannerWidget
+                        style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
+                        bannerId="embedded1"
+                    />
+                
 
-
-            </ScrollView>
+            
         </SafeAreaView>
     );
 };

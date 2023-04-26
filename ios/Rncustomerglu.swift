@@ -90,7 +90,7 @@ class Rncustomerglu: RCTEventEmitter{
     func setPlatformAndSdkVersion(){
 
         CustomerGlu.app_platform="REACT_NATIVE"
-        CustomerGlu.sdk_version="1.3.0"
+        CustomerGlu.sdk_version="1.3.1"
     }
     
     override func startObserving() {
@@ -195,6 +195,26 @@ class Rncustomerglu: RCTEventEmitter{
             
         }
         customerGlu.loadCampaignById(campaign_id:id, nudgeConfiguration: nudgeconfigData)
+        //        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
+    }
+        @objc
+    func loadCampaignWithUrl(_ url:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
+        print("loadCampaignWithUrl--",url,nudgeData)
+        let nudgeconfigData=CGNudgeConfiguration()
+        var nudgeconfig:NSDictionary;
+        if((nudgeData["nudgeConfiguration"]) != nil){
+            nudgeconfig=nudgeData["nudgeConfiguration"] as! NSDictionary
+            nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "full-default"
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.0")!
+            nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
+            nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? Double(nudgeconfig["relativeHeight"] as? String ?? "0.0")!
+            nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? Double(nudgeconfig["absoluteHeight"] as? String ?? "0.0")!
+    
+        }
+        DispatchQueue.main.async {
+            customerGlu.openURLWithNudgeConfig(url: url, nudgeConfiguration: nudgeconfigData)
+        }
+        //customerGlu.openWalletWithURL(url: url)
         //        customerGlu.loadCampaignById(campaign_id: id, auto_close_webview: bool)
     }
     
@@ -367,6 +387,10 @@ class Rncustomerglu: RCTEventEmitter{
     @objc
     func closeWebView(_ bool:Bool) -> Void {
         customerGlu.closeWebviewOnDeeplinkEvent(close: bool);
+    }
+    @objc
+    func allowAnonymousRegistration(_ bool: Bool)-> Void{
+        customerGlu.allowAnonymousRegistration(enabled: bool);
     }
     @objc
     func isFcmApn(_ fcm:String) -> Void {

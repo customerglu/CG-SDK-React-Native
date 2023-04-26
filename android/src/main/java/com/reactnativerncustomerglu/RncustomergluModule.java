@@ -86,7 +86,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "1.3.0";
+            CustomerGlu.cg_sdk_version = "1.3.1";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
@@ -460,8 +460,48 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
+    public void loadCampaignWithUrl(String url, ReadableMap readableMap) {
+        Log.e(TAG, "loadCampaignByUrl-----" + readableMap.toString());
+        try {
+            JSONObject nudgeConfigurationdata;
+            NudgeConfiguration nudgeConfiguration = new NudgeConfiguration();
+            if (readableMap.hasKey("nudgeConfiguration")) {
+                JSONObject obj = convertMapToJson(readableMap);
+                nudgeConfigurationdata = obj.getJSONObject("nudgeConfiguration");
+                if (nudgeConfigurationdata.has("layout")) {
+                    nudgeConfiguration.setLayout(nudgeConfigurationdata.getString("layout"));
+                }
+                if (nudgeConfigurationdata.has("opacity")) {
+                    nudgeConfiguration.setOpacity(Double.parseDouble(nudgeConfigurationdata.getString("opacity")));
+                }
+                if (nudgeConfigurationdata.has("closeOnDeepLink")) {
+                    nudgeConfiguration.setCloseOnDeepLink(nudgeConfigurationdata.getBoolean("closeOnDeepLink"));
+                }
+                if (nudgeConfigurationdata.has("absoluteHeight")) {
+                    nudgeConfiguration.setAbsoluteHeight(Double.parseDouble(nudgeConfigurationdata.getString("absoluteHeight")));
+                }
+                if (nudgeConfigurationdata.has("relativeHeight")) {
+                    nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
+                }
+                CustomerGlu.getInstance().displayCGNudge(getReactApplicationContext(), url, nudgeConfiguration);
+            } else {
+                CustomerGlu.getInstance().displayCGNudge(getReactApplicationContext(), url,nudgeConfiguration);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @ReactMethod
     public void enableAnalytic(Boolean bool) {
         CustomerGlu.getInstance().enableAnalyticsEvent(bool);
+    }
+
+    @ReactMethod
+    public void allowAnonymousRegistration(Boolean bool) {
+        CustomerGlu.getInstance().allowAnonymousRegistration(bool);
     }
 
 

@@ -24,6 +24,7 @@ import {
     configureLoaderColour,
     enableEntryPoints,
     SetCurrentClassName,
+    allowAnonymousRegistration,
     enableAnalytic, configureLoadingScreenColor, configureStatusBarColour, configureSafeArea,
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
@@ -118,10 +119,11 @@ const RegisterScreen = ({ navigation }) => {
         const token = await messaging().getToken();
         console.log("getToken", token)
         // Send registration data in Object     
+        allowAnonymousRegistration(true)
         setanimation(!animating)
-        if (token && userid) {
+        if (token) {
             userdataAndroid = {
-                userId: userid,
+               // userId: userid,
                 firebaseToken: token,
                 customAttributes: {
                     "isTestUser": true
@@ -149,6 +151,7 @@ const RegisterScreen = ({ navigation }) => {
                 configureSafeArea(obj);
 
                 // enableAnalytic(true)
+              //  allowAnonymousRegistration(false)
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
                 if (ok == true) {
