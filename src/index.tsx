@@ -67,6 +67,9 @@ export function RegisterDevice(userdata: Object): Promise<number> {
 export function dataClear(): Promise<number> {
   return Rncustomerglu.dataClear();
 }
+export function testIntegration(): Promise<number>{
+  return Rncustomerglu.testIntegration();
+}
 export function sendData(obj: Object): Promise<number> {
   return Rncustomerglu.sendData(obj);
 }

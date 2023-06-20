@@ -512,6 +512,12 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
+    public void testIntegration()
+    {
+        CustomerGlu.getInstance().testIntegration();
+    }
+
+    @ReactMethod
     public void configureLoaderColour(String color) {
         CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), color);
     }

@@ -156,6 +156,10 @@ class Rncustomerglu: RCTEventEmitter{
     func sendData(_ property:NSDictionary) -> Void {
         customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
     }
+     @objc
+    func testIntegration() -> Void {
+        customerGlu.testIntegration();
+    }
     
     @objc
     func openWallet(_ walletData:NSDictionary) -> Void {
