@@ -9,10 +9,11 @@ type CgEmbedBannerProps = {
 export declare const EmbedBannerWidget: import("react-native").HostComponent<CgEmbedBannerProps> | (() => never);
 export declare function RegisterDevice(userdata: Object): Promise<number>;
 export declare function dataClear(): Promise<number>;
+export declare function testIntegration(): Promise<number>;
 export declare function sendData(obj: Object): Promise<number>;
 export declare function openWallet(obj?: Object): Promise<number>;
 export declare function loadCampaignById(id: String, obj?: Object): Promise<number>;
-export declare function loadCampaignWithUrl(url: String, obj?: Object): Promise<number>;
+export declare function loadCampaignWithUrl(url: String, obj: Object): Promise<number>;
 export declare function enableAnalytic(b: Boolean): Promise<number>;
 export declare function allowAnonymousRegistration(b: Boolean): Promise<number>;
 export declare function sendEventToJs(b: NativeEventEmitter): Promise<number>;
@@ -32,7 +33,6 @@ export declare function configureLoadingScreenColor(color: String): Promise<numb
 export declare function enablePrecaching(): Promise<number>;
 export declare function gluSDKDebuggingMode(b: Boolean): Promise<number>;
 export declare function enableEntryPoints(b: boolean): Promise<number>;
-export declare function testIntegration(): Promise<number>;
 export declare function closeWebView(b: Boolean): Promise<number>;
 export declare function isFcmApn(id: Boolean): Promise<number>;
 export declare function configureSafeArea(obj: Object): Promise<number>;
