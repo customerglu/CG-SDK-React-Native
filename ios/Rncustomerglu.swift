@@ -90,7 +90,7 @@ class Rncustomerglu: RCTEventEmitter{
     func setPlatformAndSdkVersion(){
 
         CustomerGlu.app_platform="REACT_NATIVE"
-        CustomerGlu.sdk_version="1.3.1"
+        CustomerGlu.sdk_version="1.3.2"
     }
     
     override func startObserving() {
@@ -155,6 +155,10 @@ class Rncustomerglu: RCTEventEmitter{
     @objc
     func sendData(_ property:NSDictionary) -> Void {
         customerGlu.sendEventData(eventName: property["eventName"] as! String , eventProperties: property["eventProperties"] as? [String : Any])
+    }
+     @objc
+    func testIntegration() -> Void {
+        customerGlu.testIntegration();
     }
     
     @objc
