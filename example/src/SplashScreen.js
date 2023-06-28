@@ -26,7 +26,7 @@ import {
     openWallet,
     gluSDKDebuggingMode,
     enableEntryPoints,
-    configureLoaderColour,
+    configureLoadingScreenColor,
     closeWebView,
     enableAnalytic
 } from '@customerglu/react-native-customerglu';
@@ -64,7 +64,7 @@ const SplashScreen = ({ navigation }) => {
                     console.log('Registered!!!!!!!!!!!!!!!')
                     gluSDKDebuggingMode(true);
                     enableEntryPoints(true);
-                    // configureLoaderColour("#00FF00");
+                    configureLoadingScreenColor("#FFFFFF");
                     enableAnalytic(true)
                     timer1 = setTimeout(() => {
                         navigation.navigate('HomeScreen');

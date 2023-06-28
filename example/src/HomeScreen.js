@@ -24,6 +24,7 @@ import {
     dataClear,
     openWallet,
     closeWebView,
+    configureLoadingScreenColor,
     enableAnalytic,
     openNudge,
     loadCampaignById,
@@ -181,6 +182,8 @@ const openWalletTest=()=>{
     //          relativeHeight:50
     //     },
     // };
+    configureLoadingScreenColor("#FFFFFF");
+    configureLightBackgroundColor("#FFFFFF");
     openWallet();
 //  loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
