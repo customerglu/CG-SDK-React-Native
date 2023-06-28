@@ -716,25 +716,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
-    public void LoadAllCampagins() {
-        CustomerGlu.getInstance().loadAllCampaigns(getReactApplicationContext());
-    }
-
-    @ReactMethod
-    public void LoadCampaginsByFilter(ReadableMap readableMap) {
-        try {
-            JSONObject obj = convertMapToJson(readableMap);
-            HashMap<String, Object> campaignData = new HashMap<>();
-            campaignData.put("campaignId", obj.get("campaignId"));
-            campaignData.put("status", obj.get("status"));
-            campaignData.put("type", obj.get("type"));
-            CustomerGlu.getInstance().loadCampaignsByFilter(getReactApplicationContext(), campaignData);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @ReactMethod
     public void SetCurrentClassName(String classname) {
         this.Myclassname = classname;
         runOnUiThread(new Runnable() {
