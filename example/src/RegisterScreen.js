@@ -119,11 +119,12 @@ const RegisterScreen = ({ navigation }) => {
         const token = await messaging().getToken();
         console.log("getToken", token)
         // Send registration data in Object     
-        allowAnonymousRegistration(true)
+         allowAnonymousRegistration(false)
         setanimation(!animating)
         if (token) {
+            console.log("userid", userid)
             userdataAndroid = {
-               // userId: userid,
+                userId: userid,
                 firebaseToken: token,
                 customAttributes: {
                     "isTestUser": true
@@ -141,7 +142,7 @@ const RegisterScreen = ({ navigation }) => {
                 enableEntryPoints(true);
                 // configureLightLoaderURL("https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-dark.json")
                 // configureLoaderColour("#00ff00");
-                // configureLoadingScreenColor("#934fffff");
+                 configureLoadingScreenColor("#FFFFFF");
                 // configureStatusBarColour('#0000ff')
 
                 let obj = {

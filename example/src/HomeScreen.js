@@ -24,6 +24,7 @@ import {
     dataClear,
     openWallet,
     closeWebView,
+    configureLoadingScreenColor,
     enableAnalytic,
     openNudge,
     loadCampaignById,
@@ -96,7 +97,7 @@ const HomeScreen = ({ navigation }) => {
                 if (Platform.OS === 'ios') {
                     reminder = reminder.data
                 }
-                // console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
+                 console.log('CUSTOMERGLU_DEEPLINK_EVENT...12345',  reminder)
                 if(reminder && reminder.campaignId){
                 loadCampaignById(reminder.campaignId,)
                 }
@@ -121,8 +122,8 @@ const HomeScreen = ({ navigation }) => {
                 (reminder) => {
                     console.log('reminder----', reminder);
                     // console.log('reminder["entry1"]....', reminder["entry1"])
-                    if (reminder && reminder["entry1"]) {
-                        setFinalHeight(reminder["entry1"] * windowHeight / 100);
+                    if (reminder && reminder["demo-quiz-banner1"]) {
+                        setFinalHeight(reminder["demo-quiz-banner1"] * windowHeight / 100);
 
                     }
 
@@ -181,8 +182,10 @@ const openWalletTest=()=>{
     //          relativeHeight:50
     //     },
     // };
-
- loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
+    configureLoadingScreenColor("#FFFFFF");
+    configureLightBackgroundColor("#FFFFFF");
+    openWallet();
+//  loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
@@ -262,11 +265,11 @@ const openWalletTest=()=>{
                 
                     <BannerWidget
                         style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
-                        bannerId="demo-quiz-banner1"
+                        bannerId="homescreen_banner"
                     />
                     
                     <EmbedBannerWidget
-                        style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalEBHeight : null }}
+                        style={{flex:1, width: '100%' ,height: Platform.OS === 'ios' ? finalEBHeight : null }}
                         bannerId="embedded1"
                     />
                 
