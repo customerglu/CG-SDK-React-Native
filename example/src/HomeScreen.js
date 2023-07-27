@@ -184,8 +184,9 @@ const openWalletTest=()=>{
     // };
     configureLoadingScreenColor("#FFFFFF");
     configureLightBackgroundColor("#FFFFFF");
-    openWallet();
-//  loadCampaignById("042a1048-569e-47c8-853c-33af1e325c93",openWalletData)
+    //enableAnalytic(true);
+     //openWallet();
+  loadCampaignById("005686b4-749a-44f1-8654-817b6aa7e8b1",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 

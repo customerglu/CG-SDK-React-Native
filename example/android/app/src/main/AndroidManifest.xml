@@ -14,8 +14,8 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/MyAppTheme">
-      <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="@string/demo_write_key" />
-     <!-- <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="N221GjxE4z9y1dvAi2NSp93TGAXV1mjyBTBA8u65" /> -->
+      <!-- <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="@string/demo_write_key" /> -->
+     <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="G4VCVVAcLub8hx5SaeqH3pRqLBmDFrwy" />
       <meta-data
           android:name="CUSTOMERGLU_NOTIFICATION_ICON"
           android:resource="@drawable/notification" />
