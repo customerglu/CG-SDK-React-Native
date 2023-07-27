@@ -90,7 +90,7 @@ class Rncustomerglu: RCTEventEmitter{
     func setPlatformAndSdkVersion(){
 
         CustomerGlu.app_platform="REACT_NATIVE"
-        CustomerGlu.sdk_version="1.3.4"
+        CustomerGlu.sdk_version="1.3.5"
     }
     
     override func startObserving() {

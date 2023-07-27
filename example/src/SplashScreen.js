@@ -65,7 +65,7 @@ const SplashScreen = ({ navigation }) => {
                     gluSDKDebuggingMode(true);
                     enableEntryPoints(true);
                     configureLoadingScreenColor("#FFFFFF");
-                    enableAnalytic(true)
+                 //   enableAnalytic(true)
                     timer1 = setTimeout(() => {
                         navigation.navigate('HomeScreen');
                     }, 1000);
