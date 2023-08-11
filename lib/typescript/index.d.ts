@@ -34,7 +34,7 @@ export declare function enablePrecaching(): Promise<number>;
 export declare function gluSDKDebuggingMode(b: Boolean): Promise<number>;
 export declare function enableEntryPoints(b: boolean): Promise<number>;
 export declare function closeWebView(b: Boolean): Promise<number>;
-export declare function isFcmApn(id: Boolean): Promise<number>;
+export declare function isFcmApn(id: String): Promise<number>;
 export declare function configureSafeArea(obj: Object): Promise<number>;
 export declare function SetDefaultBannerImage(url: String): Promise<number>;
 export declare function UpdateProfile(obj: Object): Promise<number>;

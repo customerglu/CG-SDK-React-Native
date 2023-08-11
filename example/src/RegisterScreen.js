@@ -126,6 +126,9 @@ const RegisterScreen = ({ navigation }) => {
             userdataAndroid = {
                 userId: userid,
                 firebaseToken: token,
+                profile:{
+                    "firstName":null
+                },
                 customAttributes: {
                     "isTestUser": true
 
