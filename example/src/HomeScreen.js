@@ -186,7 +186,7 @@ const openWalletTest=()=>{
     configureLightBackgroundColor("#FFFFFF");
     //enableAnalytic(true);
      //openWallet();
-  loadCampaignById("4148c869-bec0-4bf2-9fe2-73c5459489f1",openWalletData)
+  loadCampaignById("ea280fab-efec-41bb-a21c-7e66de747e57",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
