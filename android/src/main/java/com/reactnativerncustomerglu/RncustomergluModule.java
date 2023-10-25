@@ -23,6 +23,7 @@ import com.customerglu.sdk.Modal.DeepLinkWormholeModel;
 import com.customerglu.sdk.Modal.NudgeConfiguration;
 import com.customerglu.sdk.Utils.CGConstants;
 import com.customerglu.sdk.Utils.Comman;
+import com.customerglu.sdk.pip.PIPHelper;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableNativeArray;
@@ -245,6 +246,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         });
 
     }
+
+
     @ReactMethod
     public void handleDeepLinkUri(String urls){
         if(urls!=null){
@@ -483,9 +486,9 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
                 if (nudgeConfigurationdata.has("relativeHeight")) {
                     nudgeConfiguration.setRelativeHeight(Double.parseDouble(nudgeConfigurationdata.getString("relativeHeight")));
                 }
-                CustomerGlu.getInstance().displayCGNudge(getReactApplicationContext(), url, nudgeConfiguration);
+                CustomerGlu.getInstance().displayCGNudge(getReactApplicationContext(), url, "",nudgeConfiguration);
             } else {
-                CustomerGlu.getInstance().displayCGNudge(getReactApplicationContext(), url,nudgeConfiguration);
+                CustomerGlu.getInstance().displayCGNudge(getReactApplicationContext(), url,"",nudgeConfiguration);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -520,6 +523,22 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     @ReactMethod
     public void configureLoaderColour(String color) {
         CustomerGlu.getInstance().configureLoaderColour(getReactApplicationContext(), color);
+    }
+
+    @ReactMethod
+    public void addMarginsForPIP(int horizontal, int vertical, String type) {
+        if (type.equalsIgnoreCase("px")) {
+            CustomerGlu.getInstance().addMarginForPIP(horizontal, vertical, PIPHelper.DISPLAY_UNIT_TYPE.PX);
+        }else{
+            CustomerGlu.getInstance().addMarginForPIP(horizontal, vertical, PIPHelper.DISPLAY_UNIT_TYPE.DP);
+
+        }
+    }
+
+
+    @ReactMethod
+    public boolean validateCampaign( String campaignId) {
+            return  CustomerGlu.getInstance().isCampaignValid(campaignId);
     }
 
     //2jan2023

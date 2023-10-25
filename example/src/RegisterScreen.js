@@ -75,7 +75,7 @@ const RegisterScreen = ({ navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             console.log("route name", route.name, animating);
-            SetCurrentClassName(route.name);
+          //  SetCurrentClassName(route.name);
 
         }, [navigation])
     );

@@ -56,7 +56,8 @@ const HomeScreen = ({ navigation }) => {
         React.useCallback(() => {
             //Dashboard  MoreScreen
             console.log('navigation change..........', route.name)
-            SetCurrentClassName("CGHomeScreen");
+            
+            SetCurrentClassName("Home");
 
 
 
