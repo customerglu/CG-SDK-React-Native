@@ -218,6 +218,9 @@ export function getBannerHeight(): Promise<number> {
 export function addMarginsForPIP(horizontal:number,vertical:number,type:String): Promise<number> {
   return Rncustomerglu.addMarginsForPIP(horizontal,vertical,type);
 }
+export function addDelayForPIP(delay:number): Promise<number> {
+  return Rncustomerglu.addDelayForPIP(delay);
+}
 export function isValidCampaign(campaignId:String): Promise<Boolean> {
   return Rncustomerglu.campaignId(campaignId);
 }
