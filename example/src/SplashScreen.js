@@ -26,6 +26,7 @@ import {
     openWallet,
     gluSDKDebuggingMode,
     addMarginsForPIP,
+    addDelayForPIP,
     enableEntryPoints,
     configureLoadingScreenColor,
     closeWebView,
@@ -45,6 +46,7 @@ const SplashScreen = ({ navigation }) => {
         React.useCallback(() => {
             // SetCurrentClassNameEx(route.name);
             addMarginsForPIP(10,100,"px");
+            addDelayForPIP(500);
 
         }, [])
     );
