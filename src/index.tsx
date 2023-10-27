@@ -215,7 +215,15 @@ export function setApnFcmToken(a: string, b: String): Promise<number> {
 export function getBannerHeight(): Promise<number> {
   return Rncustomerglu.getBannerHeight();
 }
-
+export function addMarginsForPIP(horizontal:number,vertical:number,type:String): Promise<number> {
+  return Rncustomerglu.addMarginsForPIP(horizontal,vertical,type);
+}
+export function addDelayForPIP(delay:number): Promise<number> {
+  return Rncustomerglu.addDelayForPIP(delay);
+}
+export function isValidCampaign(campaignId:String): Promise<Boolean> {
+  return Rncustomerglu.campaignId(campaignId);
+}
 export function openNudge(nudgeid:String,data:object={}): Promise<string> {
   if(nudgeid!=null){
     return Rncustomerglu.OpenNudgeRN(nudgeid,data);

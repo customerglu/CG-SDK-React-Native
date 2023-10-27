@@ -25,6 +25,8 @@ import {
     dataClear,
     openWallet,
     gluSDKDebuggingMode,
+    addMarginsForPIP,
+    addDelayForPIP,
     enableEntryPoints,
     configureLoadingScreenColor,
     closeWebView,
@@ -43,7 +45,9 @@ const SplashScreen = ({ navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             // SetCurrentClassNameEx(route.name);
-            
+            addMarginsForPIP(10,100,"px");
+            addDelayForPIP(500);
+
         }, [])
     );
     useEffect(() => {

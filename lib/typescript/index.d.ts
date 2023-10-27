@@ -51,4 +51,8 @@ export declare function configureDomainCodeMsg(obj: Object): Promise<number>;
 export declare function setApnFcmToken(a: string, b: String): Promise<number>;
 export declare function getBannerHeight(): Promise<number>;
 export declare function openNudge(nudgeid: String, data?: object): Promise<string>;
+export declare function addMarginsForPIP(horizontal: number, vertical: number,type:String): Promise<number>;
+export declare function addDelayForPIP(delay: number): Promise<number>;
+export declare function isValidCampaign(campaignId: string): Promise<Boolean>;
+
 export {};
