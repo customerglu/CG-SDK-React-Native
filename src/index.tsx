@@ -221,6 +221,15 @@ export function addMarginsForPIP(horizontal:number,vertical:number,type:String):
 export function addDelayForPIP(delay:number): Promise<number> {
   return Rncustomerglu.addDelayForPIP(delay);
 }
+export function setPIPEnabled(enabled:Boolean): Promise<Boolean> {
+  return Rncustomerglu.setPIPEnabled(enabled);
+}
+export function isPIPEnabled(): Promise<Boolean> {
+  return Rncustomerglu.isPIPEnabled();
+}
+export function dismissPIP(): Promise<Boolean> {
+  return Rncustomerglu.dismissPIP();
+}
 export function isValidCampaign(campaignId:String): Promise<Boolean> {
   return Rncustomerglu.campaignId(campaignId);
 }
