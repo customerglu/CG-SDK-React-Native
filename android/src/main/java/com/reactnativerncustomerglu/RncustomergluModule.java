@@ -536,10 +536,24 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     @ReactMethod
     public void addDelayForPIP(int delay) {
-        
-            CustomerGlu.getInstance().addDelayForPIP(delay);
-    }
 
+        CustomerGlu.getInstance().addDelayForPIP(delay);
+    }
+    @ReactMethod
+    public void setPIPEnabled(boolean enabled) {
+        
+            CustomerGlu.getInstance().setPIPEnabled(getReactApplicationContext().getCurrentActivity(),enabled);
+    }
+    @ReactMethod
+    public boolean isPIPEnabled() {
+        
+          return CustomerGlu.getInstance().isPIPEnabled();
+    }
+    @ReactMethod
+    public void dismissPIP() {
+
+            CustomerGlu.getInstance().dismissPIP();
+    }
     @ReactMethod
     public boolean validateCampaign( String campaignId) {
             return  CustomerGlu.getInstance().isCampaignValid(campaignId);
