@@ -44,7 +44,7 @@ const SplashScreen = ({ navigation }) => {
 
     useFocusEffect(
         React.useCallback(() => {
-            // SetCurrentClassNameEx(route.name);
+             SetCurrentClassName(route.name);
             addMarginsForPIP(10,100,"px");
             addDelayForPIP(500);
 

@@ -28,6 +28,7 @@ import {
     enableAnalytic,
     openNudge,
     loadCampaignById,
+
     loadCampaignWithUrl,
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
@@ -57,7 +58,7 @@ const HomeScreen = ({ navigation }) => {
             //Dashboard  MoreScreen
             console.log('navigation change..........', route.name)
             
-            SetCurrentClassName("Home");
+            SetCurrentClassName("HomeLoaded-Cg");
 
 
 
@@ -185,6 +186,7 @@ const openWalletTest=()=>{
     // };
     configureLoadingScreenColor("#FFFFFF");
     configureLightBackgroundColor("#FFFFFF");
+    //setPIPEnabled(false);
     //enableAnalytic(true);
      //openWallet();
   loadCampaignById("ea280fab-efec-41bb-a21c-7e66de747e57",openWalletData)
