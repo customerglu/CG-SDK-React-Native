@@ -46,7 +46,7 @@ const SplashScreen = ({ navigation }) => {
         React.useCallback(() => {
              SetCurrentClassName(route.name);
             addMarginsForPIP(10,100,"px");
-            addDelayForPIP(500);
+            addDelayForPIP(5000);
 
         }, [])
     );

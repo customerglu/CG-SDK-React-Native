@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CustomerGluRN
+import CustomerGlu
 //var bridgeHelperInstance = PublicBridgeHelper()
 
  

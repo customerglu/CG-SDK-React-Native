@@ -1,5 +1,5 @@
 import Foundation
-import CustomerGluRN
+import CustomerGlu
 import UIKit
 import React
 
@@ -457,8 +457,7 @@ class Rncustomerglu: RCTEventEmitter{
             customerGlu.loadCampaignByFilter(parameters: obj)
         }
     }
-    @objc
-    fun 
+    
     @objc
     func SetCurrentClassName(_ clName:String) -> Void {
         DispatchQueue.main.async {
@@ -481,12 +480,12 @@ class Rncustomerglu: RCTEventEmitter{
     }
 
     @objc
-    func addMarginsForPIP(horizontal: Int,vertical:Int, type: String){
+    func addMarginsForPIP(_ horizontal: Int, vertical:Int, pipType: String){
         customerGlu.addMarginForPIP(horizontal: horizontal, vertical: vertical)
     }
 
     @objc 
-    func addDelayForPIP(delay: Int){
+    func addDelayForPIP(_ delay: Int){
         customerGlu.addDelayForPIP(delay: delay)
     }
 
