@@ -458,6 +458,8 @@ class Rncustomerglu: RCTEventEmitter{
         }
     }
     @objc
+    fun 
+    @objc
     func SetCurrentClassName(_ clName:String) -> Void {
         DispatchQueue.main.async {
             customerGlu.setCurrentClassName(className: clName)
@@ -477,6 +479,17 @@ class Rncustomerglu: RCTEventEmitter{
         //           NotificationCenter.default.addObserver(self, selector: #selector(self.catchBannerHeightNotification(notification:)), name: Notification.Name("CGBANNER_FINAL_HEIGHT"), object: nil)
         
     }
+
+    @objc
+    func addMarginsForPIP(horizontal: Int,vertical:Int, type: String){
+        customerGlu.addMarginForPIP(horizontal: horizontal, vertical: vertical)
+    }
+
+    @objc 
+    func addDelayForPIP(delay: Int){
+        customerGlu.addDelayForPIP(delay: delay)
+    }
+
     
     //       @objc
     //       func catchBannerHeightNotification(notification: NSNotification) {
