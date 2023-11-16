@@ -56,9 +56,9 @@ const HomeScreen = ({ navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             //Dashboard  MoreScreen
-            console.log('navigation change..........', route.name)
+            console.log('navigation change.......... HomeLoaded-Cg')
             
-            SetCurrentClassName("Home");
+            SetCurrentClassName("HomeLoaded-Cg");
 
 
 
