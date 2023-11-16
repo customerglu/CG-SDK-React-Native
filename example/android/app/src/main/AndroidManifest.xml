@@ -15,7 +15,7 @@
       android:allowBackup="false"
       android:theme="@style/MyAppTheme">
       <!-- <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="@string/demo_write_key" /> -->
-     <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="992d1c332ce118fd32af181afc1246ae2561def4" />
+     <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="1e8becb4c2aa928b96a35d0b990de1b05d9e87fb" />
       <meta-data
           android:name="CUSTOMERGLU_NOTIFICATION_ICON"
           android:resource="@drawable/notification" />
