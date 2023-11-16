@@ -28,6 +28,7 @@ import {
     enableAnalytic,
     openNudge,
     loadCampaignById,
+
     loadCampaignWithUrl,
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
@@ -55,9 +56,9 @@ const HomeScreen = ({ navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             //Dashboard  MoreScreen
-            console.log('navigation change..........', route.name)
+            console.log('navigation change.......... HomeLoaded-Cg')
             
-            SetCurrentClassName("Home");
+            SetCurrentClassName("HomeLoaded-Cg");
 
 
 
@@ -185,6 +186,7 @@ const openWalletTest=()=>{
     // };
     configureLoadingScreenColor("#FFFFFF");
     configureLightBackgroundColor("#FFFFFF");
+    //setPIPEnabled(false);
     //enableAnalytic(true);
      //openWallet();
   loadCampaignById("ea280fab-efec-41bb-a21c-7e66de747e57",openWalletData)

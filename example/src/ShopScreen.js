@@ -18,8 +18,7 @@ const ShopScreen = ({ navigation }) => {
     const route = useRoute();
     useFocusEffect(
         React.useCallback(() => {
-            console.log("route name", route.name);
-            SetCurrentClassName(route.name);
+            SetCurrentClassName("HomeLoaded");
         }, [navigation])
     );
 

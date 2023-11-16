@@ -1,5 +1,5 @@
 import Foundation
-import CustomerGluRN
+import CustomerGlu
 import UIKit
 import React
 
@@ -90,7 +90,7 @@ class Rncustomerglu: RCTEventEmitter{
     func setPlatformAndSdkVersion(){
 
         CustomerGlu.app_platform="REACT_NATIVE"
-        CustomerGlu.sdk_version="1.3.7"
+        CustomerGlu.sdk_version="1.4.1"
     }
     
     override func startObserving() {
@@ -457,6 +457,7 @@ class Rncustomerglu: RCTEventEmitter{
             customerGlu.loadCampaignByFilter(parameters: obj)
         }
     }
+    
     @objc
     func SetCurrentClassName(_ clName:String) -> Void {
         DispatchQueue.main.async {
@@ -477,6 +478,17 @@ class Rncustomerglu: RCTEventEmitter{
         //           NotificationCenter.default.addObserver(self, selector: #selector(self.catchBannerHeightNotification(notification:)), name: Notification.Name("CGBANNER_FINAL_HEIGHT"), object: nil)
         
     }
+
+    @objc
+    func addMarginsForPIP(_ horizontal: Int, vertical:Int, pipType: String){
+        customerGlu.addMarginForPIP(horizontal: horizontal, vertical: vertical)
+    }
+
+    @objc 
+    func addDelayForPIP(_ delay: Int){
+        customerGlu.addDelayForPIP(delay: delay)
+    }
+
     
     //       @objc
     //       func catchBannerHeightNotification(notification: NSNotification) {

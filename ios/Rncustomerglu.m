@@ -66,6 +66,8 @@ RCT_EXTERN_METHOD(setApnFcmToken:(NSString *)apn fcmToken:(NSString *)fcm)
 RCT_EXTERN_METHOD(getBannerHeight)
 RCT_EXTERN_METHOD(allowAnonymousRegistration:(BOOL *)bool)
 RCT_EXTERN_METHOD(testIntegration)
+RCT_EXTERN_METHOD(addMarginsForPIP:(int *)horizontal vertical:(int *)vertical pipType:(NSString *)pipType)
+RCT_EXTERN_METHOD(addDelayForPIP:(int *)delay)
 
 @end
 

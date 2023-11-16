@@ -53,6 +53,9 @@ export declare function getBannerHeight(): Promise<number>;
 export declare function openNudge(nudgeid: String, data?: object): Promise<string>;
 export declare function addMarginsForPIP(horizontal: number, vertical: number,type:String): Promise<number>;
 export declare function addDelayForPIP(delay: number): Promise<number>;
-export declare function isValidCampaign(campaignId: string): Promise<Boolean>;
+// export declare function isValidCampaign(campaignId: string): Promise<Boolean>;
+// export declare function setPIPEnabled(enabled: Boolean): Promise<Boolean>;
+// export declare function isPIPEnabled(): Promise<Boolean>;
+// export declare function dismissPIP(): Promise<Boolean>;
 
 export {};

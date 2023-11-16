@@ -87,7 +87,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "1.3.7";
+            CustomerGlu.cg_sdk_version = "1.4.1";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
@@ -536,13 +536,26 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
     @ReactMethod
     public void addDelayForPIP(int delay) {
-        
-            CustomerGlu.getInstance().addDelayForPIP(delay);
-    }
 
+        CustomerGlu.getInstance().addDelayForPIP(delay);
+    }
+    // @ReactMethod
+    // public void setPIPEnabled(boolean enabled) {
+    //         CustomerGlu.getInstance().setPIPEnabled(getReactApplicationContext().getCurrentActivity(),enabled);
+    // }
+    // @ReactMethod
+    // public boolean isPIPEnabled() {
+        
+    //       return CustomerGlu.getInstance().isPIPEnabled();
+    // }
+    // @ReactMethod
+    // public void dismissPIP() {
+
+    //         CustomerGlu.getInstance().dismissPIP();
+    // }
     @ReactMethod
-    public boolean validateCampaign( String campaignId) {
-            return  CustomerGlu.getInstance().isCampaignValid(campaignId);
+    public void validateCampaign( String campaignId) {
+         //   return  CustomerGlu.getInstance().isCampaignValid(campaignId);
     }
 
     //2jan2023
