@@ -124,7 +124,15 @@ class Rncustomerglu: RCTEventEmitter{
             }
         }
     }
-    
+    @objc func isValidCampaign(_ campaign_id:String,dataFlag:String ,resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        // customerGlu.isValidCampaign(campaignId:campaign_id as String) { success in
+        //     if success {
+        //         resolve(true)
+        //     } else {
+        //         resolve(false)
+        //     }
+        }
+    }
     @objc func OpenNudgeRN(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
         
         let nudgeconfigData=CGNudgeConfiguration()

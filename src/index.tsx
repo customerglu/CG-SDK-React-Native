@@ -61,7 +61,7 @@ export const EmbedBannerWidget =
 
 
 
-export function RegisterDevice(userdata: Object): Promise<number> {
+export function RegisterDevice(userdata: Object): Promise<Boolean> {
   return Rncustomerglu.registerDevice(userdata);
 }
 export function dataClear(): Promise<number> {
@@ -230,9 +230,9 @@ export function addDelayForPIP(delay:number): Promise<number> {
 // export function dismissPIP(): Promise<Boolean> {
 //   return Rncustomerglu.dismissPIP();
 // }
-// export function isValidCampaign(campaignId:String): Promise<Boolean> {
-//   return Rncustomerglu.campaignId(campaignId);
-// }
+export function isValidCampaign(campaignId:String,dataFlag:String): Promise<Boolean> {
+  return Rncustomerglu.campaignId(campaignId,dataFlag);
+}
 export function openNudge(nudgeid:String,data:object={}): Promise<string> {
   if(nudgeid!=null){
     return Rncustomerglu.OpenNudgeRN(nudgeid,data);
