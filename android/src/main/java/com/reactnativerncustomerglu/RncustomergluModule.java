@@ -316,6 +316,12 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
+    public void setOpenWalletAsFallback(Boolean value) {
+        CustomerGlu.getInstance().openWalletAsFallback(value);
+    }
+
+
+    @ReactMethod
     public void dataClear() {
         CustomerGlu.getInstance().clearGluData(getCurrentActivity());
     }

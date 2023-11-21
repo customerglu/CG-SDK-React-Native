@@ -134,6 +134,11 @@ class Rncustomerglu: RCTEventEmitter{
                       }
                     })
     }
+
+@objc public func setOpenWalletAsFallback(_ flag: Bool) {
+    customerGlu.setOpenWalletAsFallback(flag)
+  }
+
     @objc func OpenNudgeRN(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
         
         let nudgeconfigData=CGNudgeConfiguration()

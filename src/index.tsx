@@ -230,6 +230,11 @@ export function addDelayForPIP(delay:number): Promise<number> {
 // export function dismissPIP(): Promise<Boolean> {
 //   return Rncustomerglu.dismissPIP();
 // }
+
+export function setOpenWalletAsFallback(value:Boolean): Promise<number>{
+   return Rncustomerglu.setOpenWalletAsFallback(value);
+}
+
 export function isCampaignValid(campaignId:String,dataFlag:String): Promise<Boolean> {
   return Rncustomerglu.isCampaignValid(campaignId,dataFlag);
 }
