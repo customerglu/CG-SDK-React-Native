@@ -1,7 +1,6 @@
 package com.reactnativerncustomerglu;
 
 import static com.customerglu.sdk.Utils.Comman.printDebugLogs;
-import static com.facebook.react.bridge.UiThreadUtil.isOnUiThread;
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
 import android.content.BroadcastReceiver;
@@ -10,15 +9,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.customerglu.sdk.Interface.CGDeepLinkListener;
+import com.customerglu.sdk.Interface.CampaignValidListener;
 import com.customerglu.sdk.Modal.DeepLinkWormholeModel;
 import com.customerglu.sdk.Modal.NudgeConfiguration;
 import com.customerglu.sdk.Utils.CGConstants;
@@ -47,7 +45,6 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -319,6 +316,12 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
+    public void setOpenWalletAsFallback(Boolean value) {
+        CustomerGlu.getInstance().openWalletAsFallback(value);
+    }
+
+
+    @ReactMethod
     public void dataClear() {
         CustomerGlu.getInstance().clearGluData(getCurrentActivity());
     }
@@ -554,8 +557,24 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     //         CustomerGlu.getInstance().dismissPIP();
     // }
     @ReactMethod
-    public void validateCampaign( String campaignId) {
-         //   return  CustomerGlu.getInstance().isCampaignValid(campaignId);
+    public void isCampaignValid( String campaignId,String dataFlag,Promise promise) {
+        CGConstants.DATA_FLAG flag = CGConstants.DATA_FLAG.API;
+
+        if (dataFlag.equalsIgnoreCase("CACHE"))
+        {
+             flag = CGConstants.DATA_FLAG.CACHED;
+        }
+             CustomerGlu.getInstance().isCampaignValid(campaignId, flag, new CampaignValidListener() {
+               @Override
+               public void validCampaign() {
+                   promise.resolve(true);
+               }
+
+               @Override
+               public void invalidCampaign() {
+                promise.resolve(false);
+               }
+           });
     }
 
     //2jan2023

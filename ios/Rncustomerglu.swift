@@ -124,7 +124,21 @@ class Rncustomerglu: RCTEventEmitter{
             }
         }
     }
-    
+    @objc func isCampaignValid(_ campaign_id:String,dataFlag:String ,resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        let dataType = dataFlag == "CACHE" ? CAMPAIGNDATA.CACHE : CAMPAIGNDATA.API
+        CustomerGlu.getInstance.isCampaignValid(campaignId: campaign_id, dataType: dataType, completion: { success in
+                      if success{
+                        resolve(true)
+                      }else {
+                        resolve(false)
+                      }
+                    })
+    }
+
+@objc public func setOpenWalletAsFallback(_ flag: Bool) {
+    customerGlu.setOpenWalletAsFallback(flag)
+  }
+
     @objc func OpenNudgeRN(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
         
         let nudgeconfigData=CGNudgeConfiguration()

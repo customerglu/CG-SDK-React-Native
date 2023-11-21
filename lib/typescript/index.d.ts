@@ -7,7 +7,7 @@ type CgEmbedBannerProps = {
     bannerId: string;
 };
 export declare const EmbedBannerWidget: import("react-native").HostComponent<CgEmbedBannerProps> | (() => never);
-export declare function RegisterDevice(userdata: Object): Promise<number>;
+export declare function RegisterDevice(userdata: Object): Promise<Boolean>;
 export declare function dataClear(): Promise<number>;
 export declare function testIntegration(): Promise<number>;
 export declare function sendData(obj: Object): Promise<number>;
@@ -50,10 +50,12 @@ export declare function configureWhiteListedDomains(arr: Array<String>): Promise
 export declare function configureDomainCodeMsg(obj: Object): Promise<number>;
 export declare function setApnFcmToken(a: string, b: String): Promise<number>;
 export declare function getBannerHeight(): Promise<number>;
-export declare function openNudge(nudgeid: String, data?: object): Promise<string>;
+export declare function openNudge(nudgeid: String, data?: object): Promise<String>;
 export declare function addMarginsForPIP(horizontal: number, vertical: number,type:String): Promise<number>;
 export declare function addDelayForPIP(delay: number): Promise<number>;
-// export declare function isValidCampaign(campaignId: string): Promise<Boolean>;
+export declare function isCampaignValid(campaignId: String,dataFlag: String): Promise<Boolean>;
+export declare function setOpenWalletAsFallback(value: Boolean): Promise<number>;
+
 // export declare function setPIPEnabled(enabled: Boolean): Promise<Boolean>;
 // export declare function isPIPEnabled(): Promise<Boolean>;
 // export declare function dismissPIP(): Promise<Boolean>;
