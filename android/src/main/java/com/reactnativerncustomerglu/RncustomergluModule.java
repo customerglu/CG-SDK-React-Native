@@ -551,7 +551,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     //         CustomerGlu.getInstance().dismissPIP();
     // }
     @ReactMethod
-    public void validateCampaign( String campaignId,String dataFlag,Promise promise) {
+    public void isCampaignValid( String campaignId,String dataFlag,Promise promise) {
         CGConstants.DATA_FLAG flag = CGConstants.DATA_FLAG.API;
 
         if (dataFlag.equalsIgnoreCase("CACHE"))

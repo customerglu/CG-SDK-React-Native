@@ -26,7 +26,7 @@ import {
     closeWebView,
     configureLoadingScreenColor,
     enableAnalytic,
-    openNudge,
+    isCampaignValid,
     loadCampaignById,
 
     loadCampaignWithUrl,
@@ -189,12 +189,25 @@ const openWalletTest=()=>{
     //setPIPEnabled(false);
     //enableAnalytic(true);
      //openWallet();
-  loadCampaignById("ea280fab-efec-41bb-a21c-7e66de747e57",openWalletData)
+  loadCampaignById("005686b4-749a-44f1-8654-817b6aa7e8b1",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
 
 }
+const validCampaign= async ()=>{
+    var isValid = await isCampaignValid("005686b4-749a-44f1-8654-817b6aa7e8b1","API");
+if(isValid == true)
+{
+ console.log("campaign Valid");
+} 
+else{
+    console.log("campaign InValid");
+
+}
+}
+
+
     const clearDataFunc = async () => {
 
         dataClear();
@@ -205,6 +218,7 @@ const openWalletTest=()=>{
                 routes: [{ name: "RegisterScreen" }]
             }));
     }
+
 
     return (
         <SafeAreaView flex={1}>
@@ -239,7 +253,7 @@ const openWalletTest=()=>{
                         <Text style={styles.txtWallet}>Wallet</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('TestScreen')}>
+                    <TouchableOpacity style={styles.containerBox} onPress={() => validCampaign("005686b4-749a-44f1-8654-817b6aa7e8b1")}>
                         <Image
                             source={require('../assets/quiz.png')}
                             style={styles.imageStyle} />

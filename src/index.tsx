@@ -230,8 +230,8 @@ export function addDelayForPIP(delay:number): Promise<number> {
 // export function dismissPIP(): Promise<Boolean> {
 //   return Rncustomerglu.dismissPIP();
 // }
-export function isValidCampaign(campaignId:String,dataFlag:String): Promise<Boolean> {
-  return Rncustomerglu.campaignId(campaignId,dataFlag);
+export function isCampaignValid(campaignId:String,dataFlag:String): Promise<Boolean> {
+  return Rncustomerglu.isCampaignValid(campaignId,dataFlag);
 }
 export function openNudge(nudgeid:String,data:object={}): Promise<string> {
   if(nudgeid!=null){
