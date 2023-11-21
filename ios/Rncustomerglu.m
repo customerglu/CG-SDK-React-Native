@@ -68,6 +68,7 @@ RCT_EXTERN_METHOD(allowAnonymousRegistration:(BOOL *)bool)
 RCT_EXTERN_METHOD(testIntegration)
 RCT_EXTERN_METHOD(addMarginsForPIP:(int *)horizontal vertical:(int *)vertical pipType:(NSString *)pipType)
 RCT_EXTERN_METHOD(addDelayForPIP:(int *)delay)
+RCT_EXTERN_METHOD(setOpenWalletAsFallback:(BOOL *)value)
 RCT_EXTERN_METHOD(isCampaignValid:(NSString *)campaignId dataFlag:(NSString *)dataFlag resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 

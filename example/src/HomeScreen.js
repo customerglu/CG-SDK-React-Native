@@ -14,6 +14,7 @@ import {
     AppState,
     Dimensions,
     NativeModules,
+
     LogBox
 } from 'react-native';
 import { SetCurrentClassName } from '@customerglu/react-native-customerglu';
@@ -23,6 +24,7 @@ import {
     EmbedBannerWidget,
     dataClear,
     openWallet,
+    setOpenWalletAsFallback,
     closeWebView,
     configureLoadingScreenColor,
     enableAnalytic,
@@ -57,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
         React.useCallback(() => {
             //Dashboard  MoreScreen
             console.log('navigation change.......... HomeLoaded-Cg')
-            
+            setOpenWalletAsFallback(false)
             SetCurrentClassName("HomeLoaded-Cg");
 
 
