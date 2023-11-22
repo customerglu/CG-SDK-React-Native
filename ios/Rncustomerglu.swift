@@ -135,6 +135,30 @@ class Rncustomerglu: RCTEventEmitter{
                     })
     }
 
+ @objc func getCampaignStatus(_ campaign_id:String,dataFlag:String ,resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        let dataType = dataFlag == "CACHE" ? CAMPAIGNDATA.CACHE : CAMPAIGNDATA.API
+        CustomerGlu.getInstance.getCampaignStatus(campaignId: campaign_id, dataType: dataType, completion: { campaignStatus in
+                        switch(campaignStatus){
+                            case CAMPAIGN_STATE.PRISTINE:
+                                resolve("pristine")
+                                break;
+                                
+                            case CAMPAIGN_STATE.IN_PROGRESS:
+                               resolve("in_progress")
+                                break;
+                            
+                            case CAMPAIGN_STATE.COMPLETED:
+                                resolve("completed")
+                                break;
+                                
+                            default:
+                               resolve("not_eligible")
+                                break;
+                            }
+                    })
+    }
+
+
 @objc public func setOpenWalletAsFallback(_ flag: Bool) {
     customerGlu.setOpenWalletAsFallback(flag)
   }

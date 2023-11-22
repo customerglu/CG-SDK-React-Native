@@ -29,6 +29,7 @@ import {
     configureLoadingScreenColor,
     enableAnalytic,
     isCampaignValid,
+     getCampaignStatus,
     loadCampaignById,
 
     loadCampaignWithUrl,
@@ -208,6 +209,12 @@ else{
 
 }
 }
+const campaignStatus= async ()=>{
+    var status = await getCampaignStatus("005686b4-749a-44f1-8654-817b6aa7e8b1","API");
+
+ console.log("campaign status"+ status);
+
+}
 
 
     const clearDataFunc = async () => {
@@ -255,7 +262,7 @@ else{
                         <Text style={styles.txtWallet}>Wallet</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.containerBox} onPress={() => validCampaign("005686b4-749a-44f1-8654-817b6aa7e8b1")}>
+                    <TouchableOpacity style={styles.containerBox} onPress={() => campaignStatus()}>
                         <Image
                             source={require('../assets/quiz.png')}
                             style={styles.imageStyle} />

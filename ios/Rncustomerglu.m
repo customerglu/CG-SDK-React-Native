@@ -71,7 +71,8 @@ RCT_EXTERN_METHOD(addDelayForPIP:(int *)delay)
 RCT_EXTERN_METHOD(setOpenWalletAsFallback:(BOOL *)value)
 RCT_EXTERN_METHOD(isCampaignValid:(NSString *)campaignId dataFlag:(NSString *)dataFlag resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
-
+RCT_EXTERN_METHOD(getCampaignStatus:(NSString *)campaignId dataFlag:(NSString *)dataFlag resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
 @end
 
 
