@@ -238,6 +238,9 @@ export function setOpenWalletAsFallback(value:Boolean): Promise<number>{
 export function isCampaignValid(campaignId:String,dataFlag:String): Promise<Boolean> {
   return Rncustomerglu.isCampaignValid(campaignId,dataFlag);
 }
+export function getCampaignStatus(campaignId:String,dataFlag:String): Promise<String> {
+  return Rncustomerglu.getCampaignStatus(campaignId,dataFlag);
+}
 export function openNudge(nudgeid:String,data:object={}): Promise<string> {
   if(nudgeid!=null){
     return Rncustomerglu.OpenNudgeRN(nudgeid,data);

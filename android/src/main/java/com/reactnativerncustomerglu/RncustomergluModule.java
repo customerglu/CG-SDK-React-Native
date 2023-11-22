@@ -12,10 +12,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.customerglu.sdk.Interface.CGDeepLinkListener;
+import com.customerglu.sdk.Interface.CampaignStatusListener;
 import com.customerglu.sdk.Interface.CampaignValidListener;
 import com.customerglu.sdk.Modal.DeepLinkWormholeModel;
 import com.customerglu.sdk.Modal.NudgeConfiguration;
@@ -577,6 +579,22 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
            });
     }
 
+    @ReactMethod
+    public void getCampaignStatus( String campaignId,String dataFlag,Promise promise) {
+        CGConstants.DATA_FLAG flag = CGConstants.DATA_FLAG.API;
+
+        if (dataFlag.equalsIgnoreCase("CACHE"))
+        {
+            flag = CGConstants.DATA_FLAG.CACHED;
+        }
+        CustomerGlu.getInstance().getCampaignStatus(campaignId, CGConstants.DATA_FLAG.API, new CampaignStatusListener() {
+            @Override
+            public void onStatusReceived(CGConstants.CAMPAIGN_STATE campaignState) {
+                promise.resolve(campaignState.toString());
+            }
+        });
+    }
+
     //2jan2023
 
     @ReactMethod
@@ -736,7 +754,6 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
                     context.getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = ai.metaData;
             int myAPIKey = bundle.getInt("CUSTOMERGLU_NOTIFICATION_ICON");
-            printDebugLogs("API KEY : " + myAPIKey);
             return myAPIKey;
         } catch (Exception e) {
             Comman.printErrorLogs(e.toString());

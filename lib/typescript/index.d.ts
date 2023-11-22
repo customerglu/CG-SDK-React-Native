@@ -54,6 +54,7 @@ export declare function openNudge(nudgeid: String, data?: object): Promise<Strin
 export declare function addMarginsForPIP(horizontal: number, vertical: number,type:String): Promise<number>;
 export declare function addDelayForPIP(delay: number): Promise<number>;
 export declare function isCampaignValid(campaignId: String,dataFlag: String): Promise<Boolean>;
+export declare function getCampaignStatus(campaignId: String,dataFlag: String): Promise<String>;
 export declare function setOpenWalletAsFallback(value: Boolean): Promise<number>;
 
 // export declare function setPIPEnabled(enabled: Boolean): Promise<Boolean>;
