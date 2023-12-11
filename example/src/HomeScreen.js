@@ -292,7 +292,7 @@ const campaignStatus= async ()=>{
                 
                     <BannerWidget
                         style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
-                        bannerId="homescreen_banner"
+                        bannerId="profile_banner"
                     />
                     
                     <EmbedBannerWidget
