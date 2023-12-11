@@ -34,7 +34,7 @@ export declare function enablePrecaching(): Promise<number>;
 export declare function gluSDKDebuggingMode(b: Boolean): Promise<number>;
 export declare function enableEntryPoints(b: boolean): Promise<number>;
 export declare function closeWebView(b: Boolean): Promise<number>;
-export declare function isFcmApn(id: String): Promise<number>;
+export declare function isFcmApn(id: Boolean): Promise<number>;
 export declare function configureSafeArea(obj: Object): Promise<number>;
 export declare function SetDefaultBannerImage(url: String): Promise<number>;
 export declare function UpdateProfile(obj: Object): Promise<number>;
@@ -50,15 +50,10 @@ export declare function configureWhiteListedDomains(arr: Array<String>): Promise
 export declare function configureDomainCodeMsg(obj: Object): Promise<number>;
 export declare function setApnFcmToken(a: string, b: String): Promise<number>;
 export declare function getBannerHeight(): Promise<number>;
-export declare function openNudge(nudgeid: String, data?: object): Promise<String>;
-export declare function addMarginsForPIP(horizontal: number, vertical: number,type:String): Promise<number>;
+export declare function addMarginsForPIP(horizontal: number, vertical: number, type: String): Promise<number>;
 export declare function addDelayForPIP(delay: number): Promise<number>;
-export declare function isCampaignValid(campaignId: String,dataFlag: String): Promise<Boolean>;
-export declare function getCampaignStatus(campaignId: String,dataFlag: String): Promise<String>;
 export declare function setOpenWalletAsFallback(value: Boolean): Promise<number>;
-
-// export declare function setPIPEnabled(enabled: Boolean): Promise<Boolean>;
-// export declare function isPIPEnabled(): Promise<Boolean>;
-// export declare function dismissPIP(): Promise<Boolean>;
-
+export declare function isCampaignValid(campaignId: String, dataFlag: String): Promise<Boolean>;
+export declare function getCampaignStatus(campaignId: String, dataFlag: String): Promise<String>;
+export declare function openNudge(nudgeid: String, data?: object): Promise<string>;
 export {};

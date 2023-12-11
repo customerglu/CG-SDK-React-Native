@@ -86,7 +86,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "1.4.1";
+            CustomerGlu.cg_sdk_version = "1.4.5";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
@@ -149,10 +149,14 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     };
 
     private void registerBroadcastReceiver() {
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
+        try {
+            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
+            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
+            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
+            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
+        }catch (Exception e){
+            printDebugLogs(""+e);
+        }
 
     }
 
@@ -173,14 +177,13 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         return NAME;
     }
 
+
+
     @Override
     public void onHostResume() {
         Log.e(TAG, "On Host Resume....");
         CustomerGlu.getInstance().showEntryPoint(getReactApplicationContext().getCurrentActivity());
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
-        mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
+        registerBroadcastReceiver();
         CustomerGlu.getInstance().setCgDeepLinkListener(new CGDeepLinkListener() {
             @Override
             public void onSuccess(CGConstants.CGSTATE message, DeepLinkWormholeModel.DeepLinkData deepLinkData) {
@@ -271,13 +274,25 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
     @Override
     public void onHostPause() {
-//    mContext.unregisterReceiver(mMessageReceiver);
+        try {
+            if (mContext != null) {
+                mContext.unregisterReceiver(mMessageReceiver);
+            }
+
+        }catch (Exception e){
+            printDebugLogs(""+e);
+        }
     }
 
     @Override
     public void onHostDestroy() {
-//    mContext.unregisterReceiver(mMessageReceiver);
-
+        try {
+            if (mContext != null) {
+                mContext.unregisterReceiver(mMessageReceiver);
+            }
+        }catch (Exception e){
+        printDebugLogs(""+e);
+        }
     }
 
     // Example method
@@ -775,10 +790,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     public void CGApplication() {
     }
 
-    @ReactMethod
-    public void DisplayCustomerGluNotification() {
-        registerBroadcastReceiver();
-    }
+
 
     @ReactMethod
     public void GetRefferalId(String url, Promise promise) throws MalformedURLException {
