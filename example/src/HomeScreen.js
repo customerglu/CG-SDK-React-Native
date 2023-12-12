@@ -192,7 +192,7 @@ const openWalletTest=()=>{
     //setPIPEnabled(false);
     //enableAnalytic(true);
      //openWallet();
-  loadCampaignById("005686b4-749a-44f1-8654-817b6aa7e8b1",openWalletData)
+  loadCampaignById("09d40777-d6c7-4dbe-b2d8-807e3f09e27a",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
@@ -262,7 +262,7 @@ const campaignStatus= async ()=>{
                         <Text style={styles.txtWallet}>Wallet</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.containerBox} onPress={() => campaignStatus()}>
+                    <TouchableOpacity style={styles.containerBox} onPress={() => openWalletTest()}>
                         <Image
                             source={require('../assets/quiz.png')}
                             style={styles.imageStyle} />

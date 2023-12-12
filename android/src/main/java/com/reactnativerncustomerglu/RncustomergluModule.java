@@ -70,6 +70,8 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         mContext = reactContext;
         reactContext.addLifecycleEventListener(this);
         if (!CustomerGlu.isInitialized){
+            Log.e("Receiver Register","register");
+            registerBroadcastReceiver();
             CustomerGlu.getInstance().initializeSdk(getReactApplicationContext());
         }
         setPlatformAndSdkVersion();
@@ -83,10 +85,12 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     public void removeListeners(Integer count) {
     }
 
+
+
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "1.4.5";
+            CustomerGlu.cg_sdk_version = "1.4.6";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
@@ -183,7 +187,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     public void onHostResume() {
         Log.e(TAG, "On Host Resume....");
         CustomerGlu.getInstance().showEntryPoint(getReactApplicationContext().getCurrentActivity());
-        registerBroadcastReceiver();
+
         CustomerGlu.getInstance().setCgDeepLinkListener(new CGDeepLinkListener() {
             @Override
             public void onSuccess(CGConstants.CGSTATE message, DeepLinkWormholeModel.DeepLinkData deepLinkData) {
@@ -274,20 +278,14 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
     @Override
     public void onHostPause() {
-        try {
-            if (mContext != null) {
-                mContext.unregisterReceiver(mMessageReceiver);
-            }
 
-        }catch (Exception e){
-            printDebugLogs(""+e);
-        }
     }
 
     @Override
     public void onHostDestroy() {
         try {
             if (mContext != null) {
+                Log.e("Receiver unRegister","unregister");
                 mContext.unregisterReceiver(mMessageReceiver);
             }
         }catch (Exception e){
