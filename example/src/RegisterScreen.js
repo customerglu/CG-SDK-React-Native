@@ -22,6 +22,7 @@ import {
     isFcmApn,
     gluSDKDebuggingMode,
     configureLoaderColour,
+    initializeSDK,
     enableEntryPoints,
     SetCurrentClassName,
     allowAnonymousRegistration,
@@ -141,6 +142,7 @@ const RegisterScreen = ({ navigation }) => {
                 apnsDeviceToken: ""
             };
             try {
+                initializeSDK()
                 gluSDKDebuggingMode(true);
                 enableEntryPoints(true);
                 // configureLightLoaderURL("https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-dark.json")
@@ -159,6 +161,7 @@ const RegisterScreen = ({ navigation }) => {
                 var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
                 console.log('Register....', ok);
                 if (ok == true) {
+                  
                     enableDarkMode(false)
                     listenToDarkMode(true),
                     configureDarkBackgroundColor("#800000");

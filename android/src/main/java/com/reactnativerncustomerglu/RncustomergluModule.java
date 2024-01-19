@@ -69,11 +69,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         super(reactContext);
         mContext = reactContext;
         reactContext.addLifecycleEventListener(this);
-        if (!CustomerGlu.isInitialized){
-            Log.e("Receiver Register","register");
-            registerBroadcastReceiver();
-            CustomerGlu.getInstance().initializeSdk(getReactApplicationContext());
-        }
+      
         setPlatformAndSdkVersion();
     }
 
@@ -89,11 +85,12 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
-
             CustomerGlu.cg_sdk_version = "1.4.6";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
+
+    
 
 
     private final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
@@ -186,70 +183,70 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     @Override
     public void onHostResume() {
         Log.e(TAG, "On Host Resume....");
-        CustomerGlu.getInstance().showEntryPoint(getReactApplicationContext().getCurrentActivity());
+     //   CustomerGlu.getInstance().showEntryPoint(getReactApplicationContext().getCurrentActivity());
 
-        CustomerGlu.getInstance().setCgDeepLinkListener(new CGDeepLinkListener() {
-            @Override
-            public void onSuccess(CGConstants.CGSTATE message, DeepLinkWormholeModel.DeepLinkData deepLinkData) {
-                JSONObject jsonObject = null;
-                try {
-                    if (message.equals(CGConstants.CGSTATE.DEEPLINK_URL)) {
-                        String url = "";
-                        if (deepLinkData.getContent().getUrl() != null) {
-                            url = deepLinkData.getContent().getUrl();
-                            Log.e("DeepLink URL", "Success " + message);
-                        }
-                        // Add your logic
-                    }
-                    Log.e("Onelink", "Success " + message);
-                    jsonObject = new JSONObject();
-                    jsonObject.put("status",message.toString());
-                    Gson gson = new Gson();
-                    String json = gson.toJson(deepLinkData);
-                    JSONObject mJSONObject = new JSONObject(json);
-                    jsonObject.put("data",mJSONObject);
-
-                    Log.e("Onelink2", "Success " + jsonObject);
-//                    Intent intent = new Intent("CG_UNI_DEEPLINK_EVENT");
-//                    intent.putExtra("data", jsonObject.toString());
-//                    context.sendBroadcast(intent);
-
-                    WritableMap map = jsonToWritableMap(jsonObject);
-                    sendEventToJs("CG_UNI_DEEPLINK_EVENT", map);
-
-                    Log.e("Onelink4", "Success " + message);
-                }catch (Exception e)
-                {
-                    Log.e("Onelink ex ",e.toString());
-                }
-            }
-
-            @Override
-            public void onFailure(CGConstants.CGSTATE exceptions) {
-                try {
-                    Log.e("Onelink", "Success " + exceptions);
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("status", exceptions.toString());
-
-                    JSONObject mJSONObject = new JSONObject();
-                    jsonObject.put("data", mJSONObject);
-                    WritableMap map = jsonToWritableMap(jsonObject);
-                    sendEventToJs("CG_UNI_DEEPLINK_EVENT", map);
-
-                    Log.e("Onelink2", "Success " + jsonObject);
-
+//        CustomerGlu.getInstance().setCgDeepLinkListener(new CGDeepLinkListener() {
+//            @Override
+//            public void onSuccess(CGConstants.CGSTATE message, DeepLinkWormholeModel.DeepLinkData deepLinkData) {
+//                JSONObject jsonObject = null;
+//                try {
+//                    if (message.equals(CGConstants.CGSTATE.DEEPLINK_URL)) {
+//                        String url = "";
+//                        if (deepLinkData.getContent().getUrl() != null) {
+//                            url = deepLinkData.getContent().getUrl();
+//                            Log.e("DeepLink URL", "Success " + message);
+//                        }
+//                        // Add your logic
+//                    }
+//                    Log.e("Onelink", "Success " + message);
+//                    jsonObject = new JSONObject();
+//                    jsonObject.put("status",message.toString());
+//                    Gson gson = new Gson();
+//                    String json = gson.toJson(deepLinkData);
+//                    JSONObject mJSONObject = new JSONObject(json);
+//                    jsonObject.put("data",mJSONObject);
 //
-//                    Intent intent = new Intent("CG_UNI_DEEPLINK_EVENT");
-//                    intent.putExtra("data", jsonObject.toString());
-//                    context.sendBroadcast(intent);
-                }catch (Exception e)
-                {
-                    Log.e("Onelink ex ",e.toString());
-
-                }
-
-            }
-        });
+//                    Log.e("Onelink2", "Success " + jsonObject);
+////                    Intent intent = new Intent("CG_UNI_DEEPLINK_EVENT");
+////                    intent.putExtra("data", jsonObject.toString());
+////                    context.sendBroadcast(intent);
+//
+//                    WritableMap map = jsonToWritableMap(jsonObject);
+//                    sendEventToJs("CG_UNI_DEEPLINK_EVENT", map);
+//
+//                    Log.e("Onelink4", "Success " + message);
+//                }catch (Exception e)
+//                {
+//                    Log.e("Onelink ex ",e.toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(CGConstants.CGSTATE exceptions) {
+//                try {
+//                    Log.e("Onelink", "Success " + exceptions);
+//                    JSONObject jsonObject = new JSONObject();
+//                    jsonObject.put("status", exceptions.toString());
+//
+//                    JSONObject mJSONObject = new JSONObject();
+//                    jsonObject.put("data", mJSONObject);
+//                    WritableMap map = jsonToWritableMap(jsonObject);
+//                    sendEventToJs("CG_UNI_DEEPLINK_EVENT", map);
+//
+//                    Log.e("Onelink2", "Success " + jsonObject);
+//
+////
+////                    Intent intent = new Intent("CG_UNI_DEEPLINK_EVENT");
+////                    intent.putExtra("data", jsonObject.toString());
+////                    context.sendBroadcast(intent);
+//                }catch (Exception e)
+//                {
+//                    Log.e("Onelink ex ",e.toString());
+//
+//                }
+//
+//            }
+//        });
 
     }
 
@@ -340,6 +337,16 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     public void dataClear() {
         CustomerGlu.getInstance().clearGluData(getCurrentActivity());
     }
+
+    @ReactMethod
+    public void initializeSDK() {
+        if(!CustomerGlu.sdk_disable)
+        {
+        registerBroadcastReceiver();
+        CustomerGlu.getInstance().initializeSdk(getReactApplicationContext());
+        } 
+    }
+
 
     @ReactMethod
     public void sendData(ReadableMap readableMap) {

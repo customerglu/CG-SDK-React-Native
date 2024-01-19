@@ -181,6 +181,9 @@ export function DisplayCustomerGluNotification(): Promise<number> {
 export function CGApplication(): Promise<number> {
   return Rncustomerglu.CGApplication();
 }
+export function initializeSDK(): Promise<number> {
+  return Rncustomerglu.initializeSDK();
+}
 export function DisplayCGNotification(obj: Object, autoclosewebview: Boolean = false): Promise<number> {
   return Rncustomerglu.DisplayCGNotification(obj, autoclosewebview);
 }
@@ -221,6 +224,7 @@ export function addMarginsForPIP(horizontal:number,vertical:number,type:String):
 export function addDelayForPIP(delay:number): Promise<number> {
   return Rncustomerglu.addDelayForPIP(delay);
 }
+
 // export function setPIPEnabled(enabled:Boolean): Promise<Boolean> {
 //   return Rncustomerglu.setPIPEnabled(enabled);
 // }

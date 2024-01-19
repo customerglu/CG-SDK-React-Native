@@ -7,7 +7,9 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.soloader.SoLoader;
+import com.reactnativerncustomerglu.RncustomergluModule;
 import com.reactnativerncustomerglu.RncustomergluPackage;
 
 import java.lang.reflect.InvocationTargetException;
@@ -47,7 +49,7 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
-    initializeFlipper(this, getReactNativeHost().getReactInstanceManager()); // Remove this line if you don't want Flipper enabled
+    initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
 
   /**

@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
             //Dashboard  MoreScreen
             console.log('navigation change.......... HomeLoaded-Cg')
             setOpenWalletAsFallback(false)
-            SetCurrentClassName("HomeLoaded-Cg");
+            SetCurrentClassName("Home");
 
 
 
@@ -127,8 +127,8 @@ const HomeScreen = ({ navigation }) => {
                 (reminder) => {
                     console.log('reminder----', reminder);
                     // console.log('reminder["entry1"]....', reminder["entry1"])
-                    if (reminder && reminder["demo-quiz-banner1"]) {
-                        setFinalHeight(reminder["demo-quiz-banner1"] * windowHeight / 100);
+                    if (reminder && reminder["homescreen_banner"]) {
+                        setFinalHeight(reminder["homescreen_banner"] * windowHeight / 100);
 
                     }
 
@@ -292,13 +292,13 @@ const campaignStatus= async ()=>{
                 
                     <BannerWidget
                         style={{flex:1, width: '100%', height: Platform.OS === 'ios' ? finalHeight : null }}
-                        bannerId="profile_banner"
+                        bannerId="homescreen_banner"
                     />
                     
-                    <EmbedBannerWidget
+                    {/* <EmbedBannerWidget
                         style={{flex:1, width: '100%' ,height: Platform.OS === 'ios' ? finalEBHeight : null }}
                         bannerId="embedded1"
-                    />
+                    /> */}
                 
 
             
