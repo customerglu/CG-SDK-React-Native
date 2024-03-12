@@ -94,6 +94,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
+    
 
 
     private final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
