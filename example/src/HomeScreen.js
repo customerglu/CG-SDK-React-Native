@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
             //Dashboard  MoreScreen
             console.log('navigation change.......... HomeLoaded-Cg')
             setOpenWalletAsFallback(false)
-            SetCurrentClassName("HomeLoaded-Cg");
+            SetCurrentClassName("Home");
 
 
 
