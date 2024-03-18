@@ -5,7 +5,7 @@ CustomerGlu SDK provides you Express Installation requiring minimal technical ef
 # Pre-Requisites
 
 ### iOS
-Supports IOS 11.0+ and requires Xcode 12 or above to build.
+Supports IOS 12.0+ and requires Xcode 12 or above to build.
 
 ### Android
 Supports API 21 and above. Please ensure the minSDKVersion in the app's build.gradle file reflects the same.
@@ -16,7 +16,7 @@ Supports API 21 and above. Please ensure the minSDKVersion in the app's build.gr
 ### Option 1
 Add the CustomerGlu React Native plugin in package.json file 
 ``` 
-"@customerglu/react-native-customerglu": "^1.4.6"
+"@customerglu/react-native-customerglu": "^1.4.8"
 ``` 
 
 ### Option 2  
