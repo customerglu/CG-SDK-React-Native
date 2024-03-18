@@ -61,7 +61,7 @@ repositories {
 dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"  // From node_modules
-  implementation 'com.customerglu:CustomerGluLibrary:2.5.1'
+  implementation 'com.customerglu:CustomerGluLibrary:2.5.2'
   implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
   implementation 'com.google.code.gson:gson:2.8.6'
   implementation 'androidx.cardview:cardview:1.0.0'
