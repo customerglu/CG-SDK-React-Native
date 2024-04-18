@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
             //Dashboard  MoreScreen
             console.log('navigation change.......... HomeLoaded-Cg')
             setOpenWalletAsFallback(false)
-            SetCurrentClassName("Home");
+            SetCurrentClassName("HomeScreen");
 
 
 
@@ -191,8 +191,8 @@ const openWalletTest=()=>{
     configureLightBackgroundColor("#FFFFFF");
     //setPIPEnabled(false);
     //enableAnalytic(true);
-     //openWallet();
-  loadCampaignById("09d40777-d6c7-4dbe-b2d8-807e3f09e27a",openWalletData)
+     openWallet();
+//  loadCampaignById("09d40777-d6c7-4dbe-b2d8-807e3f09e27a",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
