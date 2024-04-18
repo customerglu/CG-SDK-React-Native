@@ -23,10 +23,10 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
-  compileSdkVersion safeExtGet('Rncustomerglu_compileSdkVersion', 32)
+  compileSdkVersion safeExtGet('Rncustomerglu_compileSdkVersion', 33)
   defaultConfig {
     minSdkVersion safeExtGet('Rncustomerglu_minSdkVersion', 21)
-    targetSdkVersion safeExtGet('Rncustomerglu_targetSdkVersion', 32)
+    targetSdkVersion safeExtGet('Rncustomerglu_targetSdkVersion', 33)
     versionCode 1
     versionName "1.0"
 
@@ -61,7 +61,7 @@ repositories {
 dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"  // From node_modules
-  implementation 'com.customerglu:CustomerGluLibrary:2.5.3'
+  implementation 'com.customerglu:CustomerGluLibrary:2.5.4'
   implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
   implementation 'com.google.code.gson:gson:2.8.6'
   implementation 'androidx.cardview:cardview:1.0.0'
