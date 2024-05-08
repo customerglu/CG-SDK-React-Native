@@ -17,7 +17,7 @@ import {
 
     LogBox
 } from 'react-native';
-import { SetCurrentClassName } from '@customerglu/react-native-customerglu';
+import { SetCurrentClassName,addMarginsForPIP } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute, CommonActions } from "@react-navigation/native";
 import {
     BannerWidget,
@@ -61,8 +61,9 @@ const HomeScreen = ({ navigation }) => {
             //Dashboard  MoreScreen
             console.log('navigation change.......... HomeLoaded-Cg')
             setOpenWalletAsFallback(false)
-            SetCurrentClassName("HomeScreen");
-
+            
+            SetCurrentClassName("HomeLoaded-Cg");
+            addMarginsForPIP(100,100,"px")
 
 
         }, [])
