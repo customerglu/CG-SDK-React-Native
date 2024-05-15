@@ -29,6 +29,7 @@ target 'RncustomergluExample' do
  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
   pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
   pod 'RNFBMessaging', :path => '../node_modules/@react-native-firebase/messaging'
+  
   # pod "react-native-broadcast-manager", :path => '../../node_modules/@applicaster/react-native-broadcast-manager'
   # Enables Flipper.
   #
