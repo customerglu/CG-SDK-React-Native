@@ -75,7 +75,8 @@ const RegisterScreen = ({ navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             console.log("route name", route.name, animating);
-            SetCurrentClassName(route.name);
+           var e = SetCurrentClassName(route.name,Date.now().toString());
+            console.log("My Epoch "+e)
 
         }, [navigation])
     );
@@ -145,7 +146,7 @@ const RegisterScreen = ({ navigation }) => {
                 enableEntryPoints(true);
                 // configureLightLoaderURL("https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-dark.json")
                 // configureLoaderColour("#00ff00");
-                 configureLoadingScreenColor("#FFFFFF");
+              //   configureLoadingScreenColor("#FFFFFF");
                 // configureStatusBarColour('#0000ff')
 
                 let obj = {
@@ -161,8 +162,8 @@ const RegisterScreen = ({ navigation }) => {
                 if (ok == true) {
                     enableDarkMode(false)
                     listenToDarkMode(true),
-                    configureDarkBackgroundColor("#800000");
-                    configureLightBackgroundColor("#00ff00");
+               //     configureDarkBackgroundColor("#800000");
+                //    configureLightBackgroundColor("#00ff00");
                     configureDarkEmbedLoaderURL('https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-light.json')
                     configureLightEmbedLoaderURL('https://assets.customerglu.com/sdk-assets/embed-loader-skeleton-dark.json')
                     configureLightLoaderURL("https://assets.customerglu.com/sdk-assets/default-loader.json")
@@ -257,7 +258,8 @@ const RegisterScreen = ({ navigation }) => {
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         activeOpacity={0.5}
-                        onPress={handleSubmitButton}>
+                        onPress={handleSubmitButton}
+                        accessibilityLabel="registerButton">
                         <Text style={styles.buttonTextStyle}>REGISTER</Text>
                     </TouchableOpacity>
 

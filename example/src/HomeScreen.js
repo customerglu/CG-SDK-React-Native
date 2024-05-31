@@ -56,13 +56,41 @@ const HomeScreen = ({ navigation }) => {
     const windowHeight = Dimensions.get('window').height;
     const _navigation = useNavigation();
     const route = useRoute();
+// useEffect(async ()=>{
+//     userdataAndroid = {
+//         userId: "glutest-098909",
+//         firebaseToken: token,
+//         profile:{
+//             "firstName":null
+//         },
+//         customAttributes: {
+//             "isTestUser": true
+
+//         }
+
+//     };
+//     userdataios = {
+//         userId: "glutest-87899",
+//         firebaseToken: token,
+//         apnsDeviceToken: ""
+//     };
+//     var ok = await RegisterDevice(Platform.OS === "ios" ? userdataios : userdataAndroid);
+//     console.log('Register....', ok);
+// });
+
     useFocusEffect(
-        React.useCallback(() => {
+        React.useCallback(async () => {
             //Dashboard  MoreScreen
             console.log('navigation change.......... HomeLoaded-Cg')
             setOpenWalletAsFallback(false)
             
-            SetCurrentClassName("HomeLoaded-Cg");
+            try {
+                const epochTime = Date.now().toString();
+                const result = await SetCurrentClassName('HomeScreen', epochTime);
+                console.log('Result from SetCurrentClassName:', result);
+              } catch (error) {
+                console.error('Error calling SetCurrentClassName:', error);
+              }
             addMarginsForPIP(100,100,"px")
 
 
@@ -188,6 +216,7 @@ const openWalletTest=()=>{
     //          relativeHeight:50
     //     },
     // };
+    
     configureLoadingScreenColor("#FFFFFF");
     configureLightBackgroundColor("#FFFFFF");
     //setPIPEnabled(false);
@@ -274,7 +303,7 @@ const campaignStatus= async ()=>{
                
                
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
-                    <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')}>
+                    <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')} testID="shopButton">
                         <Image
                             source={require('../assets/shop.png')}
                             style={styles.imageStyle} />

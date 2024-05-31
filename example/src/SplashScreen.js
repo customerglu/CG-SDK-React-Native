@@ -44,7 +44,8 @@ const SplashScreen = ({ navigation }) => {
 
     useFocusEffect(
         React.useCallback(() => {
-             SetCurrentClassName(route.name);
+            var e = SetCurrentClassName(route.name, Date.now().toString())
+             console.log("My epoch "+e)
             addMarginsForPIP(10,100,"px");
             addDelayForPIP(5000);
 
@@ -56,7 +57,7 @@ const SplashScreen = ({ navigation }) => {
             width, // The animated value to drive
             {
                 toValue: 200, // Animate to opacity: 1 (opaque)
-                duration: 8000, // Make it take a while
+                duration: 5000, // Make it take a while
                 useNativeDriver: false,
             },
         ).start();

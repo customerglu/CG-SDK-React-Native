@@ -90,7 +90,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "1.5.7";
+            CustomerGlu.cg_sdk_version = "1.5.8";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
@@ -799,7 +799,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
-    public void SetCurrentClassName(String classname) {
+    public void SetCurrentClassName(String classname,String time) {
         this.Myclassname = classname;
         runOnUiThread(new Runnable() {
             @Override
