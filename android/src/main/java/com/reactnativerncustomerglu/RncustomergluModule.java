@@ -805,9 +805,21 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
             @Override
             public void run() {
                 CustomerGlu.getInstance().setScreenName(getReactApplicationContext(), classname);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void SetCGCurrentClassName(String classname,String time) {
+        this.Myclassname = classname;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                CustomerGlu.getInstance().setScreenName(getReactApplicationContext(), classname);
 
             }
         });
+        
     }
 
 

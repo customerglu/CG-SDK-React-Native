@@ -503,6 +503,15 @@ class Rncustomerglu: RCTEventEmitter{
         }
     }
     @objc
+    func SetCGCurrentClassName(_ clName:String,epochTimeStamp:String,resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        DispatchQueue.main.async {
+            customerGlu.setCGCurrentClassName(className: clName, timestamp: epochTimeStamp) { returnedTimestamp in
+                      
+                       resolve(returnedTimestamp)
+                   }
+        }
+    }
+    @objc
     func configureWhiteListedDomains(_ domain:NSArray) -> Void {
         customerGlu.configureWhiteListedDomains(domains: domain as! [String])
         

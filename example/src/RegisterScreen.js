@@ -24,6 +24,7 @@ import {
     configureLoaderColour,
     enableEntryPoints,
     SetCurrentClassName,
+    SetCGCurrentClassName,
     allowAnonymousRegistration,
     enableAnalytic, configureLoadingScreenColor, configureStatusBarColour, configureSafeArea,
     configureDarkBackgroundColor,
@@ -73,16 +74,17 @@ const RegisterScreen = ({ navigation }) => {
     const [animating, setanimation] = useState(false)
     let userdataAndroid = null, userdataios = null, timer1 = null;
     useFocusEffect(
-        React.useCallback(() => {
+        React.useCallback( () => {
             console.log("route name", route.name, animating);
-           var e = SetCurrentClassName(route.name,Date.now().toString());
-            console.log("My Epoch "+e)
+     
 
         }, [navigation])
     );
 
-    useEffect(() => {
+    useEffect(async () => {
         requestUserPermission();
+        setClassName()
+      
         // const unsubscribe = messaging().onMessage(async remoteMessage => {
         //     // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
         //     console.log('JSON.stringify(remoteMessage)', JSON.stringify(remoteMessage.data))
@@ -105,6 +107,10 @@ const RegisterScreen = ({ navigation }) => {
             clearTimeout(timer1)
         }
     }, []);
+    const setClassName= async ()=>{
+        var e = await SetCGCurrentClassName("Register",Date.now().toString());
+        console.log("My Epoch "+e)
+    }
 
     async function requestUserPermission() {
         const authorizationStatus = await messaging().requestPermission();

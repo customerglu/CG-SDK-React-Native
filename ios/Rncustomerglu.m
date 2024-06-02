@@ -59,6 +59,8 @@ RCT_EXTERN_METHOD(GetRefferalId:(NSURL *)url resolver:(RCTPromiseResolveBlock)re
 RCT_EXTERN_METHOD(LoadAllCampagins)
 RCT_EXTERN_METHOD(LoadCampaginsByFilter:(NSDictionary *)obj)
 RCT_EXTERN_METHOD(SetCurrentClassName:(NSString *)clName)
+RCT_EXTERN_METHOD(SetCGCurrentClassName:(NSString *)clName epochTimeStamp:(NSString *)epochTimeStamp resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(configureWhiteListedDomains:(NSArray *)domain)
 RCT_EXTERN_METHOD(configureDomainCodeMsg:(NSDictionary *)codemsg)
 RCT_EXTERN_METHOD(catchAnalyticsNotification:(NSDictionary *)notification (RCTResponseSenderBlock)callback)

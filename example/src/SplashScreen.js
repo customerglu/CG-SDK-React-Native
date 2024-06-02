@@ -18,7 +18,7 @@ import {
     Linking,
     Alert
 } from 'react-native';
-import { SetCurrentClassName } from '@customerglu/react-native-customerglu';
+import { SetCurrentClassName,SetCGCurrentClassName } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import {
     BannerWidget,
@@ -43,15 +43,15 @@ const SplashScreen = ({ navigation }) => {
     const route = useRoute();
 
     useFocusEffect(
-        React.useCallback(() => {
-            var e = SetCurrentClassName(route.name, Date.now().toString())
-             console.log("My epoch "+e)
+        React.useCallback(async () => {
+      
             addMarginsForPIP(10,100,"px");
             addDelayForPIP(5000);
 
         }, [])
     );
     useEffect(() => {
+        setClassName()
         let timer1 = null;
         Animated.timing(
             width, // The animated value to drive
@@ -61,6 +61,8 @@ const SplashScreen = ({ navigation }) => {
                 useNativeDriver: false,
             },
         ).start();
+
+     
 
         const getRegisterResponse = async () => {
             await AsyncStorage.getItem("isRegisterScuccess").then((value) => {
@@ -87,6 +89,10 @@ const SplashScreen = ({ navigation }) => {
             clearTimeout(timer1);
         };
     }, [])
+    const setClassName = async ()=>{
+        var e = await SetCGCurrentClassName(route.name,Date.now().toString());
+        console.log("My Epoch "+e)
+    }
     return (
 
         <View style={{ flex: 1, backgroundColor: '#000', justifyContent: 'center', alignContent: 'center', alignItems: 'center', }}>

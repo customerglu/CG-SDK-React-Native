@@ -201,7 +201,9 @@ export function LoadCampaginsByFilter(obj: Object): Promise<number> {
 export function SetCurrentClassName(clname: String): Promise<number> {
   return Rncustomerglu.SetCurrentClassName(clname);
 }
-
+export function SetCGCurrentClassName(clname: String,epochTimeStamp:String): Promise<String> {
+  return Rncustomerglu.SetCGCurrentClassName(clname,epochTimeStamp);
+}
 export function configureWhiteListedDomains(arr: Array<String>): Promise<number> {
   return Rncustomerglu.configureWhiteListedDomains(arr);
 }
