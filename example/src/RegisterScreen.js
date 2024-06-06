@@ -81,7 +81,7 @@ const RegisterScreen = ({ navigation }) => {
         }, [navigation])
     );
 
-    useEffect(async () => {
+    useEffect( () => {
         requestUserPermission();
         setClassName()
       

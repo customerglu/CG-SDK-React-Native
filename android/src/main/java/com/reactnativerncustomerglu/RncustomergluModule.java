@@ -799,7 +799,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
-    public void SetCurrentClassName(String classname,String time) {
+    public void SetCurrentClassName(String classname) {
         this.Myclassname = classname;
         runOnUiThread(new Runnable() {
             @Override
@@ -810,15 +810,15 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     }
 
     @ReactMethod
-    public void SetCGCurrentClassName(String classname,String time) {
+    public void SetCGCurrentClassName(String classname,String time,Promise promise) {
         this.Myclassname = classname;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 CustomerGlu.getInstance().setScreenName(getReactApplicationContext(), classname);
-
             }
         });
+        promise.resolve(time);
         
     }
 

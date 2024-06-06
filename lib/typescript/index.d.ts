@@ -46,7 +46,7 @@ export declare function GetRefferalId(url: String): Promise<number>;
 export declare function LoadAllCampagins(): Promise<number>;
 export declare function LoadCampaginsByFilter(obj: Object): Promise<number>;
 export declare function SetCurrentClassName(clname: String): Promise<number>;
-export declare function SetCGCurrentClassName(clname: String,epochTimeStamp: String): Promise<String>;
+export declare function SetCGCurrentClassName(clname: String, epochTimeStamp: String): Promise<String>;
 export declare function configureWhiteListedDomains(arr: Array<String>): Promise<number>;
 export declare function configureDomainCodeMsg(obj: Object): Promise<number>;
 export declare function setApnFcmToken(a: string, b: String): Promise<number>;

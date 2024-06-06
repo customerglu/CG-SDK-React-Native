@@ -43,7 +43,7 @@ const SplashScreen = ({ navigation }) => {
     const route = useRoute();
 
     useFocusEffect(
-        React.useCallback(async () => {
+        React.useCallback( () => {
       
             addMarginsForPIP(10,100,"px");
             addDelayForPIP(5000);

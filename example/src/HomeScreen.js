@@ -17,7 +17,7 @@ import {
 
     LogBox
 } from 'react-native';
-import { SetCurrentClassName,addMarginsForPIP } from '@customerglu/react-native-customerglu';
+import { SetCurrentClassName,SetCGCurrentClassName,addMarginsForPIP } from '@customerglu/react-native-customerglu';
 import { useFocusEffect, useRoute, CommonActions } from "@react-navigation/native";
 import {
     BannerWidget,
@@ -79,15 +79,15 @@ const HomeScreen = ({ navigation }) => {
 // });
 
     useFocusEffect(
-        React.useCallback(async () => {
+        React.useCallback( () => {
             //Dashboard  MoreScreen
             console.log('navigation change.......... HomeLoaded-Cg')
             setOpenWalletAsFallback(false)
             
             try {
                 const epochTime = Date.now().toString();
-                const result = await SetCurrentClassName('HomeScreen', epochTime);
-                console.log('Result from SetCurrentClassName:', result);
+                // const result = await SetCurrentClassName('HomeScreen', epochTime);
+                // console.log('Result from SetCurrentClassName:', result);
               } catch (error) {
                 console.error('Error calling SetCurrentClassName:', error);
               }
@@ -100,6 +100,7 @@ const HomeScreen = ({ navigation }) => {
 
     useEffect(() => {
         // enableAnalytic(true);
+        setClassName()
         closeWebView(true)
 
         //2jan2023
@@ -195,6 +196,11 @@ const HomeScreen = ({ navigation }) => {
 
 
     }, []);
+
+    const setClassName = async ()=>{
+        var returnedTimestamnp = await SetCGCurrentClassName(route.name,Date.now().toString());
+        console.log("Returned Response "+returnedTimestamnp)
+    }
 
 
 const openWalletTest=()=>{
