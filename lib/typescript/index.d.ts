@@ -8,6 +8,7 @@ type CgEmbedBannerProps = {
 };
 export declare const EmbedBannerWidget: import("react-native").HostComponent<CgEmbedBannerProps> | (() => never);
 export declare function RegisterDevice(userdata: Object): Promise<Boolean>;
+export declare function UpdateUserAttributes(userdata: Object): Promise<number>;
 export declare function dataClear(): Promise<number>;
 export declare function testIntegration(): Promise<number>;
 export declare function sendData(obj: Object): Promise<number>;

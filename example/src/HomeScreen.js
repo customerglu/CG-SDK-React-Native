@@ -25,13 +25,14 @@ import {
     dataClear,
     openWallet,
     setOpenWalletAsFallback,
+    UpdateUserAttributes,
     closeWebView,
     configureLoadingScreenColor,
     enableAnalytic,
     isCampaignValid,
      getCampaignStatus,
     loadCampaignById,
-
+    UpdateProfile,
     loadCampaignWithUrl,
     configureDarkBackgroundColor,
     configureLightBackgroundColor,
@@ -81,8 +82,7 @@ const HomeScreen = ({ navigation }) => {
     useFocusEffect(
         React.useCallback( () => {
             //Dashboard  MoreScreen
-            console.log('navigation change.......... HomeLoaded-Cg')
-            setOpenWalletAsFallback(false)
+        //    setOpenWalletAsFallback(false)
             
             try {
                 const epochTime = Date.now().toString();
@@ -204,30 +204,29 @@ const HomeScreen = ({ navigation }) => {
 
 
 const openWalletTest=()=>{
-    let openWalletData = {
-        nudgeConfiguration:{
-             layout:'full-default',
-              closeOnDeepLink:true,
-              absoluteHeight:0,
-              relativeHeight:0
-        },
-    };
-    // let openNudgeData = {
+    // let openWalletData = {
     //     nudgeConfiguration:{
-    //         layout:'bottom-default',
-    //          opacity:'0.8',
-    //          url:'http://google.com',
-    //          closeOnDeepLink:true,
-    //          absoluteHeight:'50',
-    //          relativeHeight:50
+    //          layout:'full-default',
+    //           closeOnDeepLink:true,
+    //           absoluteHeight:0,
+    //           relativeHeight:0
     //     },
     // };
+    let openNudgeData = {
+        nudgeConfiguration:{
+            layout:'middle-default',
+             opacity:'0.8',
+             closeOnDeepLink:true,
+             absoluteHeight:'50',
+             relativeHeight:50
+        },
+    };
     
-    configureLoadingScreenColor("#FFFFFF");
+  //  configureLoadingScreenColor("#FFFFFF");
     configureLightBackgroundColor("#FFFFFF");
     //setPIPEnabled(false);
     //enableAnalytic(true);
-     openWallet();
+     openWallet(openNudgeData);
 //  loadCampaignById("09d40777-d6c7-4dbe-b2d8-807e3f09e27a",openWalletData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
@@ -250,6 +249,13 @@ const campaignStatus= async ()=>{
 
  console.log("campaign status"+ status);
 
+}
+
+const updateUser=()=>{
+    userdataAndroid = {
+            userName: "glutest"
+    }
+    UpdateUserAttributes(userdataAndroid)
 }
 
 
@@ -298,7 +304,7 @@ const campaignStatus= async ()=>{
                         <Text style={styles.txtWallet}>Wallet</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.containerBox} onPress={() => openWalletTest()}>
+                    <TouchableOpacity style={styles.containerBox} onPress={() => updateUser()}>
                         <Image
                             source={require('../assets/quiz.png')}
                             style={styles.imageStyle} />

@@ -14,6 +14,7 @@
 RCT_EXTERN_METHOD(supportedEvents)
 RCT_EXTERN_METHOD(registerDevice:(NSDictionary *)userdata resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(UpdateUserAttributes:(NSDictionary *)userdata)
 RCT_EXTERN_METHOD(dataClear)
 RCT_EXTERN_METHOD(OpenNudgeRN:(NSString *)id nudgeconfigdata:(NSDictionary *)nudgeData)
 RCT_EXTERN_METHOD(sendData:(NSDictionary *)property)

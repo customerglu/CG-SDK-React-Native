@@ -64,6 +64,9 @@ export const EmbedBannerWidget =
 export function RegisterDevice(userdata: Object): Promise<Boolean> {
   return Rncustomerglu.registerDevice(userdata);
 }
+export function UpdateUserAttributes(userdata: Object): Promise<number> {
+  return Rncustomerglu.UpdateUserAttributes(userdata);
+}
 export function dataClear(): Promise<number> {
   return Rncustomerglu.dataClear();
 }

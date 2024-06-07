@@ -90,7 +90,7 @@ class Rncustomerglu: RCTEventEmitter{
     func setPlatformAndSdkVersion(){
 
         CustomerGlu.app_platform="REACT_NATIVE"
-        CustomerGlu.sdk_version="1.5.8"
+        CustomerGlu.sdk_version="2.0.0"
     }
     
     override func startObserving() {
@@ -208,7 +208,7 @@ class Rncustomerglu: RCTEventEmitter{
             
             nudgeconfig=walletData["nudgeConfiguration"] as! NSDictionary
             nudgeconfigData.layout=nudgeconfig["layout"] as? String ?? "full-default"
-            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.0")!
+            nudgeconfigData.opacity=nudgeconfig["opacity"] as? Double ?? Double(nudgeconfig["opacity"] as? String ?? "0.8")!
             nudgeconfigData.closeOnDeepLink=nudgeconfig["closeOnDeepLink"] as? Bool ?? false
             nudgeconfigData.relativeHeight=nudgeconfig["relativeHeight"] as? Double ?? Double(nudgeconfig["relativeHeight"] as? String ?? "0.0")!
             nudgeconfigData.absoluteHeight=nudgeconfig["absoluteHeight"] as? Double ?? Double(nudgeconfig["absoluteHeight"] as? String ?? "0.0")!
@@ -457,11 +457,11 @@ class Rncustomerglu: RCTEventEmitter{
     }
     @objc
     func UpdateProfile(_ userdata:NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,  rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-        customerGlu.updateProfile(userdata: userdata as! [String : AnyHashable]) { success in
-            if success {
-            } else {
-            }
-        }
+        customerGlu.updateProfile(userdata: userdata as! [String : AnyHashable])
+    }
+    @objc
+    func UpdateUserAttributes(_ userdata:NSDictionary) -> Void {
+        customerGlu.updateUserAttributes(customAttributes:  userdata as! [String : AnyHashable])
     }
     @objc
     func DisplayCustomerGluNotification() -> Void {
