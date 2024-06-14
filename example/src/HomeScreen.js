@@ -198,7 +198,7 @@ const HomeScreen = ({ navigation }) => {
     }, []);
 
     const setClassName = async ()=>{
-        var returnedTimestamnp = await SetCGCurrentClassName(route.name,Date.now().toString());
+        var returnedTimestamnp = await SetCGCurrentClassName("OrderTracking",Date.now().toString());
         console.log("Returned Response "+returnedTimestamnp)
     }
 
