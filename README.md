@@ -16,7 +16,7 @@ Supports API 21 and above. Please ensure the minSDKVersion in the app's build.gr
 ### Option 1
 Add the CustomerGlu React Native plugin in package.json file 
 ``` 
-"@customerglu/react-native-customerglu": "^2.0.1"
+"@customerglu/react-native-customerglu": "^2.0.2"
 ``` 
 
 ### Option 2  

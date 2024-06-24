@@ -155,11 +155,11 @@ const RegisterScreen = ({ navigation }) => {
               //   configureLoadingScreenColor("#FFFFFF");
                 // configureStatusBarColour('#0000ff')
 
-                let obj = {
-                    topHeight: 100, bottomHeight: 100,
-                    topSafeAreaColor: "#000034", bottomSafeAreaColor: "#FF0000"
-                }
-                configureSafeArea(obj);
+                // let obj = {
+                //     topHeight: 100, bottomHeight: 100,
+                //     topSafeAreaColor: "#000034", bottomSafeAreaColor: "#FF0000"
+                // }
+                // configureSafeArea(obj);
 
                 // enableAnalytic(true)
               //  allowAnonymousRegistration(false)
