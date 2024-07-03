@@ -218,16 +218,16 @@ const openWalletTest=()=>{
              opacity:'0.8',
              closeOnDeepLink:true,
              absoluteHeight:'50',
-             relativeHeight:50
+             relativeHeight:70
         },
     };
     
   //  configureLoadingScreenColor("#FFFFFF");
-    configureLightBackgroundColor("#FFFFFF");
+  //  configureLightBackgroundColor("#FFFFFF");
     //setPIPEnabled(false);
     //enableAnalytic(true);
-     openWallet(openNudgeData);
-//  loadCampaignById("09d40777-d6c7-4dbe-b2d8-807e3f09e27a",openWalletData)
+     //openWallet(openNudgeData);
+  loadCampaignById("04c00966-b5e9-49b8-adda-1a445d9a4b4f",openNudgeData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
