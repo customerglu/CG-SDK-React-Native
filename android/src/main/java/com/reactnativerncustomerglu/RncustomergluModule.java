@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -90,7 +91,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "2.0.3";
+            CustomerGlu.cg_sdk_version = "2.0.5";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
@@ -155,10 +156,20 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
 
     private void registerBroadcastReceiver() {
         try {
-            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
-            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
-            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
-            mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"), Context.RECEIVER_EXPORTED);
+
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"), Context.RECEIVER_EXPORTED);
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"), Context.RECEIVER_EXPORTED);
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"), Context.RECEIVER_EXPORTED);
+            }else {
+
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_ANALYTICS_EVENT"));
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_DEEPLINK_EVENT"));
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CUSTOMERGLU_BANNER_LOADED"));
+                mContext.registerReceiver(mMessageReceiver, new IntentFilter("CG_INVALID_CAMPAIGN_ID"));
+
+            }
         }catch (Exception e){
             printDebugLogs(""+e);
         }
