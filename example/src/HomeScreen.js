@@ -214,7 +214,7 @@ const openWalletTest=()=>{
     // };
     let openNudgeData = {
         nudgeConfiguration:{
-            layout:'middle-default',
+            layout:'full-default',
              opacity:'0.8',
              closeOnDeepLink:true,
              absoluteHeight:'50',
@@ -227,7 +227,7 @@ const openWalletTest=()=>{
     //setPIPEnabled(false);
     //enableAnalytic(true);
      //openWallet(openNudgeData);
-  loadCampaignById("04c00966-b5e9-49b8-adda-1a445d9a4b4f",openNudgeData)
+  loadCampaignById("2339ddda-3497-4370-90fa-923de88bb8e0",openNudgeData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 
