@@ -23,6 +23,8 @@ RCT_EXTERN_METHOD(loadCampaignById:(NSString *)id nudgeconfigdata:(NSDictionary 
 RCT_EXTERN_METHOD(loadCampaignWithUrl:(NSString *)url nudgeconfigdata:(NSDictionary *)nudgeData)
 RCT_EXTERN_METHOD(enableAnalytic:(BOOL *)bool)
 RCT_EXTERN_METHOD(disableGluSdk:(BOOL *)bool)
+RCT_EXTERN_METHOD(initCGSDK:(NSString *)obj)
+
 RCT_EXTERN_METHOD(configureLoaderColour:(NSString *)colr)
 RCT_EXTERN_METHOD(configureLoadingScreenColor:(NSString *)color)
 RCT_EXTERN_METHOD(configureStatusBarColour:(NSString *)color)

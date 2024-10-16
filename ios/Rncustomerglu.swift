@@ -70,7 +70,7 @@ class Rncustomerglu: RCTEventEmitter{
     
     override init() {
         super.init()
-        CustomerGlu.getInstance.initializeSdk()
+      //  CustomerGlu.getInstance.initializeSdk()
         Rncustomerglu.shared = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.catchAnalyticsNotification(notification:)), name: Notification.Name("CUSTOMERGLU_ANALYTICS_EVENT"), object: nil)
@@ -90,7 +90,7 @@ class Rncustomerglu: RCTEventEmitter{
     func setPlatformAndSdkVersion(){
 
         CustomerGlu.app_platform="REACT_NATIVE"
-        CustomerGlu.sdk_version="2.0.6"
+        CustomerGlu.sdk_version="2.1.0"
     }
     
     override func startObserving() {
@@ -163,6 +163,9 @@ class Rncustomerglu: RCTEventEmitter{
     customerGlu.setOpenWalletAsFallback(flag)
   }
 
+@objc public func initCGSDK(_ flag: String) {
+    customerGlu.initializeSdk(myenv:flag)
+  }
     @objc func OpenNudgeRN(_ id:String, nudgeconfigdata nudgeData:NSDictionary) -> Void {
         
         let nudgeconfigData=CGNudgeConfiguration()

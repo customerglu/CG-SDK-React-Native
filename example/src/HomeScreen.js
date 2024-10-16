@@ -227,7 +227,7 @@ const openWalletTest=()=>{
     //setPIPEnabled(false);
     //enableAnalytic(true);
      //openWallet(openNudgeData);
-  loadCampaignById("2339ddda-3497-4370-90fa-923de88bb8e0",openNudgeData)
+  loadCampaignById("2339ddda-3497-4370-90fa-923de88b8e0",openNudgeData)
    // loadCampaignWithUrl("",openWalletData);
 // openNudge("nudge1", openNudgeData);  // optional
 

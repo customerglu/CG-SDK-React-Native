@@ -12,6 +12,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -73,7 +75,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
         if (!CustomerGlu.isInitialized){
             Log.e("Receiver Register","register");
             registerBroadcastReceiver();
-            CustomerGlu.getInstance().initializeSdk(getReactApplicationContext());
+          //  CustomerGlu.getInstance().initializeSdk(getReactApplicationContext());
         }
         setPlatformAndSdkVersion();
     }
@@ -91,7 +93,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "2.0.6";
+            CustomerGlu.cg_sdk_version = "2.1.0";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
@@ -312,28 +314,34 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     @ReactMethod
     public void registerDevice(ReadableMap map, Promise promise) {
         if (map != null) {
-            JSONObject jsonObject = convertMapToJson(map);
-            HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-            Log.d(TAG, "userdata----> " + userData.toString() + " " + new Date().getTime());
-
-            CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, new DataListner() {
-                //this method registers the user
-
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
-                public void onSuccess(Boolean registerModal) {
-                    Log.d(TAG, "Registered!..." + " " + new Date().getTime());
-                    promise.resolve(true);
-                }
+                public void run() {
+                    JSONObject jsonObject = convertMapToJson(map);
+                    HashMap<String, Object> userData = new Gson().fromJson(jsonObject.toString(), HashMap.class);
+                    Log.d(TAG, "userdata----> " + userData.toString() + " " + new Date().getTime());
 
-                @Override
-                public void onFail(String message) {
+                    CustomerGlu.getInstance().registerDevice(getReactApplicationContext(), userData, new DataListner() {
+                        //this method registers the user
+
+                        @Override
+                        public void onSuccess(Boolean registerModal) {
+                            Log.d(TAG, "Registered!..." + " " + new Date().getTime());
+                            promise.resolve(true);
+                        }
+
+                        @Override
+                        public void onFail(String message) {
 //        Toast.makeText(getReactApplicationContext(), "" + message, Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "Registeration Failed!..." + message.toString());
+                            Log.d(TAG, "Registeration Failed!..." + message.toString());
 
-                    promise.resolve(false);
+                            promise.resolve(false);
 
+                        }
+                    });
                 }
-            });
+            },500);
+
         }
 
     }
@@ -414,6 +422,12 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
             list.add(value);
         }
         return list;
+    }
+
+    @ReactMethod
+    public void initCGSDK(String env)
+    {
+        CustomerGlu.getInstance().initializeSdk(getReactApplicationContext(),env);
     }
 
     @ReactMethod

@@ -79,6 +79,9 @@ export function sendData(obj: Object): Promise<number> {
 export function openWallet(obj:Object={}): Promise<number> {
   return Rncustomerglu.openWallet(obj)
 }
+export function initCGSDK(obj:String): Promise<number> {
+  return Rncustomerglu.initCGSDK(obj)
+}
 
 export function loadCampaignById(id: String,obj:Object={}): Promise<number> {
     return Rncustomerglu.loadCampaignById(id, obj);

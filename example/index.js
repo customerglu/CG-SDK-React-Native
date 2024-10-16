@@ -2,6 +2,8 @@ import { AppRegistry, Platform, LogBox } from 'react-native';
 import App from './src/AppNav';
 import { name as appName } from './app.json';
 LogBox.ignoreAllLogs();
+import { initCGSDK } from '@customerglu/react-native-customerglu';
+initCGSDK("me");
 AppRegistry.registerComponent(appName, () => App);
 
 // import PushNotification, { Importance } from "react-native-push-notification";
