@@ -34,9 +34,9 @@ const ShopScreen = ({ navigation }) => {
             <Text style={styles.HeaderTxt}>Shop Screen</Text>
             <View style={styles.topContainer}>
                 <View style={styles.containerBox}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/trolley.png')}
-                        style={styles.imageStyle} />
+                        style={styles.imageStyle} /> */}
                     <Text style={styles.txtWallet}>Shop</Text>
                     <TouchableOpacity style={styles.touchbtn} onPress={() => handleCompletePurchase()}>
                         <Text style={styles.addTxt}>Add to cart</Text>
@@ -44,9 +44,9 @@ const ShopScreen = ({ navigation }) => {
                 </View>
 
                 <View style={styles.containerBox}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/trolley.png')}
-                        style={styles.imageStyle} />
+                        style={styles.imageStyle} /> */}
                     <Text style={styles.txtWallet}>Shop</Text>
                     <TouchableOpacity style={styles.touchbtn} onPress={() => handleCompletePurchase()}>
                         <Text style={styles.addTxt}>Add to cart</Text>
@@ -55,9 +55,9 @@ const ShopScreen = ({ navigation }) => {
             </View>
             <View style={styles.topContainer}>
                 <View style={styles.containerBox}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/trolley.png')}
-                        style={styles.imageStyle} />
+                        style={styles.imageStyle} /> */}
                     <Text style={styles.txtWallet}>Shop</Text>
                     <TouchableOpacity style={styles.touchbtn} onPress={() => handleCompletePurchase()}>
                         <Text style={styles.addTxt}>Add to cart</Text>
@@ -65,9 +65,9 @@ const ShopScreen = ({ navigation }) => {
                 </View>
 
                 <View style={styles.containerBox}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/trolley.png')}
-                        style={styles.imageStyle} />
+                        style={styles.imageStyle} /> */}
                     <Text style={styles.txtWallet}>Shop</Text>
                     <TouchableOpacity style={styles.touchbtn} onPress={() => handleCompletePurchase()}>
                         <Text style={styles.addTxt}>Add to cart</Text>
@@ -78,9 +78,9 @@ const ShopScreen = ({ navigation }) => {
 
             <View style={styles.topContainer}>
                 <View style={styles.containerBox}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/trolley.png')}
-                        style={styles.imageStyle} />
+                        style={styles.imageStyle} /> */}
                     <Text style={styles.txtWallet}>Shop</Text>
                     <TouchableOpacity style={styles.touchbtn} onPress={() => handleCompletePurchase()}>
                         <Text style={styles.addTxt}>Add to cart</Text>
@@ -88,9 +88,9 @@ const ShopScreen = ({ navigation }) => {
                 </View>
 
                 <View style={styles.containerBox}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/trolley.png')}
-                        style={styles.imageStyle} />
+                        style={styles.imageStyle} /> */}
                     <Text style={styles.txtWallet}>Cart</Text>
                     <TouchableOpacity style={styles.touchbtn} onPress={() => handleCompletePurchase()}>
                         <Text style={styles.addTxt}>Add to cart</Text>

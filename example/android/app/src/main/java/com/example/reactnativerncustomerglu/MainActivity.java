@@ -2,49 +2,45 @@ package com.example.reactnativerncustomerglu;
 
 import android.content.Intent;
 import android.util.Log;
-
 import androidx.lifecycle.LifecycleObserver;
-
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 import com.facebook.react.bridge.LifecycleEventListener;
 import android.content.res.Configuration;
 import com.reactnativerncustomerglu.CGUtils;
 
-public class MainActivity extends ReactActivity implements LifecycleObserver
-{
-public static final String TAG=MainActivity.class.getSimpleName();
-  /**
-   * Returns the name of the main component registered from JavaScript. This is used to schedule
-   * rendering of the component.
-   */
-  @Override
-  protected String getMainComponentName() {
+public class MainActivity extends ReactActivity implements LifecycleObserver {
+    public static final String TAG = MainActivity.class.getSimpleName();
 
-    return "RncustomergluExample";
-  }
-  @Override
-  public void onNewIntent(Intent intent) {
-    super.onNewIntent(intent);
-  }
+    /**
+     * Returns the name of the main component registered from JavaScript. This is used to schedule
+     * rendering of the component.
+     */
+    @Override
+    protected String getMainComponentName() {
+        return "RncustomergluExample";
+    }
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-    // setactivity
-  }
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
 
- @Override
-protected ReactActivityDelegate createReactActivityDelegate() {
-    return new DefaultReactActivityDelegate(this, getMainComponentName(), fabricEnabled);
-}
-  @Override
-  public void onConfigurationChanged(Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
-    CGUtils.handleConfigurationChanges(this);
-  }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // setactivity
+    }
 
+    @Override
+    protected ReactActivityDelegate createReactActivityDelegate() {
+        return new DefaultReactActivityDelegate(this, getMainComponentName(),true);
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        CGUtils.handleConfigurationChanges(this);
+    }
 }

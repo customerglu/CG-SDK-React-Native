@@ -95,14 +95,14 @@ const SplashScreen = ({ navigation }) => {
     return (
 
         <View style={{ flex: 1, backgroundColor: '#000', justifyContent: 'center', alignContent: 'center', alignItems: 'center', }}>
-            <Animated.Image
+            {/* <Animated.Image
                 source={require('../assets/customerglu.jpg')}
                 style={{
                     width: width,
                     height: height,
 
                 }}
-            />
+            /> */}
 
         </View>
     );

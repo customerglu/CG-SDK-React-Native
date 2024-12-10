@@ -273,7 +273,7 @@ const updateUser=()=>{
     return (
         <SafeAreaView flex={1}>
                 <View style={{ flex: 1.3, alignItems: 'center', backgroundColor: '#000', height: '35%', justifyContent: 'center', padding: 10 }}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/customerglu.jpg')}
                         style={{
                             justifyContent: 'center',
@@ -283,12 +283,12 @@ const updateUser=()=>{
                             height: 60,
                             resizeMode: 'contain',
                         }}
-                    />
+                    /> */}
                     <TouchableOpacity onPress={() => clearDataFunc()}>
-                        <Image
+                        {/* <Image
                             source={require('../assets/power.png')}
                             style={styles.logoutbtn}
-                        />
+                        /> */}
                     </TouchableOpacity>
 
                 </View>
@@ -297,16 +297,16 @@ const updateUser=()=>{
                     <TouchableOpacity style={styles.containerBox}
                         onPress={() => openWalletTest()}>
                          {/* openNudgeTest() */}
-                        <Image
+                        {/* <Image
                             source={require('../assets/purse.png')}
-                            style={styles.imageStyle} />
+                            style={styles.imageStyle} /> */}
                         <Text style={styles.txtWallet}>Wallet</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.containerBox} onPress={() => updateUser()}>
-                        <Image
+                        {/* <Image
                             source={require('../assets/quiz.png')}
-                            style={styles.imageStyle} />
+                            style={styles.imageStyle} /> */}
                         <Text style={styles.txtWallet}>Rewards</Text>
                     </TouchableOpacity>
 
@@ -315,16 +315,16 @@ const updateUser=()=>{
                
                 <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('ShopScreen')} testID="shopButton">
-                        <Image
+                        {/* <Image
                             source={require('../assets/shop.png')}
-                            style={styles.imageStyle} />
+                            style={styles.imageStyle} /> */}
                         <Text style={styles.txtWallet}>Shop</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.containerBox} onPress={() => navigation.navigate('CartScreen')}>
-                        <Image
+                        {/* <Image
                             source={require('../assets/trolley.png')}
-                            style={styles.imageStyle} />
+                            style={styles.imageStyle} /> */}
                         <Text style={styles.txtWallet}>Cart</Text>
                     </TouchableOpacity>
 

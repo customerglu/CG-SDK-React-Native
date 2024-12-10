@@ -7,9 +7,11 @@ module.exports = {
     [
       'module-resolver',
       {
-        extensions: ['.tsx', '.ts', '.js', '.json'],
+        root: ['.'],
+        extensions: ['.tsx', '.ts', '.js', '.json', '.png', '.jpg', '.jpeg', '.gif'],
         alias: {
           [pak.name]: path.join(__dirname, '..', pak.source),
+          '@assets': './assets', // Optional: create an assets alias
         },
       },
     ],

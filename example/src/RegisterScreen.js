@@ -33,7 +33,6 @@ import {
     listenToDarkMode,
     enableDarkMode,configureLightLoaderURL,configureDarkLoaderURL,configureLightEmbedLoaderURL,configureDarkEmbedLoaderURL
 } from '@customerglu/react-native-customerglu';
-import messaging from '@react-native-firebase/messaging';
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { Platform } from 'react-native';
 // getBannerHeightEx, 
@@ -235,7 +234,7 @@ const RegisterScreen = ({ navigation }) => {
                     alignContent: 'center',
                 }}>
                 <View style={{ alignItems: 'center', }}>
-                    <Image
+                    {/* <Image
                         source={require('../assets/customerglu.jpg')}
                         style={{
                             width: '50%',
@@ -243,7 +242,7 @@ const RegisterScreen = ({ navigation }) => {
                             resizeMode: 'contain',
                             margin: 30,
                         }}
-                    />
+                    /> */}
                 </View>
                 <KeyboardAvoidingView enabled>
                     <View style={styles.SectionStyle}>

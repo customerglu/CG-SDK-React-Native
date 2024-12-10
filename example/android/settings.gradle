@@ -8,11 +8,12 @@ pluginManagement {
 
 rootProject.name = 'RncustomergluExample'
 
-// Apply React Native native modules
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
 applyNativeModulesSettingsGradle(settings)
 
 include ':app'
+include ':reactnativerncustomerglu'
+project(':reactnativerncustomerglu').projectDir = new File(rootProject.projectDir, '../../android')
 
 // Include React Native Gradle Plugin
 includeBuild('../node_modules/@react-native/gradle-plugin')

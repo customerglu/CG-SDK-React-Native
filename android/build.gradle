@@ -3,35 +3,31 @@ buildscript {
     repositories {
       google()
       mavenCentral()
-
       maven { url "https://jitpack.io" }
     }
 
     dependencies {
-      classpath 'com.android.tools.build:gradle:4.2.0'
-
-
+      classpath 'com.android.tools.build:gradle:8.1.1'
     }
   }
-
 }
 
 apply plugin: 'com.android.library'
 apply plugin: "com.facebook.react.rootproject"
-
 
 def safeExtGet(prop, fallback) {
   rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 
 android {
-  compileSdkVersion safeExtGet('Rncustomerglu_compileSdkVersion', 34)
+  namespace "com.reactnativerncustomerglu"
+  compileSdkVersion safeExtGet('compileSdkVersion', 34)
+  
   defaultConfig {
-    minSdkVersion safeExtGet('Rncustomerglu_minSdkVersion', 23)
-    targetSdkVersion safeExtGet('Rncustomerglu_targetSdkVersion', 34)
+    minSdkVersion safeExtGet('minSdkVersion', 23)
+    targetSdkVersion safeExtGet('targetSdkVersion', 34)
     versionCode 1
     versionName "1.0"
-
   }
 
   buildTypes {
@@ -39,29 +35,24 @@ android {
       minifyEnabled false
     }
   }
-  lintOptions {
-    disable 'GradleCompatible'
-  }
+  
   compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
   }
 }
 
 repositories {
   mavenLocal()
   maven {
-    // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
     url("$rootDir/../node_modules/react-native/android")
   }
   google()
   mavenCentral()
-
   maven { url "https://jitpack.io" }
 }
 
 dependencies {
-  //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"  // From node_modules
   implementation 'com.customerglu:CustomerGluLibrary:3.0.6'
   implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'

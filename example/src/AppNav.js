@@ -16,7 +16,6 @@ import SplashScreen from './SplashScreen'
 
 const Stack = createNativeStackNavigator();
 // import messaging from "@react-native-firebase/app";
-import messaging from "@react-native-firebase/messaging"
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import { DisplayCGNotification,DisplayCGBackgroundNotification,handleDeepLinkUri } from '@customerglu/react-native-customerglu';

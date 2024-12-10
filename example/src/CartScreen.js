@@ -28,10 +28,10 @@ export default function CartScreen({ navigation }) {
         <View style={styles.mainContatiner}>
 
             <Text style={styles.HeaderTxt} >Cart Screen</Text>
-            <Image
+            {/* <Image
                 source={require('../assets/trolley.png')}
                 style={styles.imageStyle}
-            />
+            /> */}
             <TouchableOpacity style={styles.touchbtn} onPress={() => handleCompletePurchase()}>
                 <Text style={styles.addTxt}>Add to cart</Text>
             </TouchableOpacity>

@@ -43,10 +43,10 @@ export default function CartScreen({ navigation }) {
         <View style={styles.mainContatiner}>
 
             <Text style={styles.HeaderTxt} >Test Screen</Text>
-            <Image
+            {/* <Image
                 source={require('../assets/quiz.png')}
                 style={styles.imageStyle}
-            />
+            /> */}
             <TouchableOpacity style={styles.touchbtn} onPress={() => referIdFunc()}>
                 <Text style={styles.addTxt}>Refer Here</Text>
             </TouchableOpacity>
