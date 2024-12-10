@@ -20,7 +20,6 @@ import messaging from "@react-native-firebase/messaging"
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import { DisplayCGNotification,DisplayCGBackgroundNotification,handleDeepLinkUri } from '@customerglu/react-native-customerglu';
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { requestUserPermission, notificationListner } from './NotificationServices'
 import { Platform, LogBox, Linking } from 'react-native';
 LogBox.ignoreAllLogs();

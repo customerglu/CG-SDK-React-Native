@@ -32,7 +32,6 @@ import {
     closeWebView,
     enableAnalytic
 } from '@customerglu/react-native-customerglu';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform, Animated } from 'react-native';
 LogBox.ignoreLogs(['new NativeEventemitter()']);
 const SplashScreen = ({ navigation }) => {

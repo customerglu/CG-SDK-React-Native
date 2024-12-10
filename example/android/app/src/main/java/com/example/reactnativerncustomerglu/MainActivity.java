@@ -6,6 +6,9 @@ import android.util.Log;
 import androidx.lifecycle.LifecycleObserver;
 
 import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled;
+import com.facebook.react.defaults.DefaultReactActivityDelegate;
 import com.facebook.react.bridge.LifecycleEventListener;
 import android.content.res.Configuration;
 import com.reactnativerncustomerglu.CGUtils;
@@ -32,6 +35,11 @@ public static final String TAG=MainActivity.class.getSimpleName();
     super.onResume();
     // setactivity
   }
+
+ @Override
+protected ReactActivityDelegate createReactActivityDelegate() {
+    return new DefaultReactActivityDelegate(this, getMainComponentName(), fabricEnabled);
+}
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);

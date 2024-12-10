@@ -39,7 +39,6 @@ import {
     listenToDarkMode,
     enableDarkMode
 } from '@customerglu/react-native-customerglu';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 import { useNavigation, StackActions } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';

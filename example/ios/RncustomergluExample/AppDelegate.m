@@ -8,9 +8,7 @@
 
 #import "AppDelegate.h"
 #import <React/RCTDevLoadingView.h>
-#import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
-#import <React/RCTRootView.h>
 #import <Firebase.h>
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotifications/UNUserNotificationCenter.h>
@@ -65,6 +63,10 @@ RCTBridge *rnBridge;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 {
+   self.moduleName = @"RncustomergluExample";
+  // You can add your custom initial props in the dictionary below.
+  // They will be passed down to the ViewController used by React Native.
+  self.initialProps = @{};
   [FIRApp configure];
   #ifdef FB_SONARKIT_ENABLED
     InitializeFlipper(application);
@@ -131,8 +133,7 @@ RCTBridge *rnBridge;
 //
 //[application registerForRemoteNotifications];
 
-  return YES;
-}
+ return [super application:application didFinishLaunchingWithOptions:launchOptions];}
 
 
 //////Called when a notification is delivered to a foreground app.
