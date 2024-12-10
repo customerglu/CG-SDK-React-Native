@@ -93,7 +93,7 @@ public class RncustomergluModule extends ReactContextBaseJavaModule implements L
     private void setPlatformAndSdkVersion() {
         if (CustomerGlu.getInstance() != null) {
 
-            CustomerGlu.cg_sdk_version = "2.1.0";
+            CustomerGlu.cg_sdk_version = "2.1.1";
             CustomerGlu.cg_app_platform = "REACT_NATIVE";
         }
     }
