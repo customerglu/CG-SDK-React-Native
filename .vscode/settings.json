@@ -18,7 +18,7 @@
     },
     "cmake.configureOnOpen": true,
     "cmake.buildDirectory": "${workspaceFolder}/build",
-    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.sourceDirectory": "/Users/prateek/Documents/GitHub/CG-SDK-React-Native/cpp",
     "typescript.tsdk": "node_modules/typescript/lib",
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "ms-vscode.cpptools",

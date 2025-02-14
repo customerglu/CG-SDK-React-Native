@@ -1,146 +1,146 @@
-# @customerglu/react-native-customerglu
+# CustomerGlu React Native SDK
 
-CustomerGlu React Native SDK with New Architecture (Fabric + TurboModules) Support
+React Native SDK for CustomerGlu with New Architecture (Fabric & TurboModules) support.
 
-## Features
+## Quick Start
 
-- Full support for React Native's New Architecture
-- Optimized performance with TurboModules
-- Native UI components built with Fabric
-- TypeScript support
-- Comprehensive event system
-- Cross-platform support (iOS & Android)
+### Installation
 
-## Installation
-
-```sh
+```bash
 npm install @customerglu/react-native-customerglu
+```
+
+### Setup Development Environment
+
+1. Clone the repository:
+```bash
+git clone https://github.com/customerglu/CG-SDK-React-Native.git
+cd CG-SDK-React-Native
+```
+
+2. Run setup script:
+```bash
+npm run setup
+```
+
+This will:
+- Install dependencies
+- Generate native code
+- Build the project
+- Run tests
+- Set up the example app
+
+### Running Example App
+
+```bash
+cd example
+npm start
+
+# In another terminal:
+npm run android
 # or
-yarn add @customerglu/react-native-customerglu
-```
-
-## Requirements
-
-- React Native 0.74.0 or higher
-- iOS 13.0 or higher
-- Android API level 21 or higher
-- Node.js 18 or higher
-- Xcode 14 or higher (for iOS)
-- Android Studio Hedgehog or higher
-- JDK 11 or higher
-- CMake 3.22.1
-- NDK 25.1.8937393
-
-## New Architecture Support
-
-This version includes full support for React Native's New Architecture:
-- TurboModules for better native module performance
-- Fabric for native UI components
-- JSI for direct native communication
-- Codegen for type-safe interfaces
-
-To enable the new architecture in your app:
-
-### Android
-
-In `android/gradle.properties`:
-```properties
-newArchEnabled=true
-```
-
-### iOS
-
-In your Podfile:
-```ruby
-ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+npm run ios
 ```
 
 ## Usage
 
 ```typescript
 import {
+  initCGSDK,
   registerDevice,
-  sendData,
   BannerWidget,
   EmbedBannerWidget,
 } from '@customerglu/react-native-customerglu';
 
 // Initialize SDK
-const initializeSDK = async () => {
-  await registerDevice({
-    userId: 'user123',
-    // ... other user data
-  });
-};
+await initCGSDK('development');
 
-// Use Banner Component
-const MyComponent = () => {
-  return <BannerWidget bannerId="your-banner-id" />;
-};
+// Register user
+const result = await registerDevice({
+  userId: 'user123',
+  userAttributes: {
+    email: 'user@example.com',
+  },
+});
 
-// Send Events
-const sendCustomEvent = () => {
-  sendData({
-    eventName: 'custom_event',
-    eventProperties: {
-      // ... event properties
-    },
-  });
-};
+// Use UI components
+function MyComponent() {
+  return (
+    <>
+      <BannerWidget
+        bannerId="your-banner-id"
+        style={{ width: '100%', height: 200 }}
+      />
+      <EmbedBannerWidget
+        bannerId="your-embed-id"
+        style={{ width: '100%', height: 300 }}
+      />
+    </>
+  );
+}
 ```
 
-## Migration
+## Development Scripts
 
-If you're upgrading from an older version, please see our [Migration Guide](./MIGRATION.md) for detailed instructions on migrating to the new architecture.
+- `npm run codegen` - Generate native code
+- `npm run build` - Build the SDK
+- `npm test` - Run tests
+- `npm run test:migration` - Test new architecture migration
+- `npm run verify:migration` - Verify migration status
+- `npm run clean` - Clean build files
+- `npm run setup` - Setup development environment
 
-## API Reference
+## Example App Scripts
 
-### Core Methods
+- `npm start` - Start Metro bundler
+- `npm run android` - Run on Android
+- `npm run ios` - Run on iOS
+- `npm test` - Run tests
+- `npm run test:example` - Run example app tests
+- `npm run clean` - Clean build files
+- `npm run rebuild` - Clean and rebuild
 
-- `registerDevice(userData: Object): Promise<boolean>`
-- `sendData(data: { eventName: string; eventProperties?: Object }): void`
-- `dataClear(): void`
-- `testIntegration(): void`
+## New Architecture Support
 
-### Campaign Methods
+This SDK supports React Native's New Architecture with:
+- TurboModules for native modules
+- Fabric for UI components
+- JSI for direct native communication
+- Codegen for type-safe interfaces
 
-- `loadCampaignById(id: string, config?: Object): void`
-- `loadCampaignWithUrl(url: string, config?: Object): void`
-- `openWallet(config?: Object): void`
+See [MIGRATION.md](./MIGRATION.md) for migration details.
 
-### Configuration Methods
+## Testing
 
-- `initCGSDK(env: string): void`
-- `enableAnalytic(enabled: boolean): void`
-- `allowAnonymousRegistration(enabled: boolean): void`
-- `disableGluSdk(disabled: boolean): void`
+```bash
+# Run all tests
+npm test
 
-### UI Components
+# Run specific test suites
+npm run test:migration
+cd example && npm run test:example
 
-#### BannerWidget
-```typescript
-<BannerWidget bannerId="your-banner-id" />
-```
-
-#### EmbedBannerWidget
-```typescript
-<EmbedBannerWidget bannerId="your-banner-id" />
+# Verify migration
+npm run verify:migration
 ```
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Run tests (`npm test`)
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Support
 
-- Create a [GitHub issue](https://github.com/customerglu/CG-SDK-React-Native/issues) for bug reports, feature requests, or questions
-- Follow [@customerglu](https://twitter.com/customerglu) for announcements
-- Add a ⭐️ [star on GitHub](https://github.com/customerglu/CG-SDK-React-Native) to support the project!
-
-## Security
-
-If you believe you have found a security vulnerability in CustomerGlu SDK, we encourage you to responsibly disclose this and not open a public issue. Please email security@customerglu.com to disclose any security vulnerabilities.
+- [GitHub Issues](https://github.com/customerglu/CG-SDK-React-Native/issues)
+- Email: code@customerglu.net
+- [Discord Community](https://discord.gg/customerglu)

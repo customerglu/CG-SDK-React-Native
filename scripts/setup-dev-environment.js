@@ -1,119 +1,213 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
+const { execSync } = require("child_process");
+const path = require("path");
+const fs = require("fs");
+const chalk = require("chalk");
 
-// Colors for console output
-const COLORS = {
-    reset: '\x1b[0m',
-    bright: '\x1b[1m',
-    red: '\x1b[31m',
-    green: '\x1b[32m',
-    yellow: '\x1b[33m',
-    blue: '\x1b[34m',
-};
+const ROOT_DIR = path.resolve(__dirname, "..");
+const EXAMPLE_DIR = path.join(ROOT_DIR, "example");
 
-function log(message, color = COLORS.reset) {
-    console.log(color + message + COLORS.reset);
+function runCommand(command, options = {}) {
+  try {
+    execSync(command, {
+      stdio: "inherit",
+      ...options,
+    });
+    return true;
+  } catch (error) {
+    if (!options.ignoreError) {
+      console.error(chalk.red(`Error executing command: ${command}`));
+      console.error(chalk.red(error.message));
+      process.exit(1);
+    }
+    return false;
+  }
 }
 
-function executeCommand(command, errorMessage) {
+function checkPrerequisites() {
+  console.log(chalk.blue("🔍 Checking prerequisites..."));
+
+  // Check Node.js version
+  const nodeVersion = process.version;
+  if (parseInt(nodeVersion.slice(1)) < 18) {
+    throw new Error("Node.js 18 or newer is required");
+  }
+  console.log(chalk.green("✓ Node.js version:", nodeVersion));
+
+  // Check npm version
+  const npmVersion = execSync("npm --version").toString().trim();
+  if (parseInt(npmVersion.split(".")[0]) < 9) {
+    throw new Error("npm 9 or newer is required");
+  }
+  console.log(chalk.green("✓ npm version:", npmVersion));
+
+  // Check for Xcode (macOS only)
+  if (process.platform === "darwin") {
     try {
-        execSync(command, { stdio: 'inherit' });
-        return true;
+      execSync("xcodebuild -version");
+      console.log(chalk.green("✓ Xcode installed"));
     } catch (error) {
-        log(`Error: ${errorMessage}`, COLORS.red);
-        log(error.message, COLORS.red);
-        return false;
+      throw new Error("Xcode is required for iOS development");
     }
+  }
+
+  // Check for Android SDK
+  try {
+    const androidHome =
+      process.env.ANDROID_HOME || process.env.ANDROID_SDK_ROOT;
+    if (!androidHome) {
+      throw new Error(
+        "ANDROID_HOME or ANDROID_SDK_ROOT environment variable not set"
+      );
+    }
+    console.log(chalk.green("✓ Android SDK found:", androidHome));
+  } catch (error) {
+    throw new Error("Android SDK is required for Android development");
+  }
+
+  console.log(chalk.green("✓ All prerequisites met\n"));
+}
+
+function setupSDK() {
+  console.log(chalk.blue("🛠 Setting up SDK..."));
+
+  // Install dependencies
+  console.log(chalk.blue("Installing SDK dependencies..."));
+  runCommand("npm install --legacy-peer-deps", { cwd: ROOT_DIR });
+  console.log(chalk.green("✓ SDK dependencies installed\n"));
+
+  // Generate codegen artifacts
+  console.log(chalk.blue("Generating codegen artifacts..."));
+  runCommand("npm run generate-codegen", { cwd: ROOT_DIR });
+  console.log(chalk.green("✓ Codegen artifacts generated\n"));
+
+  // Build SDK
+  console.log(chalk.blue("Building SDK..."));
+  runCommand("npm run prepare", { cwd: ROOT_DIR });
+  console.log(chalk.green("✓ SDK built\n"));
+}
+
+function setupExample() {
+  console.log(chalk.blue("🚀 Setting up example app..."));
+
+  // Install example app dependencies
+  console.log(chalk.blue("Installing example app dependencies..."));
+  runCommand("npm install --legacy-peer-deps", { cwd: EXAMPLE_DIR });
+  console.log(chalk.green("✓ Example app dependencies installed\n"));
+
+  // Install iOS pods
+  if (process.platform === "darwin") {
+    console.log(chalk.blue("Installing iOS pods..."));
+    runCommand("npm run pods", { cwd: ROOT_DIR });
+    console.log(chalk.green("✓ iOS pods installed\n"));
+  }
+}
+
+function setupGitHooks() {
+  console.log(chalk.blue("🔧 Setting up Git hooks..."));
+
+  const hooksDir = path.join(ROOT_DIR, ".git/hooks");
+  const preCommitPath = path.join(hooksDir, "pre-commit");
+
+  const preCommitScript = `#!/bin/sh
+npm run typecheck
+npm run lint
+npm test
+`;
+
+  fs.writeFileSync(preCommitPath, preCommitScript);
+  fs.chmodSync(preCommitPath, "755");
+
+  console.log(chalk.green("✓ Git hooks installed\n"));
+}
+
+function setupVSCode() {
+  console.log(chalk.blue("💻 Setting up VSCode configuration..."));
+
+  const vscodePath = path.join(ROOT_DIR, ".vscode");
+  if (!fs.existsSync(vscodePath)) {
+    fs.mkdirSync(vscodePath);
+  }
+
+  // settings.json
+  const settingsPath = path.join(vscodePath, "settings.json");
+  const settings = {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+  };
+  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
+
+  // launch.json
+  const launchPath = path.join(vscodePath, "launch.json");
+  const launch = {
+    version: "0.2.0",
+    configurations: [
+      {
+        name: "Debug iOS",
+        type: "reactnative",
+        request: "launch",
+        platform: "ios",
+        target: "iPhone 14",
+        cwd: "${workspaceFolder}/example",
+      },
+      {
+        name: "Debug Android",
+        type: "reactnative",
+        request: "launch",
+        platform: "android",
+        cwd: "${workspaceFolder}/example",
+      },
+    ],
+  };
+  fs.writeFileSync(launchPath, JSON.stringify(launch, null, 2));
+
+  console.log(chalk.green("✓ VSCode configuration set up\n"));
 }
 
 async function main() {
-    log('\n🚀 Setting up development environment for CustomerGlu SDK...', COLORS.bright + COLORS.blue);
+  console.log(chalk.yellow("🚀 Starting development environment setup...\n"));
 
-    // Check Node.js version
-    const nodeVersion = process.version;
-    log(`\nNode.js version: ${nodeVersion}`, COLORS.yellow);
-    if (nodeVersion.split('.')[0] < 'v18') {
-        log('❌ Node.js 18 or higher is required', COLORS.red);
-        process.exit(1);
-    }
-    log('✅ Node.js version check passed', COLORS.green);
+  try {
+    checkPrerequisites();
+    setupSDK();
+    setupExample();
+    setupGitHooks();
+    setupVSCode();
 
-    // Check for required build tools
-    log('\n📦 Checking build tools...', COLORS.yellow);
-
-    if (os.platform() === 'darwin') {  // macOS
-        // Check Xcode
-        try {
-            execSync('xcodebuild -version');
-            log('✅ Xcode is installed', COLORS.green);
-        } catch (error) {
-            log('❌ Xcode is not installed', COLORS.red);
-            log('Please install Xcode from the App Store', COLORS.yellow);
-        }
-
-        // Check CocoaPods
-        try {
-            execSync('pod --version');
-            log('✅ CocoaPods is installed', COLORS.green);
-        } catch (error) {
-            log('❌ CocoaPods is not installed', COLORS.red);
-            log('Install CocoaPods: sudo gem install cocoapods', COLORS.yellow);
-        }
-    }
-
-    // Check Android tools
-    try {
-        const androidHome = process.env.ANDROID_HOME || process.env.ANDROID_SDK_ROOT;
-        if (!androidHome) {
-            throw new Error('ANDROID_HOME not set');
-        }
-        log('✅ Android SDK is configured', COLORS.green);
-
-        // Check NDK
-        const ndkVersion = '25.1.8937393';
-        const ndkPath = path.join(androidHome, 'ndk', ndkVersion);
-        if (!fs.existsSync(ndkPath)) {
-            log(`❌ Android NDK ${ndkVersion} not found`, COLORS.red);
-            log('Please install the NDK using Android Studio SDK Manager', COLORS.yellow);
-        } else {
-            log('✅ Android NDK is installed', COLORS.green);
-        }
-
-        // Check CMake
-        try {
-            execSync('cmake --version');
-            log('✅ CMake is installed', COLORS.green);
-        } catch (error) {
-            log('❌ CMake is not installed', COLORS.red);
-            log('Please install CMake using Android Studio SDK Manager', COLORS.yellow);
-        }
-    } catch (error) {
-        log('❌ Android SDK setup incomplete', COLORS.red);
-        log('Please install Android Studio and configure ANDROID_HOME', COLORS.yellow);
-    }
-
-    // Install dependencies
-    log('\n📥 Installing dependencies...', COLORS.yellow);
-    executeCommand('yarn install', 'Failed to install dependencies');
-
-    // Generate codegen files
-    log('\n🔧 Generating codegen files...', COLORS.yellow);
-    executeCommand('yarn codegen', 'Failed to generate codegen files');
-
-    log('\n✨ Setup complete!', COLORS.bright + COLORS.green);
-    log('\nNext steps:', COLORS.bright);
-    log('1. For iOS: Run `cd ios && pod install`');
-    log('2. For Android: Run `cd android && ./gradlew clean`');
-    log('3. Build your app with the new architecture enabled\n');
+    console.log(
+      chalk.green("\n✨ Development environment setup completed successfully!")
+    );
+    console.log(chalk.blue("\nNext steps:"));
+    console.log("1. Start the example app:");
+    console.log("   cd example && npm start");
+    console.log("2. In another terminal:");
+    console.log("   npm run ios    # or npm run android");
+    console.log("3. Start developing!\n");
+  } catch (error) {
+    console.error(chalk.red("\n❌ Development environment setup failed:"));
+    console.error(chalk.red(error.message));
+    process.exit(1);
+  }
 }
 
-// Run the script
+// Handle errors
+process.on("unhandledRejection", (error) => {
+  console.error(chalk.red("An error occurred during setup:"));
+  console.error(error);
+  process.exit(1);
+});
+
 main().catch((error) => {
-    log('\n❌ Setup failed!', COLORS.bright + COLORS.red);
-    log(error.message, COLORS.red);
-    process.exit(1);
+  console.error(chalk.red("Unexpected error:"), error);
+  process.exit(1);
 });

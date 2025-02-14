@@ -1,103 +1,199 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const { execSync } = require("child_process");
+const path = require("path");
+const fs = require("fs");
+const chalk = require("chalk");
 
-// Ensure the script is executable
-try {
-  fs.chmodSync(__filename, '755');
-} catch (error) {
-  console.warn('Could not make script executable:', error.message);
-}
+const ROOT_DIR = path.resolve(__dirname, "..");
+const EXAMPLE_DIR = path.join(ROOT_DIR, "example");
 
-// Paths
-const ROOT_DIR = path.resolve(__dirname, '..');
-const CODEGEN_DIR = path.join(ROOT_DIR, 'node_modules', 'react-native', 'scripts');
-const CODEGEN_CONFIG = path.join(ROOT_DIR, 'package.json');
-
-// Colors for console output
-const COLORS = {
-  reset: '\x1b[0m',
-  bright: '\x1b[1m',
-  red: '\x1b[31m',
-  green: '\x1b[32m',
-  yellow: '\x1b[33m',
-  blue: '\x1b[34m',
-};
-
-function log(message, color = COLORS.reset) {
-  console.log(color + message + COLORS.reset);
-}
-
-function executeCommand(command, errorMessage) {
+function runCommand(command, options = {}) {
   try {
-    execSync(command, { stdio: 'inherit', cwd: ROOT_DIR });
+    execSync(command, {
+      stdio: "inherit",
+      ...options,
+    });
     return true;
   } catch (error) {
-    log(`Error: ${errorMessage}`, COLORS.red);
-    log(error.message, COLORS.red);
+    if (!options.ignoreError) {
+      console.error(chalk.red(`Error executing command: ${command}`));
+      console.error(chalk.red(error.message));
+      process.exit(1);
+    }
     return false;
   }
 }
 
-async function main() {
-  log('\n🚀 Starting codegen for CustomerGlu SDK...', COLORS.bright + COLORS.blue);
+function generateCodegenConfig() {
+  console.log(chalk.blue("📝 Generating codegen configuration..."));
 
-  // Check if package.json exists and has codegen config
-  if (!fs.existsSync(CODEGEN_CONFIG)) {
-    log('Error: package.json not found!', COLORS.red);
-    process.exit(1);
-  }
+  const codegenConfig = {
+    name: "RNCCustomerGlu",
+    type: "modules",
+    jsSrcsDir: "src",
+    android: {
+      javaPackageName: "com.reactnativerncustomerglu",
+    },
+  };
 
-  const packageJson = require(CODEGEN_CONFIG);
-  if (!packageJson.codegenConfig) {
-    log('Error: codegenConfig not found in package.json!', COLORS.red);
-    process.exit(1);
-  }
+  const configPath = path.join(ROOT_DIR, "react-native.config.js");
+  const configContent = `
+module.exports = {
+  dependency: {
+    platforms: {
+      android: {
+        libraryName: "rncustomerglu",
+        componentDescriptors: [
+          "BannerWidgetComponentDescriptor",
+          "EmbedBannerWidgetComponentDescriptor",
+        ],
+      },
+      ios: {
+        scriptPhases: [
+          {
+            name: "[CustomerGlu] Generate Codegen Artifacts",
+            path: "./scripts/generate-codegen.sh",
+            execution_position: "before_compile",
+          },
+        ],
+      },
+    },
+  },
+  codegenConfig: ${JSON.stringify(codegenConfig, null, 2)},
+};
+`;
 
-  // Clean previous build
-  log('\n🧹 Cleaning previous build...', COLORS.yellow);
-  executeCommand('rm -rf lib', 'Failed to clean lib directory');
-
-  // Generate code for iOS
-  log('\n🍎 Generating code for iOS...', COLORS.yellow);
-  if (executeCommand(
-    'node node_modules/react-native/scripts/generate-codegen-artifacts.js \
-    --path . \
-    --outputPath ./ios/generated',
-    'Failed to generate iOS code'
-  )) {
-    log('✅ iOS codegen completed successfully', COLORS.green);
-  }
-
-  // Generate code for Android
-  log('\n🤖 Generating code for Android...', COLORS.yellow);
-  if (executeCommand(
-    'node node_modules/react-native/scripts/generate-codegen-artifacts.js \
-    --path . \
-    --outputPath ./android/generated',
-    'Failed to generate Android code'
-  )) {
-    log('✅ Android codegen completed successfully', COLORS.green);
-  }
-
-  // Run TypeScript build
-  log('\n📦 Building TypeScript...', COLORS.yellow);
-  if (executeCommand('yarn tsc --build', 'Failed to build TypeScript')) {
-    log('✅ TypeScript build completed successfully', COLORS.green);
-  }
-
-  log('\n✨ Codegen completed!', COLORS.bright + COLORS.green);
-  log('\nNext steps:', COLORS.bright);
-  log('1. For iOS: Run `cd ios && pod install`');
-  log('2. For Android: Run `cd android && ./gradlew clean`');
-  log('3. Rebuild your app\n');
+  fs.writeFileSync(configPath, configContent);
+  console.log(chalk.green("✓ Codegen configuration generated\n"));
 }
 
-// Run the script
+function generateiOSCodegen() {
+  console.log(chalk.blue("🍎 Generating iOS codegen artifacts..."));
+
+  // Create codegen script for iOS
+  const iosScriptPath = path.join(ROOT_DIR, "scripts/generate-codegen.sh");
+  const iosScriptContent = `
+#!/bin/bash
+set -e
+
+GENERATED_DIR="\${DERIVED_FILE_DIR}/generated/ios"
+mkdir -p "$GENERATED_DIR"
+
+node "\${PODS_ROOT}/../node_modules/@react-native/codegen/lib/cli/combine/combine-js-to-schema-cli.js" \\
+  --platform ios \\
+  "\${GENERATED_DIR}/schema.json" \\
+  "\${PODS_ROOT}/../node_modules/@customerglu/react-native-customerglu/src"
+
+node "\${PODS_ROOT}/../node_modules/react-native/scripts/generate-specs-cli.js" \\
+  --platform ios \\
+  --schemaPath "\${GENERATED_DIR}/schema.json" \\
+  --outputDir "\${GENERATED_DIR}" \\
+  --libraryName "RNCCustomerGlu" \\
+  --libraryType modules
+`;
+
+  fs.writeFileSync(iosScriptPath, iosScriptContent);
+  fs.chmodSync(iosScriptPath, "755");
+  console.log(chalk.green("✓ iOS codegen script generated\n"));
+}
+
+function generateAndroidCodegen() {
+  console.log(chalk.blue("🤖 Generating Android codegen artifacts..."));
+
+  // Create codegen task for Android
+  const androidTaskPath = path.join(ROOT_DIR, "android/codegen.gradle");
+  const androidTaskContent = `
+def codegenDir = new File(buildDir, "generated/source/codegen")
+
+task generateCodegenArtifacts(type: Exec) {
+    workingDir rootDir
+    commandLine "node",
+            "\${rootDir}/node_modules/@react-native/codegen/lib/cli/combine/combine-js-to-schema-cli.js",
+            "--platform", "android",
+            "\${codegenDir}/schema.json",
+            "\${rootDir}/src"
+
+    doFirst {
+        codegenDir.mkdirs()
+    }
+}
+
+task generateSpec(type: Exec) {
+    dependsOn generateCodegenArtifacts
+    workingDir rootDir
+    commandLine "node",
+            "\${rootDir}/node_modules/react-native/scripts/generate-specs-cli.js",
+            "--platform", "android",
+            "--schemaPath", "\${codegenDir}/schema.json",
+            "--outputDir", "\${codegenDir}",
+            "--libraryName", "RNCCustomerGlu",
+            "--libraryType", "modules"
+}
+
+preBuild.dependsOn generateSpec
+`;
+
+  fs.writeFileSync(androidTaskPath, androidTaskContent);
+  console.log(chalk.green("✓ Android codegen task generated\n"));
+}
+
+function updateBuildFiles() {
+  console.log(chalk.blue("🔧 Updating build files..."));
+
+  // Update Android build.gradle
+  const androidBuildPath = path.join(ROOT_DIR, "android/build.gradle");
+  const androidBuildContent = fs.readFileSync(androidBuildPath, "utf8");
+  if (!androidBuildContent.includes("apply from: 'codegen.gradle'")) {
+    fs.appendFileSync(androidBuildPath, "\napply from: 'codegen.gradle'\n");
+  }
+
+  // Update iOS podspec
+  const podspecPath = path.join(ROOT_DIR, "react-native-customerglu.podspec");
+  const podspecContent = fs.readFileSync(podspecPath, "utf8");
+  if (!podspecContent.includes("s.dependency 'React-Codegen'")) {
+    const updatedPodspec = podspecContent.replace(
+      "s.dependency 'React-Core'",
+      "s.dependency 'React-Core'\n  s.dependency 'React-Codegen'"
+    );
+    fs.writeFileSync(podspecPath, updatedPodspec);
+  }
+
+  console.log(chalk.green("✓ Build files updated\n"));
+}
+
+async function main() {
+  console.log(chalk.yellow("🚀 Starting codegen setup...\n"));
+
+  try {
+    generateCodegenConfig();
+    generateiOSCodegen();
+    generateAndroidCodegen();
+    updateBuildFiles();
+
+    console.log(chalk.green("\n✨ Codegen setup completed successfully!"));
+    console.log(chalk.blue("\nNext steps:"));
+    console.log("1. Clean and rebuild the project:");
+    console.log("   npm run clean && npm run prepare");
+    console.log("2. For iOS, reinstall pods:");
+    console.log("   cd example/ios && pod install");
+    console.log("3. For Android, clean and rebuild:");
+    console.log("   cd example/android && ./gradlew clean\n");
+  } catch (error) {
+    console.error(chalk.red("\n❌ Codegen setup failed:"));
+    console.error(chalk.red(error.message));
+    process.exit(1);
+  }
+}
+
+// Handle errors
+process.on("unhandledRejection", (error) => {
+  console.error(chalk.red("An error occurred during codegen setup:"));
+  console.error(error);
+  process.exit(1);
+});
+
 main().catch((error) => {
-  log('\n❌ Codegen failed!', COLORS.bright + COLORS.red);
-  log(error.message, COLORS.red);
+  console.error(chalk.red("Unexpected error:"), error);
   process.exit(1);
 });

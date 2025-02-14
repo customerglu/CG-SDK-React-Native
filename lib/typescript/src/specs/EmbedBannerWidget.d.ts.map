@@ -1,1 +1,0 @@
-{"version":3,"file":"EmbedBannerWidget.d.ts","sourceRoot":"","sources":["../../../../src/specs/EmbedBannerWidget.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,SAAS,EAAE,MAAM,cAAc,CAAC;AAC9C,OAAO,KAAK,EAAE,aAAa,EAAE,MAAM,cAAc,CAAC;AAGlD,MAAM,WAAW,sBAAuB,SAAQ,SAAS;IACvD,QAAQ,EAAE,MAAM,CAAC;CAClB;wBAII,aAAa,CAAC,sBAAsB,CAAC;AAF1C,wBAE2C"}

@@ -1,33 +1,82 @@
 {
-  "name": "react-native-rncustomerglu-example",
-  "description": "Example app for react-native-rncustomerglu",
-  "version": "0.0.1",
+  "name": "example",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
+    "test": "jest",
+    "lint": "eslint .",
+    "pods": "pod-install ios",
+    "validate": "npm test && npm run lint",
+    "test:example": "node scripts/test-example.js",
+    "postinstall": "chmod +x scripts/test-example.js",
+    "setup": "npm install --legacy-peer-deps && npm run pods",
+    "clean": "rm -rf node_modules && rm -rf ios/build && rm -rf android/build",
+    "rebuild": "npm run clean && npm run setup"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.17.7",
-    "@react-native-community/hooks": "^2.8.1",
-    "@react-native-community/push-notification-ios": "^1.10.1",
-    "@react-native-firebase/app": "^15.1.1",
-    "@react-native-firebase/messaging": "^15.1.1",
-    "@react-navigation/native": "^6.0.6",
-    "@react-navigation/native-stack": "^6.2.5",
+    "@react-native-async-storage/async-storage": "^1.24.0",
+    "@react-native-firebase/app": "^21.10.0",
+    "@react-native-firebase/messaging": "^21.10.0",
+    "example": "file:",
     "react": "18.2.0",
-    "react-native": "0.69.7",
-    "react-native-push-notification": "^8.1.1",
-    "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "3.29.0",
-    "react-native-webview": "^11.22.7"
+    "react-native": "0.73.1",
+    "react-native-customerglu": "file:../"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/runtime": "^7.12.5",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "metro-react-native-babel-preset": "^0.64.0"
-  }
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/babel-preset": "^0.73.1",
+    "@react-native/eslint-config": "^0.73.1",
+    "@react-native/metro-config": "^0.73.1",
+    "@react-native/typescript-config": "^0.73.1",
+    "@testing-library/react-native": "^12.4.3",
+    "@types/jest": "^29.5.0",
+    "@types/react": "^18.2.0",
+    "@types/react-native": "^0.72.0",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.2.1",
+    "eslint": "^8.0.0",
+    "jest": "^29.2.1",
+    "prettier": "^2.8.8",
+    "react-test-renderer": "18.2.0",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|@react-native|@customerglu)/)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

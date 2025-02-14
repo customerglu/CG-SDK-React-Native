@@ -1,19 +1,18 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-//#import "RNNotifications.h"
-
 #import "AppDelegate.h"
-#import <React/RCTDevLoadingView.h>
-#import <React/RCTBridge.h>
+
+#ifdef RCT_NEW_ARCH_ENABLED
+#import <React/CoreModulesPlugins.h>
+#import <React/RCTFabricSurfaceHostingProxyRootView.h>
+#import <React/RCTSurfacePresenter.h>
+#import <React/RCTSurfacePresenterBridgeAdapter.h>
+#import <ReactCommon/RCTTurboModuleManager.h>
+#import <react/config/ReactNativeConfig.h>
+#endif
+
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import <Firebase.h>
 #import <UserNotifications/UserNotifications.h>
-#import <UserNotifications/UNUserNotificationCenter.h>
 #import <RNCPushNotificationIOS.h>
 #import <React/RCTLinkingManager.h>
 @import CustomerGlu;
@@ -26,7 +25,6 @@
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 
-
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
   SKDescriptorMapper *layoutDescriptorMapper = [[SKDescriptorMapper alloc] initWithDefaults];
@@ -38,17 +36,17 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
-
-RCTBridge *rnBridge;
-
-//@implementation PublicBridgeHelper
-//-(RCTBridge*)getBridge{
-//  NSLog(@"rnBridge = @%@",rnBridge);
-//  return rnBridge;
-//}
-//@end
-
 @implementation AppDelegate
+
+#ifdef RCT_NEW_ARCH_ENABLED
+- (std::unique_ptr<facebook::react::JSExecutorFactory>)jsExecutorFactoryForBridge:(RCTBridge *)bridge
+{
+  _turboModuleManager = [[RCTTurboModuleManager alloc] initWithBridge:bridge
+                                                           delegate:self
+                                                          jsInvoker:bridge.jsCallInvoker];
+  return RCTAppSetupDefaultJsExecutorFactory(bridge, _turboModuleManager);
+}
+#endif
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity
  restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler
@@ -58,25 +56,38 @@ RCTBridge *rnBridge;
             continueUserActivity:userActivity
             restorationHandler:restorationHandler
          ];
-  
-//  return  [RCTLingki];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-
 {
   [FIRApp configure];
-  #ifdef FB_SONARKIT_ENABLED
-    InitializeFlipper(application);
-  #endif
   
+#ifdef FB_SONARKIT_ENABLED
+  InitializeFlipper(application);
+#endif
   
   [application registerForRemoteNotifications];
   
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  
+#ifdef RCT_NEW_ARCH_ENABLED
+  RCTSurfacePresenter *surfacePresenter = [[RCTSurfacePresenter alloc] initWithBridge:bridge
+                                                                    viewRegistry:nil];
+  _bridgeAdapter = [[RCTSurfacePresenterBridgeAdapter alloc] initWithBridge:bridge
+                                                           surfacePresenter:surfacePresenter];
+
+  _bridge = bridge;
+  _surfacePresenter = surfacePresenter;
+
+  NSDictionary *initProps = [self prepareInitialProps];
+  UIView *rootView = [[RCTFabricSurfaceHostingProxyRootView alloc] initWithBridge:bridge
+                                                                       moduleName:@"RncustomergluExample"
+                                                                initialProperties:initProps];
+#else
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"RncustomergluExample"
                                             initialProperties:nil];
+#endif
 
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
@@ -88,177 +99,75 @@ RCTBridge *rnBridge;
 
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
-//
-//   UNAuthorizationOptions authOptions = UNAuthorizationOptionAlert |
-//       UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
-//   [[UNUserNotificationCenter currentNotificationCenter]
-//       requestAuthorizationWithOptions:authOptions
-//       completionHandler:^(BOOL granted, NSError * _Nullable error) {
-//         // ...
-//       }];
-//  ;
-//
-////  [[CustomerGlu getInstance] isFcmApnWithFcmApn:@"fcm"];
-//
-//
-////  [FIRMessaging messaging].delegate = self;
-//
-////  customerGlu.isFcmApn(fcmApn:"fcm")
-//
-//  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//
-//  center.delegate = self;
-//
-//  [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-//
-//    if (!error) {
-//
-//           NSLog(@"request authorization succeeded!");
-//
-//    } }];
-//
-//
-//
-//  if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
-//
-//  {
-//
-//      [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound |UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-//
-//  }
-//
-//
-//
-//[application registerForRemoteNotifications];
 
   return YES;
 }
 
-
-//////Called when a notification is delivered to a foreground app.
--(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
-{
-
-  NSLog(@"cgUserNotificationCenter");
-  completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
-
-//  completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
-
-//  [[CustomerGlu getInstance] cgUserNotificationCenter:center willPresent:notification withCompletionHandler:completionHandler];
-}
-
-//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-//{
-//
-//
-////  [CustomerGlu getInstance].apnToken = [self stringWithDeviceToken:deviceToken];
-////  NSLog(@"deviceToken = @%@",deviceToken);
-//
-//// [RNCPushNotificationIOS didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-//}
-//- (NSString *)stringWithDeviceToken:(NSData *)deviceToken {
-//    const char *data = [deviceToken bytes];
-//    NSMutableString *token = [NSMutableString string];
-//
-//    for (NSUInteger i = 0; i < [deviceToken length]; i++) {
-//        [token appendFormat:@"%02.2hhX", data[i]];
-//    }
-//
-//    return [token copy];
-//}
-//// Required for the notification event. You must call the completion handler after handling the remote notification.
-//
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-//fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-//{
-//  NSLog(@"cgapplication");
-////  [[CustomerGlu getInstance] cgapplication:application didReceiveRemoteNotification:userInfo backgroundAlpha:0.5f auto_close_webview:TRUE fetchCompletionHandler:completionHandler];
-//  [RNCPushNotificationIOS didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
-//}
-//// Required for the registrationError event.
-//- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-//{
-// [RNCPushNotificationIOS didFailToRegisterForRemoteNotificationsWithError:error];
-//}
-//// Required for localNotification event
-//
-//
-//
-//- (void)userNotificationCenter:(UNUserNotificationCenter *)center
-//didReceiveNotificationResponse:(UNNotificationResponse *)response
-//         withCompletionHandler:(void (^)(void))completionHandler
-//{
-//  NSLog(@"displayBackgroundNotificationWithRemoteMessage");
-  //
-//  [RNCPushNotificationIOS didReceiveNotificationResponse:response];
-//}
-
-
-
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
 #if DEBUG
-  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" ];
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
 
+#pragma mark - Push Notification Handling
 
-#pragma mark -
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+  completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
+}
 
-
-// Required for the register event.
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
- [RNCPushNotificationIOS didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+  [RNCPushNotificationIOS didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
-// Required for the notification event. You must call the completion handler after handling the remote notification.
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
   [RNCPushNotificationIOS didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
-// Required for the registrationError event.
+
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
- [RNCPushNotificationIOS didFailToRegisterForRemoteNotificationsWithError:error];
+  [RNCPushNotificationIOS didFailToRegisterForRemoteNotificationsWithError:error];
 }
-// Required for localNotification event
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center
-didReceiveNotificationResponse:(UNNotificationResponse *)response
-         withCompletionHandler:(void (^)(void))completionHandler
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler
 {
-//  NSDictionary* dic = [[[[response notification] request] content] userInfo];
-//
-//  if(dic != NULL){
-//    if(dic[@"data"] != NULL){
-//      [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic[@"data"] auto_close_webview:TRUE];
-//    }else{
-//      [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic auto_close_webview:TRUE];
-//    }
-//  }
-//  if ([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-//      // User did tap at remote notification
-//    [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic auto_close_webview:TRUE];
-//
-//  }else{
-//    [[CustomerGlu getInstance] displayBackgroundNotificationWithRemoteMessage:dic[@"data"] auto_close_webview:TRUE];
-//  }
-  
-//  if ([response.notification.request.trigger isKindOfClass:[UNLocationNotificationTrigger class]]) {
-//      // User did tap at remote notification
-//
-//
-//  }
-
-
-  
   [RNCPushNotificationIOS didReceiveNotificationResponse:response];
+  completionHandler();
 }
 
-#pragma mark -
+#ifdef RCT_NEW_ARCH_ENABLED
+- (NSDictionary *)prepareInitialProps
+{
+  NSMutableDictionary *initProps = [NSMutableDictionary new];
+  return initProps;
+}
 
-  
+- (Class)getModuleClassFromName:(const char *)name
+{
+  return RCTCoreModulesClassProvider(name);
+}
+
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:(const std::string &)name
+                                                     jsInvoker:(std::shared_ptr<facebook::react::CallInvoker>)jsInvoker
+{
+  return nullptr;
+}
+
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:(const std::string &)name
+                                                      initParams:(const facebook::react::ObjCTurboModule::InitParams &)params
+{
+  return nullptr;
+}
+
+- (id<RCTTurboModule>)getModuleInstanceFromClass:(Class)moduleClass
+{
+  return RCTAppSetupDefaultModuleFromClass(moduleClass);
+}
+#endif
+
 @end
-

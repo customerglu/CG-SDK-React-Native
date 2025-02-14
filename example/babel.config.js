@@ -1,17 +1,28 @@
-const path = require('path');
-const pak = require('../package.json');
-
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
     [
       'module-resolver',
       {
-        extensions: ['.tsx', '.ts', '.js', '.json'],
+        root: ['.'],
+        extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
         alias: {
-          [pak.name]: path.join(__dirname, '..', pak.source),
+          '@customerglu/react-native-customerglu': '../src/index',
+          // Add other aliases if needed
+          'tests': './__tests__',
         },
       },
     ],
+    // Add any additional plugins needed for testing
+    '@babel/plugin-transform-modules-commonjs',
+    '@babel/plugin-transform-runtime',
   ],
+  env: {
+    test: {
+      plugins: ['@babel/plugin-transform-modules-commonjs'],
+    },
+    production: {
+      plugins: ['transform-remove-console'],
+    },
+  },
 };

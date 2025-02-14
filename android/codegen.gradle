@@ -1,0 +1,29 @@
+
+def codegenDir = new File(buildDir, "generated/source/codegen")
+
+task generateCodegenArtifacts(type: Exec) {
+    workingDir rootDir
+    commandLine "node",
+            "${rootDir}/node_modules/@react-native/codegen/lib/cli/combine/combine-js-to-schema-cli.js",
+            "--platform", "android",
+            "${codegenDir}/schema.json",
+            "${rootDir}/src"
+
+    doFirst {
+        codegenDir.mkdirs()
+    }
+}
+
+task generateSpec(type: Exec) {
+    dependsOn generateCodegenArtifacts
+    workingDir rootDir
+    commandLine "node",
+            "${rootDir}/node_modules/react-native/scripts/generate-specs-cli.js",
+            "--platform", "android",
+            "--schemaPath", "${codegenDir}/schema.json",
+            "--outputDir", "${codegenDir}",
+            "--libraryName", "RNCCustomerGlu",
+            "--libraryType", "modules"
+}
+
+preBuild.dependsOn generateSpec
