@@ -1,49 +1,74 @@
 buildscript {
-  if (project == rootProject) {
+    ext {
+        buildToolsVersion = "33.0.0"
+        minSdkVersion = 21
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        kotlinVersion = "1.8.10"
+        ndkVersion = "25.1.8937393"
+        
+        // New Architecture
+        newArchEnabled = true
+        // React Native version
+        reactNativeVersion = "0.74.0"
+    }
     repositories {
-      google()
-      mavenCentral()
-
-      maven { url "https://jitpack.io" }
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
     }
-
     dependencies {
-      classpath 'com.android.tools.build:gradle:4.2.0'
-
-
+        classpath("com.android.tools.build:gradle:7.4.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10")
     }
-  }
-
 }
 
 apply plugin: 'com.android.library'
-
-def safeExtGet(prop, fallback) {
-  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
-}
+apply plugin: 'kotlin-android'
 
 android {
-  compileSdkVersion safeExtGet('Rncustomerglu_compileSdkVersion', 34)
-  defaultConfig {
-    minSdkVersion safeExtGet('Rncustomerglu_minSdkVersion', 21)
-    targetSdkVersion safeExtGet('Rncustomerglu_targetSdkVersion', 34)
-    versionCode 1
-    versionName "1.0"
+    compileSdkVersion 34
+    namespace "com.reactnativerncustomerglu"
 
-  }
-
-  buildTypes {
-    release {
-      minifyEnabled false
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString())
     }
-  }
-  lintOptions {
-    disable 'GradleCompatible'
-  }
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    sourceSets {
+        main {
+            if (isNewArchitectureEnabled()) {
+                java.srcDirs += ['src/newarch/java']
+            } else {
+                java.srcDirs += ['src/oldarch/java']
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 repositories {
@@ -59,11 +84,20 @@ repositories {
 }
 
 dependencies {
-  //noinspection GradleDynamicVersion
-  implementation "com.facebook.react:react-native:+"  // From node_modules
-  implementation 'com.customerglu:CustomerGluLibrary:3.0.6'
-  implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
-  implementation 'com.google.code.gson:gson:2.8.6'
-  implementation 'androidx.cardview:cardview:1.0.0'
-  implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation "com.facebook.react:react-native:${reactNativeVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation 'com.customerglu:CustomerGluLibrary:3.0.6'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    
+    if (isNewArchitectureEnabled()) {
+        implementation "com.facebook.react:react-native-gradle-plugin"
+        implementation "com.facebook.react:hermes-engine"
+    }
+}
+
+def isNewArchitectureEnabled() {
+    return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
 }

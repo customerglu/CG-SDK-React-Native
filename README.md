@@ -1,30 +1,146 @@
-# CustomerGlu SDK
+# @customerglu/react-native-customerglu
 
-CustomerGlu SDK provides you Express Installation requiring minimal technical effort, with out of the box methods for every functionality.
+CustomerGlu React Native SDK with New Architecture (Fabric + TurboModules) Support
 
-# Pre-Requisites
+## Features
 
-### iOS
-Supports IOS 12.0+ and requires Xcode 12 or above to build.
+- Full support for React Native's New Architecture
+- Optimized performance with TurboModules
+- Native UI components built with Fabric
+- TypeScript support
+- Comprehensive event system
+- Cross-platform support (iOS & Android)
+
+## Installation
+
+```sh
+npm install @customerglu/react-native-customerglu
+# or
+yarn add @customerglu/react-native-customerglu
+```
+
+## Requirements
+
+- React Native 0.74.0 or higher
+- iOS 13.0 or higher
+- Android API level 21 or higher
+- Node.js 18 or higher
+- Xcode 14 or higher (for iOS)
+- Android Studio Hedgehog or higher
+- JDK 11 or higher
+- CMake 3.22.1
+- NDK 25.1.8937393
+
+## New Architecture Support
+
+This version includes full support for React Native's New Architecture:
+- TurboModules for better native module performance
+- Fabric for native UI components
+- JSI for direct native communication
+- Codegen for type-safe interfaces
+
+To enable the new architecture in your app:
 
 ### Android
-Supports API 21 and above. Please ensure the minSDKVersion in the app's build.gradle file reflects the same.
 
+In `android/gradle.properties`:
+```properties
+newArchEnabled=true
+```
 
-# Installation
+### iOS
 
-### Option 1
-Add the CustomerGlu React Native plugin in package.json file 
-``` 
-"@customerglu/react-native-customerglu": "^2.1.1"
-``` 
+In your Podfile:
+```ruby
+ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+```
 
-### Option 2  
-Run this command With npm:
-``` 
-npm install @customerglu/react-native-customerglu
-``` 
+## Usage
 
-# Initialisation & Functionalities
+```typescript
+import {
+  registerDevice,
+  sendData,
+  BannerWidget,
+  EmbedBannerWidget,
+} from '@customerglu/react-native-customerglu';
 
-Please refer to the [Documentation here](https://docs.customerglu.com/sdk/mobile-sdks#react-native)
+// Initialize SDK
+const initializeSDK = async () => {
+  await registerDevice({
+    userId: 'user123',
+    // ... other user data
+  });
+};
+
+// Use Banner Component
+const MyComponent = () => {
+  return <BannerWidget bannerId="your-banner-id" />;
+};
+
+// Send Events
+const sendCustomEvent = () => {
+  sendData({
+    eventName: 'custom_event',
+    eventProperties: {
+      // ... event properties
+    },
+  });
+};
+```
+
+## Migration
+
+If you're upgrading from an older version, please see our [Migration Guide](./MIGRATION.md) for detailed instructions on migrating to the new architecture.
+
+## API Reference
+
+### Core Methods
+
+- `registerDevice(userData: Object): Promise<boolean>`
+- `sendData(data: { eventName: string; eventProperties?: Object }): void`
+- `dataClear(): void`
+- `testIntegration(): void`
+
+### Campaign Methods
+
+- `loadCampaignById(id: string, config?: Object): void`
+- `loadCampaignWithUrl(url: string, config?: Object): void`
+- `openWallet(config?: Object): void`
+
+### Configuration Methods
+
+- `initCGSDK(env: string): void`
+- `enableAnalytic(enabled: boolean): void`
+- `allowAnonymousRegistration(enabled: boolean): void`
+- `disableGluSdk(disabled: boolean): void`
+
+### UI Components
+
+#### BannerWidget
+```typescript
+<BannerWidget bannerId="your-banner-id" />
+```
+
+#### EmbedBannerWidget
+```typescript
+<EmbedBannerWidget bannerId="your-banner-id" />
+```
+
+## Contributing
+
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+
+## License
+
+MIT
+
+## Support
+
+- Create a [GitHub issue](https://github.com/customerglu/CG-SDK-React-Native/issues) for bug reports, feature requests, or questions
+- Follow [@customerglu](https://twitter.com/customerglu) for announcements
+- Add a ⭐️ [star on GitHub](https://github.com/customerglu/CG-SDK-React-Native) to support the project!
+
+## Security
+
+If you believe you have found a security vulnerability in CustomerGlu SDK, we encourage you to responsibly disclose this and not open a public issue. Please email security@customerglu.com to disclose any security vulnerabilities.

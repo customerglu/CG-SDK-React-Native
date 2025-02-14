@@ -1,5 +1,17 @@
-
 {
   "extends": "./tsconfig",
-  "exclude": ["example"]
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "noEmit": false,
+    "composite": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./lib/.tsbuildinfo"
+  },
+  "exclude": [
+    "example",
+    "**/__tests__/**",
+    "**/__fixtures__/**",
+    "**/__mocks__/**"
+  ]
 }

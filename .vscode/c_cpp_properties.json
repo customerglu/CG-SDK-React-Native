@@ -1,0 +1,39 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/**",
+                "${workspaceFolder}/node_modules/react-native/ReactAndroid/src/main/jni/**",
+                "${workspaceFolder}/node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/turbomodule/core/jni/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/callinvoker/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/jsi/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/components/view/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/core/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/graphics/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/mapbuffer/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/runtimeexecutor/**",
+                "${workspaceFolder}/node_modules/react-native/ReactCommon/yoga/**",
+                "${workspaceFolder}/node_modules/hermes-engine/android/include/**"
+            ],
+            "defines": [
+                "FOLLY_NO_CONFIG",
+                "FOLLY_MOBILE=1",
+                "FOLLY_USE_LIBCPP=1",
+                "RCT_NEW_ARCH_ENABLED=1"
+            ],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "compileCommands": "${workspaceFolder}/cpp/compile_commands.json",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

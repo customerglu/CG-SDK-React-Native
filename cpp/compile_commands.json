@@ -1,0 +1,12 @@
+[
+  {
+    "directory": "${workspaceFolder}/cpp",
+    "file": "react-native-customerglu.cpp",
+    "command": "c++ -std=c++17 -I${workspaceFolder}/node_modules/react-native/ReactCommon -I${workspaceFolder}/node_modules/react-native/ReactAndroid/src/main/jni -I${workspaceFolder}/node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/turbomodule/core/jni -I${workspaceFolder}/node_modules/react-native/ReactCommon/callinvoker -I${workspaceFolder}/node_modules/react-native/ReactCommon/jsi -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/components/view -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/core -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/graphics -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/mapbuffer -I${workspaceFolder}/node_modules/react-native/ReactCommon/runtimeexecutor -I${workspaceFolder}/node_modules/react-native/ReactCommon/yoga -I${workspaceFolder}/node_modules/hermes-engine/android/include -DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DRCT_NEW_ARCH_ENABLED=1 -c react-native-customerglu.cpp -o react-native-customerglu.o"
+  },
+  {
+    "directory": "${workspaceFolder}/cpp",
+    "file": "react-native-customerglu.h",
+    "command": "c++ -std=c++17 -I${workspaceFolder}/node_modules/react-native/ReactCommon -I${workspaceFolder}/node_modules/react-native/ReactAndroid/src/main/jni -I${workspaceFolder}/node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/turbomodule/core/jni -I${workspaceFolder}/node_modules/react-native/ReactCommon/callinvoker -I${workspaceFolder}/node_modules/react-native/ReactCommon/jsi -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/components/view -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/core -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/graphics -I${workspaceFolder}/node_modules/react-native/ReactCommon/react/renderer/mapbuffer -I${workspaceFolder}/node_modules/react-native/ReactCommon/runtimeexecutor -I${workspaceFolder}/node_modules/react-native/ReactCommon/yoga -I${workspaceFolder}/node_modules/hermes-engine/android/include -DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DRCT_NEW_ARCH_ENABLED=1 -c react-native-customerglu.h -o react-native-customerglu.h.gch"
+  }
+]
