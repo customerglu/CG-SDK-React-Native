@@ -52,8 +52,8 @@ target 'RncustomergluExample' do
     # Ensure pods also build with new architecture
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
+        # Initialize preprocessor definitions
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
-        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_NEW_ARCH_ENABLED=1'
         
         # Enable all available hardening flags
         config.build_settings['DEAD_CODE_STRIPPING'] = 'YES'
@@ -70,7 +70,6 @@ target 'RncustomergluExample' do
         if target.name == "hermes-engine"
           config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
           config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-          config.build_settings['OTHER_CFLAGS'] = '$(inherited) -DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DHERMES_ENABLE_DEBUGGER=1'
         end
       end
 
@@ -83,15 +82,16 @@ target 'RncustomergluExample' do
       end
     end
 
-    react_native_post_install(installer)
+    react_native_post_install(
+      installer,
+      config[:reactNativePath]
+    )
 
     # Final Hermes configuration
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
         if target.name == "hermes-engine"
-          # Ensure hermes-engine builds for distribution
           config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-          # Add the path to the Hermes engine
           config.build_settings['HERMES_ENGINE_PATH'] = File.expand_path("../node_modules/react-native/sdks/hermes-engine", __dir__)
         end
       end
