@@ -55,15 +55,25 @@ target 'RncustomergluExample' do
         # Initialize preprocessor definitions
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
         
+        # Architecture settings for all targets
+        config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+        
         # Enable all available hardening flags
         config.build_settings['DEAD_CODE_STRIPPING'] = 'YES'
         config.build_settings['CLANG_WARN_DOCUMENTATION_COMMENTS'] = 'YES'
         config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'YES'
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+        
+        # Swift specific settings
+        if target.respond_to?(:product_type) && target.product_type == "com.apple.product-type.framework"
+          config.build_settings['SWIFT_VERSION'] = '5.0'
+          config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+        end
 
-        # Fix for Xcode 15 and arm64 architecture
-        if config.base_configuration_reference && target.platform_name == :ios
+        # Architecture settings for simulator
+        if config.build_settings['SDKROOT'] == 'iphonesimulator'
           config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+          config.build_settings['ARCHS'] = 'x86_64'
         end
         
         # Additional settings for Hermes
@@ -78,6 +88,18 @@ target 'RncustomergluExample' do
         target.build_configurations.each do |config|
           config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
           config.build_settings['SWIFT_VERSION'] = '5.0'
+        end
+      end
+      
+      # CustomerGlu specific settings
+      if target.name == "CustomerGlu" || target.name == "react-native-customerglu"
+        target.build_configurations.each do |config|
+          config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+          config.build_settings['SWIFT_VERSION'] = '5.0'
+          if config.build_settings['SDKROOT'] == 'iphonesimulator'
+            config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+            config.build_settings['ARCHS'] = 'x86_64'
+          end
         end
       end
     end
@@ -96,5 +118,5 @@ target 'RncustomergluExample' do
         end
       end
     end
-  end
+  end 
 end
