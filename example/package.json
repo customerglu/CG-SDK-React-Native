@@ -20,7 +20,6 @@
     "@react-native-async-storage/async-storage": "^1.24.0",
     "@react-native-firebase/app": "^21.10.0",
     "@react-native-firebase/messaging": "^21.10.0",
-    "example": "file:",
     "react": "18.2.0",
     "react-native": "0.73.1",
     "react-native-customerglu": "file:../"

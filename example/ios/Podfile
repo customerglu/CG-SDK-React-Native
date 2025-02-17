@@ -41,7 +41,7 @@ target 'RncustomergluExample' do
   )
     
   # Add CustomerGlu SDK
-  pod 'react-native-customerglu', :path => '../..'
+  pod 'react-native-customerglu', :path => '../node_modules/react-native-customerglu' 
    
   # Third-party dependencies
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
