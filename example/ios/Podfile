@@ -23,14 +23,7 @@ pod 'Firebase/Messaging'
 
 $RNFirebaseAsStaticFramework = true
 
-# Add this configuration
-def common_configuration
-  use_frameworks! :linkage => :static
-  pod 'boost', :podspec => '../node_modules/react-native/third-party-podspecs/boost.podspec', :modular_headers => true
-end
-
 target 'RncustomergluExample' do
-  common_configuration
   config = use_native_modules!
 
   use_react_native!(
@@ -73,13 +66,17 @@ target 'RncustomergluExample' do
         # Architecture settings for simulator
         if config.build_settings['SDKROOT'] == 'iphonesimulator'
           config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-          config.build_settings['ARCHS'] = 'x86_64'
+          config.build_settings['ARCHS[sdk=iphonesimulator*]'] = 'x86_64'
         end
+        
+        # C++ Standard Library configuration
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+        config.build_settings['CLANG_CXX_LIBRARY'] = 'libc++'
+        config.build_settings['HEADER_SEARCH_PATHS'] = '$(inherited) "$(PODS_ROOT)/boost" "$(PODS_ROOT)/boost-for-react-native" "$(PODS_ROOT)/RCT-Folly"'
         
         # Additional settings for Hermes
         if target.name == "hermes-engine"
           config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
-          config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
         end
       end
 
@@ -96,10 +93,8 @@ target 'RncustomergluExample' do
         target.build_configurations.each do |config|
           config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
           config.build_settings['SWIFT_VERSION'] = '5.0'
-          if config.build_settings['SDKROOT'] == 'iphonesimulator'
-            config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-            config.build_settings['ARCHS'] = 'x86_64'
-          end
+          config.build_settings['ENABLE_BITCODE'] = 'NO'
+          config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
         end
       end
     end

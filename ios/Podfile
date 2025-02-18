@@ -13,7 +13,7 @@ target 'Rncustomerglu' do
     :fabric_enabled => true,
     :hermes_enabled => true,
     :flipper_configuration => FlipperConfiguration.enabled,
-    :app_path => "#{Pod::Config.instance.installation_root}/.."
+    :app_path => File.dirname(__dir__)
   )
 end
 
@@ -23,7 +23,7 @@ post_install do |installer|
       # Architecture settings for simulator
       if config.build_settings['SDKROOT'] == 'iphonesimulator'
         config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-        config.build_settings['ARCHS'] = 'x86_64'
+        config.build_settings['ARCHS[sdk=iphonesimulator*]'] = 'x86_64'
       end
       
       # Basic settings
@@ -33,6 +33,8 @@ post_install do |installer|
       config.build_settings['CLANG_WARN_DOCUMENTATION_COMMENTS'] = 'YES'
       config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'YES'
       config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      config.build_settings['CLANG_CXX_LIBRARY'] = 'libc++'
+      config.build_settings['HEADER_SEARCH_PATHS'] = '$(inherited) "$(PODS_ROOT)/boost" "$(PODS_ROOT)/boost-for-react-native" "$(PODS_ROOT)/RCT-Folly"'
       
       # Swift specific settings
       if target.respond_to?(:product_type) && target.product_type == "com.apple.product-type.framework"

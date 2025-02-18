@@ -10,9 +10,8 @@ module.exports = {
           ],
         },
         ios: {
-          project: null,
-          podspecPath: null
-        } // This disables auto-linking for iOS
+          podspecPath: "../react-native-customerglu.podspec",
+        },
       },
     },
   },
