@@ -210,7 +210,7 @@ export default function App() {
           {/* <View style={{ minHeight: , flexGrow:1 }}> */}
        
             <BannerWidget
-              style={[styles.bannerInside, { flexGrow: 1,height:bannerHeight }]}
+              style={[styles.bannerInside, { flexGrow: 1, height:bannerHeight }]}
               bannerId="homescreen_banner"
               
             />
