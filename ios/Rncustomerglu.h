@@ -1,6 +1,6 @@
 
 #import "generated/RNReactNativeCustomergluSpec/RNReactNativeCustomergluSpec.h"
 
-@interface Rncustomerglu : NSObject <NativeRncustomergluSpec>
+@interface Rncustomerglu : NSObject <NativeReactNativeCustomergluSpec>
 
 @end
