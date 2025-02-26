@@ -1,30 +1,33 @@
-# CustomerGlu SDK
+# @customerglu/react-native-customerglu
 
-CustomerGlu SDK provides you Express Installation requiring minimal technical effort, with out of the box methods for every functionality.
+CustomerGlu React Native plugin
 
-# Pre-Requisites
+## Installation
 
-### iOS
-Supports IOS 12.0+ and requires Xcode 12 or above to build.
-
-### Android
-Supports API 21 and above. Please ensure the minSDKVersion in the app's build.gradle file reflects the same.
-
-
-# Installation
-
-### Option 1
-Add the CustomerGlu React Native plugin in package.json file 
-``` 
-"@customerglu/react-native-customerglu": "^2.1.1"
-``` 
-
-### Option 2  
-Run this command With npm:
-``` 
+```sh
 npm install @customerglu/react-native-customerglu
-``` 
+```
 
-# Initialisation & Functionalities
+## Usage
 
-Please refer to the [Documentation here](https://docs.customerglu.com/sdk/mobile-sdks#react-native)
+
+```js
+import { multiply } from '@customerglu/react-native-customerglu';
+
+// ...
+
+const result = multiply(3, 7);
+```
+
+
+## Contributing
+
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+
+## License
+
+MIT
+
+---
+
+Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)

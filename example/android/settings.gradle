@@ -1,15 +1,6 @@
-rootProject.name = 'RncustomergluExample'
-apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+plugins { id("com.facebook.react.settings") }
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+rootProject.name = 'customerglu.reactnativecustomerglu.example'
 include ':app'
-
-include ':reactnativerncustomerglu'
-project(':reactnativerncustomerglu').projectDir = new File(rootProject.projectDir, '../../android')
-
-
-//dependencyResolutionManagement {
-//  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-//  repositories {
-//    maven { url 'https://jitpack.io' }
-//
-//  }
-//}
+includeBuild('../node_modules/@react-native/gradle-plugin')

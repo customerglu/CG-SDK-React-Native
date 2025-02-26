@@ -1,33 +1,31 @@
 {
-  "name": "react-native-rncustomerglu-example",
-  "description": "Example app for react-native-rncustomerglu",
+  "name": "@customerglu/react-native-customerglu-example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
+    "build:android": "react-native build-android --extra-params \"--no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a\"",
+    "build:ios": "react-native build-ios --scheme ReactNativeCustomergluExample --mode Debug --extra-params \"-sdk iphonesimulator CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO\""
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.17.7",
-    "@react-native-community/hooks": "^2.8.1",
-    "@react-native-community/push-notification-ios": "^1.10.1",
-    "@react-native-firebase/app": "^15.1.1",
-    "@react-native-firebase/messaging": "^15.1.1",
-    "@react-navigation/native": "^6.0.6",
-    "@react-navigation/native-stack": "^6.2.5",
-    "react": "18.2.0",
-    "react-native": "0.69.7",
-    "react-native-push-notification": "^8.1.1",
-    "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "3.29.0",
-    "react-native-webview": "^11.22.7"
+    "react": "19.0.0",
+    "react-native": "0.78.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/runtime": "^7.12.5",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "metro-react-native-babel-preset": "^0.64.0"
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "15.0.1",
+    "@react-native-community/cli-platform-android": "15.0.1",
+    "@react-native-community/cli-platform-ios": "15.0.1",
+    "@react-native/babel-preset": "0.78.0",
+    "@react-native/metro-config": "0.78.0",
+    "@react-native/typescript-config": "0.78.0",
+    "react-native-builder-bob": "^0.37.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
