@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sendData:(NSDictionary *)obj;
 - (void)openWallet:(NSDictionary *)obj;
 - (void)initCGSDK:(NSString *)obj;
-- (void)loadCampaignById:(NSString *)id
+- (void)loadCampaignById:(NSString *)campid
                      obj:(NSDictionary *)obj;
 - (void)loadCampaignWithUrl:(NSString *)url
                         obj:(NSDictionary *)obj;
@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)allowAnonymousRegistration:(BOOL)b;
 - (void)gluSDKDebuggingMode:(BOOL)b;
 - (void)enableEntryPoints:(BOOL)b;
-- (void)isFcmApn:(BOOL)id;
+- (void)isFcmApn:(BOOL)value;
 - (void)UpdateProfile:(NSDictionary *)obj;
 - (void)DisplayCustomerGluNotification;
 - (void)DisplayCGNotification:(NSDictionary *)obj

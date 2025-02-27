@@ -68,7 +68,7 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
 
   @ReactMethod
   @DoNotStrip
-  public abstract void loadCampaignById(String id, @Nullable ReadableMap obj);
+  public abstract void loadCampaignById(String campid, @Nullable ReadableMap obj);
 
   @ReactMethod
   @DoNotStrip
@@ -92,7 +92,7 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
 
   @ReactMethod
   @DoNotStrip
-  public abstract void isFcmApn(boolean id);
+  public abstract void isFcmApn(boolean value);
 
   @ReactMethod
   @DoNotStrip

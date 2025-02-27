@@ -28,13 +28,13 @@ public:
   virtual void sendData(jsi::Runtime &rt, jsi::Object obj) = 0;
   virtual void openWallet(jsi::Runtime &rt, std::optional<jsi::Object> obj) = 0;
   virtual void initCGSDK(jsi::Runtime &rt, jsi::String obj) = 0;
-  virtual void loadCampaignById(jsi::Runtime &rt, jsi::String id, std::optional<jsi::Object> obj) = 0;
+  virtual void loadCampaignById(jsi::Runtime &rt, jsi::String campid, std::optional<jsi::Object> obj) = 0;
   virtual void loadCampaignWithUrl(jsi::Runtime &rt, jsi::String url, jsi::Object obj) = 0;
   virtual void enableAnalytic(jsi::Runtime &rt, bool b) = 0;
   virtual void allowAnonymousRegistration(jsi::Runtime &rt, bool b) = 0;
   virtual void gluSDKDebuggingMode(jsi::Runtime &rt, bool b) = 0;
   virtual void enableEntryPoints(jsi::Runtime &rt, bool b) = 0;
-  virtual void isFcmApn(jsi::Runtime &rt, bool id) = 0;
+  virtual void isFcmApn(jsi::Runtime &rt, bool value) = 0;
   virtual void UpdateProfile(jsi::Runtime &rt, jsi::Object obj) = 0;
   virtual void DisplayCustomerGluNotification(jsi::Runtime &rt) = 0;
   virtual void DisplayCGNotification(jsi::Runtime &rt, jsi::Object obj, std::optional<bool> autoclosewebview) = 0;
@@ -141,13 +141,13 @@ private:
       return bridging::callFromJs<void>(
           rt, &T::initCGSDK, jsInvoker_, instance_, std::move(obj));
     }
-    void loadCampaignById(jsi::Runtime &rt, jsi::String id, std::optional<jsi::Object> obj) override {
+    void loadCampaignById(jsi::Runtime &rt, jsi::String campid, std::optional<jsi::Object> obj) override {
       static_assert(
           bridging::getParameterCount(&T::loadCampaignById) == 3,
           "Expected loadCampaignById(...) to have 3 parameters");
 
       return bridging::callFromJs<void>(
-          rt, &T::loadCampaignById, jsInvoker_, instance_, std::move(id), std::move(obj));
+          rt, &T::loadCampaignById, jsInvoker_, instance_, std::move(campid), std::move(obj));
     }
     void loadCampaignWithUrl(jsi::Runtime &rt, jsi::String url, jsi::Object obj) override {
       static_assert(
@@ -189,13 +189,13 @@ private:
       return bridging::callFromJs<void>(
           rt, &T::enableEntryPoints, jsInvoker_, instance_, std::move(b));
     }
-    void isFcmApn(jsi::Runtime &rt, bool id) override {
+    void isFcmApn(jsi::Runtime &rt, bool value) override {
       static_assert(
           bridging::getParameterCount(&T::isFcmApn) == 2,
           "Expected isFcmApn(...) to have 2 parameters");
 
       return bridging::callFromJs<void>(
-          rt, &T::isFcmApn, jsInvoker_, instance_, std::move(id));
+          rt, &T::isFcmApn, jsInvoker_, instance_, std::move(value));
     }
     void UpdateProfile(jsi::Runtime &rt, jsi::Object obj) override {
       static_assert(

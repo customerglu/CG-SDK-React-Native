@@ -1,4 +1,5 @@
 #import "Rncustomerglu.h"
+#import "CustomerGlu/CustomerGlu-Swift.h"
 
 @implementation Rncustomerglu
 RCT_EXPORT_MODULE()
@@ -82,11 +83,11 @@ RCT_EXPORT_MODULE()
     
 }
 
-- (void)isFcmApn:(BOOL)id { 
+- (void)isFcmApn:(BOOL)value {
     
 }
 
-- (void)loadCampaignById:(nonnull NSString *)id obj:(nonnull NSDictionary *)obj { 
+- (void)loadCampaignById:(nonnull NSString *)campid obj:(nonnull NSDictionary *)obj {
     
 }
 

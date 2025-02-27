@@ -35,8 +35,8 @@ export function initCGSDK(obj: string): void {
   return ReactNativeCustomerglu.initCGSDK(obj);
 }
 
-export function loadCampaignById(id: string, obj: Object = {}): void {
-  return ReactNativeCustomerglu.loadCampaignById(id, obj);
+export function loadCampaignById(campid: string, obj: Object = {}): void {
+  return ReactNativeCustomerglu.loadCampaignById(campid, obj);
 }
 export function loadCampaignWithUrl(url: string, obj: Object): void {
   return ReactNativeCustomerglu.loadCampaignWithUrl(url, obj);
@@ -54,8 +54,8 @@ export function gluSDKDebuggingMode(b: boolean): void {
   return ReactNativeCustomerglu.gluSDKDebuggingMode(b);
 }
 
-export function isFcmApn(id: boolean): void {
-  return ReactNativeCustomerglu.isFcmApn(id);
+export function isFcmApn(value: boolean): void {
+  return ReactNativeCustomerglu.isFcmApn(value);
 }
 export function UpdateProfile(obj: Object): void {
   return ReactNativeCustomerglu.UpdateProfile(obj);
