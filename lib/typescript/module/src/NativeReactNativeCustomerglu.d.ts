@@ -8,13 +8,13 @@ export interface Spec extends TurboModule {
     sendData(obj: Object): void;
     openWallet(obj?: Object): void;
     initCGSDK(obj: string): void;
-    loadCampaignById(id: string, obj?: Object): void;
+    loadCampaignById(campid: string, obj?: Object): void;
     loadCampaignWithUrl(url: string, obj: Object): void;
     enableAnalytic(b: boolean): void;
     allowAnonymousRegistration(b: boolean): void;
     gluSDKDebuggingMode(b: boolean): void;
     enableEntryPoints(b: boolean): void;
-    isFcmApn(id: boolean): void;
+    isFcmApn(value: boolean): void;
     UpdateProfile(obj: Object): void;
     DisplayCustomerGluNotification(): void;
     DisplayCGNotification(obj: Object, autoclosewebview?: boolean): void;
