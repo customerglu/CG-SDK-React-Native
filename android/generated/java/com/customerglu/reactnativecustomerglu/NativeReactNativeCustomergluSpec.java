@@ -44,6 +44,10 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
 
   @ReactMethod
   @DoNotStrip
+  public abstract void multiply(double a, double b, Promise promise);
+
+  @ReactMethod
+  @DoNotStrip
   public abstract void registerDevice(ReadableMap data, Promise promise);
 
   @ReactMethod

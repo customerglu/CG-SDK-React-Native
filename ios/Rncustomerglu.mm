@@ -1,5 +1,25 @@
 #import "Rncustomerglu.h"
-#import "CustomerGlu/CustomerGlu-Swift.h"
+#import <CustomerGlu/CustomerGlu.h>
+#import <React/RCTEventEmitter.h>
+#import "RCTFabricSurface.h"
+#import "MultiplyFunction.h"
+// Import the Swift-generated header
+ #import "ReactNativeCustomerglu-Swift.h"
+
+// Import C++ standard library headers
+#include <optional>
+#include <tuple>
+#include <utility>
+
+// Forward declaration of ReactNativeCustomerglu class
+@interface ReactNativeCustomerglu : RCTEventEmitter <RCTBridgeModule>
++ (instancetype)shared;
+- (void)initCGSDK:(NSString *)flag;
+- (void)registerDevice:(NSDictionary *)userdata
+              resolver:(RCTPromiseResolveBlock)resolve
+              rejecter:(RCTPromiseRejectBlock)reject;
+- (void)emitEvent:(NSString *)name body:(id)body;
+@end
 
 @implementation Rncustomerglu
 RCT_EXPORT_MODULE()
@@ -76,7 +96,13 @@ RCT_EXPORT_MODULE()
 }
 
 - (void)initCGSDK:(nonnull NSString *)obj { 
-    
+    // Forward to the implementation in ReactNativeCustomerglu
+    id instance = [ReactNativeCustomerglu shared];
+    if (instance) {
+        [instance initCGSDK:obj];
+    } else {
+        NSLog(@"ReactNativeCustomerglu shared instance is nil");
+    }
 }
 
 - (void)isCampaignValid:(nonnull NSString *)campaignId dataFlag:(nonnull NSString *)dataFlag resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject { 
@@ -100,7 +126,14 @@ RCT_EXPORT_MODULE()
 }
 
 - (void)registerDevice:(nonnull NSDictionary *)data resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject { 
-    
+    // Forward to the implementation in ReactNativeCustomerglu
+    id instance = [ReactNativeCustomerglu shared];
+    if (instance) {
+        [instance registerDevice:data resolver:resolve rejecter:reject];
+    } else {
+        NSLog(@"ReactNativeCustomerglu shared instance is nil");
+        resolve(@(NO));
+    }
 }
 
 - (void)removeListeners:(double)count { 
@@ -117,6 +150,12 @@ RCT_EXPORT_MODULE()
 
 - (void)setOpenWalletAsFallback:(BOOL)value { 
     
+}
+
+- (void)multiply:(double)a b:(double)b resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject {
+    // Call the Objective-C implementation
+    double result = [MultiplyFunction multiply:a:b];
+    resolve(@(result));
 }
 
 @end

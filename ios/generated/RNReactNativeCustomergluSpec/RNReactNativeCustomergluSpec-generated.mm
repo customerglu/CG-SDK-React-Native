@@ -34,6 +34,10 @@ namespace facebook::react {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "removeListeners", @selector(removeListeners:), args, count);
     }
 
+    static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_multiply(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+      return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, PromiseKind, "multiply", @selector(multiply:b:resolve:reject:), args, count);
+    }
+
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_registerDevice(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, PromiseKind, "registerDevice", @selector(registerDevice:resolve:reject:), args, count);
     }
@@ -141,6 +145,9 @@ namespace facebook::react {
         
         
         methodMap_["removeListeners"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_removeListeners};
+        
+        
+        methodMap_["multiply"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_multiply};
         
         
         methodMap_["registerDevice"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_registerDevice};

@@ -10,9 +10,10 @@ interface EmbedViewProps extends ViewProps {
   embedId?: string;
 }
 
-export const BannerWidget = requireNativeComponent<CustomViewProps>('BannerView');
-export const EmbedBannerWidget = requireNativeComponent<EmbedViewProps>('CGEmbedView');
-
+export const BannerWidget =
+  requireNativeComponent<CustomViewProps>('BannerView');
+export const EmbedBannerWidget =
+  requireNativeComponent<EmbedViewProps>('CGEmbedView');
 
 export function RegisterDevice(userdata: Object): Promise<Boolean> {
   return ReactNativeCustomerglu.registerDevice(userdata);
@@ -74,7 +75,10 @@ export function DisplayCGBackgroundNotification(
   obj: Object,
   autoclosewebview: boolean = false
 ): void {
-  return ReactNativeCustomerglu.DisplayCGBackgroundNotification(obj, autoclosewebview);
+  return ReactNativeCustomerglu.DisplayCGBackgroundNotification(
+    obj,
+    autoclosewebview
+  );
 }
 export function SetCurrentClassName(clname: string): Promise<string> {
   return ReactNativeCustomerglu.SetCurrentClassName(clname);
@@ -114,3 +118,6 @@ export function getCampaignStatus(
   return ReactNativeCustomerglu.getCampaignStatus(campaignId, dataFlag);
 }
 
+export function multiply(a: number, b: number): Promise<number> {
+  return ReactNativeCustomerglu.multiply(a, b);
+}

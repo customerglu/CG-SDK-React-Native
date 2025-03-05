@@ -22,6 +22,7 @@ protected:
 public:
   virtual void addListener(jsi::Runtime &rt, jsi::String eventType) = 0;
   virtual void removeListeners(jsi::Runtime &rt, double count) = 0;
+  virtual jsi::Value multiply(jsi::Runtime &rt, double a, double b) = 0;
   virtual jsi::Value registerDevice(jsi::Runtime &rt, jsi::Object data) = 0;
   virtual void UpdateUserAttributes(jsi::Runtime &rt, jsi::Object userdata) = 0;
   virtual void dataClear(jsi::Runtime &rt) = 0;
@@ -92,6 +93,14 @@ private:
 
       return bridging::callFromJs<void>(
           rt, &T::removeListeners, jsInvoker_, instance_, std::move(count));
+    }
+    jsi::Value multiply(jsi::Runtime &rt, double a, double b) override {
+      static_assert(
+          bridging::getParameterCount(&T::multiply) == 3,
+          "Expected multiply(...) to have 3 parameters");
+
+      return bridging::callFromJs<jsi::Value>(
+          rt, &T::multiply, jsInvoker_, instance_, std::move(a), std::move(b));
     }
     jsi::Value registerDevice(jsi::Runtime &rt, jsi::Object data) override {
       static_assert(

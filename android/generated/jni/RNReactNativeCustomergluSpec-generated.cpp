@@ -22,6 +22,11 @@ static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_r
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "removeListeners", "(D)V", args, count, cachedMethodId);
 }
 
+static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_multiply(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+  static jmethodID cachedMethodId = nullptr;
+  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "multiply", "(DDLcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
+}
+
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_registerDevice(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
   static jmethodID cachedMethodId = nullptr;
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "registerDevice", "(Lcom/facebook/react/bridge/ReadableMap;Lcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
@@ -151,6 +156,7 @@ NativeReactNativeCustomergluSpecJSI::NativeReactNativeCustomergluSpecJSI(const J
   : JavaTurboModule(params) {
   methodMap_["addListener"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_addListener};
   methodMap_["removeListeners"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_removeListeners};
+  methodMap_["multiply"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_multiply};
   methodMap_["registerDevice"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_registerDevice};
   methodMap_["UpdateUserAttributes"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateUserAttributes};
   methodMap_["dataClear"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_dataClear};

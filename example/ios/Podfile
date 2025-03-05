@@ -1,4 +1,6 @@
 ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+ENV['USE_FABRIC'] = '1'
+ENV['USE_HERMES'] = '1'
 
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
@@ -9,7 +11,6 @@ require Pod::Executable.execute_command('node', ['-p',
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
-
 
 use_frameworks! :linkage => :static
 
@@ -22,7 +23,7 @@ target 'ReactNativeCustomergluExample' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
+  
 
   pre_install do |installer|
     system("cd ../../ && npx bob build --target codegen")
@@ -36,5 +37,76 @@ target 'ReactNativeCustomergluExample' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    
+    # Simple fix for RCTFabricSurface.h
+    require 'fileutils'
+    source_file = File.join(File.dirname(__FILE__), "../../node_modules/react-native/React/Fabric/Surface/RCTFabricSurface.h")
+    target_dir = File.join(File.dirname(__FILE__), "Pods/Headers/Public/React-Core/React/Fabric/Surface")
+    FileUtils.mkdir_p(target_dir)
+    FileUtils.cp(source_file, target_dir)
+    puts "Copied RCTFabricSurface.h to React-Core headers"
+    
+    # Add C++ configurations to all targets
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++20'
+        config.build_settings['CLANG_CXX_LIBRARY'] = 'libc++'
+        config.build_settings['OTHER_CPLUSPLUSFLAGS'] = '$(inherited) -std=c++20'
+        
+        # Add comprehensive header search paths
+        base_header_search_paths = [
+          '$(inherited)',
+          '$(PODS_ROOT)/boost',
+          '$(PODS_ROOT)/RCT-Folly',
+          '$(PODS_ROOT)/DoubleConversion',
+          '$(SRCROOT)/../node_modules/react-native/ReactCommon',
+          '$(PODS_ROOT)/Headers/Private/React-Core',
+          '${PODS_ROOT}/../../node_modules/react-native/ReactCommon',
+          '${PODS_ROOT}/../../node_modules/react-native/ReactCommon/react/debug',
+          '${PODS_ROOT}/../../node_modules/react-native/ReactCommon/react/renderer/components',
+          '${PODS_ROOT}/../../node_modules/react-native/ReactCommon/react/renderer/core',
+          '${PODS_ROOT}/../../node_modules/react-native/React/Fabric/Surface',
+          '$(PODS_ROOT)/fmt/include',
+          '$(PODS_TARGET_SRCROOT)',
+          '$(PODS_ROOT)/Headers/Public/React-hermes',
+          '$(PODS_ROOT)/Headers/Public/hermes-engine',
+          '$(PODS_ROOT)/Headers/Public/fmt',
+          '$(PODS_ROOT)/Headers/Public/React-Fabric',
+          '$(PODS_ROOT)/Headers/Public/React-RCTFabric',
+          '$(PODS_ROOT)/Headers/Public/React-Core/React',
+          '$(PODS_ROOT)/Headers/Public/React-graphics',
+          '$(PODS_ROOT)/Headers/Public/React-debug',
+          '$(PODS_ROOT)/Headers/Public/React-Fabric/react/renderer/components/view/platform/cxx',
+          '$(PODS_ROOT)/Headers/Public/ReactCommon',
+          '$(PODS_ROOT)/Headers/Public/React-Core',
+          # Add direct paths to React Fabric headers
+          '${SRCROOT}/../../node_modules/react-native/React/Fabric/Surface',
+          '${SRCROOT}/../../node_modules/react-native/React'
+        ]
+
+        config.build_settings['HEADER_SEARCH_PATHS'] = base_header_search_paths
+
+        # # Add specific configurations for problematic targets
+        case target.name
+        when /^fmt/
+          config.build_settings['HEADER_SEARCH_PATHS'] += ['$(PODS_TARGET_SRCROOT)/include']
+        when /^RCT-Folly/
+          config.build_settings['HEADER_SEARCH_PATHS'] += [
+            '$(PODS_ROOT)/fmt/include',
+            '$(PODS_TARGET_SRCROOT)'
+          ]
+        when /^glog/
+          config.build_settings['HEADER_SEARCH_PATHS'] += ['$(PODS_TARGET_SRCROOT)/src']
+        when /^React-RCTFabric/
+          config.build_settings['DEFINES_MODULE'] = 'YES'
+          config.build_settings['MODULEMAP_FILE'] = File.join(File.dirname(__FILE__), "React-RCTFabric.modulemap")
+        end
+        
+        # Add C++ preprocessor definitions
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_NEW_ARCH_ENABLED=1'
+        config.build_settings['OTHER_CPLUSPLUSFLAGS'] = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1'
+      end
+    end
   end
 end

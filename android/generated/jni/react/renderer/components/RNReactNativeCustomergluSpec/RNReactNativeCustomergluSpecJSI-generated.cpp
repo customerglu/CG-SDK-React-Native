@@ -25,6 +25,13 @@ static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_removeLi
   );
   return jsi::Value::undefined();
 }
+static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_multiply(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
+  return static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->multiply(
+    rt,
+    count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asNumber(),
+    count <= 1 ? throw jsi::JSError(rt, "Expected argument in position 1 to be passed") : args[1].asNumber()
+  );
+}
 static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_registerDevice(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
   return static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->registerDevice(
     rt,
@@ -206,6 +213,7 @@ NativeReactNativeCustomergluCxxSpecJSI::NativeReactNativeCustomergluCxxSpecJSI(s
   : TurboModule("Rncustomerglu", jsInvoker) {
   methodMap_["addListener"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_addListener};
   methodMap_["removeListeners"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_removeListeners};
+  methodMap_["multiply"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_multiply};
   methodMap_["registerDevice"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_registerDevice};
   methodMap_["UpdateUserAttributes"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_UpdateUserAttributes};
   methodMap_["dataClear"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_dataClear};

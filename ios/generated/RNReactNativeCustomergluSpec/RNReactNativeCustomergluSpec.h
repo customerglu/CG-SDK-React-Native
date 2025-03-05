@@ -37,6 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addListener:(NSString *)eventType;
 - (void)removeListeners:(double)count;
+- (void)multiply:(double)a
+               b:(double)b
+         resolve:(RCTPromiseResolveBlock)resolve
+          reject:(RCTPromiseRejectBlock)reject;
 - (void)registerDevice:(NSDictionary *)data
                resolve:(RCTPromiseResolveBlock)resolve
                 reject:(RCTPromiseRejectBlock)reject;

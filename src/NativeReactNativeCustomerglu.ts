@@ -6,6 +6,9 @@ export interface Spec extends TurboModule {
   addListener(eventType: string): void;
   removeListeners(count: number): void;
 
+  // New multiply function
+  multiply(a: number, b: number): Promise<number>;
+  
   registerDevice(data:Object): Promise<Boolean>;
   UpdateUserAttributes(userdata: Object): void;
   dataClear(): void;
