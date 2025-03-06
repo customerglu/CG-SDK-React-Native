@@ -11,5 +11,9 @@
 #import "React/RCTBridgeModule.h"
 #import "React/RCTEventEmitter.h"
 
+#import <ReactNativeCustomerglu/Rncustomerglu.h>
+#import <WebKit/WebKit.h>
+#import <UserNotifications/UserNotifications.h>
+#import <UserNotifications/UNNotification.h>
 
 #endif /* ReactNativeCustomerglu_Bridging_Header_h */

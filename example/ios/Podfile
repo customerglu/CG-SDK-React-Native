@@ -14,7 +14,7 @@ prepare_react_native_project!
 use_frameworks! :linkage => :static
 
 target 'ReactNativeCustomergluExample' do
-  pod 'CustomerGlu', '3.0.7'
+  pod 'CustomerGlu', '3.0.10'
   config = use_native_modules!
 
   use_react_native!(

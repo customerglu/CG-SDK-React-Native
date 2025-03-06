@@ -15,9 +15,9 @@
 #error This file must be compiled as Obj-C++. If you are importing it, you must change your file extension to .mm.
 #endif
 
-// Avoid multiple includes of RNReactNativeCustomergluSpec symbols
-#ifndef RNReactNativeCustomergluSpec_H
-#define RNReactNativeCustomergluSpec_H
+// Avoid multiple includes of RNCustomergluSpec symbols
+#ifndef RNCustomergluSpec_H
+#define RNCustomergluSpec_H
 
 #import <Foundation/Foundation.h>
 #import <RCTRequired/RCTRequired.h>
@@ -103,4 +103,4 @@ namespace facebook::react {
 } // namespace facebook::react
 
 NS_ASSUME_NONNULL_END
-#endif // RNReactNativeCustomergluSpec_H
+#endif // RNCustomergluSpec_H

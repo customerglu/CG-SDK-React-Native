@@ -26,6 +26,6 @@ public:
 
 
 JSI_EXPORT
-std::shared_ptr<TurboModule> RNReactNativeCustomergluSpec_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params);
+std::shared_ptr<TurboModule> RNCustomergluSpec_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params);
 
 } // namespace facebook::react

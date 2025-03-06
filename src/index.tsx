@@ -54,7 +54,7 @@ export function gluSDKDebuggingMode(b: boolean): void {
   return ReactNativeCustomerglu.gluSDKDebuggingMode(b);
 }
 
-export function isFcmApn(value: boolean): void {
+export function isFcmApn(value: string): void {
   return ReactNativeCustomerglu.isFcmApn(value);
 }
 export function UpdateProfile(obj: Object): void {

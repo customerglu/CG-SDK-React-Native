@@ -91,73 +91,73 @@ export default function App() {
 
     // Set up event emitter
     console.log('Setting up event emitter...');
-    const { RnCustomerglu } = NativeModules;
+    // const { RnCustomerglu } = NativeModules;
 
-    const eventEmitter = new NativeEventEmitter(RnCustomerglu);
-    console.log('Event emitter created');
+    // const eventEmitter = new NativeEventEmitter(RnCustomerglu);
+    // console.log('Event emitter created');
 
-    // Add analytics event listener
-    const eventanalytics = eventEmitter.addListener(
-      'CUSTOMERGLU_ANALYTICS_EVENT',
-      (data) => {
-        console.log('Analytics event received:', data);
-        try {
-          if (typeof data === 'string') {
-            data = JSON.parse(data);
-          }
-          console.log('Parsed analytics data:', data);
-        } catch (e) {
-          console.error('Error parsing analytics data:', e);
-        }
-      }
-    );
+    // // Add analytics event listener
+    // const eventanalytics = eventEmitter.addListener(
+    //   'CUSTOMERGLU_ANALYTICS_EVENT',
+    //   (data) => {
+    //     console.log('Analytics event received:', data);
+    //     try {
+    //       if (typeof data === 'string') {
+    //         data = JSON.parse(data);
+    //       }
+    //       console.log('Parsed analytics data:', data);
+    //     } catch (e) {
+    //       console.error('Error parsing analytics data:', e);
+    //     }
+    //   }
+    // );
 
-    // Add banner height event listener
-    const bannerHeightListener = eventEmitter.addListener(
-      'CGBANNER_FINAL_HEIGHT',
-      (data) => {
-        console.log('bannerHeight event received:', data);
-        try {
-          if (typeof data === 'string') {
-            data = JSON.parse(data);
-          }
-          console.log('Parsed bannerHeight data:', data);
+    // // Add banner height event listener
+    // const bannerHeightListener = eventEmitter.addListener(
+    //   'CGBANNER_FINAL_HEIGHT',
+    //   (data) => {
+    //     console.log('bannerHeight event received:', data);
+    //     try {
+    //       if (typeof data === 'string') {
+    //         data = JSON.parse(data);
+    //       }
+    //       console.log('Parsed bannerHeight data:', data);
 
-          // Update banner height based on percentage value
-          updateBannerHeightFromPercentage(data);
-        } catch (e) {
-          console.error('Error parsing banner height data:', e);
-        }
-      }
-    );
+    //       // Update banner height based on percentage value
+    //       updateBannerHeightFromPercentage(data);
+    //     } catch (e) {
+    //       console.error('Error parsing banner height data:', e);
+    //     }
+    //   }
+    // );
 
-    console.log('Analytics listener added');
+    // console.log('Analytics listener added');
 
-    // Add deeplink event listener
-    const eventdeeplink = eventEmitter.addListener(
-      'CUSTOMERGLU_DEEPLINK_EVENT',
-      (data) => {
-        console.log('Deeplink event received:', data);
-        try {
-          if (Platform.OS === 'ios') {
-            data = data.data;
-          }
-          console.log('Processed deeplink data:', data);
-          if (data?.campaignId) {
-            loadCampaignById(data.campaignId);
-          }
-        } catch (e) {
-          console.error('Error processing deeplink data:', e);
-        }
-      }
-    );
-    console.log('Deeplink listener added');
+    // // Add deeplink event listener
+    // const eventdeeplink = eventEmitter.addListener(
+    //   'CUSTOMERGLU_DEEPLINK_EVENT',
+    //   (data) => {
+    //     console.log('Deeplink event received:', data);
+    //     try {
+    //       if (Platform.OS === 'ios') {
+    //         data = data.data;
+    //       }
+    //       console.log('Processed deeplink data:', data);
+    //       if (data?.campaignId) {
+    //         loadCampaignById(data.campaignId);
+    //       }
+    //     } catch (e) {
+    //       console.error('Error processing deeplink data:', e);
+    //     }
+    //   }
+    // );
+    // console.log('Deeplink listener added');
 
     return () => {
       console.log('Cleaning up event listeners');
-      eventanalytics.remove();
-      eventdeeplink.remove();
-      bannerHeightListener.remove();
+      // eventanalytics.remove();
+      // eventdeeplink.remove();
+      // bannerHeightListener.remove();
     };
   }, []);
 
@@ -182,11 +182,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Banner Outside ScrollView:</Text>
-      <BannerWidget
+      {/* <BannerWidget
               style={[styles.bannerInside, {height:bannerHeight }]}
               bannerId="homescreen_banner"
               
-            />
+            /> */}
       {/* {isSDKInitialized && (
         <CGBannerView 
           style={styles.bannerOutside} 
@@ -209,11 +209,11 @@ export default function App() {
 
           {/* <View style={{ minHeight: , flexGrow:1 }}> */}
        
-            <BannerWidget
+            {/* <BannerWidget
               style={[styles.bannerInside, { flexGrow: 1, height:bannerHeight }]}
               bannerId="homescreen_banner"
               
-            />
+            /> */}
           {/* {isSDKInitialized && (
             
             )} */}

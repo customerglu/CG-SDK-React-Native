@@ -183,7 +183,7 @@
     ]
   },
   "codegenConfig": {
-    "name": "RNReactNativeCustomergluSpec",
+    "name": "RNCustomergluSpec",
     "type": "modules",
     "jsSrcsDir": "src",
     "outputDir": {

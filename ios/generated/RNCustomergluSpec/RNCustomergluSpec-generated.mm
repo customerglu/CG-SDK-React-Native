@@ -11,7 +11,7 @@
  * must have a single output. More files => more genrule()s => slower builds.
  */
 
-#import "RNReactNativeCustomergluSpec.h"
+#import "RNCustomergluSpec.h"
 
 
 @implementation NativeReactNativeCustomergluSpecBase

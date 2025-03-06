@@ -6,18 +6,18 @@
 cmake_minimum_required(VERSION 3.13)
 set(CMAKE_VERBOSE_MAKEFILE on)
 
-file(GLOB react_codegen_SRCS CONFIGURE_DEPENDS *.cpp react/renderer/components/RNReactNativeCustomergluSpec/*.cpp)
+file(GLOB react_codegen_SRCS CONFIGURE_DEPENDS *.cpp react/renderer/components/RNCustomergluSpec/*.cpp)
 
 add_library(
-  react_codegen_RNReactNativeCustomergluSpec
+  react_codegen_RNCustomergluSpec
   OBJECT
   ${react_codegen_SRCS}
 )
 
-target_include_directories(react_codegen_RNReactNativeCustomergluSpec PUBLIC . react/renderer/components/RNReactNativeCustomergluSpec)
+target_include_directories(react_codegen_RNCustomergluSpec PUBLIC . react/renderer/components/RNCustomergluSpec)
 
 target_link_libraries(
-  react_codegen_RNReactNativeCustomergluSpec
+  react_codegen_RNCustomergluSpec
   fbjni
   jsi
   # We need to link different libraries based on whether we are building rncore or not, that's necessary
@@ -26,7 +26,7 @@ target_link_libraries(
 )
 
 target_compile_options(
-  react_codegen_RNReactNativeCustomergluSpec
+  react_codegen_RNCustomergluSpec
   PRIVATE
   -DLOG_TAG=\"ReactNative\"
   -fexceptions
