@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)allowAnonymousRegistration:(BOOL)b;
 - (void)gluSDKDebuggingMode:(BOOL)b;
 - (void)enableEntryPoints:(BOOL)b;
-- (void)isFcmApn:(BOOL)value;
+- (void)isFcmApn:(NSString *)value;
 - (void)UpdateProfile:(NSDictionary *)obj;
 - (void)DisplayCustomerGluNotification;
 - (void)DisplayCGNotification:(NSDictionary *)obj

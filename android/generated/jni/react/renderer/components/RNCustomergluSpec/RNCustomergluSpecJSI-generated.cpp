@@ -112,7 +112,7 @@ static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_enableEn
 static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_isFcmApn(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
   static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->isFcmApn(
     rt,
-    count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asBool()
+    count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asString(rt)
   );
   return jsi::Value::undefined();
 }

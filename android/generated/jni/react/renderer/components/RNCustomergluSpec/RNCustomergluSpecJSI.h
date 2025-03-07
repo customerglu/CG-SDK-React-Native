@@ -34,7 +34,7 @@ public:
   virtual void allowAnonymousRegistration(jsi::Runtime &rt, bool b) = 0;
   virtual void gluSDKDebuggingMode(jsi::Runtime &rt, bool b) = 0;
   virtual void enableEntryPoints(jsi::Runtime &rt, bool b) = 0;
-  virtual void isFcmApn(jsi::Runtime &rt, bool value) = 0;
+  virtual void isFcmApn(jsi::Runtime &rt, jsi::String value) = 0;
   virtual void UpdateProfile(jsi::Runtime &rt, jsi::Object obj) = 0;
   virtual void DisplayCustomerGluNotification(jsi::Runtime &rt) = 0;
   virtual void DisplayCGNotification(jsi::Runtime &rt, jsi::Object obj, std::optional<bool> autoclosewebview) = 0;
@@ -189,7 +189,7 @@ private:
       return bridging::callFromJs<void>(
           rt, &T::enableEntryPoints, jsInvoker_, instance_, std::move(b));
     }
-    void isFcmApn(jsi::Runtime &rt, bool value) override {
+    void isFcmApn(jsi::Runtime &rt, jsi::String value) override {
       static_assert(
           bridging::getParameterCount(&T::isFcmApn) == 2,
           "Expected isFcmApn(...) to have 2 parameters");

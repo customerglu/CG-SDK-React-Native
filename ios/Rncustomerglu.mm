@@ -5,8 +5,41 @@
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotifications/UNNotification.h>
 
-@implementation Rncustomerglu
+@implementation Rncustomerglu {
+    bool hasListeners;
+}
+
 RCT_EXPORT_MODULE()
+
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"CUSTOMERGLU_ANALYTICS_EVENT"];
+}
+
+- (void)handleDeeplinkEvent:(NSNotification *)notification {
+    if (hasListeners) {
+        NSLog(@"[CustomerGlu] Received analytic event with data: %@", notification.userInfo);
+        [self sendEventWithName:@"CUSTOMERGLU_ANALYTICS_EVENT"
+                         body:notification.userInfo];
+        NSLog(@"[CustomerGlu] Successfully sent deeplink event to JavaScript");
+    } else {
+        NSLog(@"[CustomerGlu] Received deeplink event but no JavaScript listeners are registered");
+    }
+}
+
+- (void)startObserving {
+    hasListeners = YES;
+    NSLog(@"[CustomerGlu] Started observing for deeplink events");
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(handleDeeplinkEvent:)
+                                               name:@"CUSTOMERGLU_ANALYTICS_EVENT"
+                                             object:nil];
+}
+
+- (void)stopObserving {
+    hasListeners = NO;
+    NSLog(@"[CustomerGlu] Stopped observing for deeplink events");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
@@ -214,10 +247,11 @@ RCT_EXPORT_MODULE()
 }
 
 - (void)initCGSDK:(nonnull NSString *)obj {
-    
+    NSLog(@"[CustomerGlu] start init sdk");
     CustomerGlu *sdk = [CustomerGlu getInstance];
     
     @try {
+        [self startObserving];
         [sdk initializeSdkWithMyenv:obj];
       } @catch (NSException *exception) {
           NSLog(@"CustomerGlu initialization failed: %@", exception.reason);

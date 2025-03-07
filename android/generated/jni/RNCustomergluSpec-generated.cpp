@@ -84,7 +84,7 @@ static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_e
 
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
   static jmethodID cachedMethodId = nullptr;
-  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "isFcmApn", "(Z)V", args, count, cachedMethodId);
+  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "isFcmApn", "(Ljava/lang/String;)V", args, count, cachedMethodId);
 }
 
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateProfile(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {

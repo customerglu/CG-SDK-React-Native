@@ -92,7 +92,7 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
 
   @ReactMethod
   @DoNotStrip
-  public abstract void isFcmApn(boolean value);
+  public abstract void isFcmApn(String value);
 
   @ReactMethod
   @DoNotStrip

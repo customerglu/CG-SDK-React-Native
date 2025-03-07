@@ -20,6 +20,8 @@ import {
   BannerWidget,
 } from '@customerglu/react-native-customerglu';
 
+import NativeReactNativeCustomerglu from '../../src/NativeReactNativeCustomerglu';
+
 import { useEffect, useRef, useState } from 'react';
 
 export default function App() {
@@ -79,6 +81,25 @@ export default function App() {
           await new Promise((resolve) => setTimeout(resolve, 1000));
           SetCurrentClassName('HomeScreen');
           setIsSDKInitialized(true);
+          console.log('Available native modules:', Object.keys(NativeModules));
+        
+          // Check for your module with different casing
+     
+          const { RNCustomerglu } = NativeModules;
+
+           const eventEmitter = new NativeEventEmitter(RNCustomerglu);
+          
+            // const eventEmitter = new NativeEventEmitter(NativeReactNativeCustomerglu);
+            
+            // Add analytics event listener
+            const eventanalytics = eventEmitter.addListener(
+              'CUSTOMERGLU_ANALYTICS_EVENT',
+              (data) => {
+                console.log('Analytics event received:', data);
+                // Your event handling code
+              }
+            );
+          
         } catch (regError) {
           console.error('Device registration error:', regError);
         }
@@ -91,27 +112,7 @@ export default function App() {
 
     // Set up event emitter
     console.log('Setting up event emitter...');
-    // const { RnCustomerglu } = NativeModules;
-
-    // const eventEmitter = new NativeEventEmitter(RnCustomerglu);
-    // console.log('Event emitter created');
-
-    // // Add analytics event listener
-    // const eventanalytics = eventEmitter.addListener(
-    //   'CUSTOMERGLU_ANALYTICS_EVENT',
-    //   (data) => {
-    //     console.log('Analytics event received:', data);
-    //     try {
-    //       if (typeof data === 'string') {
-    //         data = JSON.parse(data);
-    //       }
-    //       console.log('Parsed analytics data:', data);
-    //     } catch (e) {
-    //       console.error('Error parsing analytics data:', e);
-    //     }
-    //   }
-    // );
-
+   
     // // Add banner height event listener
     // const bannerHeightListener = eventEmitter.addListener(
     //   'CGBANNER_FINAL_HEIGHT',
@@ -155,7 +156,7 @@ export default function App() {
 
     return () => {
       console.log('Cleaning up event listeners');
-      // eventanalytics.remove();
+     //  eventanalytics.remove();
       // eventdeeplink.remove();
       // bannerHeightListener.remove();
     };
