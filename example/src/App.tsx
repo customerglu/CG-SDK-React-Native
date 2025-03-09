@@ -184,7 +184,7 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title}>Banner Outside ScrollView:</Text>
       <BannerWidget
-              style={[styles.bannerInside, {height:200 }]}
+              style={[styles.bannerInside, {height:100 }]}
               bannerId="homescreen_banner"
               
             />
