@@ -6,13 +6,13 @@ import type { ViewProps } from 'react-native';
 interface CustomViewProps extends ViewProps {
   bannerId?: string;
 }
+
 interface EmbedViewProps extends ViewProps {
   embedId?: string;
 }
 
 export const BannerWidget = requireNativeComponent<CustomViewProps>('BannerView');
 export const EmbedBannerWidget = requireNativeComponent<EmbedViewProps>('CGEmbedView');
-
 
 export function RegisterDevice(userdata: Object): Promise<Boolean> {
   return ReactNativeCustomerglu.registerDevice(userdata);
@@ -38,6 +38,7 @@ export function initCGSDK(obj: string): void {
 export function loadCampaignById(campid: string, obj: Object = {}): void {
   return ReactNativeCustomerglu.loadCampaignById(campid, obj);
 }
+
 export function loadCampaignWithUrl(url: string, obj: Object): void {
   return ReactNativeCustomerglu.loadCampaignWithUrl(url, obj);
 }

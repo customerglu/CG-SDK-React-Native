@@ -85,20 +85,20 @@ export default function App() {
         
           // Check for your module with different casing
      
-          const { RNCustomerglu } = NativeModules;
+          // const { RnCustomerglu } = NativeModules;
 
-           const eventEmitter = new NativeEventEmitter(RNCustomerglu);
+          //  const eventEmitter = new NativeEventEmitter(RnCustomerglu);
           
             // const eventEmitter = new NativeEventEmitter(NativeReactNativeCustomerglu);
             
             // Add analytics event listener
-            const eventanalytics = eventEmitter.addListener(
-              'CUSTOMERGLU_ANALYTICS_EVENT',
-              (data) => {
-                console.log('Analytics event received:', data);
-                // Your event handling code
-              }
-            );
+            // const eventanalytics = eventEmitter.addListener(
+            //   'CUSTOMERGLU_ANALYTICS_EVENT',
+            //   (data) => {
+            //     console.log('Analytics event received:', data);
+            //     // Your event handling code
+            //   }
+            // );
           
         } catch (regError) {
           console.error('Device registration error:', regError);
@@ -183,11 +183,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Banner Outside ScrollView:</Text>
-      {/* <BannerWidget
-              style={[styles.bannerInside, {height:bannerHeight }]}
+      <BannerWidget
+              style={[styles.bannerInside, {height:200 }]}
               bannerId="homescreen_banner"
               
-            /> */}
+            />
       {/* {isSDKInitialized && (
         <CGBannerView 
           style={styles.bannerOutside} 
@@ -209,9 +209,9 @@ export default function App() {
           </Text>
 
           {/* <View style={{ minHeight: , flexGrow:1 }}> */}
-       
-            {/* <BannerWidget
-              style={[styles.bannerInside, { flexGrow: 1, height:bannerHeight }]}
+{/*        
+            <BannerWidget
+              style={[styles.bannerInside, { flexGrow: 1, height:100 }]}
               bannerId="homescreen_banner"
               
             /> */}
