@@ -85,20 +85,7 @@ export default function App() {
         
           // Check for your module with different casing
      
-          // const { RnCustomerglu } = NativeModules;
-
-          //  const eventEmitter = new NativeEventEmitter(RnCustomerglu);
-          
-            // const eventEmitter = new NativeEventEmitter(NativeReactNativeCustomerglu);
-            
-            // Add analytics event listener
-            // const eventanalytics = eventEmitter.addListener(
-            //   'CUSTOMERGLU_ANALYTICS_EVENT',
-            //   (data) => {
-            //     console.log('Analytics event received:', data);
-            //     // Your event handling code
-            //   }
-            // );
+        
           
         } catch (regError) {
           console.error('Device registration error:', regError);
@@ -109,56 +96,80 @@ export default function App() {
     };
 
     initializeSDK();
+    console.log('Available native modules:', Object.keys(NativeModules));
 
-    // Set up event emitter
-    console.log('Setting up event emitter...');
+    console.log("Mu Native Modules ",NativeModules);
+
+  
+    // Use the explicitly defined module name
+    const customergluModule = NativeModules.RnCustomerglu;
+    
+    if (!customergluModule) {
+      console.error('Could not find RnCustomerglu module');
+      return;
+    }
+    
+    console.log('Found RnCustomerglu module:', customergluModule);
+    
+    // Create the event emitter
+    const eventEmitter = new NativeEventEmitter(customergluModule);
+    
+    // Listen for events
+    const eventanalytics = eventEmitter.addListener(
+      'CUSTOMERGLU_ANALYTICS_EVENT',
+      (data) => {
+        console.log('CUSTOMERGLU_ANALYTICS_EVENT received in JS:', data);
+        // Handle your event data here
+      }
+    );
+    
    
-    // // Add banner height event listener
-    // const bannerHeightListener = eventEmitter.addListener(
-    //   'CGBANNER_FINAL_HEIGHT',
-    //   (data) => {
-    //     console.log('bannerHeight event received:', data);
-    //     try {
-    //       if (typeof data === 'string') {
-    //         data = JSON.parse(data);
-    //       }
-    //       console.log('Parsed bannerHeight data:', data);
+    // Add banner height event listener
+    const bannerHeightListener = eventEmitter.addListener(
+      'CGBANNER_FINAL_HEIGHT',
+      (data) => {
+        console.log('bannerHeight event received:', data);
+        try {
+          if (typeof data === 'string') {
+            data = JSON.parse(data);
+          }
+          console.log('Parsed bannerHeight data:', data);
 
-    //       // Update banner height based on percentage value
-    //       updateBannerHeightFromPercentage(data);
-    //     } catch (e) {
-    //       console.error('Error parsing banner height data:', e);
-    //     }
-    //   }
-    // );
+          // Update banner height based on percentage value
+          updateBannerHeightFromPercentage(data);
+        } catch (e) {
+          console.error('Error parsing banner height data:', e);
+        }
+      }
+    );
 
-    // console.log('Analytics listener added');
+    console.log('Analytics listener added');
 
-    // // Add deeplink event listener
-    // const eventdeeplink = eventEmitter.addListener(
-    //   'CUSTOMERGLU_DEEPLINK_EVENT',
-    //   (data) => {
-    //     console.log('Deeplink event received:', data);
-    //     try {
-    //       if (Platform.OS === 'ios') {
-    //         data = data.data;
-    //       }
-    //       console.log('Processed deeplink data:', data);
-    //       if (data?.campaignId) {
-    //         loadCampaignById(data.campaignId);
-    //       }
-    //     } catch (e) {
-    //       console.error('Error processing deeplink data:', e);
-    //     }
-    //   }
-    // );
-    // console.log('Deeplink listener added');
+    // Add deeplink event listener
+    const eventdeeplink = eventEmitter.addListener(
+      'CUSTOMERGLU_DEEPLINK_EVENT',
+      (data) => {
+        console.log('Deeplink event received:', data);
+        try {
+          if (Platform.OS === 'ios') {
+            data = data.data;
+          }
+          console.log('Processed deeplink data:', data);
+          if (data?.campaignId) {
+            loadCampaignById(data.campaignId);
+          }
+        } catch (e) {
+          console.error('Error processing deeplink data:', e);
+        }
+      }
+    );
+    console.log('Deeplink listener added');
 
     return () => {
       console.log('Cleaning up event listeners');
-     //  eventanalytics.remove();
-      // eventdeeplink.remove();
-      // bannerHeightListener.remove();
+      eventanalytics.remove();
+      eventdeeplink.remove();
+      bannerHeightListener.remove();
     };
   }, []);
 
@@ -183,11 +194,15 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Banner Outside ScrollView:</Text>
-      <BannerWidget
-              style={[styles.bannerInside, {height:100 }]}
+  
+          <View style={{ minHeight: 200, flexGrow:1 }}>
+       
+            <BannerWidget
+              style={[styles.bannerInside, { flexGrow: 1, height:200 }]}
               bannerId="homescreen_banner"
               
-            />
+            /> 
+            </View>
       {/* {isSDKInitialized && (
         <CGBannerView 
           style={styles.bannerOutside} 

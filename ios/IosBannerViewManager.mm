@@ -2,17 +2,17 @@
 #import <WebKit/WebKit.h>
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotifications/UNNotification.h>
-#import "IosView.h"
+#import "IosBannerView.h"
 
-@interface IosViewManager : RCTViewManager
+@interface IosBannerViewManager : RCTViewManager
 @end
 
-@implementation IosViewManager
+@implementation IosBannerViewManager
 
 RCT_EXPORT_MODULE(BannerView)
 
 - (UIView *)view {
-    return [[IosView alloc] init];
+    return [[IosBannerView alloc] init];
 }
 
 RCT_EXPORT_VIEW_PROPERTY(bannerId, NSString)

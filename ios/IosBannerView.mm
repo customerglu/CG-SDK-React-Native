@@ -1,11 +1,11 @@
-#import "IosView.h"
+#import "IosBannerView.h"
 #import <WebKit/WebKit.h>
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotifications/UNNotification.h>
 #import <CustomerGlu/CustomerGlu-Swift.h>
 #import <objc/runtime.h>
 
-@implementation IosView {
+@implementation IosBannerView {
     BannerView *_bannerView;
     NSString *_bannerId;
     BOOL _bannerInitialized;

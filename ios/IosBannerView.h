@@ -6,7 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IosView : RCTView
+@interface IosBannerView : RCTView
 
 @property (nonatomic, strong) NSString *bannerId;
 - (void)setBannerId:(NSString *)bannerId;

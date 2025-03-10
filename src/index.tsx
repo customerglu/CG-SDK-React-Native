@@ -102,6 +102,9 @@ export function setOpenWalletAsFallback(value: boolean): void {
   return ReactNativeCustomerglu.setOpenWalletAsFallback(value);
 }
 
+
+
+
 export function isCampaignValid(
   campaignId: string,
   dataFlag: string

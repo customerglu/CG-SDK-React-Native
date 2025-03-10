@@ -9,35 +9,75 @@
     bool hasListeners;
 }
 
-RCT_EXPORT_MODULE()
-
+RCT_EXPORT_MODULE(RnCustomerglu);
 - (NSArray<NSString *> *)supportedEvents {
-    return @[@"CUSTOMERGLU_ANALYTICS_EVENT"];
+    return @[
+        @"CUSTOMERGLU_ANALYTICS_EVENT",
+        @"CUSTOMERGLU_DEEPLINK_EVENT",
+        @"CGBANNER_FINAL_HEIGHT",
+        @"CUSTOMERGLU_BANNER_LOADED",
+        @"CGEMBED_FINAL_HEIGHT",
+        @"CG_INVALID_CAMPAIGN_ID",
+        @"CG_UNI_DEEPLINK_EVENT"
+    ];
 }
 
-- (void)handleDeeplinkEvent:(NSNotification *)notification {
-    if (hasListeners) {
-        NSLog(@"[CustomerGlu] Received analytic event with data: %@", notification.userInfo);
-        [self sendEventWithName:@"CUSTOMERGLU_ANALYTICS_EVENT"
-                         body:notification.userInfo];
-        NSLog(@"[CustomerGlu] Successfully sent deeplink event to JavaScript");
-    } else {
-        NSLog(@"[CustomerGlu] Received deeplink event but no JavaScript listeners are registered");
+// Test method to verify event emission is working
+RCT_EXPORT_METHOD(testEventEmission) {
+    NSDictionary *testData = @{@"message": @"Test event from native",
+                               @"timestamp": @([[NSDate date] timeIntervalSince1970])};
+    NSLog(@"[CustomerGlu] Testing event emission with data: %@", testData);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self sendEventWithName:@"CUSTOMERGLU_ANALYTICS_EVENT" body:testData];
+    });
+}
+
+// Generic event handler method
+- (void)handleEvent:(NSNotification *)notification {
+    NSString *eventName = notification.name;
+    NSDictionary *eventData = notification.userInfo;
+    
+    NSLog(@"[CustomerGlu] Event received: %@ with data: %@", eventName, eventData);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self->hasListeners) {
+            NSLog(@"[CustomerGlu] hasListeners is YES, sending event: %@", eventName);
+            [self sendEventWithName:eventName body:eventData];
+        } else {
+            NSLog(@"[CustomerGlu] hasListeners is NO, not sending event");
+        }
+    });
+}
+
+// Start observing events
+- (void)startObserving {
+    hasListeners = YES;
+    NSLog(@"[CustomerGlu] Started observing for events - hasListeners is now YES");
+    
+    NSArray *events = @[
+        @"CUSTOMERGLU_ANALYTICS_EVENT",
+        @"CUSTOMERGLU_DEEPLINK_EVENT",
+        @"CGBANNER_FINAL_HEIGHT",
+        @"CUSTOMERGLU_BANNER_LOADED",
+        @"CGEMBED_FINAL_HEIGHT",
+        @"CG_INVALID_CAMPAIGN_ID",
+        @"CG_UNI_DEEPLINK_EVENT"
+    ];
+    
+    for (NSString *event in events) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleEvent:)
+                                                     name:event
+                                                   object:nil];
     }
 }
 
-- (void)startObserving {
-    hasListeners = YES;
-    NSLog(@"[CustomerGlu] Started observing for deeplink events");
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(handleDeeplinkEvent:)
-                                               name:@"CUSTOMERGLU_ANALYTICS_EVENT"
-                                             object:nil];
-}
-
+// Stop observing events
 - (void)stopObserving {
     hasListeners = NO;
-    NSLog(@"[CustomerGlu] Stopped observing for deeplink events");
+    NSLog(@"[CustomerGlu] Stopped observing for events - hasListeners is now NO");
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -130,7 +170,8 @@ RCT_EXPORT_MODULE()
 }
 
 - (void)addListener:(nonnull NSString *)eventType { 
-    
+    [super addListener:eventType];
+      NSLog(@"[CustomerGlu] JS added listener for %@", eventType);
 }
 
 - (void)addMarginsForPIP:(double)horizontal vertical:(double)vertical type:(nonnull NSString *)type { 
