@@ -35,6 +35,8 @@ export default function App() {
     if (data && data.homescreen_banner) {
       try {
         // Convert string percentage to number
+        if (Platform.OS == 'android')
+        {
         const percentageValue = parseFloat(data.homescreen_banner);
 
         // Get screen height using Dimensions API
@@ -50,6 +52,10 @@ export default function App() {
           `Updating banner height to ${newHeight}px (${percentageValue}% of screen height)`
         );
         setBannerHeight(newHeight);
+      }else{
+        setBannerHeight(data.homescreen_banner);
+
+      }
       } catch (error) {
         console.error('Error updating banner height:', error);
       }
@@ -142,7 +148,23 @@ export default function App() {
         }
       }
     );
+    const embedHeightListener = eventEmitter.addListener(
+      'CGEMBED_FINAL_HEIGHT',
+      (data) => {
+        console.log('embedHeight event received:', data);
+        try {
+          if (typeof data === 'string') {
+            data = JSON.parse(data);
+          }
+          console.log('Parsed embedHeight data:', data);
 
+          // Update banner height based on percentage value
+          updateBannerHeightFromPercentage(data);
+        } catch (e) {
+          console.error('Error parsing banner height data:', e);
+        }
+      }
+    );
     console.log('Analytics listener added');
 
     // Add deeplink event listener
@@ -169,6 +191,7 @@ export default function App() {
       console.log('Cleaning up event listeners');
       eventanalytics.remove();
       eventdeeplink.remove();
+      embedHeightListener.remove();
       bannerHeightListener.remove();
     };
   }, []);
@@ -194,15 +217,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Banner Outside ScrollView:</Text>
-  
-          <View style={{ minHeight: 200, flexGrow:1 }}>
-       
+         
             <BannerWidget
-              style={[styles.bannerInside, { flexGrow: 1, height:200 }]}
+              style={[styles.bannerInside, {  height:bannerHeight }]}
               bannerId="homescreen_banner"
               
             /> 
-            </View>
       {/* {isSDKInitialized && (
         <CGBannerView 
           style={styles.bannerOutside} 
@@ -223,17 +243,17 @@ export default function App() {
             This banner uses onLayout to dynamically adjust its height.
           </Text>
 
-          {/* <View style={{ minHeight: , flexGrow:1 }}> */}
-{/*        
+          <View style={{ minHeight: bannerHeight, flexGrow:1 }}>
+       
             <BannerWidget
               style={[styles.bannerInside, { flexGrow: 1, height:100 }]}
               bannerId="homescreen_banner"
               
-            /> */}
+            />
           {/* {isSDKInitialized && (
             
             )} */}
-          {/* </View> */}
+          </View>
 
           <Text style={[styles.explanation, { marginTop: 20 }]}>
             Current banner height: {bannerHeight}px
