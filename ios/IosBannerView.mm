@@ -9,6 +9,7 @@
     BannerView *_bannerView;
     NSString *_bannerId;
     BOOL _bannerInitialized;
+    BOOL _isHeightUpdated;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -54,24 +55,7 @@
             self->_bannerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
             self->_bannerInitialized = YES;
             [self setNeedsLayout];
-            
-            // Log the subviews and ensure they're interactive
-            NSLog(@"[IosView] Banner view has %lu subviews", (unsigned long)self->_bannerView.subviews.count);
-            for (UIView *subview in self->_bannerView.subviews) {
-                NSLog(@"[IosView] Subview: %@, userInteractionEnabled: %d", [subview class], subview.userInteractionEnabled);
-                subview.userInteractionEnabled = YES;
-                
-                // If this is a UIScrollView (which the BannerView uses), check its subviews too
-                if ([subview isKindOfClass:[UIScrollView class]]) {
-                    UIScrollView *scrollView = (UIScrollView *)subview;
-                    NSLog(@"[IosView] ScrollView has %lu subviews", (unsigned long)scrollView.subviews.count);
-                    
-                    for (UIView *scrollSubview in scrollView.subviews) {
-                        NSLog(@"[IosView] ScrollView subview: %@, userInteractionEnabled: %d", [scrollSubview class], scrollSubview.userInteractionEnabled);
-                        scrollSubview.userInteractionEnabled = YES;
-                    }
-                }
-            }
+        
         } else {
             [self showError:@"Failed to create banner view"];
             NSLog(@"[IosView] Failed to create banner view");
@@ -89,31 +73,31 @@
     errorLabel.frame = self.bounds;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    if (_bannerView) {
-        _bannerView.frame = self.bounds;
-    }
-}
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
+//    
+//    if (_bannerView) {
+//        _bannerView.frame = self.bounds;
+//    }
+//}
 
-- (void)didMoveToSuperview {
-    [super didMoveToSuperview];
-    
-    if (_bannerId && !_bannerView) {
-        NSLog(@"[IosView] didMoveToSuperview - recreating banner view");
-        [self createBannerView];
-    }
-}
-
-- (void)didMoveToWindow {
-    [super didMoveToWindow];
-    
-    if (self.window && _bannerId && !_bannerView) {
-        NSLog(@"[IosView] didMoveToWindow - recreating banner view");
-        [self createBannerView];
-    }
-}
+//- (void)didMoveToSuperview {
+//    [super didMoveToSuperview];
+//    
+//    if (_bannerId && !_bannerView) {
+//        NSLog(@"[IosView] didMoveToSuperview - recreating banner view");
+//        [self createBannerView];
+//    }
+//}
+//
+//- (void)didMoveToWindow {
+//    [super didMoveToWindow];
+//    
+//    if (self.window && _bannerId && !_bannerView) {
+//        NSLog(@"[IosView] didMoveToWindow - recreating banner view");
+//        [self createBannerView];
+//    }
+//}
 
 // Direct touch handling to manually forward touches to BannerView
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
