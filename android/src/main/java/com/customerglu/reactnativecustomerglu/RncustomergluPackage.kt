@@ -8,10 +8,10 @@ import com.facebook.react.module.model.ReactModuleInfoProvider
 import com.facebook.react.uimanager.ViewManager
 import java.util.HashMap
 
-class RnCustomergluPackage : BaseReactPackage() {
+class RncustomergluPackage : BaseReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == RnCustomergluModule.NAME) {
-      RnCustomergluModule(reactContext)
+    return if (name == RncustomergluModule.NAME) {
+      RncustomergluModule(reactContext)
     } else {
       null
     }
@@ -27,9 +27,9 @@ class RnCustomergluPackage : BaseReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      moduleInfos[RnCustomergluModule.NAME] = ReactModuleInfo(
-        RnCustomergluModule.NAME,
-        RnCustomergluModule.NAME,
+      moduleInfos[RncustomergluModule.NAME] = ReactModuleInfo(
+        RncustomergluModule.NAME,
+        RncustomergluModule.NAME,
         false,  // canOverrideExistingModule
         false,  // needsEagerInit
         false,  // isCxxModule

@@ -8,11 +8,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.os.Build
+import android.content.res.Resources
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.customerglu.sdk.CustomerGlu
 import com.customerglu.sdk.Interface.CampaignValidListener
 import com.customerglu.sdk.Interface.DataListner
@@ -20,8 +19,8 @@ import com.customerglu.sdk.Modal.NudgeConfiguration
 import com.customerglu.sdk.Utils.CGConstants
 import com.customerglu.sdk.Utils.Comman
 import com.customerglu.sdk.pip.PIPHelper
-
 import com.facebook.react.bridge.Arguments
+
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableArray
@@ -40,8 +39,9 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.Date
 import kotlin.math.roundToInt
-@ReactModule(name = RnCustomergluModule.NAME)
-class RnCustomergluModule(reactContext: ReactApplicationContext) :
+
+@ReactModule(name = RncustomergluModule.NAME)
+class RncustomergluModule(reactContext: ReactApplicationContext) :
   NativeReactNativeCustomergluSpec(reactContext) {
  val TAG:String = "CUSTOMERGLU"
    val ANALYTICS_BROADCAST_ACTION = "CUSTOMERGLU_ANALYTICS_EVENT"
@@ -121,16 +121,37 @@ class RnCustomergluModule(reactContext: ReactApplicationContext) :
           val data = intent.getStringExtra("data") ?: ""
           Log.d(TAG, "Received broadcast event with data: $data")
 
-          // Create a WritableMap to send to React Native
-          val jsonObject = JSONObject(data)
-          val map: WritableMap? = jsonToWritableMap(jsonObject)
-          if (map != null) {
-            sendEventToJs("CGBANNER_FINAL_HEIGHT", map)
-          }
+          try {
+            val jsonObject = JSONObject(data)
+            val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+            val resultMap = Arguments.createMap()
 
-          // Send the event to JS
-          //sendEventToJs("onCustomerGluAnalyticsEvent", params)
+            jsonObject.keys().forEach { key ->
+              val percentageStr = jsonObject.optString(key, "0")
+              val percentage = percentageStr.toFloatOrNull()
+
+              if (percentage != null && percentage in 0f..100f) {
+                var pixelValue = (percentage / 100) * screenHeight
+                val density = Resources.getSystem().displayMetrics.density
+                pixelValue /= density
+                resultMap.putInt(key, pixelValue.toInt())
+              } else {
+                Log.e(TAG, "Invalid percentage value for key $key: $percentageStr")
+              }
+            }
+
+            if (resultMap.keySetIterator().hasNextKey()) {
+              sendEventToJs("CGBANNER_FINAL_HEIGHT", resultMap)
+            } else {
+              Log.w(TAG, "No valid banner heights to send.")
+            }
+          } catch (e: JSONException) {
+            Log.e(TAG, "Failed to parse JSON data: $e")
+          } catch (e: Exception) {
+            Log.e(TAG, "Unexpected error: $e")
+          }
         }
+
 
         if (intent.action == INVALID_CAMPAIGN_BROADCAST_ACTION) {
           val data = intent.getStringExtra("data") ?: ""
