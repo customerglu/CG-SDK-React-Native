@@ -35,27 +35,28 @@ export default function App() {
     if (data && data.homescreen_banner) {
       try {
         // Convert string percentage to number
-        if (Platform.OS == 'android')
-        {
-        const percentageValue = parseFloat(data.homescreen_banner);
+      //   if (Platform.OS == 'android')
+      //   {
+      //   const percentageValue = parseFloat(data.homescreen_banner);
 
-        // Get screen height using Dimensions API
-        const screenHeight = Dimensions.get('window').height;
+      //   // Get screen height using Dimensions API
+      //   const screenHeight = Dimensions.get('window').height;
 
-        // Calculate height based on percentage of screen height
-        const calculatedHeight = (percentageValue / 100) * screenHeight;
+      //   // Calculate height based on percentage of screen height
+      //   const calculatedHeight = (percentageValue / 100) * screenHeight;
 
-        // Update the banner height state with the calculated value
-        // Ensure a minimum height to prevent layout issues
-        const newHeight = Math.max(calculatedHeight, 50);
-        console.log(
-          `Updating banner height to ${newHeight}px (${percentageValue}% of screen height)`
-        );
-        setBannerHeight(newHeight);
-      }else{
-        setBannerHeight(data.homescreen_banner);
+      //   // Update the banner height state with the calculated value
+      //   // Ensure a minimum height to prevent layout issues
+      //   const newHeight = Math.max(calculatedHeight, 50);
+      //   console.log(
+      //     `Updating banner height to ${newHeight}px (${percentageValue}% of screen height)`
+      //   );
+      //   setBannerHeight(newHeight);
+      // }else{
 
-      }
+      // }
+      setBannerHeight(data.homescreen_banner);
+
       } catch (error) {
         console.error('Error updating banner height:', error);
       }
@@ -108,7 +109,7 @@ export default function App() {
 
   
     // Use the explicitly defined module name
-    const customergluModule = NativeModules.RnCustomerglu;
+    const customergluModule = NativeModules.Rncustomerglu;
     
     if (!customergluModule) {
       console.error('Could not find RnCustomerglu module');

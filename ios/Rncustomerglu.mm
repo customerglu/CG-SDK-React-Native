@@ -9,7 +9,7 @@
     bool hasListeners;
 }
 
-RCT_EXPORT_MODULE(RnCustomerglu);
+RCT_EXPORT_MODULE(Rncustomerglu);
 - (NSArray<NSString *> *)supportedEvents {
     return @[
         @"CUSTOMERGLU_ANALYTICS_EVENT",

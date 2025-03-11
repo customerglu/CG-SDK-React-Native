@@ -18,7 +18,7 @@ export declare function loadCampaignWithUrl(url: string, obj: Object): void;
 export declare function enableAnalytic(b: boolean): void;
 export declare function allowAnonymousRegistration(b: boolean): void;
 export declare function gluSDKDebuggingMode(b: boolean): void;
-export declare function isFcmApn(value: boolean): void;
+export declare function isFcmApn(value: string): void;
 export declare function UpdateProfile(obj: Object): void;
 export declare function DisplayCustomerGluNotification(): void;
 export declare function DisplayCGNotification(obj: Object, autoclosewebview?: boolean): void;

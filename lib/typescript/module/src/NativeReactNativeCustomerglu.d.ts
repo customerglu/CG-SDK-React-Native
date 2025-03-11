@@ -14,7 +14,7 @@ export interface Spec extends TurboModule {
     allowAnonymousRegistration(b: boolean): void;
     gluSDKDebuggingMode(b: boolean): void;
     enableEntryPoints(b: boolean): void;
-    isFcmApn(value: boolean): void;
+    isFcmApn(value: string): void;
     UpdateProfile(obj: Object): void;
     DisplayCustomerGluNotification(): void;
     DisplayCGNotification(obj: Object, autoclosewebview?: boolean): void;
