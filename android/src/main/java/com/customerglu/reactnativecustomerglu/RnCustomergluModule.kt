@@ -402,7 +402,7 @@ class RnCustomergluModule(reactContext: ReactApplicationContext) :
     CustomerGlu.getInstance().enableEntryPoints(getCurrentActivity(), b);
   }
 
-  override fun isFcmApn(id: Boolean) {
+  override fun isFcmApn(id: String) {
 
   }
 
