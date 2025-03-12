@@ -290,7 +290,8 @@ RCT_EXPORT_METHOD(testEventEmission) {
 - (void)initCGSDK:(nonnull NSString *)obj {
     NSLog(@"[CustomerGlu] start init sdk");
     CustomerGlu *sdk = [CustomerGlu getInstance];
-    
+    CustomerGlu.sdk_version = @"3.0.0";
+    CustomerGlu.app_platform = @"REACT_NATIVE";
     @try {
         [self startObserving];
         [sdk initializeSdkWithMyenv:obj];
@@ -358,21 +359,25 @@ RCT_EXPORT_METHOD(testEventEmission) {
                    return;
                }
                
-               // Set values using KVC (Key-Value Coding)
-               for (NSString *key in obj) {
-                   @try {
-                       [config setValue:obj[key] forKey:key];
-                   } @catch (NSException *exception) {
-                       NSLog(@"Failed to set %@ on CGNudgeConfiguration: %@", key, exception.reason);
-                   }
-               }
+                NSDictionary *configDict = obj;
+        if (obj[@"nudgeConfiguration"] && [obj[@"nudgeConfiguration"] isKindOfClass:[NSDictionary class]]) {
+            configDict = obj[@"nudgeConfiguration"];
+        }
         
+        // Set values using KVC (Key-Value Coding)
+        for (NSString *key in configDict) {
+            @try {
+                [config setValue:configDict[key] forKey:key];
+            } @catch (NSException *exception) {
+                NSLog(@"Failed to set %@ on CGNudgeConfiguration: %@", key, exception.reason);
+            }
+        }
         
         // Call the method with the created configuration
         dispatch_async(dispatch_get_main_queue(), ^{
             [sdk loadCampaignByIdWithCampaign_id:campid nudgeConfiguration:config auto_close_webview:YES];
-
-              });
+        });
+        
     } @catch (NSException *exception) {
         NSLog(@"CustomerGlu loadCampaignById failed: %@", exception.reason);
     }
@@ -401,14 +406,21 @@ RCT_EXPORT_METHOD(testEventEmission) {
             return;
             
         }
-               // Set values using KVC (Key-Value Coding)
-               for (NSString *key in obj) {
-                   @try {
-                       [config setValue:obj[key] forKey:key];
-                   } @catch (NSException *exception) {
-                       NSLog(@"Failed to set %@ on CGNudgeConfiguration: %@", key, exception.reason);
-                   }
-               }
+             NSDictionary *configDict = obj;
+        if (obj[@"nudgeConfiguration"] && [obj[@"nudgeConfiguration"] isKindOfClass:[NSDictionary class]]) {
+            configDict = obj[@"nudgeConfiguration"];
+        }
+        
+        // Set values using KVC (Key-Value Coding)
+        for (NSString *key in configDict) {
+            @try {
+                [config setValue:configDict[key] forKey:key];
+            } @catch (NSException *exception) {
+                NSLog(@"Failed to set %@ on CGNudgeConfiguration: %@", key, exception.reason);
+            }
+        }
+        
+    
         
         
         // Call the method with the created configuration

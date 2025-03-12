@@ -43,14 +43,12 @@ import kotlin.math.roundToInt
 @ReactModule(name = RncustomergluModule.NAME)
 class RncustomergluModule(reactContext: ReactApplicationContext) :
   NativeReactNativeCustomergluSpec(reactContext) {
- val TAG:String = "CUSTOMERGLU"
-   val ANALYTICS_BROADCAST_ACTION = "CUSTOMERGLU_ANALYTICS_EVENT"
+  val TAG:String = "CUSTOMERGLU"
+  val ANALYTICS_BROADCAST_ACTION = "CUSTOMERGLU_ANALYTICS_EVENT"
   val DEEPLINK_BROADCAST_ACTION = "CUSTOMERGLU_DEEPLINK_EVENT"
   val BANNER_BROADCAST_ACTION = "CUSTOMERGLU_BANNER_LOADED"
   val INVALID_CAMPAIGN_BROADCAST_ACTION = "CG_INVALID_CAMPAIGN_ID"
   val BANNER_HEIGHT_BROADCAST_ACTION = "CGBANNER_FINAL_HEIGHT"
-
-
   var mContext: ReactApplicationContext? = null
   var mReceiver: BroadcastReceiver? = null
   var Myclassname: String = ""
@@ -327,6 +325,8 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
 
   override fun initCGSDK(obj: String?) {
     CustomerGlu.getInstance().initializeSdk(getReactApplicationContext(),obj);
+    CustomerGlu.cg_sdk_version = "3.0.0"
+    CustomerGlu.cg_app_platform = "REACT_NATIVE"
 
   }
 

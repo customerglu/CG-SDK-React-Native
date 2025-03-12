@@ -1,6 +1,6 @@
 {
   "name": "@customerglu/react-native-customerglu",
-  "version": "3.0.0-beta-1.5",
+  "version": "3.0.0-beta-1.8",
   "description": "CustomerGlu React Native plugin",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
