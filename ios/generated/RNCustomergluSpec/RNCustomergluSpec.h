@@ -31,8 +31,6 @@
 #import <vector>
 
 
-NS_ASSUME_NONNULL_BEGIN
-
 @protocol NativeReactNativeCustomergluSpec <RCTBridgeModule, RCTTurboModule>
 
 - (void)addListener:(NSString *)eventType;
@@ -56,6 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)isFcmApn:(NSString *)value;
 - (void)UpdateProfile:(NSDictionary *)obj;
 - (void)DisplayCustomerGluNotification;
+- (void)startSSEOnForeground;
+- (void)disconnectSSEOnBackground;
+- (void)setSSETimeout:(double)time;
 - (void)DisplayCGNotification:(NSDictionary *)obj
              autoclosewebview:(NSNumber *)autoclosewebview;
 - (void)DisplayCGBackgroundNotification:(NSDictionary *)obj
@@ -82,16 +83,6 @@ NS_ASSUME_NONNULL_BEGIN
                    reject:(RCTPromiseRejectBlock)reject;
 
 @end
-
-@interface NativeReactNativeCustomergluSpecBase : NSObject {
-@protected
-facebook::react::EventEmitterCallback _eventEmitterCallback;
-}
-- (void)setEventEmitterCallback:(EventEmitterCallbackWrapper *)eventEmitterCallbackWrapper;
-
-
-@end
-
 namespace facebook::react {
   /**
    * ObjC++ class for module 'NativeReactNativeCustomerglu'
@@ -102,5 +93,4 @@ namespace facebook::react {
   };
 } // namespace facebook::react
 
-NS_ASSUME_NONNULL_END
 #endif // RNCustomergluSpec_H

@@ -169,6 +169,38 @@ RCT_EXPORT_METHOD(testEventEmission) {
       }
 }
 
+- (void)startSSEOnForeground { 
+    CustomerGlu *sdk = [CustomerGlu getInstance];
+    
+    @try {
+        [sdk startSSEOnForeground];
+      } @catch (NSException *exception) {
+          NSLog(@"CustomerGlu startSSEOnForeground failed: %@", exception.reason);
+      }
+}
+
+- (void)disconnectSSEOnBackground { 
+    CustomerGlu *sdk = [CustomerGlu getInstance];
+    
+    @try {
+        [sdk disconnectSSEOnBackground];
+      } @catch (NSException *exception) {
+          NSLog(@"CustomerGlu disconnectSSEOnBackground failed: %@", exception.reason);
+      }
+}
+
+- (void)setSSETimeout:(double)time { 
+    CustomerGlu *sdk = [CustomerGlu getInstance];
+    
+    // @try {
+    //    // [sdk addDelayForPIPWithDelay:delay];
+    //   } @catch (NSException *exception) {
+    //       NSLog(@"CustomerGlu addDelayForPIPWithDelay failed: %@", exception.reason);
+    //   }
+}
+
+
+
 - (void)addListener:(nonnull NSString *)eventType { 
     [super addListener:eventType];
       NSLog(@"[CustomerGlu] JS added listener for %@", eventType);
@@ -479,7 +511,7 @@ RCT_EXPORT_METHOD(testEventEmission) {
            }
            
            // Call the method with extracted values
-           [sdk sendEventDataWithEventName:eventName eventProperties:eventProperties];
+           [sdk sendEventDataWithEventName:eventName eventProperties:eventProperties updateUser:false];
        } @catch (NSException *exception) {
            NSLog(@"CustomerGlu sendEvent failed: %@", exception.reason);
        }

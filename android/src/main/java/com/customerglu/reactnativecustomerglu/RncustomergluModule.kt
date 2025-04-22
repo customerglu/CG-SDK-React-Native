@@ -102,15 +102,15 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
 
         }
         if (intent.action == BANNER_BROADCAST_ACTION) {
-          val data = intent.getStringExtra("data") ?: ""
-          Log.d(TAG, "Received broadcast event with data: $data")
-
-          // Create a WritableMap to send to React Native
-          val jsonObject = JSONObject(data)
-          val map: WritableMap? = jsonToWritableMap(jsonObject)
-          if (map != null) {
-            sendEventToJs("CUSTOMERGLU_BANNER_LOADED", map)
-          }
+//          val data = intent.getStringExtra("data") ?: ""
+//          Log.d(TAG, "Received broadcast event with data: $data")
+//
+//          // Create a WritableMap to send to React Native
+//          val jsonObject = JSONObject(data)
+//          val map: WritableMap? = jsonToWritableMap(jsonObject)
+//          if (map != null) {
+//            sendEventToJs("CUSTOMERGLU_BANNER_LOADED", map)
+//          }
 
           // Send the event to JS
           //sendEventToJs("onCustomerGluAnalyticsEvent", params)
@@ -448,6 +448,19 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
         })
     }
   }
+
+  override fun startSSEOnForeground(){
+      CustomerGlu.getInstance().StartSSEOnForeground()
+  }
+
+  override fun disconnectSSEOnBackground(){
+      CustomerGlu.getInstance().disconnectSSEOnBackground()
+  }
+
+  override fun setSSETimeout(time: Double) {
+    CustomerGlu.getInstance().setSSETimeout(time.toInt())
+  }
+
 
   override fun DisplayCustomerGluNotification() {
     TODO("Not yet implemented")

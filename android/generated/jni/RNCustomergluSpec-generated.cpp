@@ -97,6 +97,21 @@ static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_D
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "DisplayCustomerGluNotification", "()V", args, count, cachedMethodId);
 }
 
+static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_startSSEOnForeground(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+  static jmethodID cachedMethodId = nullptr;
+  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "startSSEOnForeground", "()V", args, count, cachedMethodId);
+}
+
+static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_disconnectSSEOnBackground(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+  static jmethodID cachedMethodId = nullptr;
+  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "disconnectSSEOnBackground", "()V", args, count, cachedMethodId);
+}
+
+static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setSSETimeout(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+  static jmethodID cachedMethodId = nullptr;
+  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "setSSETimeout", "(D)V", args, count, cachedMethodId);
+}
+
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCGNotification(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
   static jmethodID cachedMethodId = nullptr;
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "DisplayCGNotification", "(Lcom/facebook/react/bridge/ReadableMap;Ljava/lang/Boolean;)V", args, count, cachedMethodId);
@@ -166,6 +181,9 @@ NativeReactNativeCustomergluSpecJSI::NativeReactNativeCustomergluSpecJSI(const J
   methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn};
   methodMap_["UpdateProfile"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateProfile};
   methodMap_["DisplayCustomerGluNotification"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCustomerGluNotification};
+  methodMap_["startSSEOnForeground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_startSSEOnForeground};
+  methodMap_["disconnectSSEOnBackground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_disconnectSSEOnBackground};
+  methodMap_["setSSETimeout"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_setSSETimeout};
   methodMap_["DisplayCGNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCGNotification};
   methodMap_["DisplayCGBackgroundNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCGBackgroundNotification};
   methodMap_["SetCurrentClassName"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_SetCurrentClassName};

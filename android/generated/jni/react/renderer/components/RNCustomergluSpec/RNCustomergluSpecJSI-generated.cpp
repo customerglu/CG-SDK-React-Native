@@ -129,6 +129,25 @@ static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_DisplayC
   );
   return jsi::Value::undefined();
 }
+static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_startSSEOnForeground(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
+  static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->startSSEOnForeground(
+    rt
+  );
+  return jsi::Value::undefined();
+}
+static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_disconnectSSEOnBackground(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
+  static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->disconnectSSEOnBackground(
+    rt
+  );
+  return jsi::Value::undefined();
+}
+static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setSSETimeout(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
+  static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->setSSETimeout(
+    rt,
+    count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asNumber()
+  );
+  return jsi::Value::undefined();
+}
 static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_DisplayCGNotification(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
   static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->DisplayCGNotification(
     rt,
@@ -221,6 +240,9 @@ NativeReactNativeCustomergluCxxSpecJSI::NativeReactNativeCustomergluCxxSpecJSI(s
   methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_isFcmApn};
   methodMap_["UpdateProfile"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_UpdateProfile};
   methodMap_["DisplayCustomerGluNotification"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_DisplayCustomerGluNotification};
+  methodMap_["startSSEOnForeground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_startSSEOnForeground};
+  methodMap_["disconnectSSEOnBackground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_disconnectSSEOnBackground};
+  methodMap_["setSSETimeout"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setSSETimeout};
   methodMap_["DisplayCGNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_DisplayCGNotification};
   methodMap_["DisplayCGBackgroundNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_DisplayCGBackgroundNotification};
   methodMap_["SetCurrentClassName"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_SetCurrentClassName};

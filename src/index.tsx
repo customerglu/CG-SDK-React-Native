@@ -35,6 +35,16 @@ export function initCGSDK(obj: string): void {
   return ReactNativeCustomerglu.initCGSDK(obj);
 }
 
+export function startSSEOnForeground(): void {
+  return ReactNativeCustomerglu.startSSEOnForeground();
+}
+export function disconnectSSEOnBackground(): void {
+  return ReactNativeCustomerglu.disconnectSSEOnBackground();
+}
+export function setSSETimeout(time: number): void {
+  return ReactNativeCustomerglu.setSSETimeout(time);
+}
+
 export function loadCampaignById(campid: string, obj: Object = {}): void {
   return ReactNativeCustomerglu.loadCampaignById(campid, obj);
 }

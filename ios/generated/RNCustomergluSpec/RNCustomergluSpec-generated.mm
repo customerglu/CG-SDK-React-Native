@@ -14,16 +14,6 @@
 #import "RNCustomergluSpec.h"
 
 
-@implementation NativeReactNativeCustomergluSpecBase
-
-
-- (void)setEventEmitterCallback:(EventEmitterCallbackWrapper *)eventEmitterCallbackWrapper
-{
-  _eventEmitterCallback = std::move(eventEmitterCallbackWrapper->_eventEmitterCallback);
-}
-@end
-
-
 namespace facebook::react {
   
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_addListener(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
@@ -92,6 +82,18 @@ namespace facebook::react {
 
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCustomerGluNotification(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "DisplayCustomerGluNotification", @selector(DisplayCustomerGluNotification), args, count);
+    }
+
+    static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_startSSEOnForeground(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+      return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "startSSEOnForeground", @selector(startSSEOnForeground), args, count);
+    }
+
+    static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_disconnectSSEOnBackground(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+      return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "disconnectSSEOnBackground", @selector(disconnectSSEOnBackground), args, count);
+    }
+
+    static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setSSETimeout(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+      return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "setSSETimeout", @selector(setSSETimeout:), args, count);
     }
 
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCGNotification(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
@@ -186,6 +188,15 @@ namespace facebook::react {
         
         
         methodMap_["DisplayCustomerGluNotification"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCustomerGluNotification};
+        
+        
+        methodMap_["startSSEOnForeground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_startSSEOnForeground};
+        
+        
+        methodMap_["disconnectSSEOnBackground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_disconnectSSEOnBackground};
+        
+        
+        methodMap_["setSSETimeout"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_setSSETimeout};
         
         
         methodMap_["DisplayCGNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCGNotification};
