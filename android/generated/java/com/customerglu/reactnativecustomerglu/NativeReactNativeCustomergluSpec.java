@@ -100,6 +100,18 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
 
   @ReactMethod
   @DoNotStrip
+  public abstract void startSSEOnForeground();
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void disconnectSSEOnBackground();
+
+  @ReactMethod
+  @DoNotStrip
+  public abstract void setSSETimeout(double time);
+
+  @ReactMethod
+  @DoNotStrip
   public abstract void DisplayCustomerGluNotification();
 
   @ReactMethod

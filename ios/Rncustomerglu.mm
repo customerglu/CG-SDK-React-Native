@@ -194,6 +194,36 @@ RCT_EXPORT_METHOD(testEventEmission) {
       }
 }
 
+- (void)startSSEOnForeground { 
+    CustomerGlu *sdk = [CustomerGlu getInstance];
+    
+    @try {
+        [sdk startSSEOnForeground];
+      } @catch (NSException *exception) {
+          NSLog(@"CustomerGlu startSSEOnForeground failed: %@", exception.reason);
+      }
+}
+
+- (void)disconnectSSEOnBackground { 
+    CustomerGlu *sdk = [CustomerGlu getInstance];
+    
+    @try {
+        [sdk disconnectSSEOnBackground];
+      } @catch (NSException *exception) {
+          NSLog(@"CustomerGlu disconnectSSEOnBackground failed: %@", exception.reason);
+      }
+}
+
+- (void)setSSETimeout:(double)delay { 
+    CustomerGlu *sdk = [CustomerGlu getInstance];
+    
+    @try {
+        [sdk setSSETimeoutWithTimeout:delay];
+      } @catch (NSException *exception) {
+          NSLog(@"CustomerGlu addDelayForPIPWithDelay failed: %@", exception.reason);
+      }
+}
+
 - (void)dataClear { 
     CustomerGlu *sdk = [CustomerGlu getInstance];
     
@@ -290,7 +320,7 @@ RCT_EXPORT_METHOD(testEventEmission) {
 - (void)initCGSDK:(nonnull NSString *)obj {
     NSLog(@"[CustomerGlu] start init sdk");
     CustomerGlu *sdk = [CustomerGlu getInstance];
-    CustomerGlu.sdk_version = @"3.0.0";
+    CustomerGlu.sdk_version = @"3.1.0";
     CustomerGlu.app_platform = @"REACT_NATIVE";
     @try {
         [self startObserving];
@@ -479,7 +509,7 @@ RCT_EXPORT_METHOD(testEventEmission) {
            }
            
            // Call the method with extracted values
-           [sdk sendEventDataWithEventName:eventName eventProperties:eventProperties];
+           [sdk sendEventDataWithEventName:eventName eventProperties:eventProperties updateUser:false];
        } @catch (NSException *exception) {
            NSLog(@"CustomerGlu sendEvent failed: %@", exception.reason);
        }

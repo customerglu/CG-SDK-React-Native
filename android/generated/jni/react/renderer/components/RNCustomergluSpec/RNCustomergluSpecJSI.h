@@ -36,6 +36,9 @@ public:
   virtual void enableEntryPoints(jsi::Runtime &rt, bool b) = 0;
   virtual void isFcmApn(jsi::Runtime &rt, jsi::String value) = 0;
   virtual void UpdateProfile(jsi::Runtime &rt, jsi::Object obj) = 0;
+  virtual void startSSEOnForeground(jsi::Runtime &rt) = 0;
+  virtual void disconnectSSEOnBackground(jsi::Runtime &rt) = 0;
+  virtual void setSSETimeout(jsi::Runtime &rt, double time) = 0;
   virtual void DisplayCustomerGluNotification(jsi::Runtime &rt) = 0;
   virtual void DisplayCGNotification(jsi::Runtime &rt, jsi::Object obj, std::optional<bool> autoclosewebview) = 0;
   virtual void DisplayCGBackgroundNotification(jsi::Runtime &rt, jsi::Object obj, std::optional<bool> autoclosewebview) = 0;
@@ -204,6 +207,30 @@ private:
 
       return bridging::callFromJs<void>(
           rt, &T::UpdateProfile, jsInvoker_, instance_, std::move(obj));
+    }
+    void startSSEOnForeground(jsi::Runtime &rt) override {
+      static_assert(
+          bridging::getParameterCount(&T::startSSEOnForeground) == 1,
+          "Expected startSSEOnForeground(...) to have 1 parameters");
+
+      return bridging::callFromJs<void>(
+          rt, &T::startSSEOnForeground, jsInvoker_, instance_);
+    }
+    void disconnectSSEOnBackground(jsi::Runtime &rt) override {
+      static_assert(
+          bridging::getParameterCount(&T::disconnectSSEOnBackground) == 1,
+          "Expected disconnectSSEOnBackground(...) to have 1 parameters");
+
+      return bridging::callFromJs<void>(
+          rt, &T::disconnectSSEOnBackground, jsInvoker_, instance_);
+    }
+    void setSSETimeout(jsi::Runtime &rt, double time) override {
+      static_assert(
+          bridging::getParameterCount(&T::setSSETimeout) == 2,
+          "Expected setSSETimeout(...) to have 2 parameters");
+
+      return bridging::callFromJs<void>(
+          rt, &T::setSSETimeout, jsInvoker_, instance_, std::move(time));
     }
     void DisplayCustomerGluNotification(jsi::Runtime &rt) override {
       static_assert(

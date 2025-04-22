@@ -102,15 +102,15 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
 
         }
         if (intent.action == BANNER_BROADCAST_ACTION) {
-          val data = intent.getStringExtra("data") ?: ""
-          Log.d(TAG, "Received broadcast event with data: $data")
-
-          // Create a WritableMap to send to React Native
-          val jsonObject = JSONObject(data)
-          val map: WritableMap? = jsonToWritableMap(jsonObject)
-          if (map != null) {
-            sendEventToJs("CUSTOMERGLU_BANNER_LOADED", map)
-          }
+//          val data = intent.getStringExtra("data") ?: ""
+//          Log.d(TAG, "Received broadcast event with data: $data")
+//
+//          // Create a WritableMap to send to React Native
+//          val jsonObject = JSONObject(data)
+//          val map: WritableMap? = jsonToWritableMap(jsonObject)
+//          if (map != null) {
+//            sendEventToJs("CUSTOMERGLU_BANNER_LOADED", map)
+ //         }
 
           // Send the event to JS
           //sendEventToJs("onCustomerGluAnalyticsEvent", params)
@@ -149,7 +149,6 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
             Log.e(TAG, "Unexpected error: $e")
           }
         }
-
 
         if (intent.action == INVALID_CAMPAIGN_BROADCAST_ACTION) {
           val data = intent.getStringExtra("data") ?: ""
@@ -325,7 +324,7 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
 
   override fun initCGSDK(obj: String?) {
     CustomerGlu.getInstance().initializeSdk(getReactApplicationContext(),obj);
-    CustomerGlu.cg_sdk_version = "3.0.0"
+    CustomerGlu.cg_sdk_version = "3.1.0"
     CustomerGlu.cg_app_platform = "REACT_NATIVE"
 
   }
@@ -465,6 +464,19 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
       return 0
     }
   }
+
+  override fun startSSEOnForeground(){
+    CustomerGlu.getInstance().StartSSEOnForeground()
+  }
+
+  override fun disconnectSSEOnBackground(){
+    CustomerGlu.getInstance().disconnectSSEOnBackground()
+  }
+
+  override fun setSSETimeout(time: Double) {
+    CustomerGlu.getInstance().setSSETimeout(time.toInt())
+  }
+
   override fun DisplayCGNotification(obj: ReadableMap?, autoclosewebview: Boolean?) {
     val jsonObject = convertMapToJson(obj)
     if (getAppIcon(reactApplicationContext) !== 0) {
@@ -487,6 +499,8 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
       autoclosewebview!!
     )
   }
+
+
 
   override fun SetCurrentClassName(clname: String?, promise: Promise?) {
     if (clname != null) {

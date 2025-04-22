@@ -55,6 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)enableEntryPoints:(BOOL)b;
 - (void)isFcmApn:(NSString *)value;
 - (void)UpdateProfile:(NSDictionary *)obj;
+- (void)startSSEOnForeground;
+- (void)disconnectSSEOnBackground;
+- (void)setSSETimeout:(double)time;
 - (void)DisplayCustomerGluNotification;
 - (void)DisplayCGNotification:(NSDictionary *)obj
              autoclosewebview:(NSNumber *)autoclosewebview;

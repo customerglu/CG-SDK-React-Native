@@ -8,6 +8,7 @@ import {
   Button,
   ScrollView,
   Dimensions,
+  AppState,
 } from 'react-native';
 import {
   gluSDKDebuggingMode,
@@ -18,6 +19,8 @@ import {
   SetCurrentClassName,
   sendData,
   BannerWidget,
+  disconnectSSEOnBackground,
+  startSSEOnForeground,
 } from '@customerglu/react-native-customerglu';
 
 import NativeReactNativeCustomerglu from '../../src/NativeReactNativeCustomerglu';
@@ -63,6 +66,26 @@ export default function App() {
     }
   };
 
+  let currentState = AppState.currentState;
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', nextAppState => {
+      if (currentState === 'active' && nextAppState.match(/inactive|background/)) {
+        console.log('🔴 App moving to background');
+        disconnectSSEOnBackground();
+      }
+  
+      if (currentState.match(/inactive|background/) && nextAppState === 'active') {
+        console.log('🟢 App returning to foreground');
+        startSSEOnForeground();
+      }
+  
+      currentState = nextAppState;
+    });
+  
+    return () => subscription.remove();
+  }, []);
+
   useEffect(() => {
     const initializeSDK = async () => {
       try {
@@ -77,7 +100,7 @@ export default function App() {
 
         // Register device
         const userData = {
-          userId: 'userid',
+          userId: 'glutest-509',
           firebaseToken: 'token',
           apnsDeviceToken: '',
         };
@@ -86,7 +109,7 @@ export default function App() {
           const result = await RegisterDevice(userData);
           console.log('Device registration result:', result);
           await new Promise((resolve) => setTimeout(resolve, 1000));
-          SetCurrentClassName('HomeScreen');
+          SetCurrentClassName('Home');
           setIsSDKInitialized(true);
           console.log('Available native modules:', Object.keys(NativeModules));
         

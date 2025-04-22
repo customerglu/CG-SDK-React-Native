@@ -43,6 +43,16 @@ export function loadCampaignWithUrl(url: string, obj: Object): void {
   return ReactNativeCustomerglu.loadCampaignWithUrl(url, obj);
 }
 
+export function startSSEOnForeground(): void {
+  return ReactNativeCustomerglu.startSSEOnForeground();
+}
+export function disconnectSSEOnBackground(): void {
+  return ReactNativeCustomerglu.disconnectSSEOnBackground();
+}
+export function setSSETimeout(time: number): void {
+  return ReactNativeCustomerglu.setSSETimeout(time);
+}
+
 export function enableAnalytic(b: boolean): void {
   return ReactNativeCustomerglu.enableAnalytic(b);
 }

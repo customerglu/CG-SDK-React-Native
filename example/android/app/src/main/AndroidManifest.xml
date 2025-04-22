@@ -10,7 +10,7 @@
       android:allowBackup="false"
       android:theme="@style/AppTheme"
       android:supportsRtl="true">
-                 <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="10666d4bf2ed9519c6ac245e6943ec2717afa042" />
+      <meta-data android:name="CUSTOMERGLU_WRITE_KEY" android:value="f05483aecce712e3bc65a4337f9f377b3b0401a4" />
 
       <activity
         android:name=".MainActivity"
