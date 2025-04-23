@@ -16,6 +16,9 @@ export interface Spec extends TurboModule {
     enableEntryPoints(b: boolean): void;
     isFcmApn(value: string): void;
     UpdateProfile(obj: Object): void;
+    startSSEOnForeground(): void;
+    disconnectSSEOnBackground(): void;
+    setSSETimeout(time: number): void;
     DisplayCustomerGluNotification(): void;
     DisplayCGNotification(obj: Object, autoclosewebview?: boolean): void;
     DisplayCGBackgroundNotification(obj: Object, autoclosewebview?: boolean): void;
