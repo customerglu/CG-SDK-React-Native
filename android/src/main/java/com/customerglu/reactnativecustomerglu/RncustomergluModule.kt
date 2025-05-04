@@ -324,7 +324,7 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
 
   override fun initCGSDK(obj: String?) {
     CustomerGlu.getInstance().initializeSdk(getReactApplicationContext(),obj);
-    CustomerGlu.cg_sdk_version = "3.1.0"
+    CustomerGlu.cg_sdk_version = "3.1.1"
     CustomerGlu.cg_app_platform = "REACT_NATIVE"
 
   }

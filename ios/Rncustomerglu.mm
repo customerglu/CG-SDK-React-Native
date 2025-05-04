@@ -320,7 +320,7 @@ RCT_EXPORT_METHOD(testEventEmission) {
 - (void)initCGSDK:(nonnull NSString *)obj {
     NSLog(@"[CustomerGlu] start init sdk");
     CustomerGlu *sdk = [CustomerGlu getInstance];
-    CustomerGlu.sdk_version = @"3.1.0";
+    CustomerGlu.sdk_version = @"3.1.1";
     CustomerGlu.app_platform = @"REACT_NATIVE";
     @try {
         [self startObserving];
