@@ -35,6 +35,7 @@ public:
   virtual void gluSDKDebuggingMode(jsi::Runtime &rt, bool b) = 0;
   virtual void enableEntryPoints(jsi::Runtime &rt, bool b) = 0;
   virtual void isFcmApn(jsi::Runtime &rt, jsi::String value) = 0;
+  virtual void setAdPopupFont(jsi::Runtime &rt, jsi::String value) = 0;
   virtual void UpdateProfile(jsi::Runtime &rt, jsi::Object obj) = 0;
   virtual void startSSEOnForeground(jsi::Runtime &rt) = 0;
   virtual void disconnectSSEOnBackground(jsi::Runtime &rt) = 0;
@@ -199,6 +200,14 @@ private:
 
       return bridging::callFromJs<void>(
           rt, &T::isFcmApn, jsInvoker_, instance_, std::move(value));
+    }
+    void setAdPopupFont(jsi::Runtime &rt, jsi::String value) override {
+      static_assert(
+          bridging::getParameterCount(&T::setAdPopupFont) == 2,
+          "Expected setAdPopupFont(...) to have 2 parameters");
+
+      return bridging::callFromJs<void>(
+          rt, &T::setAdPopupFont, jsInvoker_, instance_, std::move(value));
     }
     void UpdateProfile(jsi::Runtime &rt, jsi::Object obj) override {
       static_assert(

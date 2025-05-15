@@ -96,6 +96,10 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
 
   @ReactMethod
   @DoNotStrip
+  public abstract void setAdPopupFont(String value);
+
+  @ReactMethod
+  @DoNotStrip
   public abstract void UpdateProfile(ReadableMap obj);
 
   @ReactMethod

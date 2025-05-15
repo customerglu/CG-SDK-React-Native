@@ -54,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)gluSDKDebuggingMode:(BOOL)b;
 - (void)enableEntryPoints:(BOOL)b;
 - (void)isFcmApn:(NSString *)value;
+- (void)setAdPopupFont:(NSString *)value;
 - (void)UpdateProfile:(NSDictionary *)obj;
 - (void)startSSEOnForeground;
 - (void)disconnectSSEOnBackground;

@@ -34,6 +34,9 @@ export function openWallet(obj: Object = {}): void {
 export function initCGSDK(obj: string): void {
   return ReactNativeCustomerglu.initCGSDK(obj);
 }
+export function setAdPopupFont(obj: string): void {
+  return ReactNativeCustomerglu.setAdPopupFont(obj);
+}
 
 export function loadCampaignById(campid: string, obj: Object = {}): void {
   return ReactNativeCustomerglu.loadCampaignById(campid, obj);

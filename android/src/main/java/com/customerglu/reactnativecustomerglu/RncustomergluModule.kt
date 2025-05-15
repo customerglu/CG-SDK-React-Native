@@ -324,9 +324,13 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
 
   override fun initCGSDK(obj: String?) {
     CustomerGlu.getInstance().initializeSdk(getReactApplicationContext(),obj);
-    CustomerGlu.cg_sdk_version = "3.1.1"
+    CustomerGlu.cg_sdk_version = "3.1.2"
     CustomerGlu.cg_app_platform = "REACT_NATIVE"
 
+  }
+
+  override fun setAdPopupFont(value: String?) {
+    CustomerGlu.getInstance().setAdPopupFont(value);
   }
 
   override fun loadCampaignById(id: String?, readableMap: ReadableMap?) {
@@ -409,6 +413,7 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
     CustomerGlu.getInstance().enableAnalyticsEvent(b);
 
   }
+
 
   override fun allowAnonymousRegistration(b: Boolean) {
     CustomerGlu.getInstance().allowAnonymousRegistration(b);

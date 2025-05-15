@@ -86,6 +86,10 @@ namespace facebook::react {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "isFcmApn", @selector(isFcmApn:), args, count);
     }
 
+    static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+      return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "setAdPopupFont", @selector(setAdPopupFont:), args, count);
+    }
+
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateProfile(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "UpdateProfile", @selector(UpdateProfile:), args, count);
     }
@@ -192,6 +196,9 @@ namespace facebook::react {
         
         
         methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn};
+        
+        
+        methodMap_["setAdPopupFont"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont};
         
         
         methodMap_["UpdateProfile"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateProfile};

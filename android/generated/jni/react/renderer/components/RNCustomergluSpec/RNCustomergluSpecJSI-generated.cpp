@@ -116,6 +116,13 @@ static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_isFcmApn
   );
   return jsi::Value::undefined();
 }
+static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setAdPopupFont(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
+  static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->setAdPopupFont(
+    rt,
+    count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asString(rt)
+  );
+  return jsi::Value::undefined();
+}
 static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_UpdateProfile(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
   static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->UpdateProfile(
     rt,
@@ -238,6 +245,7 @@ NativeReactNativeCustomergluCxxSpecJSI::NativeReactNativeCustomergluCxxSpecJSI(s
   methodMap_["gluSDKDebuggingMode"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_gluSDKDebuggingMode};
   methodMap_["enableEntryPoints"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_enableEntryPoints};
   methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_isFcmApn};
+  methodMap_["setAdPopupFont"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setAdPopupFont};
   methodMap_["UpdateProfile"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_UpdateProfile};
   methodMap_["startSSEOnForeground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_startSSEOnForeground};
   methodMap_["disconnectSSEOnBackground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_disconnectSSEOnBackground};

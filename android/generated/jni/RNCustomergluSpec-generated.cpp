@@ -87,6 +87,11 @@ static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_i
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "isFcmApn", "(Ljava/lang/String;)V", args, count, cachedMethodId);
 }
 
+static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
+  static jmethodID cachedMethodId = nullptr;
+  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "setAdPopupFont", "(Ljava/lang/String;)V", args, count, cachedMethodId);
+}
+
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateProfile(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
   static jmethodID cachedMethodId = nullptr;
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "UpdateProfile", "(Lcom/facebook/react/bridge/ReadableMap;)V", args, count, cachedMethodId);
@@ -179,6 +184,7 @@ NativeReactNativeCustomergluSpecJSI::NativeReactNativeCustomergluSpecJSI(const J
   methodMap_["gluSDKDebuggingMode"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_gluSDKDebuggingMode};
   methodMap_["enableEntryPoints"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_enableEntryPoints};
   methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn};
+  methodMap_["setAdPopupFont"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont};
   methodMap_["UpdateProfile"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateProfile};
   methodMap_["startSSEOnForeground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_startSSEOnForeground};
   methodMap_["disconnectSSEOnBackground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_disconnectSSEOnBackground};

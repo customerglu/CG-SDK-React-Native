@@ -320,7 +320,7 @@ RCT_EXPORT_METHOD(testEventEmission) {
 - (void)initCGSDK:(nonnull NSString *)obj {
     NSLog(@"[CustomerGlu] start init sdk");
     CustomerGlu *sdk = [CustomerGlu getInstance];
-    CustomerGlu.sdk_version = @"3.1.1";
+    CustomerGlu.sdk_version = @"3.1.2";
     CustomerGlu.app_platform = @"REACT_NATIVE";
     @try {
         [self startObserving];
@@ -330,6 +330,18 @@ RCT_EXPORT_METHOD(testEventEmission) {
       }
     
 }
+
+- (void)setAdPopupFont:(nonnull NSString *)obj {
+    NSLog(@"[CustomerGlu] start init sdk");
+    CustomerGlu *sdk = [CustomerGlu getInstance];
+    @try {
+        [sdk setAdPopupFontsWithFontName:obj];
+      } @catch (NSException *exception) {
+          NSLog(@"CustomerGlu setAdFont failed: %@", exception.reason);
+      }
+    
+}
+
 
 - (void)isCampaignValid:(nonnull NSString *)campaignId dataFlag:(nonnull NSString *)dataFlag resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject { 
     

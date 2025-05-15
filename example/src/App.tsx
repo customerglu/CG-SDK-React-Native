@@ -93,7 +93,7 @@ export default function App() {
         gluSDKDebuggingMode(true);
 
         // Initialize SDK with environment
-        initCGSDK('in');
+        initCGSDK('us');
 
         // Wait for SDK to be ready
         await new Promise((resolve) => setTimeout(resolve, 1000));
