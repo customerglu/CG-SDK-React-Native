@@ -13,6 +13,7 @@ export declare function dataClear(): void;
 export declare function sendData(obj: Object): void;
 export declare function openWallet(obj?: Object): void;
 export declare function initCGSDK(obj: string): void;
+export declare function setAdPopupFont(obj: string): void;
 export declare function loadCampaignById(campid: string, obj?: Object): void;
 export declare function loadCampaignWithUrl(url: string, obj: Object): void;
 export declare function startSSEOnForeground(): void;

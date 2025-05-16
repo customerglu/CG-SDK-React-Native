@@ -15,6 +15,7 @@ export interface Spec extends TurboModule {
     gluSDKDebuggingMode(b: boolean): void;
     enableEntryPoints(b: boolean): void;
     isFcmApn(value: string): void;
+    setAdPopupFont(value: string): void;
     UpdateProfile(obj: Object): void;
     startSSEOnForeground(): void;
     disconnectSSEOnBackground(): void;

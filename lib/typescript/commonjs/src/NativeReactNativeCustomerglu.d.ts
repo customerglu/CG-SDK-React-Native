@@ -8,7 +8,6 @@ export interface Spec extends TurboModule {
     sendData(obj: Object): void;
     openWallet(obj?: Object): void;
     initCGSDK(obj: string): void;
-    setAdPopupFont(obj: string): void;
     loadCampaignById(campid: string, obj?: Object): void;
     loadCampaignWithUrl(url: string, obj: Object): void;
     enableAnalytic(b: boolean): void;
@@ -16,6 +15,7 @@ export interface Spec extends TurboModule {
     gluSDKDebuggingMode(b: boolean): void;
     enableEntryPoints(b: boolean): void;
     isFcmApn(value: string): void;
+    setAdPopupFont(value: string): void;
     UpdateProfile(obj: Object): void;
     startSSEOnForeground(): void;
     disconnectSSEOnBackground(): void;
