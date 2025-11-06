@@ -23,7 +23,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CUSTOMERGLU_WRITE_KEY</key>
-	<string>10666d4bf2ed9519c6ac245e6943ec2717afa042</string>
+	<string>83982458a3f233fd3a3a54fe5ed004c0aa213e7f</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

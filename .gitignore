@@ -270,4 +270,11 @@ example/ios/CGConfigSetting.xcconfig
 example/android/app/src/main/res/values/secret.xml
 
 *.lock
+
+# Local development files
+example/ios/.xcode.env.local
+errorLogs.logs
+run_output.log
+example/ios/build/
+
 # End of https://www.toptal.com/developers/gitignore/api/reactnative
