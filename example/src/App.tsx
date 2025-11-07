@@ -212,8 +212,6 @@ export default function App() {
 
       const userData = {
         userId: userId.trim(),
-        firebaseToken: '',
-        apnsDeviceToken: '',
       };
 
       const success = await RegisterDevice(userData);
