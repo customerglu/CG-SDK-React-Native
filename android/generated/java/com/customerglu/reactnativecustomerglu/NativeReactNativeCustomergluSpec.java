@@ -92,10 +92,6 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
 
   @ReactMethod
   @DoNotStrip
-  public abstract void isFcmApn(String value);
-
-  @ReactMethod
-  @DoNotStrip
   public abstract void setAdPopupFont(String value);
 
   @ReactMethod
@@ -129,10 +125,6 @@ public abstract class NativeReactNativeCustomergluSpec extends ReactContextBaseJ
   @ReactMethod
   @DoNotStrip
   public abstract void SetCurrentClassName(String clname, Promise promise);
-
-  @ReactMethod
-  @DoNotStrip
-  public abstract void setApnFcmToken(String a, String b);
 
   @ReactMethod
   @DoNotStrip

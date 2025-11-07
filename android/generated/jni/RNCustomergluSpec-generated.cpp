@@ -82,11 +82,6 @@ static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_e
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "enableEntryPoints", "(Z)V", args, count, cachedMethodId);
 }
 
-static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
-  static jmethodID cachedMethodId = nullptr;
-  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "isFcmApn", "(Ljava/lang/String;)V", args, count, cachedMethodId);
-}
-
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
   static jmethodID cachedMethodId = nullptr;
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "setAdPopupFont", "(Ljava/lang/String;)V", args, count, cachedMethodId);
@@ -130,11 +125,6 @@ static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_D
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_SetCurrentClassName(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
   static jmethodID cachedMethodId = nullptr;
   return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "SetCurrentClassName", "(Ljava/lang/String;Lcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
-}
-
-static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setApnFcmToken(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
-  static jmethodID cachedMethodId = nullptr;
-  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "setApnFcmToken", "(Ljava/lang/String;Ljava/lang/String;)V", args, count, cachedMethodId);
 }
 
 static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_getBannerHeight(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
@@ -183,7 +173,6 @@ NativeReactNativeCustomergluSpecJSI::NativeReactNativeCustomergluSpecJSI(const J
   methodMap_["allowAnonymousRegistration"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_allowAnonymousRegistration};
   methodMap_["gluSDKDebuggingMode"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_gluSDKDebuggingMode};
   methodMap_["enableEntryPoints"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_enableEntryPoints};
-  methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn};
   methodMap_["setAdPopupFont"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont};
   methodMap_["UpdateProfile"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_UpdateProfile};
   methodMap_["startSSEOnForeground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_startSSEOnForeground};
@@ -193,7 +182,6 @@ NativeReactNativeCustomergluSpecJSI::NativeReactNativeCustomergluSpecJSI(const J
   methodMap_["DisplayCGNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCGNotification};
   methodMap_["DisplayCGBackgroundNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_DisplayCGBackgroundNotification};
   methodMap_["SetCurrentClassName"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_SetCurrentClassName};
-  methodMap_["setApnFcmToken"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_setApnFcmToken};
   methodMap_["getBannerHeight"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_getBannerHeight};
   methodMap_["addMarginsForPIP"] = MethodMetadata {3, __hostFunction_NativeReactNativeCustomergluSpecJSI_addMarginsForPIP};
   methodMap_["addDelayForPIP"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_addDelayForPIP};

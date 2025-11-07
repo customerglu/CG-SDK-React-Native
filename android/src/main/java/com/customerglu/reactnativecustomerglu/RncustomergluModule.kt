@@ -427,10 +427,6 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
     CustomerGlu.getInstance().enableEntryPoints(getCurrentActivity(), b);
   }
 
-  override fun isFcmApn(id: String) {
-
-  }
-
   override fun UpdateProfile(map: ReadableMap?) {
     if (map != null) {
       val jsonObject = convertMapToJson(map)
@@ -519,9 +515,6 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
       promise?.reject("ERROR", "Class Name is Null")
     }
 
-  }
-
-  override fun setApnFcmToken(a: String?, b: String?) {
   }
 
   override fun getBannerHeight(promise: Promise?) {

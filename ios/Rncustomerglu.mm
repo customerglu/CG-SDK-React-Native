@@ -373,18 +373,6 @@ RCT_EXPORT_METHOD(testEventEmission) {
         }
 }
 
-- (void)isFcmApn:(NSString *) value {
-    CustomerGlu *sdk = [CustomerGlu getInstance];
-         
-         @try {
-             [sdk isFcmApnWithFcmApn:value];
-             
-           
-         } @catch (NSException *exception) {
-             NSLog(@"CustomerGlu isFcm failed: %@", exception.reason);
-         }
-}
-
 - (void)loadCampaignById:(nonnull NSString *)campid obj:(nonnull NSDictionary *)obj {
     CustomerGlu *sdk = [CustomerGlu getInstance];
          
@@ -527,17 +515,6 @@ RCT_EXPORT_METHOD(testEventEmission) {
        }
 }
 
-- (void)setApnFcmToken:(nonnull NSString *)a b:(nonnull NSString *)b { 
-    CustomerGlu *sdk = [CustomerGlu getInstance];
-
-    @try {
-           sdk.apnToken = a;
-           sdk.fcmToken = b;
-       } @catch (NSException *exception) {
-           NSLog(@"CustomerGlu setApnFcmToken failed: %@", exception.reason);
-       }
-}
-
 - (void)setOpenWalletAsFallback:(BOOL)value {
     CustomerGlu *sdk = [CustomerGlu getInstance];
          
@@ -545,7 +522,7 @@ RCT_EXPORT_METHOD(testEventEmission) {
              [sdk setOpenWalletAsFallback:value];
            
          } @catch (NSException *exception) {
-             NSLog(@"CustomerGlu isFcm failed: %@", exception.reason);
+             NSLog(@"CustomerGlu setOpenWalletAsFallback failed: %@", exception.reason);
          }
     
 }

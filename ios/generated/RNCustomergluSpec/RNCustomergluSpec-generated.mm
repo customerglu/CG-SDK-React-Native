@@ -82,10 +82,6 @@ namespace facebook::react {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "enableEntryPoints", @selector(enableEntryPoints:), args, count);
     }
 
-    static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
-      return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "isFcmApn", @selector(isFcmApn:), args, count);
-    }
-
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "setAdPopupFont", @selector(setAdPopupFont:), args, count);
     }
@@ -120,10 +116,6 @@ namespace facebook::react {
 
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_SetCurrentClassName(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
       return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, PromiseKind, "SetCurrentClassName", @selector(SetCurrentClassName:resolve:reject:), args, count);
-    }
-
-    static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_setApnFcmToken(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
-      return static_cast<ObjCTurboModule&>(turboModule).invokeObjCMethod(rt, VoidKind, "setApnFcmToken", @selector(setApnFcmToken:b:), args, count);
     }
 
     static facebook::jsi::Value __hostFunction_NativeReactNativeCustomergluSpecJSI_getBannerHeight(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
@@ -195,9 +187,6 @@ namespace facebook::react {
         methodMap_["enableEntryPoints"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_enableEntryPoints};
         
         
-        methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_isFcmApn};
-        
-        
         methodMap_["setAdPopupFont"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_setAdPopupFont};
         
         
@@ -223,9 +212,6 @@ namespace facebook::react {
         
         
         methodMap_["SetCurrentClassName"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluSpecJSI_SetCurrentClassName};
-        
-        
-        methodMap_["setApnFcmToken"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluSpecJSI_setApnFcmToken};
         
         
         methodMap_["getBannerHeight"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluSpecJSI_getBannerHeight};

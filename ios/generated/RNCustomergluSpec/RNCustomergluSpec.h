@@ -53,7 +53,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)allowAnonymousRegistration:(BOOL)b;
 - (void)gluSDKDebuggingMode:(BOOL)b;
 - (void)enableEntryPoints:(BOOL)b;
-- (void)isFcmApn:(NSString *)value;
 - (void)setAdPopupFont:(NSString *)value;
 - (void)UpdateProfile:(NSDictionary *)obj;
 - (void)startSSEOnForeground;
@@ -67,8 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)SetCurrentClassName:(NSString *)clname
                     resolve:(RCTPromiseResolveBlock)resolve
                      reject:(RCTPromiseRejectBlock)reject;
-- (void)setApnFcmToken:(NSString *)a
-                     b:(NSString *)b;
 - (void)getBannerHeight:(RCTPromiseResolveBlock)resolve
                  reject:(RCTPromiseRejectBlock)reject;
 - (void)addMarginsForPIP:(double)horizontal

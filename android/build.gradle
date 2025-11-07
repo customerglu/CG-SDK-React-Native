@@ -101,7 +101,9 @@ dependencies {
   implementation "com.facebook.react:react-android"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation 'com.google.code.gson:gson:2.8.6'
-  implementation 'com.customerglu:CustomerGluLibrary:3.1.2'
+  // Use local CustomerGlu SDK for testing
+  implementation project(':CustomerGluLibrary')
+  // implementation 'com.customerglu:CustomerGluLibrary:3.1.2'
 
 }
 

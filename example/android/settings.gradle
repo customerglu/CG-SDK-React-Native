@@ -4,3 +4,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autoli
 rootProject.name = 'customerglu.reactnativecustomerglu.example'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
+
+// Include local Android SDK for testing
+include ':CustomerGluLibrary'
+project(':CustomerGluLibrary').projectDir = new File('/Users/prateek/Documents/GitHub/CG-android-SDK-Demo/CustomerGluLibrary')

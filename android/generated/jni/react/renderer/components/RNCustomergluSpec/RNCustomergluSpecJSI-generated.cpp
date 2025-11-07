@@ -109,13 +109,6 @@ static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_enableEn
   );
   return jsi::Value::undefined();
 }
-static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_isFcmApn(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
-  static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->isFcmApn(
-    rt,
-    count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asString(rt)
-  );
-  return jsi::Value::undefined();
-}
 static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setAdPopupFont(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
   static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->setAdPopupFont(
     rt,
@@ -177,14 +170,6 @@ static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_SetCurre
     count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asString(rt)
   );
 }
-static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setApnFcmToken(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
-  static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->setApnFcmToken(
-    rt,
-    count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asString(rt),
-    count <= 1 ? throw jsi::JSError(rt, "Expected argument in position 1 to be passed") : args[1].asString(rt)
-  );
-  return jsi::Value::undefined();
-}
 static jsi::Value __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_getBannerHeight(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
   return static_cast<NativeReactNativeCustomergluCxxSpecJSI *>(&turboModule)->getBannerHeight(
     rt
@@ -244,7 +229,6 @@ NativeReactNativeCustomergluCxxSpecJSI::NativeReactNativeCustomergluCxxSpecJSI(s
   methodMap_["allowAnonymousRegistration"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_allowAnonymousRegistration};
   methodMap_["gluSDKDebuggingMode"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_gluSDKDebuggingMode};
   methodMap_["enableEntryPoints"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_enableEntryPoints};
-  methodMap_["isFcmApn"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_isFcmApn};
   methodMap_["setAdPopupFont"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setAdPopupFont};
   methodMap_["UpdateProfile"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_UpdateProfile};
   methodMap_["startSSEOnForeground"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_startSSEOnForeground};
@@ -254,7 +238,6 @@ NativeReactNativeCustomergluCxxSpecJSI::NativeReactNativeCustomergluCxxSpecJSI(s
   methodMap_["DisplayCGNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_DisplayCGNotification};
   methodMap_["DisplayCGBackgroundNotification"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_DisplayCGBackgroundNotification};
   methodMap_["SetCurrentClassName"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_SetCurrentClassName};
-  methodMap_["setApnFcmToken"] = MethodMetadata {2, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_setApnFcmToken};
   methodMap_["getBannerHeight"] = MethodMetadata {0, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_getBannerHeight};
   methodMap_["addMarginsForPIP"] = MethodMetadata {3, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_addMarginsForPIP};
   methodMap_["addDelayForPIP"] = MethodMetadata {1, __hostFunction_NativeReactNativeCustomergluCxxSpecJSI_addDelayForPIP};

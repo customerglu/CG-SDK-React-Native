@@ -14,7 +14,6 @@ export interface Spec extends TurboModule {
     allowAnonymousRegistration(b: boolean): void;
     gluSDKDebuggingMode(b: boolean): void;
     enableEntryPoints(b: boolean): void;
-    isFcmApn(value: string): void;
     setAdPopupFont(value: string): void;
     UpdateProfile(obj: Object): void;
     startSSEOnForeground(): void;
@@ -24,7 +23,6 @@ export interface Spec extends TurboModule {
     DisplayCGNotification(obj: Object, autoclosewebview?: boolean): void;
     DisplayCGBackgroundNotification(obj: Object, autoclosewebview?: boolean): void;
     SetCurrentClassName(clname: string): Promise<string>;
-    setApnFcmToken(a: string, b: string): void;
     getBannerHeight(): Promise<number>;
     addMarginsForPIP(horizontal: number, vertical: number, type: string): void;
     addDelayForPIP(delay: number): void;

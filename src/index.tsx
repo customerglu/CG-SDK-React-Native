@@ -68,9 +68,6 @@ export function gluSDKDebuggingMode(b: boolean): void {
   return ReactNativeCustomerglu.gluSDKDebuggingMode(b);
 }
 
-export function isFcmApn(value: string): void {
-  return ReactNativeCustomerglu.isFcmApn(value);
-}
 export function UpdateProfile(obj: Object): void {
   return ReactNativeCustomerglu.UpdateProfile(obj);
 }
@@ -94,9 +91,6 @@ export function SetCurrentClassName(clname: string): Promise<string> {
   return ReactNativeCustomerglu.SetCurrentClassName(clname);
 }
 
-export function setApnFcmToken(a: string, b: string): void {
-  return ReactNativeCustomerglu.setApnFcmToken(a, b);
-}
 export function getBannerHeight(): Promise<number> {
   return ReactNativeCustomerglu.getBannerHeight();
 }

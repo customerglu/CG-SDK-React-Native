@@ -34,7 +34,6 @@ public:
   virtual void allowAnonymousRegistration(jsi::Runtime &rt, bool b) = 0;
   virtual void gluSDKDebuggingMode(jsi::Runtime &rt, bool b) = 0;
   virtual void enableEntryPoints(jsi::Runtime &rt, bool b) = 0;
-  virtual void isFcmApn(jsi::Runtime &rt, jsi::String value) = 0;
   virtual void setAdPopupFont(jsi::Runtime &rt, jsi::String value) = 0;
   virtual void UpdateProfile(jsi::Runtime &rt, jsi::Object obj) = 0;
   virtual void startSSEOnForeground(jsi::Runtime &rt) = 0;
@@ -44,7 +43,6 @@ public:
   virtual void DisplayCGNotification(jsi::Runtime &rt, jsi::Object obj, std::optional<bool> autoclosewebview) = 0;
   virtual void DisplayCGBackgroundNotification(jsi::Runtime &rt, jsi::Object obj, std::optional<bool> autoclosewebview) = 0;
   virtual jsi::Value SetCurrentClassName(jsi::Runtime &rt, jsi::String clname) = 0;
-  virtual void setApnFcmToken(jsi::Runtime &rt, jsi::String a, jsi::String b) = 0;
   virtual jsi::Value getBannerHeight(jsi::Runtime &rt) = 0;
   virtual void addMarginsForPIP(jsi::Runtime &rt, double horizontal, double vertical, jsi::String type) = 0;
   virtual void addDelayForPIP(jsi::Runtime &rt, double delay) = 0;
@@ -193,14 +191,6 @@ private:
       return bridging::callFromJs<void>(
           rt, &T::enableEntryPoints, jsInvoker_, instance_, std::move(b));
     }
-    void isFcmApn(jsi::Runtime &rt, jsi::String value) override {
-      static_assert(
-          bridging::getParameterCount(&T::isFcmApn) == 2,
-          "Expected isFcmApn(...) to have 2 parameters");
-
-      return bridging::callFromJs<void>(
-          rt, &T::isFcmApn, jsInvoker_, instance_, std::move(value));
-    }
     void setAdPopupFont(jsi::Runtime &rt, jsi::String value) override {
       static_assert(
           bridging::getParameterCount(&T::setAdPopupFont) == 2,
@@ -272,14 +262,6 @@ private:
 
       return bridging::callFromJs<jsi::Value>(
           rt, &T::SetCurrentClassName, jsInvoker_, instance_, std::move(clname));
-    }
-    void setApnFcmToken(jsi::Runtime &rt, jsi::String a, jsi::String b) override {
-      static_assert(
-          bridging::getParameterCount(&T::setApnFcmToken) == 3,
-          "Expected setApnFcmToken(...) to have 3 parameters");
-
-      return bridging::callFromJs<void>(
-          rt, &T::setApnFcmToken, jsInvoker_, instance_, std::move(a), std::move(b));
     }
     jsi::Value getBannerHeight(jsi::Runtime &rt) override {
       static_assert(
