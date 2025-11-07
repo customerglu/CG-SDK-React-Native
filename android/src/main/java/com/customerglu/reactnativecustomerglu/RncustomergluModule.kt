@@ -512,9 +512,11 @@ class RncustomergluModule(reactContext: ReactApplicationContext) :
       this.Myclassname = clname
       runOnUiThread(Runnable {
         CustomerGlu.getInstance().setScreenName(reactApplicationContext, clname)
+        promise?.resolve(clname)
       })
     }else{
       Log.e(TAG,"Class Name is Null")
+      promise?.reject("ERROR", "Class Name is Null")
     }
 
   }
