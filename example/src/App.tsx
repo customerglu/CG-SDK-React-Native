@@ -7,8 +7,10 @@ import {
   Platform,
   Button,
   ScrollView,
-  Dimensions,
+  TextInput,
   AppState,
+  KeyboardAvoidingView,
+  TouchableOpacity,
 } from 'react-native';
 import {
   gluSDKDebuggingMode,
@@ -21,322 +23,701 @@ import {
   BannerWidget,
   disconnectSSEOnBackground,
   startSSEOnForeground,
+  isCampaignValid,
+  getCampaignStatus,
+  UpdateUserAttributes,
+  dataClear,
 } from '@customerglu/react-native-customerglu';
 
-import NativeReactNativeCustomerglu from '../../src/NativeReactNativeCustomerglu';
+import { useEffect, useState } from 'react';
 
-import { useEffect, useRef, useState } from 'react';
+type ResultType = 'success' | 'error' | 'warning' | 'info';
+
+interface Result {
+  type: ResultType;
+  message: string;
+  time: string;
+}
+
+interface SDKEvent {
+  type: string;
+  data: any;
+  time: string;
+}
 
 export default function App() {
-  const [isSDKInitialized, setIsSDKInitialized] = useState(false);
-  const [bannerHeight, setBannerHeight] = useState(2); // Start with a reasonable minimum height
-  const bannerRef = useRef(null);
+  // Registration state
+  const [userId, setUserId] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [isSDKReady, setIsSDKReady] = useState(false);
 
-  // Method to update banner height based on percentage value from payload
-  const updateBannerHeightFromPercentage = (data: any) => {
-    // Check if the data contains homescreen_banner
-    if (data && data.homescreen_banner) {
-      try {
-        // Convert string percentage to number
-      //   if (Platform.OS == 'android')
-      //   {
-      //   const percentageValue = parseFloat(data.homescreen_banner);
+  // Test inputs
+  const [campaignId, setCampaignId] = useState('');
+  const [eventName, setEventName] = useState('test_event');
+  const [screenName, setScreenName] = useState('Home');
 
-      //   // Get screen height using Dimensions API
-      //   const screenHeight = Dimensions.get('window').height;
+  // Results & Event Log
+  const [results, setResults] = useState<Result[]>([]);
+  const [events, setEvents] = useState<SDKEvent[]>([]);
 
-      //   // Calculate height based on percentage of screen height
-      //   const calculatedHeight = (percentageValue / 100) * screenHeight;
+  // Banner state
+  const [bannerHeight, setBannerHeight] = useState(100);
 
-      //   // Update the banner height state with the calculated value
-      //   // Ensure a minimum height to prevent layout issues
-      //   const newHeight = Math.max(calculatedHeight, 50);
-      //   console.log(
-      //     `Updating banner height to ${newHeight}px (${percentageValue}% of screen height)`
-      //   );
-      //   setBannerHeight(newHeight);
-      // }else{
-
-      // }
-      setBannerHeight(data.homescreen_banner);
-
-      } catch (error) {
-        console.error('Error updating banner height:', error);
-      }
-    }
+  // Helper functions
+  const addResult = (type: ResultType, message: string) => {
+    setResults(prev => [...prev, {
+      type,
+      message,
+      time: new Date().toLocaleTimeString()
+    }]);
   };
 
-  let currentState = AppState.currentState;
+  const addEvent = (type: string, data: any) => {
+    setEvents(prev => [...prev, {
+      type,
+      data,
+      time: new Date().toLocaleTimeString()
+    }]);
+  };
 
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      if (currentState === 'active' && nextAppState.match(/inactive|background/)) {
-        console.log('🔴 App moving to background');
-        disconnectSSEOnBackground();
-      }
-  
-      if (currentState.match(/inactive|background/) && nextAppState === 'active') {
-        console.log('🟢 App returning to foreground');
-        startSSEOnForeground();
-      }
-  
-      currentState = nextAppState;
-    });
-  
-    return () => subscription.remove();
-  }, []);
-
+  // SDK Initialization (EXACT pattern from working code)
   useEffect(() => {
     const initializeSDK = async () => {
       try {
-        // Enable debugging first
+        // STEP 1: Debug mode FIRST
         gluSDKDebuggingMode(true);
 
-        // Initialize SDK with environment
+        // STEP 2: Initialize SDK
         initCGSDK('me');
 
-        // Wait for SDK to be ready
+        // STEP 3: Wait 1 second (PROVEN necessary)
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        // Register device
-        const userData = {
-          userId: 'glutest-509',
-          firebaseToken: 'token',
-          apnsDeviceToken: '',
-        };
-
-        try {
-          const result = await RegisterDevice(userData);
-          console.log('Device registration result:', result);
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          SetCurrentClassName('Home');
-          setIsSDKInitialized(true);
-          console.log('Available native modules:', Object.keys(NativeModules));
-        
-          // Check for your module with different casing
-     
-        
-          
-        } catch (regError) {
-          console.error('Device registration error:', regError);
-        }
+        setIsSDKReady(true);
+        addResult('success', '✅ SDK initialized and ready');
       } catch (error) {
-        console.error('Error during SDK initialization:', error);
+        addResult('error', `❌ SDK init failed: ${error}`);
       }
     };
 
     initializeSDK();
-    console.log('Available native modules:', Object.keys(NativeModules));
+  }, []);
 
-    console.log("Mu Native Modules ",NativeModules);
-
-  
-    // Use the explicitly defined module name
+  // Event Listeners Setup (EXACT pattern from working code)
+  useEffect(() => {
     const customergluModule = NativeModules.Rncustomerglu;
-    
     if (!customergluModule) {
       console.error('Could not find RnCustomerglu module');
       return;
     }
-    
-    console.log('Found RnCustomerglu module:', customergluModule);
-    
-    // Create the event emitter
+
     const eventEmitter = new NativeEventEmitter(customergluModule);
-    
-    // Listen for events
-    const eventanalytics = eventEmitter.addListener(
+
+    // Analytics
+    const analyticsListener = eventEmitter.addListener(
       'CUSTOMERGLU_ANALYTICS_EVENT',
       (data) => {
-        console.log('CUSTOMERGLU_ANALYTICS_EVENT received in JS:', data);
-        // Handle your event data here
+        addEvent('ANALYTICS_EVENT', data);
       }
     );
-    
-   
-    // Add banner height event listener
+
+    // Deeplinks (with iOS platform check)
+    const deeplinkListener = eventEmitter.addListener(
+      'CUSTOMERGLU_DEEPLINK_EVENT',
+      (data) => {
+        // CRITICAL: iOS wraps in data.data
+        if (Platform.OS === 'ios') {
+          data = data.data;
+        }
+        addEvent('DEEPLINK_EVENT', data);
+        if (data?.campaignId) {
+          loadCampaignById(data.campaignId);
+        }
+      }
+    );
+
+    // Banner height
     const bannerHeightListener = eventEmitter.addListener(
       'CGBANNER_FINAL_HEIGHT',
       (data) => {
-        console.log('bannerHeight event received:', data);
-        try {
-          if (typeof data === 'string') {
-            data = JSON.parse(data);
-          }
-          console.log('Parsed bannerHeight data:', data);
-
-          // Update banner height based on percentage value
-          updateBannerHeightFromPercentage(data);
-        } catch (e) {
-          console.error('Error parsing banner height data:', e);
+        if (typeof data === 'string') {
+          data = JSON.parse(data);
+        }
+        addEvent('BANNER_HEIGHT', data);
+        if (data.homescreen_banner) {
+          setBannerHeight(data.homescreen_banner);
         }
       }
     );
-    const embedHeightListener = eventEmitter.addListener(
-      'CGEMBED_FINAL_HEIGHT',
+
+    // Banner loaded
+    const bannerLoadedListener = eventEmitter.addListener(
+      'CUSTOMERGLU_BANNER_LOADED',
       (data) => {
-        console.log('embedHeight event received:', data);
-        try {
-          if (typeof data === 'string') {
-            data = JSON.parse(data);
-          }
-          console.log('Parsed embedHeight data:', data);
-
-          // Update banner height based on percentage value
-          updateBannerHeightFromPercentage(data);
-        } catch (e) {
-          console.error('Error parsing banner height data:', e);
-        }
+        addEvent('BANNER_LOADED', data);
       }
     );
-    console.log('Analytics listener added');
 
-    // Add deeplink event listener
-    const eventdeeplink = eventEmitter.addListener(
-      'CUSTOMERGLU_DEEPLINK_EVENT',
+    // Invalid campaign
+    const invalidCampaignListener = eventEmitter.addListener(
+      'CG_INVALID_CAMPAIGN_ID',
       (data) => {
-        console.log('Deeplink event received:', data);
-        try {
-          if (Platform.OS === 'ios') {
-            data = data.data;
-          }
-          console.log('Processed deeplink data:', data);
-          if (data?.campaignId) {
-            loadCampaignById(data.campaignId);
-          }
-        } catch (e) {
-          console.error('Error processing deeplink data:', e);
-        }
+        addEvent('INVALID_CAMPAIGN', data);
       }
     );
-    console.log('Deeplink listener added');
 
     return () => {
-      console.log('Cleaning up event listeners');
-      eventanalytics.remove();
-      eventdeeplink.remove();
-      embedHeightListener.remove();
+      analyticsListener.remove();
+      deeplinkListener.remove();
       bannerHeightListener.remove();
+      bannerLoadedListener.remove();
+      invalidCampaignListener.remove();
     };
   }, []);
 
-  const handleTestEvent = () => {
-    console.log('Sending test event...');
-    const testEvent = {
-      eventName: 'test_event',
-      eventProperties: {
-        test: 'value',
-        timestamp: new Date().toISOString(),
-      },
-    };
-    console.log('Test event data:', testEvent);
+  // SSE Lifecycle Management (EXACT pattern)
+  let currentState = AppState.currentState;
+
+  useEffect(() => {
+    if (!isRegistered) return;
+
+    const subscription = AppState.addEventListener('change', nextAppState => {
+      if (currentState === 'active' && nextAppState.match(/inactive|background/)) {
+        console.log('🔴 App moving to background');
+        disconnectSSEOnBackground();
+        addEvent('SSE', { status: 'Disconnected' });
+      }
+
+      if (currentState.match(/inactive|background/) && nextAppState === 'active') {
+        console.log('🟢 App returning to foreground');
+        startSSEOnForeground();
+        addEvent('SSE', { status: 'Connected' });
+      }
+
+      currentState = nextAppState;
+    });
+
+    return () => subscription.remove();
+  }, [isRegistered]);
+
+  // Login Handler
+  const handleLogin = async () => {
+    if (!userId.trim()) {
+      addResult('error', '❌ Please enter a User ID');
+      return;
+    }
+
     try {
-      sendData(testEvent);
-      console.log('Test event sent successfully');
+      addResult('info', `📝 Registering ${userId}...`);
+
+      const userData = {
+        userId: userId.trim(),
+        firebaseToken: '',
+        apnsDeviceToken: '',
+      };
+
+      const success = await RegisterDevice(userData);
+
+      if (success) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await SetCurrentClassName('Home');
+        startSSEOnForeground();
+
+        setIsRegistered(true);
+        addResult('success', `✅ Registered as ${userId}`);
+      } else {
+        addResult('error', '❌ Registration failed');
+      }
     } catch (error) {
-      console.error('Error sending test event:', error);
+      addResult('error', `❌ Error: ${error}`);
     }
   };
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Banner Outside ScrollView:</Text>
-         
-            <BannerWidget
-              style={[styles.bannerInside, {  height:bannerHeight }]}
-              bannerId="homescreen_banner"
-              
-            /> 
-      {/* {isSDKInitialized && (
-        <CGBannerView 
-          style={styles.bannerOutside} 
-          bannerId="homescreen_banner" 
-        />
-      )} */}
+  // Test Functions
+  const testLoadCampaign = () => {
+    if (!campaignId.trim()) {
+      addResult('error', '❌ Enter campaign ID first');
+      return;
+    }
+    try {
+      loadCampaignById(campaignId);
+      addResult('success', `📺 Loading campaign: ${campaignId}`);
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
 
-      <Text style={styles.title}>
-        Banner Inside ScrollView (Dynamic Height):
-      </Text>
+  const testCampaignValid = async () => {
+    if (!campaignId.trim()) {
+      addResult('error', '❌ Enter campaign ID first');
+      return;
+    }
+    try {
+      addResult('info', '🔍 Checking validity...');
+      const valid = await isCampaignValid(campaignId, 'API');
+      addResult(
+        valid ? 'success' : 'warning',
+        valid ? `✅ Campaign is valid` : `⚠️ Campaign not valid`
+      );
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
 
-      <ScrollView
-        style={styles.scrollContainer}
-        contentContainerStyle={{ flexGrow: 1, flexDirection: 'column' }}
+  const testCampaignStatus = async () => {
+    if (!campaignId.trim()) {
+      addResult('error', '❌ Enter campaign ID first');
+      return;
+    }
+    try {
+      addResult('info', '🔍 Getting status...');
+      const status = await getCampaignStatus(campaignId, 'API');
+      addResult('info', `📊 Status: ${status}`);
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
+
+  const testOpenWallet = () => {
+    try {
+      openWallet();
+      addResult('success', '💰 Opening wallet...');
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
+
+  const testSendEvent = () => {
+    if (!eventName.trim()) {
+      addResult('error', '❌ Enter event name first');
+      return;
+    }
+    try {
+      sendData({
+        eventName: eventName,
+        eventProperties: {
+          timestamp: new Date().toISOString(),
+          source: 'demo_app',
+        }
+      });
+      addResult('success', `📊 Sent event: ${eventName}`);
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
+
+  const testSetScreen = async () => {
+    if (!screenName.trim()) {
+      addResult('error', '❌ Enter screen name first');
+      return;
+    }
+    try {
+      await SetCurrentClassName(screenName);
+      addResult('success', `📱 Set screen to: ${screenName}`);
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
+
+  const testUpdateAttributes = () => {
+    try {
+      UpdateUserAttributes({
+        last_action: new Date().toISOString(),
+        demo_mode: true,
+      });
+      addResult('success', '✅ Updated user attributes');
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
+
+  const handleLogout = () => {
+    try {
+      dataClear();
+      disconnectSSEOnBackground();
+      setIsRegistered(false);
+      setUserId('');
+      setCampaignId('');
+      addResult('success', '👋 Logged out');
+    } catch (error) {
+      addResult('error', `❌ ${error}`);
+    }
+  };
+
+  // Login Screen
+  if (!isRegistered) {
+    return (
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}
       >
-        <View style={styles.scrollContent}>
-          <Text style={styles.explanation}>
-            This banner uses onLayout to dynamically adjust its height.
-          </Text>
+        <View style={styles.loginContainer}>
+          <Text style={styles.title}>CustomerGlu SDK Demo</Text>
+          <Text style={styles.subtitle}>ME Region Testing</Text>
 
-          <View style={{ minHeight: bannerHeight, flexGrow:1 }}>
-       
-            <BannerWidget
-              style={[styles.bannerInside, { flexGrow: 1, height:100 }]}
-              bannerId="homescreen_banner"
-              
+          <View style={styles.loginSection}>
+            <Text style={styles.label}>User ID:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter user ID (e.g., test-user-123)"
+              value={userId}
+              onChangeText={setUserId}
+              autoCapitalize="none"
+              editable={isSDKReady}
             />
-          {/* {isSDKInitialized && (
-            
-            )} */}
+            <TouchableOpacity
+              style={[styles.primaryButton, !isSDKReady && styles.disabledButton]}
+              onPress={handleLogin}
+              disabled={!isSDKReady}
+            >
+              <Text style={styles.primaryButtonText}>
+                {isSDKReady ? 'Register & Login' : 'SDK Initializing...'}
+              </Text>
+            </TouchableOpacity>
           </View>
 
-          <Text style={[styles.explanation, { marginTop: 20 }]}>
-            Current banner height: {bannerHeight}px
-          </Text>
+          <View style={styles.resultsSection}>
+            <Text style={styles.sectionTitle}>📋 Status</Text>
+            <ScrollView style={styles.resultsScroll}>
+              {results.slice(-10).reverse().map((r, i) => (
+                <Text key={i} style={styles[r.type]}>
+                  {r.time} - {r.message}
+                </Text>
+              ))}
+            </ScrollView>
+          </View>
         </View>
-      </ScrollView>
-      
-    </View>
+      </KeyboardAvoidingView>
+    );
+  }
+
+  // Main Demo Screen
+  return (
+    <ScrollView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <View>
+          <Text style={styles.title}>SDK Demo</Text>
+          <Text style={styles.subtitle}>Logged in as: {userId}</Text>
+        </View>
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <Text style={styles.logoutButtonText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Quick Actions */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>🚀 Quick Actions</Text>
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button} onPress={testOpenWallet}>
+            <Text style={styles.buttonText}>💰 Wallet</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={testSendEvent}>
+            <Text style={styles.buttonText}>📊 Send Event</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Campaign Testing */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>🎯 Campaign Testing</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Campaign ID"
+          value={campaignId}
+          onChangeText={setCampaignId}
+        />
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button} onPress={testLoadCampaign}>
+            <Text style={styles.buttonText}>Load</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={testCampaignValid}>
+            <Text style={styles.buttonText}>Valid?</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={testCampaignStatus}>
+            <Text style={styles.buttonText}>Status</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Analytics Testing */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>📊 Analytics</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Event name"
+          value={eventName}
+          onChangeText={setEventName}
+        />
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button} onPress={testSendEvent}>
+            <Text style={styles.buttonText}>Send Event</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={testUpdateAttributes}>
+            <Text style={styles.buttonText}>Update Attrs</Text>
+          </TouchableOpacity>
+        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Screen name"
+          value={screenName}
+          onChangeText={setScreenName}
+        />
+        <TouchableOpacity style={styles.button} onPress={testSetScreen}>
+          <Text style={styles.buttonText}>Set Screen</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Banner Demo */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>🎨 Banner Demo</Text>
+        <BannerWidget
+          style={[styles.banner, { height: Math.max(bannerHeight, 100) }]}
+          bannerId="homescreen_banner"
+        />
+        <Text style={styles.bannerInfo}>Height: {bannerHeight}px</Text>
+      </View>
+
+      {/* Results Log */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>📋 Results</Text>
+        <ScrollView style={styles.resultsScroll}>
+          {results.slice(-10).reverse().map((r, i) => (
+            <Text key={i} style={styles[r.type]}>
+              {r.time} - {r.message}
+            </Text>
+          ))}
+        </ScrollView>
+        {results.length > 0 && (
+          <TouchableOpacity
+            style={styles.clearButton}
+            onPress={() => setResults([])}
+          >
+            <Text style={styles.clearButtonText}>Clear Results</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+
+      {/* Event Log */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>🔔 Live Events</Text>
+        <ScrollView style={styles.eventScroll}>
+          {events.slice(-10).reverse().map((e, i) => (
+            <View key={i} style={styles.eventItem}>
+              <View style={styles.eventHeader}>
+                <Text style={styles.eventType}>{e.type}</Text>
+                <Text style={styles.eventTime}>{e.time}</Text>
+              </View>
+              <Text style={styles.eventData}>
+                {JSON.stringify(e.data, null, 2)}
+              </Text>
+            </View>
+          ))}
+        </ScrollView>
+        {events.length > 0 && (
+          <TouchableOpacity
+            style={styles.clearButton}
+            onPress={() => setEvents([])}
+          >
+            <Text style={styles.clearButtonText}>Clear Events</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+  },
+  loginContainer: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 16,
+    backgroundColor: '#f8f9fa',
+    borderBottomWidth: 1,
+    borderBottomColor: '#dee2e6',
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginVertical: 10,
+    color: '#212529',
   },
-  explanation: {
-    marginVertical: 10,
+  subtitle: {
+    fontSize: 14,
+    color: '#6c757d',
+    marginTop: 4,
   },
-  scrollContainer: {
-    flex: 1,
-    marginBottom: 20,
+  loginSection: {
+    marginVertical: 30,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
+    color: '#495057',
+  },
+  section: {
+    margin: 16,
+    padding: 16,
+    backgroundColor: '#f8f9fa',
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-  },
-  scrollContent: {
-    padding: 10,
-  },
-  bannerOutside: {
-    width: '100%',
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: 'green',
-  },
-  bannerInside: {
-    width: '100%',
-    borderWidth: 1,
-    borderColor: 'red',
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    borderColor: '#dee2e6',
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 12,
+    color: '#212529',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ced4da',
+    padding: 12,
+    marginBottom: 12,
+    borderRadius: 6,
+    backgroundColor: '#fff',
+    fontSize: 14,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginBottom: 8,
+  },
+  button: {
+    flex: 1,
+    backgroundColor: '#007bff',
+    padding: 12,
+    borderRadius: 6,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 14,
     fontWeight: '600',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  primaryButton: {
+    backgroundColor: '#28a745',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  primaryButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  disabledButton: {
+    backgroundColor: '#6c757d',
+  },
+  logoutButton: {
+    backgroundColor: '#dc3545',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 6,
+  },
+  logoutButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  clearButton: {
+    backgroundColor: '#6c757d',
+    padding: 8,
+    borderRadius: 6,
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  clearButtonText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  banner: {
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#dee2e6',
+    borderRadius: 6,
+    marginBottom: 8,
+    overflow: 'hidden',
+  },
+  bannerInfo: {
+    fontSize: 12,
+    color: '#6c757d',
+    textAlign: 'center',
+  },
+  resultsSection: {
+    flex: 1,
+    marginTop: 20,
+  },
+  resultsScroll: {
+    maxHeight: 300,
+    borderWidth: 1,
+    borderColor: '#dee2e6',
+    borderRadius: 6,
+    padding: 12,
+    backgroundColor: '#fff',
+  },
+  eventScroll: {
+    maxHeight: 300,
+    borderWidth: 1,
+    borderColor: '#dee2e6',
+    borderRadius: 6,
+    padding: 12,
+    backgroundColor: '#fff',
+  },
+  success: {
+    color: '#28a745',
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  error: {
+    color: '#dc3545',
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  warning: {
+    color: '#ffc107',
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  info: {
+    color: '#17a2b8',
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  eventItem: {
+    padding: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e9ecef',
+    marginBottom: 8,
+  },
+  eventHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  eventType: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: '#007bff',
+  },
+  eventTime: {
+    fontSize: 10,
+    color: '#6c757d',
+  },
+  eventData: {
+    fontSize: 10,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    color: '#495057',
   },
 });
