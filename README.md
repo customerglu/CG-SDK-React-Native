@@ -1,18 +1,19 @@
 # CustomerGlu React Native SDK
 
-CustomerGlu SDK for React Native provides in-app gamification, rewards, and engagement campaigns with a unified API across iOS and Android.
+In-app gamification, rewards, and engagement campaigns for React Native — unified API across iOS and Android.
 
-**Current Version:** 4.0.0
+**Version:** `4.0.0`
+
+> **All CustomerGlu SDKs share the same version number.**
+> iOS `4.0.0` · Android `4.0.0` · React Native `4.0.0`
 
 ## Requirements
 
-### iOS
-- iOS 14.0+
-- Xcode 13.0+
-
-### Android
-- API 21 (Android 5.0)+
-- `minSdkVersion 21` in your app's `build.gradle`
+| Platform | Minimum |
+|----------|---------|
+| iOS | 14.0+ / Xcode 13+ |
+| Android | API 21 (Android 5.0)+ |
+| React Native | 0.71+ |
 
 ## Installation
 
@@ -20,9 +21,8 @@ CustomerGlu SDK for React Native provides in-app gamification, rewards, and enga
 npm install @customerglu/react-native-customerglu
 ```
 
-Or with yarn:
-
 ```bash
+# or with yarn
 yarn add @customerglu/react-native-customerglu
 ```
 
@@ -32,9 +32,11 @@ yarn add @customerglu/react-native-customerglu
 cd ios && pod install
 ```
 
+The React Native SDK automatically pulls in the native iOS SDK (`CustomerGlu 4.0.0`) via CocoaPods.
+
 ### Android Setup
 
-Add to your project-level `build.gradle`:
+The native Android SDK (`com.customerglu:CustomerGluLibrary:4.0.0`) is pulled automatically via Maven Central. Ensure `mavenCentral()` is in your project-level `build.gradle`:
 
 ```gradle
 allprojects {
@@ -44,7 +46,24 @@ allprojects {
 }
 ```
 
-## Initialization
+## Quick Start
+
+### 1. Configure Write Key
+
+#### iOS — `Info.plist`
+```xml
+<key>CUSTOMERGLU_WRITE_KEY</key>
+<string>YOUR_WRITE_KEY</string>
+```
+
+#### Android — `AndroidManifest.xml`
+```xml
+<meta-data
+    android:name="CUSTOMERGLU_WRITE_KEY"
+    android:value="YOUR_WRITE_KEY" />
+```
+
+### 2. Initialize & Use
 
 ```typescript
 import { CustomerGlu } from '@customerglu/react-native-customerglu';
@@ -52,25 +71,42 @@ import { CustomerGlu } from '@customerglu/react-native-customerglu';
 // Register user
 await CustomerGlu.registerDevice('user-123');
 
-// Open wallet
+// Open the rewards wallet
 CustomerGlu.openWallet();
 
-// Load campaigns
+// Load all campaigns
 CustomerGlu.loadAllCampaigns();
 
-// Send custom event
-CustomerGlu.sendEventData({ eventName: 'purchase', eventProperties: { amount: 99 } });
+// Send a custom event
+CustomerGlu.sendEventData({
+  eventName: 'purchase',
+  eventProperties: { amount: 99 }
+});
+
+// Update user attributes
+CustomerGlu.updateProfile({ plan: 'premium' });
 ```
 
-## Key Features
+## Features
 
-- **Cross-platform**: Single API for iOS and Android
-- **Entry Points**: Floating buttons, banners, embedded views
-- **Campaign Display**: Bottom sheets, popups, full-screen campaigns
-- **Real-time Updates**: SSE-based live nudges
-- **Deep Linking**: Handle campaign navigation
-- **Analytics**: Event tracking and diagnostics
+| Feature | Description |
+|---------|-------------|
+| Cross-platform | Single TypeScript API for iOS and Android |
+| Entry Points | Floating buttons, banners, embedded views |
+| Campaigns | Bottom sheets, popups, full-screen campaigns |
+| Real-time | SSE-based live nudges |
+| Deep Linking | Campaign navigation handling |
+| Analytics | Event tracking and diagnostics |
+
+## Native SDKs
+
+The React Native SDK wraps the native SDKs. For advanced native customization, refer to:
+
+| Platform | Package | Install |
+|----------|---------|---------|
+| **iOS** | `CustomerGlu` | [CocoaPods](https://cocoapods.org/pods/CustomerGlu) · [SPM](https://github.com/customerglu/CG-iOS-SDK) |
+| **Android** | `com.customerglu:CustomerGluLibrary:4.0.0` | [Maven Central](https://central.sonatype.com/artifact/com.customerglu/CustomerGluLibrary) |
 
 ## Documentation
 
-Full documentation: [https://docs.customerglu.com/sdk/mobile-sdks#react-native](https://docs.customerglu.com/sdk/mobile-sdks#react-native)
+[https://docs.customerglu.com/sdk/mobile-sdks#react-native](https://docs.customerglu.com/sdk/mobile-sdks#react-native)
