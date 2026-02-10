@@ -1,30 +1,76 @@
-# CustomerGlu SDK
+# CustomerGlu React Native SDK
 
-CustomerGlu SDK provides you Express Installation requiring minimal technical effort, with out of the box methods for every functionality.
+CustomerGlu SDK for React Native provides in-app gamification, rewards, and engagement campaigns with a unified API across iOS and Android.
 
-# Pre-Requisites
+**Current Version:** 4.0.0
+
+## Requirements
 
 ### iOS
-Supports IOS 12.0+ and requires Xcode 12 or above to build.
+- iOS 14.0+
+- Xcode 13.0+
 
 ### Android
-Supports API 21 and above. Please ensure the minSDKVersion in the app's build.gradle file reflects the same.
+- API 21 (Android 5.0)+
+- `minSdkVersion 21` in your app's `build.gradle`
 
+## Installation
 
-# Installation
-
-### Option 1
-Add the CustomerGlu React Native plugin in package.json file 
-``` 
-"@customerglu/react-native-customerglu": "^3.1.2"
-``` 
-
-### Option 2  
-Run this command With npm:
-``` 
+```bash
 npm install @customerglu/react-native-customerglu
-``` 
+```
 
-# Initialisation & Functionalities
+Or with yarn:
 
-Please refer to the [Documentation here](https://docs.customerglu.com/sdk/mobile-sdks#react-native)
+```bash
+yarn add @customerglu/react-native-customerglu
+```
+
+### iOS Setup
+
+```bash
+cd ios && pod install
+```
+
+### Android Setup
+
+Add to your project-level `build.gradle`:
+
+```gradle
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+```
+
+## Initialization
+
+```typescript
+import { CustomerGlu } from '@customerglu/react-native-customerglu';
+
+// Register user
+await CustomerGlu.registerDevice('user-123');
+
+// Open wallet
+CustomerGlu.openWallet();
+
+// Load campaigns
+CustomerGlu.loadAllCampaigns();
+
+// Send custom event
+CustomerGlu.sendEventData({ eventName: 'purchase', eventProperties: { amount: 99 } });
+```
+
+## Key Features
+
+- **Cross-platform**: Single API for iOS and Android
+- **Entry Points**: Floating buttons, banners, embedded views
+- **Campaign Display**: Bottom sheets, popups, full-screen campaigns
+- **Real-time Updates**: SSE-based live nudges
+- **Deep Linking**: Handle campaign navigation
+- **Analytics**: Event tracking and diagnostics
+
+## Documentation
+
+Full documentation: [https://docs.customerglu.com/sdk/mobile-sdks#react-native](https://docs.customerglu.com/sdk/mobile-sdks#react-native)
