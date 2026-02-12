@@ -53,6 +53,7 @@
             [self addSubview:self->_bannerView];
             self->_bannerView.frame = self.bounds;
             self->_bannerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            self.clipsToBounds = NO;
             self->_bannerInitialized = YES;
             [self setNeedsLayout];
         
