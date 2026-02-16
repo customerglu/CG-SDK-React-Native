@@ -11,7 +11,7 @@
 
 <p align="center">
   <b>All CustomerGlu SDKs share the same version number.</b><br>
-  iOS <code>4.0.0</code> · Android <code>4.0.0</code> · React Native <code>4.0.0</code>
+  iOS <code>4.1.0</code> · Android <code>4.1.0</code> · React Native <code>4.1.0</code>
 </p>
 
 ---
@@ -23,7 +23,7 @@
 - [Quick Start](#quick-start)
 - [Banner Widgets](#banner-widgets)
 - [Features](#features)
-- [What's New in 4.0.0](#whats-new-in-400)
+- [What's New in 4.1.0](#whats-new-in-400)
 - [Troubleshooting](#troubleshooting)
 - [Native SDKs](#native-sdks)
 - [Documentation](#documentation)
@@ -63,11 +63,11 @@ Install the native CocoaPods dependency:
 cd ios && pod install && cd ..
 ```
 
-The React Native SDK automatically pulls in the native iOS SDK (`CustomerGlu 4.0.0`) via CocoaPods.
+The React Native SDK automatically pulls in the native iOS SDK (`CustomerGlu 4.1.0`) via CocoaPods.
 
 ### Android Setup
 
-The native Android SDK (`com.customerglu:CustomerGluLibrary:4.0.0`) is resolved automatically via Maven Central.
+The native Android SDK (`com.customerglu:CustomerGluLibrary:4.1.0`) is resolved automatically via Maven Central.
 
 Ensure `mavenCentral()` is in your **project-level** `build.gradle` (or `settings.gradle`):
 
@@ -180,7 +180,7 @@ The SDK handles rendering, styling, native widget inflation, and click actions a
 
 ---
 
-## What's New in 4.0.0
+## What's New in 4.1.0
 
 - **DYNAMIC_MULTISTEP native rendering** — three widget variants (MS1, MS2, MS3) rendered natively on both iOS and Android instead of WebView for better performance and native feel
 - **Auto-height bridge** — native widgets broadcast measured height via `CGBANNER_FINAL_HEIGHT` to resize React Native containers dynamically
@@ -208,7 +208,7 @@ The React Native SDK wraps the native SDKs. For advanced customization or standa
 | Platform | Package | Install |
 |----------|---------|---------|
 | **iOS** | `CustomerGlu` | [CocoaPods](https://cocoapods.org/pods/CustomerGlu) · [SPM](https://github.com/customerglu/CG-iOS-SDK) |
-| **Android** | `com.customerglu:CustomerGluLibrary:4.0.0` | [Maven Central](https://central.sonatype.com/artifact/com.customerglu/CustomerGluLibrary) |
+| **Android** | `com.customerglu:CustomerGluLibrary:4.1.0` | [Maven Central](https://central.sonatype.com/artifact/com.customerglu/CustomerGluLibrary) |
 
 ---
 
