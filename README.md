@@ -98,6 +98,12 @@ CustomerGlu.updateProfile({ plan: 'premium' });
 | Deep Linking | Campaign navigation handling |
 | Analytics | Event tracking and diagnostics |
 
+## What's New in 4.0.0
+
+- **DYNAMIC_MULTISTEP native rendering** — three widget variants rendered natively on both iOS and Android (no WebView)
+- **`clipsToBounds = NO`** on iOS bridge — enables MS3 expand/collapse overflow without clipping
+- **Auto-height bridge** — native widgets broadcast measured height via `CGBANNER_FINAL_HEIGHT` to resize RN containers dynamically
+
 ## Native SDKs
 
 The React Native SDK wraps the native SDKs. For advanced native customization, refer to:
