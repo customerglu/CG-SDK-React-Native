@@ -1,6 +1,6 @@
 {
   "name": "@customerglu/react-native-customerglu",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "CustomerGlu React Native SDK \u2014 in-app gamification, rewards, and engagement campaigns for iOS and Android.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
