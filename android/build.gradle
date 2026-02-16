@@ -102,7 +102,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation 'com.google.code.gson:gson:2.8.6'
   // For local testing: implementation project(':CustomerGluLibrary')
-  implementation 'com.customerglu:CustomerGluLibrary:4.1.0'
+  implementation 'com.customerglu:CustomerGluLibrary:4.1.1'
 
 }
 
